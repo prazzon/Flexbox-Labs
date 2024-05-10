@@ -1,0 +1,131 @@
+.editor {
+   height: 54rem;
+   grid-column: 2 / 3;
+   border-radius: 2rem;
+   box-shadow: rgba(0, 0, 0, .5) 0px 20px 30px -10px;
+}
+
+.tabs {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+
+.tab {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 0.5rem;
+   padding: 1.7rem;
+   text-align: center;
+   box-shadow: inset 0px 1.5px 0 0 var(--color-shadow);
+   background-color: var(--bg-tertiary);
+   position: relative;
+   border-radius: 2rem 2rem 0 0;
+}
+
+.tab:first-child.active::after {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   right: -2.5rem;
+   height: 2.5rem;
+   width: 2.5rem;
+   border-radius: 50%;
+   background-color: transparent;
+   box-shadow: -10px 10px 0 0 var(--bg-secondary);
+   z-index: 100;
+}
+
+.tab:last-child:not(.active)::after {
+   content: "";
+   position: absolute;
+   bottom: -2.5rem;
+   right: 0;
+   height: 2.5rem;
+   width: 2.5rem;
+   border-top-right-radius: 50%;
+   background-color: transparent;
+   box-shadow: 0px -12px 0 0 var(--bg-tertiary);
+   z-index: 100;
+}
+
+.tab:last-child.active::after {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: -2.5rem;
+   height: 2.5rem;
+   width: 2.5rem;
+   border-radius: 50%;
+   background-color: transparent;
+   box-shadow: 10px 10px 0 0 var(--bg-secondary);
+   z-index: 100;
+}
+
+.tab:first-child:not(.active)::after {
+   content: "";
+   position: absolute;
+   bottom: -2.5rem;
+   left: 0;
+   height: 2.5rem;
+   width: 2.5rem;
+   border-top-left-radius: 50%;
+   background-color: transparent;
+   box-shadow: 0px -12px 0 0 var(--bg-tertiary);
+   z-index: 100;
+}
+
+.tab > :first-child {
+   font-size: 2rem;
+}
+
+.tab.active {
+   background-color: var(--bg-secondary);
+   color: var(--text-color-light);
+   box-shadow: inset 0px 0px 0 0 var(--color-shadow);
+}
+
+.container {
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+   background-color: var(--bg-secondary);
+   height: calc(100% - 8.4rem);
+   padding: 2rem 2.5rem;
+   border-radius: 0 0 2rem 2rem;
+   display: none;
+}
+
+.container.active {
+   display: flex;
+}
+
+.block {
+   display: flex;
+   flex-direction: column;
+   background-color: var(--bg-tertiary);
+   border-radius: 1rem;
+   box-shadow: inset 0px 1.5px 0 0 var(--color-shadow);
+   gap: 1.5rem;
+   padding: 1.5rem 2.5rem;
+}
+
+.editor__item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 1px solid var(--color-shadow);
+   padding-bottom: 1rem;
+}
+
+.editor__item:last-child {
+   border-bottom: none;
+   padding-bottom: 0;
+}
+
+.editor__options {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+   text-transform: lowercase;
+}

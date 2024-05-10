@@ -1,0 +1,33 @@
+.footer {
+   grid-column: 1 / -1;
+   display: flex;
+   justify-content: center;
+   gap: 1rem;
+   width: fit-content;
+   margin-top: 2.5rem;
+   padding: 0.2rem 1.5rem;
+}
+
+.footer__item {
+   display: flex;
+   gap: 0.5rem;
+   align-items: center;
+   color: var(--text-color-dark);
+   font-size: 2rem;
+   text-decoration: none;
+   color: #646669;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background-color: var(--bg-secondary);
+   box-shadow: rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
+   padding: 1.2rem;
+   border-radius: 1rem;
+}
+
+.footer__item:hover {
+   color: var(--text-color-dark);
+}
+
+.icon {
+   font-size: 2rem;
+}

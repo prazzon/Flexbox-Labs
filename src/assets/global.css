@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+   --color-primary: #55b8b3;
+
+   --color-shadow: #4a4e51;
+   
+   --bg-primary: #161d26;
+   --bg-secondary: #08090b;
+   --bg-tertiary: #24292d;
+   --bg-hover: #393d41;
+   --bg-hover: #2c3236;
+
+   --text-color-light: #e3e3e3;
+   --text-color-dark: #b1b1b1;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   font-size: 62.5%;
+   font-family: "Poppins", sans-serif;
+}
+
+body {
+   background-color: var(--bg-primary);
+   font-size: 1.6rem;
+   padding: 1.6rem;
+   color: var(--text-color-dark);
+}
+
+body #root {
+   display: grid;
+   grid-template-columns: 1fr 34rem;
+   gap: 1.6rem;
+}
+
+/* ############################## */
+/* Scrollbar Styling */
+/* ############################## */
+
+::-webkit-scrollbar {
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 1.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2rem;
+    background-color: var(--color-primary);
+}

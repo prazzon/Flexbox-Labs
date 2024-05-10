@@ -1,0 +1,11 @@
+.header {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
+   color: var(--color-primary);
+   text-align: center;
+   font-size: 3.8rem;
+   margin: 1.5rem 0;
+   grid-column: 1 / -1;
+}

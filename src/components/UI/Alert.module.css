@@ -1,0 +1,28 @@
+.alert {
+    position: fixed;
+    left: 50%;
+    font-size: 2rem;
+    border-bottom: 2px solid var(--color-primary);
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease-out;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    background-color: var(--bg-secondary);
+    border-radius: 1rem;
+    z-index: 1000;
+}
+
+.alert.bottom {
+    bottom: 5rem;
+}
+
+.alert.top {
+    top: 5rem;
+}
+
+.alert.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    z-index: 1000;
+}

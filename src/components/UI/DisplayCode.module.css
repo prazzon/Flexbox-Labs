@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Itim&display=swap');
+
+.code__container {
+   height: auto;
+   width: auto;
+   padding-top: 2rem;
+   font-family: "Inconsolata", monospace;
+   display: flex;
+   gap: 4rem;
+   justify-content: space-between;
+   transition: all 0.3s;
+}
+
+.container {
+   width: 50%;
+}
+
+.container__title {
+   display: inline-block;
+   transform: translateY(1rem);
+   font-size: 2rem;
+   margin-bottom: 1rem;
+   border-bottom: 2px solid var(--color-primary);
+   padding: 1rem 2rem;
+   border-radius: 1rem 1rem 0 0;
+   background-color: var(--bg-secondary);
+   font-family: "Itim", cursive;
+}
+
+.container__text {
+   font-size: 1.5rem;
+   line-height: 1.5;
+   max-height: 55rem;
+   overflow-y: auto;
+   border-radius: 0 2rem 2rem 2rem;
+   padding: 2rem;
+   color: #dcdadc;
+   background-color: var(--bg-secondary);
+   max-height: 40rem;
+   position: relative;
+}
+
+.container__text .tab {
+   margin-left: 3rem;
+}
+
+.css__code .selector {
+   color: #70a982;
+}
+
+.css__code .property {
+   color: #db9ef2;
+}
+
+.css__code .value {
+   color: #f1c40f;
+}
+
+.html__code .tag {
+   color: #e74c3c;
+}
+
+.html__code .property {
+   color: #f1c40f;
+}
+
+.html__code .value {
+   color: #2ecc71;
+}
+
+.alert {
+   position: fixed;
+   top: 2rem;
+   left: 50%;
+   font-size: 2rem;
+   border-bottom: 2px solid var(--color-primary);
+   border-radius: 0.5rem;
+   padding: 1rem 2rem;
+   background-color: var(--color-tertiary);
+   transform: translate(-50%, -50%);
+   opacity: 0;
+   transition: all 0.3s ease-out;
+}
+
+.alert.show {
+   opacity: 1;
+   transform: translate(-50%, 0);
+   z-index: 1000;
+}

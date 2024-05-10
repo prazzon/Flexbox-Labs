@@ -1,0 +1,29 @@
+.about__content {
+   margin-bottom: 2rem;
+}
+
+h2, h3 {
+   color: var(--color-primary);
+}
+
+h2 {
+   margin-bottom: 1rem;
+   font-size: 3.5rem;
+}
+
+h3 {
+   margin-bottom: .5rem;
+   font-size: 1.5rem;
+}
+
+p {
+   margin-bottom: .5rem;
+}
+
+ul, ol {
+   margin-left: 3rem;
+}
+
+ol li {
+   margin-bottom: 1rem;
+}

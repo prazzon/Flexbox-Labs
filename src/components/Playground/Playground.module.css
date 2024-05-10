@@ -1,0 +1,42 @@
+.playground {
+   display: flex;
+   gap: 2rem;
+   height: 54rem;
+   padding: 2rem;
+   grid-column: 1 / 2;
+   background-color: var(--bg-secondary);
+   border-radius: 2rem;
+   box-shadow: rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
+   overflow: auto;
+}
+
+.item {
+   background: var(--bg-tertiary);
+   border-radius: 1.5rem;
+   padding: 1rem 1.5rem;
+   cursor: pointer;
+   box-shadow: inset 0px 2px 0 0 var(--color-shadow);
+   overflow: hidden;
+   transition: all 0.3s ease;
+}
+
+.item__text {
+   width: fit-content;
+   background-color: #08090b;
+   padding: 0.5rem 1.5rem;
+   border-radius: 1rem;
+   box-shadow: inset 0px -1.5px 0 0 var(--color-shadow);
+   transition: all 0.3s ease;
+}
+
+.item:hover {
+   background: var(--bg-hover);
+}
+
+.selected {
+   box-shadow: inset 0px 5px 0 0 var(--color-primary);
+}
+
+.selected .item__text {
+   box-shadow: inset 0px -2.5px 0 0 var(--color-primary);
+}

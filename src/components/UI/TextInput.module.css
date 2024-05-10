@@ -1,0 +1,37 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.input {
+   background-color: transparent;
+   border: none;
+   color: inherit;
+   font-size: inherit;
+   font-size: 1.4rem;
+   font-family: inherit;
+   text-align: center;
+   background: var(--bg-secondary);
+   box-shadow: inset 0px -1.5px 0 0 var(--color-shadow);
+   border-radius: .5rem;
+   padding: .38rem .8rem;
+   transition: all .3s ease;
+}
+
+.input:focus {
+   outline: none;
+   box-shadow: inset 0px -1.5px 0 0 var(--color-primary);
+}
+
+.input.small {
+   width: 4rem;
+}
+
+.input.medium {
+   width: 6rem;
+}
+
+.input.large {
+   width: 15rem;
+}
