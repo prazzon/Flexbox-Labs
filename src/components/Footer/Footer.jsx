@@ -8,7 +8,10 @@ import Tooltip from "../UI/Tooltip";
 function Footer() {
    return (
       <div className={styles.footer}>
-         <a href="" className={styles.footer__item}>
+         <a
+            href="https://github.com/prazzon/FlexLab" target="_blank"
+            className={styles.footer__item}
+         >
             {/* <FaGithub className={styles.icon} /> */}
             <FiGithub className={styles.icon} />
             <Tooltip position="bottom">Github</Tooltip>
