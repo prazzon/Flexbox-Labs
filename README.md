@@ -2,6 +2,8 @@
   <h1 align="center">FlexLab</h1>
 </div>
 
+![FlexLab Screenshot](.github/images/screenshot.png)
+
 ## Table of Contents
 - [About](#about)
 - [Features](#features)
