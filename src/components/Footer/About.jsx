@@ -6,7 +6,7 @@ function About() {
          <div className={styles.about__content}>
             <h2>About</h2>
             <p>
-               FlexLab is an web-based tool specifically designed to assist
+               FlexLab is a web-based tool specifically designed to assist
                developers, designers, and learners in crafting adaptable and
                responsive layouts through CSS Flexbox. It offers an intuitive
                interface where users can tailor and preview the organization of
