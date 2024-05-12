@@ -12,6 +12,7 @@
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [License](#license)
+- [Feedback and Support](#feedback-and-support)
 
 ## About
 FlexLab is a web-based tool specifically designed to assist developers, designers, and learners in crafting adaptable and responsive layouts through CSS Flexbox. It offers an intuitive interface where users can tailor and preview the organization of elements within a container.
