@@ -15,12 +15,12 @@
 - [Feedback and Support](#feedback-and-support)
 
 ## About
-FlexLab is a web-based tool specifically designed to assist developers, designers, and learners in crafting adaptable and responsive layouts through CSS Flexbox. It offers an intuitive interface where users can tailor and preview the organization of elements within a container.
+FlexLab is a web-based tool designed to aid developers, designers, and learners in creating adaptable and responsive layouts through CSS Flexbox. It offers an intuitive interface where users can tailor and preview the organization of elements within a container.
 
 ## Features
 - **Intuitive Interface:** Intuitive interface for crafting flexible layouts with CSS Flexbox.
 - **Live Preview:** Preview changes in real-time as you adjust parameters.
-- **Parameter Customization:** Customize flex item properties such as order, flex, alignment, text properties, font size, and sizing.
+- **Parameter Customization:** Customize flex item properties such as order, flex, alignment, text and more.
 - **Export HTML and CSS Code:** Get HTML and CSS code for the generated layout.
 - **Undo and Redo Changes:** Easily revert or redo modifications for easy experimentation.
 - **Select Multiple:** Select and edit multiple flex items simultaneously for efficient design workflows.
