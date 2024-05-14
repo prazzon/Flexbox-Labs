@@ -19,7 +19,6 @@
    cursor: pointer;
    transition: all 0.3s ease;
    background-color: var(--bg-secondary);
-   box-shadow: rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
    padding: 1.2rem;
    border-radius: 1rem;
 }

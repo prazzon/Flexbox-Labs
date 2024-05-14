@@ -4,7 +4,7 @@
    --color-primary: #55b8b3;
 
    --color-shadow: #4a4e51;
-   
+
    --bg-primary: #161d26;
    --bg-secondary: #08090b;
    --bg-tertiary: #24292d;
@@ -31,12 +31,19 @@ body {
    font-size: 1.6rem;
    padding: 1.6rem;
    color: var(--text-color-dark);
+   opacity: 0;
+}
+
+body.show {
+   opacity: 1;
 }
 
 body #root {
    display: grid;
    grid-template-columns: 1fr 34rem;
    gap: 1.6rem;
+   animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+   animation-delay: 0.2s;
 }
 
 /* ############################## */
@@ -44,17 +51,26 @@ body #root {
 /* ############################## */
 
 ::-webkit-scrollbar {
-    width: 0.8rem;
-    height: 0.8rem;
-    background-color: transparent;
+   width: 0.8rem;
+   height: 0.8rem;
+   background-color: transparent;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
-    margin-block: 1.5rem;
+   background: transparent;
+   margin-block: 1.5rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 2rem;
-    background-color: var(--color-primary);
+   border-radius: 2rem;
+   background-color: var(--color-primary);
+}
+
+@keyframes fade-in {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
 }

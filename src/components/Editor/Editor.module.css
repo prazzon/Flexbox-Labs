@@ -2,7 +2,7 @@
    height: 54rem;
    grid-column: 2 / 3;
    border-radius: 2rem;
-   box-shadow: rgba(0, 0, 0, .5) 0px 20px 30px -10px;
+   box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 10px -10px;
 }
 
 .tabs {
