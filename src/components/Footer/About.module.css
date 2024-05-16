@@ -1,6 +1,5 @@
 .about__content {
    margin-bottom: 2rem;
-   line-height: 2;
 }
 
 h2, h3 {
@@ -19,6 +18,7 @@ h3 {
 
 p {
    margin-bottom: .5rem;
+   line-height: 2;
 }
 
 ul, ol {
