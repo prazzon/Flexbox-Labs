@@ -1,0 +1,63 @@
+.input {
+   display: none;
+}
+
+.input:checked + .slider {
+   box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset,
+      var(--color-primary) 0px 0px 0px 2px inset,
+      var(--color-primary) 0px 0px 0px 24px inset,
+      rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;
+}
+
+.input:checked + .slider::after {
+   left: 15px;
+}
+
+.slider {
+   border-radius: 10rem;
+   cursor: pointer;
+   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+   align-items: center;
+   position: relative;
+   display: block;
+   width: 3.5rem;
+   height: 1.9rem;
+   box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset,
+      rgba(0, 0, 0, 0.21) 0px 0px 0px 24px inset,
+      rgba(0, 0, 0, 0.3) 0px 0px 0px 0px inset,
+      rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;
+}
+
+.slider::after {
+   content: "";
+   display: flex;
+   top: 0.13rem;
+   left: 0.1rem;
+   width: 1.9rem;
+   height: 1.8rem;
+   background-color: #e3e3e3;
+   border-radius: 20rem;
+   position: absolute;
+   box-shadow: transparent 0px 0px 0px 2px, rgba(0, 0, 0, 0.3) 0px 6px 6px;
+   transition: left 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+      background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+   will-change: left, background-color;
+}
+
+@media screen and (max-height: 450px) {
+   .slider {
+      width: 2.5rem;
+      height: 1.5rem;
+   }
+
+   .slider::after {
+      width: 1.5rem;
+      height: 1.4rem;
+      top: 0.1rem;
+      left: 0.1rem !important;
+   }
+
+   .input:checked + .slider::after {
+      left: .9rem !important;
+   }
+}

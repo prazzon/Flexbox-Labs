@@ -34,14 +34,6 @@
    transition: all 0.15s linear;
 }
 
-.open__btn {
-   background: transparent;
-   border: none;
-   outline: none;
-   cursor: pointer;
-   color: inherit;
-}
-
 .close__btn {
    position: absolute;
    top: 2rem;

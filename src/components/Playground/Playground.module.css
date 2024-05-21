@@ -27,6 +27,7 @@
    border-radius: 1rem;
    box-shadow: inset 0px -1.5px 0 0 var(--color-shadow);
    transition: all 0.3s ease;
+   font-size: 1.6rem;
 }
 
 .item:hover {
@@ -39,4 +40,34 @@
 
 .selected .item__text {
    box-shadow: inset 0px -2.5px 0 0 var(--color-primary);
+}
+
+@media screen and (max-width: 1000px) {
+   .playground {
+      height: 50rem;
+      padding: 1.8rem;
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .playground {
+      grid-column: 1 / -1;
+   }
+}
+
+@media screen and (max-height: 450px) and (max-width: 1000px) {
+   .playground {
+      height: 48rem;
+   }
+   
+   .item {
+      padding: 1rem;
+      border-radius: 1.4rem;
+   }
+
+   .item__text {
+      font-size: 1.3rem;
+      padding: 0.3rem 1.2rem;
+      border-radius: .9rem;
+   }
 }
