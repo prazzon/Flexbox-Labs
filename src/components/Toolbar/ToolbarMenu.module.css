@@ -1,0 +1,20 @@
+.toolbar__menu {
+   position: absolute;
+   top: 105%;
+   right: 0;
+   display: flex;
+   justify-content: flex-start;
+   gap: 0.5rem;
+   background-color: var(--bg-secondary);
+   border-radius: 1.2rem;
+   padding: 0.5rem;
+   box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 10px -10px;
+   flex-direction: column;
+   z-index: 1000;
+}
+
+.toolbar__menu > button {
+   display: flex;
+   justify-content: center;
+   font-size: 1.5rem;
+}

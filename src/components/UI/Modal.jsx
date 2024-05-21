@@ -1,5 +1,5 @@
 import styles from "./Modal.module.css";
-import { createContext, useContext, useState } from "react";
+import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { IoCloseOutline } from "react-icons/io5";
 
@@ -22,10 +22,10 @@ function Modal({ children }) {
 function OpenBtn({ children }) {
    const { openModal } = useContext(ModalContext);
 
-   return <button className={styles.open__btn} onClick={openModal}>{children}</button>;
+   return cloneElement(children, { onClick: () => openModal() });
 }
 
-function Content({ children, size="medium" }) {
+function Content({ children, size = "medium" }) {
    const { showModal, closeModal } = useContext(ModalContext);
 
    if (!showModal) return null;
@@ -44,7 +44,7 @@ function Content({ children, size="medium" }) {
    );
 }
 
-Modal.Content = Content;
 Modal.OpenBtn = OpenBtn;
+Modal.Content = Content;
 
 export default Modal;

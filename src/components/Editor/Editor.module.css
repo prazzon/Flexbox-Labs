@@ -93,11 +93,6 @@
    height: calc(100% - 8.4rem);
    padding: 2rem 2.5rem;
    border-radius: 0 0 2rem 2rem;
-   display: none;
-}
-
-.container.active {
-   display: flex;
 }
 
 .block {
@@ -128,4 +123,53 @@
    align-items: center;
    gap: 0.5rem;
    text-transform: lowercase;
+}
+
+@media screen and (max-width: 1000px) {
+   .editor {
+      font-size: 1.4rem;
+      height: 50rem;
+   }
+
+   .container {
+      height: calc(100% - 8rem);
+   }
+
+   .container {
+      gap: 1.8rem;
+      padding: 2rem 1.8rem;
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .editor {
+      grid-column: 1 / -1;
+      min-width: 40rem;
+      place-self: center;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   .editor {
+      min-width: 32rem;
+   }
+}
+
+@media screen and (max-height: 450px) and (max-width: 1000px) {
+   .editor {
+      height: 48rem;
+   }
+   
+   .container {
+      height: calc(100% - 6rem);
+   }
+   
+   .tab {
+      padding: 1.2rem;
+      font-size: 1.3rem;
+   }
+
+   .tab > :first-child {
+      font-size: 1.6rem;
+   }
 }

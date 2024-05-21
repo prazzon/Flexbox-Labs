@@ -16,158 +16,151 @@ function Editor() {
       container,
    } = usePlayground();
 
+   const lastSelectedId = selectedItems.at(-1)?.id;
+
    return (
       <div className={style.editor}>
          <div className={style.tabs}>
             <div
-               className={`${style.tab} ${
-                  !selectedItems.at(0)?.id ? style.active : ""
-               }`}
+               className={`${style.tab} ${!lastSelectedId ? style.active : ""}`}
             >
                <GoContainer /> Container
             </div>
             <div
-               className={`${style.tab} ${
-                  selectedItems.at(0)?.id ? style.active : ""
-               }`}
+               className={`${style.tab} ${lastSelectedId ? style.active : ""}`}
             >
-               <IoMdQrScanner />{" "}
+               <IoMdQrScanner />
                {selectedItems.length > 1
                   ? `Item(${selectedItems.length})`
                   : "Item"}
             </div>
          </div>
 
-         <div
-            className={`${style.container} ${
-               !selectedItems.at(0)?.id && style.active
-            } `}
-         >
-            <div className={style.block}>
-               <div className={style.editor__item}>
-                  <div className={style.editor__title}>Display</div>
-                  <Select
-                     active={container?.display || "flex"}
-                     onSelect={(value) => editContainer("display", value)}
-                  >
-                     <Select.Options>
-                        <Select.Option value="flex" />
-                        <Select.Option value="inline-flex" />
-                     </Select.Options>
-                  </Select>
+         {!lastSelectedId && (
+            <div className={style.container}>
+               <div className={style.block}>
+                  <div className={style.editor__item}>
+                     <div className={style.editor__title}>Display</div>
+                     <Select
+                        active={container?.display || "flex"}
+                        onSelect={(value) => editContainer("display", value)}
+                     >
+                        <Select.Options>
+                           <Select.Option value="flex" />
+                           <Select.Option value="inline-flex" />
+                        </Select.Options>
+                     </Select>
+                  </div>
+               </div>
+               <div className={style.block}>
+                  <div className={style.editor__item}>
+                     <div className={style.editor__title}>Flex Direction</div>
+                     <Select
+                        active={container?.flexDirection || "row"}
+                        onSelect={(value) =>
+                           editContainer("flexDirection", value)
+                        }
+                     >
+                        <Select.Options>
+                           <Select.Option value="row" />
+                           <Select.Option value="row-reverse" />
+                           <Select.Option value="column" />
+                           <Select.Option value="column-reverse" />
+                        </Select.Options>
+                     </Select>
+                  </div>
+                  <div className={style.editor__item}>
+                     <div className={style.editor__title}>Flex Wrap</div>
+                     <Select
+                        active={container?.flexWrap || "nowrap"}
+                        onSelect={(value) => editContainer("flexWrap", value)}
+                     >
+                        <Select.Options>
+                           <Select.Option value="nowrap" />
+                           <Select.Option value="wrap" />
+                           <Select.Option value="wrap-reverse" />
+                        </Select.Options>
+                     </Select>
+                  </div>
+                  <div className={style.editor__item}>
+                     <div className={style.editor__title}>Justify Content</div>
+                     <Select
+                        active={container?.justifyContent || "start"}
+                        onSelect={(value) =>
+                           editContainer("justifyContent", value)
+                        }
+                     >
+                        <Select.Options>
+                           <Select.Option value="start" />
+                           <Select.Option value="center" />
+                           <Select.Option value="end" />
+                           <Select.Option value="space-between" />
+                           <Select.Option value="space-around" />
+                        </Select.Options>
+                     </Select>
+                  </div>
+                  <div className={style.editor__item}>
+                     <div className={style.editor__title}>Align Items</div>
+                     <Select
+                        active={container?.alignItems || "stretch"}
+                        onSelect={(value) => editContainer("alignItems", value)}
+                     >
+                        <Select.Options>
+                           <Select.Option value="stretch" />
+                           <Select.Option value="start" />
+                           <Select.Option value="center" />
+                           <Select.Option value="end" />
+                           <Select.Option value="baseline" />
+                        </Select.Options>
+                     </Select>
+                  </div>
+                  <div className={style.editor__item}>
+                     <div className={style.editor__title}>Align Content</div>
+                     <Select
+                        active={container?.alignContent || "stretch"}
+                        onSelect={(value) =>
+                           editContainer("alignContent", value)
+                        }
+                     >
+                        <Select.Options>
+                           <Select.Option value="stretch" />
+                           <Select.Option value="start" />
+                           <Select.Option value="center" />
+                           <Select.Option value="end" />
+                           <Select.Option value="space-between" />
+                           <Select.Option value="space-around" />
+                        </Select.Options>
+                     </Select>
+                  </div>
+               </div>
+               <div className={style.block}>
+                  <div className={style.editor__item}>
+                     <div className={style.editor__title}>Gap</div>
+                     <Select
+                        active={container?.gap || "20px"}
+                        onSelect={(value) => editContainer("gap", value)}
+                     >
+                        <Select.Options>
+                           <Select.Option value="10px" />
+                           <Select.Option value="15px" />
+                           <Select.Option value="20px" />
+                           <Select.Option value="25px" />
+                        </Select.Options>
+                     </Select>
+                  </div>
                </div>
             </div>
-            <div className={style.block}>
-               <div className={style.editor__item}>
-                  <div className={style.editor__title}>Flex Direction</div>
-                  <Select
-                     active={container?.flexDirection || "row"}
-                     onSelect={(value) => editContainer("flexDirection", value)}
-                  >
-                     <Select.Options>
-                        <Select.Option value="row" />
-                        <Select.Option value="row-reverse" />
-                        <Select.Option value="column" />
-                        <Select.Option value="column-reverse" />
-                     </Select.Options>
-                  </Select>
-               </div>
-               <div className={style.editor__item}>
-                  <div className={style.editor__title}>Flex Wrap</div>
-                  <Select
-                     active={container?.flexWrap || "nowrap"}
-                     onSelect={(value) => editContainer("flexWrap", value)}
-                  >
-                     <Select.Options>
-                        <Select.Option value="nowrap" />
-                        <Select.Option value="wrap" />
-                        <Select.Option value="wrap-reverse" />
-                     </Select.Options>
-                  </Select>
-               </div>
-               <div className={style.editor__item}>
-                  <div className={style.editor__title}>Justify Content</div>
-                  <Select
-                     active={container?.justifyContent || "start"}
-                     onSelect={(value) =>
-                        editContainer("justifyContent", value)
-                     }
-                  >
-                     <Select.Options>
-                        <Select.Option value="start" />
-                        <Select.Option value="center" />
-                        <Select.Option value="end" />
-                        <Select.Option value="space-between" />
-                        <Select.Option value="space-around" />
-                     </Select.Options>
-                  </Select>
-               </div>
-               <div className={style.editor__item}>
-                  <div className={style.editor__title}>Align Items</div>
-                  <Select
-                     active={container?.alignItems || "stretch"}
-                     onSelect={(value) => editContainer("alignItems", value)}
-                  >
-                     <Select.Options>
-                        <Select.Option value="stretch" />
-                        <Select.Option value="start" />
-                        <Select.Option value="center" />
-                        <Select.Option value="end" />
-                        <Select.Option value="baseline" />
-                     </Select.Options>
-                  </Select>
-               </div>
-               <div className={style.editor__item}>
-                  <div className={style.editor__title}>Align Content</div>
-                  <Select
-                     active={container?.alignContent || "stretch"}
-                     onSelect={(value) => editContainer("alignContent", value)}
-                  >
-                     <Select.Options>
-                        <Select.Option value="stretch" />
-                        <Select.Option value="start" />
-                        <Select.Option value="center" />
-                        <Select.Option value="end" />
-                        <Select.Option value="space-between" />
-                        <Select.Option value="space-around" />
-                     </Select.Options>
-                  </Select>
-               </div>
-            </div>
-            <div className={style.block}>
-               <div className={style.editor__item}>
-                  <div className={style.editor__title}>Gap</div>
-                  <Select
-                     active={container?.gap || "20px"}
-                     onSelect={(value) => editContainer("gap", value)}
-                  >
-                     <Select.Options>
-                        <Select.Option value="10px" />
-                        <Select.Option value="15px" />
-                        <Select.Option value="20px" />
-                        <Select.Option value="25px" />
-                     </Select.Options>
-                  </Select>
-               </div>
-            </div>
-         </div>
+         )}
 
-         {selectedItems.at(0) && (
-            <div
-               className={`${style.container} ${
-                  selectedItems.at(0) && style.active
-               }`}
-            >
+         {lastSelectedId && (
+            <div className={style.container}>
                <div className={style.block}>
                   <div className={style.editor__item}>
                      <div className={style.editor__title}>Order</div>
                      <div className={style.editor__options}>
                         <TextInput
                            size="small"
-                           value={getItemStyle(
-                              selectedItems.at(-1).id,
-                              "order"
-                           )}
+                           value={getItemStyle(lastSelectedId, "order")}
                            type="number"
                            onChange={(e) =>
                               editItemStyle("order", e.target.value)
@@ -180,10 +173,7 @@ function Editor() {
                      <div className={style.editor__options}>
                         <TextInput
                            size="small"
-                           value={getItemStyle(
-                              selectedItems.at(-1).id,
-                              "flexGrow"
-                           )}
+                           value={getItemStyle(lastSelectedId, "flexGrow")}
                            type="number"
                            onChange={(e) =>
                               editItemStyle("flexGrow", e.target.value)
@@ -191,10 +181,7 @@ function Editor() {
                         />
                         <TextInput
                            size="small"
-                           value={getItemStyle(
-                              selectedItems.at(-1).id,
-                              "flexShrink"
-                           )}
+                           value={getItemStyle(lastSelectedId, "flexShrink")}
                            type="number"
                            onChange={(e) =>
                               editItemStyle("flexShrink", e.target.value)
@@ -202,10 +189,7 @@ function Editor() {
                         />
                         <TextInput
                            size="medium"
-                           value={getItemStyle(
-                              selectedItems.at(-1).id,
-                              "flexBasis"
-                           )}
+                           value={getItemStyle(lastSelectedId, "flexBasis")}
                            type="text"
                            onChange={(e) =>
                               editItemStyle("flexBasis", e.target.value)
@@ -217,10 +201,7 @@ function Editor() {
                      <div className={style.editor__title}>Align Self</div>
                      <div className={style.editor__options}>
                         <Select
-                           active={getItemStyle(
-                              selectedItems.at(-1).id,
-                              "alignSelf"
-                           )}
+                           active={getItemStyle(lastSelectedId, "alignSelf")}
                            onSelect={(value) =>
                               editItemStyle("alignSelf", value)
                            }
@@ -243,7 +224,7 @@ function Editor() {
                      <div className={style.editor__options}>
                         <TextInput
                            size="large"
-                           value={getItem(selectedItems.at(-1).id, "text")}
+                           value={getItem(lastSelectedId, "text")}
                            type="text"
                            onChange={(e) => editItem("text", e.target.value)}
                         />
@@ -254,10 +235,7 @@ function Editor() {
                      <div className={style.editor__options}>
                         <TextInput
                            size="medium"
-                           value={getItemStyle(
-                              selectedItems.at(-1).id,
-                              "fontSize"
-                           )}
+                           value={getItemStyle(lastSelectedId, "fontSize")}
                            type="text"
                            onChange={(e) =>
                               editItemStyle("fontSize", e.target.value)
@@ -270,10 +248,7 @@ function Editor() {
                      <div className={style.editor__options}>
                         <TextInput
                            size="medium"
-                           value={getItemStyle(
-                              selectedItems.at(-1).id,
-                              "width"
-                           )}
+                           value={getItemStyle(lastSelectedId, "width")}
                            type="text"
                            onChange={(e) =>
                               editItemStyle("width", e.target.value)
@@ -286,10 +261,7 @@ function Editor() {
                      <div className={style.editor__options}>
                         <TextInput
                            size="medium"
-                           value={getItemStyle(
-                              selectedItems.at(-1).id,
-                              "height"
-                           )}
+                           value={getItemStyle(lastSelectedId, "height")}
                            type="text"
                            onChange={(e) =>
                               editItemStyle("height", e.target.value)

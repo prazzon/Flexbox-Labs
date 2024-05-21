@@ -9,3 +9,16 @@
    margin: 1.5rem 0;
    grid-column: 1 / -1;
 }
+
+@media screen and (max-width: 1000px) {
+   .header {
+      margin-bottom: 0;
+   }
+}
+
+@media screen and (max-height: 450px) {
+   .header {
+      margin: 0;
+      font-size: 2.5rem;
+   }
+}

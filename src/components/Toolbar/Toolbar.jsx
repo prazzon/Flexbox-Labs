@@ -1,5 +1,9 @@
-import style from "./Toolbar.module.css";
-import { IoAddCircleOutline, IoDuplicateOutline } from "react-icons/io5";
+import styles from "./Toolbar.module.css";
+import {
+   IoAddCircleOutline,
+   IoCloseOutline,
+   IoDuplicateOutline,
+} from "react-icons/io5";
 import { BiSelectMultiple } from "react-icons/bi";
 import { LuRedo, LuTrash2, LuUndo } from "react-icons/lu";
 import { HiOutlineCodeBracket } from "react-icons/hi2";
@@ -7,7 +11,11 @@ import { RxReset } from "react-icons/rx";
 import { usePlayground } from "../../context/PlaygroundContext";
 import DisplayCode from "../UI/DisplayCode";
 import Modal from "../UI/Modal";
-import Tooltip from "../UI/Tooltip";
+import { CiMenuKebab } from "react-icons/ci";
+import ToolbarMenu from "./ToolbarMenu";
+import { useState } from "react";
+import ToolbarBtn from "./ToolbarBtn";
+import Slider from "../UI/Slider";
 
 function Toolbar() {
    const {
@@ -24,43 +32,49 @@ function Toolbar() {
       clear,
    } = usePlayground();
 
-   return (
-      <div className={style.toolbar}>
-         <button onClick={addItem}>
-            <IoAddCircleOutline />
-            <Tooltip>Add</Tooltip>
-         </button>
+   const [showMenu, setShowMenu] = useState(false);
 
-         <button
-            onClick={() => duplicateItem()}
-            className={!selectedItems.at(0)?.id ? style.disabled : ""}
+   const toggleMenu = () => setShowMenu((prev) => !prev);
+
+   const emptySelected = selectedItems.length === 0;
+
+   return (
+      <div className={styles.toolbar}>
+         <ToolbarBtn value="Add" onClick={addItem}>
+            <IoAddCircleOutline />
+         </ToolbarBtn>
+
+         <ToolbarBtn
+            value="Duplicate"
+            onClick={duplicateItem}
+            disabled={emptySelected}
+            screen="lso"
          >
             <IoDuplicateOutline />
-            <Tooltip>Clone</Tooltip>
-         </button>
+         </ToolbarBtn>
 
-         <button
-            onClick={() => removeItem()}
-            className={!selectedItems.at(0)?.id ? style.disabled : ""}
+         <ToolbarBtn
+            value="Delete"
+            onClick={removeItem}
+            disabled={emptySelected}
          >
             <LuTrash2 />
-            <Tooltip>Delete</Tooltip>
-         </button>
+         </ToolbarBtn>
 
          <Modal>
             <Modal.OpenBtn>
-               <HiOutlineCodeBracket />
-               <Tooltip>Code</Tooltip>
+               <ToolbarBtn value="Code" onClick={toggleMenu} screen="lso">
+                  <HiOutlineCodeBracket />
+               </ToolbarBtn>
             </Modal.OpenBtn>
             <Modal.Content>
                <DisplayCode />
             </Modal.Content>
          </Modal>
 
-         <button onClick={clear}>
+         <ToolbarBtn value="Reset" onClick={clear} screen="lso">
             <RxReset />
-            <Tooltip>Reset</Tooltip>
-         </button>
+         </ToolbarBtn>
 
          {/* <Modal>
             <Modal.OpenBtn>
@@ -69,28 +83,71 @@ function Toolbar() {
             <Modal.Content>Settings code</Modal.Content>
          </Modal> */}
 
-         <button onClick={undo} className={!canUndo ? style.disabled : ""}>
+         <ToolbarBtn value="Undo" onClick={undo} disabled={!canUndo}>
             <LuUndo />
-            <Tooltip>Undo</Tooltip>
-         </button>
+         </ToolbarBtn>
 
-         <button onClick={redo} className={!canRedo ? style.disabled : ""}>
+         <ToolbarBtn value="Redo" onClick={redo} disabled={!canRedo}>
             <LuRedo />
-            <Tooltip>Redo</Tooltip>
-         </button>
+         </ToolbarBtn>
 
-         <label className={style.switch}>
+         <ToolbarBtn
+            value="Select Multiple"
+            onClick={() => setSelectMultiple(!selectMultiple)}
+            active={selectMultiple}
+            screen="lso"
+         >
             <BiSelectMultiple />
-            <Tooltip>Select Multiple</Tooltip>
-            <input
-               type="checkbox"
-               onChange={(e) => {
-                  setSelectMultiple(e.target.checked);
-               }}
-               checked={selectMultiple}
-            />
-            <span className={style.slider}></span>
-         </label>
+            <Slider checked={selectMultiple} />
+         </ToolbarBtn>
+
+         <ToolbarBtn
+            value={!showMenu ? "More" : "Close"}
+            onClick={toggleMenu}
+            screen="smo"
+         >
+            {!showMenu ? <CiMenuKebab /> : <IoCloseOutline />}
+         </ToolbarBtn>
+
+         {/* For small screens */}
+         {showMenu && (
+            <ToolbarMenu>
+               <ToolbarBtn
+                  value="Duplicate"
+                  onClick={duplicateItem}
+                  disabled={emptySelected}
+               >
+                  <IoDuplicateOutline />
+                  Clone
+               </ToolbarBtn>
+
+               <Modal>
+                  <Modal.OpenBtn>
+                     <ToolbarBtn>
+                        <HiOutlineCodeBracket />
+                        Code
+                     </ToolbarBtn>
+                  </Modal.OpenBtn>
+                  <Modal.Content>
+                     <DisplayCode />
+                  </Modal.Content>
+               </Modal>
+
+               <ToolbarBtn onClick={clear}>
+                  <RxReset />
+                  Reset
+               </ToolbarBtn>
+
+               <ToolbarBtn
+                  value="Select Multiple"
+                  onClick={() => setSelectMultiple(!selectMultiple)}
+                  active={selectMultiple}
+               >
+                  <BiSelectMultiple />
+                  <Slider checked={selectMultiple} />
+               </ToolbarBtn>
+            </ToolbarMenu>
+         )}
       </div>
    );
 }
