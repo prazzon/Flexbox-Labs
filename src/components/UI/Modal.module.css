@@ -3,9 +3,6 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   min-width: 100rem;
-   max-height: 70rem;
-   padding: 3rem 5rem;
    padding-bottom: 5rem;
    border-radius: 1.5rem;
    background-color: var(--bg-primary);
@@ -21,6 +18,12 @@
    min-width: 90%;
    max-height: 82%;
    padding: 5rem 5rem;
+}
+
+.modal.medium {
+   min-width: 100rem;
+   max-height: 70rem;
+   padding: 3rem 5rem;
 }
 
 .overlay {
