@@ -76,3 +76,23 @@ body #root {
       opacity: 1;
    }
 }
+
+@media screen and (max-width: 1000px) {
+   body #root {
+      grid-template-columns: 1fr 30.5rem;
+   }
+}
+
+@media screen and (max-height: 450px) {
+   html {
+      font-size: 55%;
+   }
+
+   body {
+      padding: 1.2rem;
+   }
+
+   body #root {
+      gap: 1.2rem;
+   }
+}
