@@ -111,7 +111,7 @@ function Toolbar() {
 
          {/* For small screens */}
          {showMenu && (
-            <ToolbarMenu>
+            <ToolbarMenu hide={toggleMenu}>
                <ToolbarBtn
                   value="Duplicate"
                   onClick={duplicateItem}
