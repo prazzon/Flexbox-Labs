@@ -16,7 +16,7 @@ function ToolbarBtn({
          onClick={onClick}
       >
          {children}
-         <Tooltip>{value}</Tooltip>
+         {value && <Tooltip>{value}</Tooltip>}
       </button>
    );
 }

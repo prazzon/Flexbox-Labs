@@ -18,6 +18,7 @@
    box-shadow: inset 0px 2px 0 0 var(--color-shadow);
    overflow: hidden;
    transition: all 0.3s ease;
+   min-width: 7rem;
 }
 
 .item__text {
@@ -27,7 +28,6 @@
    border-radius: 1rem;
    box-shadow: inset 0px -1.5px 0 0 var(--color-shadow);
    transition: all 0.3s ease;
-   font-size: 1.6rem;
 }
 
 .item:hover {
@@ -42,6 +42,7 @@
    box-shadow: inset 0px -2.5px 0 0 var(--color-primary);
 }
 
+
 @media screen and (max-width: 1000px) {
    .playground {
       height: 50rem;
@@ -52,6 +53,20 @@
 @media screen and (max-width: 800px) {
    .playground {
       grid-column: 1 / -1;
+      overflow: auto;
+   }
+}
+
+@media screen and (max-width: 700px) {
+   .item {
+      padding: 1rem 1.2rem;
+      min-width: 5.5rem;
+   }
+
+   .item__text {
+      font-size: 1.4rem;
+      padding: 0.3rem 1.2rem;
+      border-radius: 0.9rem;
    }
 }
 
@@ -59,15 +74,15 @@
    .playground {
       height: 48rem;
    }
-   
+
    .item {
       padding: 1rem;
-      border-radius: 1.4rem;
+      min-width: 5rem;
    }
 
    .item__text {
       font-size: 1.3rem;
       padding: 0.3rem 1.2rem;
-      border-radius: .9rem;
+      border-radius: 0.9rem;
    }
 }

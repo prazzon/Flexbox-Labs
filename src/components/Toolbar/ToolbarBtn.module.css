@@ -38,6 +38,11 @@
    .lso { /* lso = large screen only */
       display: none !important;
    }
+
+   .toolbar__btn {
+      padding: 1.3rem;
+      font-size: 2.2rem;
+   }
 }
 
 @media screen and (max-height: 450px) {

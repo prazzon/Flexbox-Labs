@@ -16,5 +16,10 @@
 .toolbar__menu > button {
    display: flex;
    justify-content: center;
-   font-size: 1.5rem;
+   font-size: 1.4rem;
+   font-weight: 600;
+}
+
+.toolbar__menu > button > :first-child {
+   font-size: 1.7rem;
 }

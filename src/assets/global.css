@@ -46,33 +46,26 @@ body #root {
    animation-delay: 0.2s;
 }
 
-button {
-   background: transparent;
-   border: none;
-   outline: none;
-   cursor: pointer;
-   color: inherit;
-   font-size: inherit;
-}
-
 /* ############################## */
 /* Scrollbar Styling */
 /* ############################## */
 
 ::-webkit-scrollbar {
-   width: 0.8rem;
-   height: 0.8rem;
+   width: 0.5rem;
+   height: 0.5rem;
    background-color: transparent;
 }
 
 ::-webkit-scrollbar-track {
    background: transparent;
-   margin-block: 1.5rem;
+   border-radius: 2rem;
+   margin: 2rem;
 }
 
 ::-webkit-scrollbar-thumb {
    border-radius: 2rem;
    background-color: var(--color-primary);
+   background-color: var(--bg-hover);
 }
 
 @keyframes fade-in {
@@ -81,25 +74,5 @@ button {
    }
    100% {
       opacity: 1;
-   }
-}
-
-@media screen and (max-width: 1000px) {
-   body #root {
-      grid-template-columns: 1fr 30.5rem;
-   }
-}
-
-@media screen and (max-height: 450px) {
-   html {
-      font-size: 55%;
-   }
-
-   body {
-      padding: 1.2rem;
-   }
-
-   body #root {
-      gap: 1.2rem;
    }
 }
