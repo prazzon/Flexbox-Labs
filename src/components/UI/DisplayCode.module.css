@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Itim&display=swap');
 
 .code__container {
@@ -31,7 +30,6 @@
 .container__text {
    font-size: 1.5rem;
    line-height: 1.5;
-   max-height: 55rem;
    overflow-y: auto;
    border-radius: 0 2rem 2rem 2rem;
    padding: 2rem;
@@ -69,22 +67,27 @@
    color: #2ecc71;
 }
 
-.alert {
-   position: fixed;
-   top: 2rem;
-   left: 50%;
-   font-size: 2rem;
-   border-bottom: 2px solid var(--color-primary);
-   border-radius: 0.5rem;
-   padding: 1rem 2rem;
-   background-color: var(--color-tertiary);
-   transform: translate(-50%, -50%);
-   opacity: 0;
-   transition: all 0.3s ease-out;
+@media screen and (max-width: 800px) {
+   .code__container {
+      flex-direction: column;
+      gap: 3rem;
+   }
+
+   .container {
+      width: 100%;
+   }
 }
 
-.alert.show {
-   opacity: 1;
-   transform: translate(-50%, 0);
-   z-index: 1000;
+@media screen and (max-width: 450px) {
+   .code__container {
+      gap: 2rem;
+   }
+
+   .container__title {
+      font-size: 1.6rem;
+   }
+   
+   .container__text {
+      font-size: 1.2rem;
+   }
 }

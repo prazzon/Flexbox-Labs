@@ -7,7 +7,6 @@
    border-radius: 1.5rem;
    background-color: var(--bg-primary);
    z-index: 1000;
-   box-shadow: var(--color-tertiary) 0px 7px 2px, #000 0px 8px 5px;
    box-shadow: rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
    border: none;
    transition: all 0.3s ease-out;
@@ -17,7 +16,7 @@
 .modal.large {
    min-width: 90%;
    max-height: 82%;
-   padding: 5rem 5rem;
+   padding: 5rem;
 }
 
 .modal.medium {
@@ -56,4 +55,31 @@
 
 .close__btn:hover {
    box-shadow: 1.5px 3px 0 0 var(--color-primary);
+}
+
+@media screen and (max-width: 1100px) {
+   .modal.medium {
+      min-width: 90%;
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .modal.large {
+      min-width: 95%;
+      padding: 3rem;
+   }
+   
+   .modal.medium {
+      min-width: 80%;
+      padding: 3rem 4rem;
+      padding-bottom: 4rem;
+   }
+}
+
+@media screen and (max-width: 450px) {
+   .modal.medium {
+      min-width: 90%;
+      padding: 2rem 3rem;
+      padding-bottom: 3rem;
+   }
 }
