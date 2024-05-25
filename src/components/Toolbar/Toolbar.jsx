@@ -113,7 +113,7 @@ function Toolbar() {
          {showMenu && (
             <ToolbarMenu hide={toggleMenu}>
                <ToolbarBtn
-                  value="Duplicate"
+                  value="Clone"
                   onClick={duplicateItem}
                   disabled={emptySelected}
                >
