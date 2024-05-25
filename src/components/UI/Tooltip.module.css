@@ -34,3 +34,9 @@
 .tooltip.right {
    left: 6rem;
 }
+
+@media screen and (max-width: 450px) {
+   .tooltip {
+      display: none;
+   }
+}
