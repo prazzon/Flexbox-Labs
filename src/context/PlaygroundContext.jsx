@@ -118,6 +118,11 @@ const PlaygroundProvider = ({ children }) => {
       set({ ...state, container: { ...state.container, [key]: value } });
    };
 
+   const resetContainer = () => {
+      clear();
+      setSelectedItems([]);
+   };
+
    return (
       <PlaygroundContext.Provider
          value={{
@@ -142,6 +147,7 @@ const PlaygroundProvider = ({ children }) => {
             canUndo,
             canRedo,
             clear,
+            resetContainer,
          }}
       >
          {children}

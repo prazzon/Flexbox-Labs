@@ -29,7 +29,7 @@ function Toolbar() {
       redo,
       canUndo,
       canRedo,
-      clear,
+      resetContainer,
    } = usePlayground();
 
    const [showMenu, setShowMenu] = useState(false);
@@ -72,7 +72,7 @@ function Toolbar() {
             </Modal.Content>
          </Modal>
 
-         <ToolbarBtn value="Reset" onClick={clear} screen="lso">
+         <ToolbarBtn value="Reset" onClick={resetContainer} screen="lso">
             <RxReset />
          </ToolbarBtn>
 
@@ -133,7 +133,7 @@ function Toolbar() {
                   </Modal.Content>
                </Modal>
 
-               <ToolbarBtn onClick={clear}>
+               <ToolbarBtn onClick={resetContainer}>
                   <RxReset />
                   Reset
                </ToolbarBtn>

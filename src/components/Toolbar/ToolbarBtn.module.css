@@ -31,11 +31,13 @@
 }
 
 @media screen and (max-width: 700px) {
-   .smo { /* smo = small screen only */
+   .smo {
+      /* smo = small screen only */
       display: flex;
    }
 
-   .lso { /* lso = large screen only */
+   .lso {
+      /* lso = large screen only */
       display: none !important;
    }
 
@@ -49,5 +51,11 @@
    .toolbar__btn {
       padding: 1.3rem;
       font-size: 1.8rem;
+   }
+}
+
+@media (hover: none) {
+   .toolbar__btn:hover {
+      background: var(--bg-tertiary);
    }
 }
