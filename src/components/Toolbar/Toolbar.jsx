@@ -118,6 +118,7 @@ function Toolbar() {
                   value="Clone"
                   onClick={duplicateItem}
                   disabled={emptySelected}
+                  alert={true}
                >
                   <IoDuplicateOutline />
                   Clone
