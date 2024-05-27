@@ -1,19 +1,18 @@
-import { useState } from "react";
-import Alert from "../UI/Alert";
 import Tooltip from "../UI/Tooltip";
 import styles from "./ToolbarBtn.module.css";
+import toast from "react-hot-toast";
 
 function ToolbarBtn({
    children,
    onClick,
    disabled = false,
+   alert = false,
    value = "",
    screen = "all",
 }) {
-   const [showAlert, setShowAlert] = useState(false);
-
    const handleClick = () => {
-      if (disabled) return setShowAlert(true);
+      if (disabled && alert)
+         return toast.error(`Select an item to ${value.toLowerCase()}`);
       onClick();
    };
 
@@ -26,13 +25,6 @@ function ToolbarBtn({
       >
          {children}
          {value && <Tooltip>{value}</Tooltip>}
-         {showAlert && value !== "Undo" && value !== "Redo" && (
-            <Alert
-               text={`Select an item to ${value.toLowerCase()}`}
-               position="bottom"
-               handler={() => setShowAlert(false)}
-            />
-         )}
       </button>
    );
 }

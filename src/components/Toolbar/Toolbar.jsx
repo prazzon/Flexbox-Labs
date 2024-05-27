@@ -48,6 +48,7 @@ function Toolbar() {
             value="Duplicate"
             onClick={duplicateItem}
             disabled={emptySelected}
+            alert={true}
             screen="lso"
          >
             <IoDuplicateOutline />
@@ -57,6 +58,7 @@ function Toolbar() {
             value="Delete"
             onClick={removeItem}
             disabled={emptySelected}
+            alert={true}
          >
             <LuTrash2 />
          </ToolbarBtn>
