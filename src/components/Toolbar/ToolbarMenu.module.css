@@ -16,12 +16,13 @@
 .toolbar__menu > button {
    display: flex;
    justify-content: center;
-   font-size: 1.4rem;
-   font-weight: 600;
+   padding: 1.7rem 1.5rem;
+   text-transform: uppercase;
+   font-size: 1.2rem;
 }
 
 .toolbar__menu > button > :first-child {
-   font-size: 1.7rem;
+   font-size: 1.8rem;
 }
 
 .overlay {
