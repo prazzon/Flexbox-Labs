@@ -28,13 +28,8 @@
    padding: 0.5rem;
    border-radius: 1rem;
    width: max-content;
-   display: none;
    z-index: 100;
    box-shadow: rgba(0, 0, 0, .5) 0px 20px 30px -10px;
-}
-
-.select__options.active {
-   display: block;
 }
 
 .select__option {

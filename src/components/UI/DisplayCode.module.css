@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Itim&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Itim&display=swap");
 
 .code__container {
    height: auto;
    width: auto;
-   padding-top: 2rem;
    font-family: "Inconsolata", monospace;
    display: flex;
    gap: 4rem;
    justify-content: space-between;
    transition: all 0.3s;
+   padding: 3rem 5rem;
+   padding-top: 5rem;
+   padding-bottom: 0;
+   width: 100rem;
 }
 
 .container {
@@ -67,10 +70,22 @@
    color: #2ecc71;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
+   .code__container {
+      width: 80vw;
+      min-width: 75rem;
+   }
+}
+
+@media screen and (max-width: 850px) {
    .code__container {
       flex-direction: column;
       gap: 3rem;
+      width: 70vw;
+      min-width: 40rem;
+      padding: 3rem;
+      padding-top: 4rem;
+      padding-bottom: 0;
    }
 
    .container {
@@ -81,12 +96,14 @@
 @media screen and (max-width: 450px) {
    .code__container {
       gap: 2rem;
+      width: 90vw;
+      min-width: 30rem;
    }
 
    .container__title {
       font-size: 1.6rem;
    }
-   
+
    .container__text {
       font-size: 1.2rem;
    }

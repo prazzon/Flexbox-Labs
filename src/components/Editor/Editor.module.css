@@ -1,5 +1,5 @@
 .editor {
-   height: 54rem;
+   height: 54.3rem;
    grid-column: 2 / 3;
    border-radius: 2rem;
    box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 10px -10px;
@@ -23,56 +23,42 @@
    border-radius: 2rem 2rem 0 0;
 }
 
-.tab:first-child.active::after {
+.tab:first-child::after,
+.tab:last-child::after {
    content: "";
    position: absolute;
-   bottom: 0;
-   right: -2.5rem;
    height: 2.5rem;
    width: 2.5rem;
-   border-radius: 50%;
    background-color: transparent;
-   box-shadow: -10px 10px 0 0 var(--bg-secondary);
    z-index: 100;
+}
+
+.tab:first-child.active::after {
+   bottom: 0;
+   right: -2.5rem;
+   border-radius: 50%;
+   box-shadow: -10px 10px 0 0 var(--bg-secondary);
 }
 
 .tab:last-child:not(.active)::after {
-   content: "";
-   position: absolute;
    bottom: -2.5rem;
    right: 0;
-   height: 2.5rem;
-   width: 2.5rem;
    border-top-right-radius: 50%;
-   background-color: transparent;
    box-shadow: 0px -12px 0 0 var(--bg-tertiary);
-   z-index: 100;
 }
 
 .tab:last-child.active::after {
-   content: "";
-   position: absolute;
    bottom: 0;
    left: -2.5rem;
-   height: 2.5rem;
-   width: 2.5rem;
    border-radius: 50%;
-   background-color: transparent;
    box-shadow: 10px 10px 0 0 var(--bg-secondary);
-   z-index: 100;
 }
 
 .tab:first-child:not(.active)::after {
-   content: "";
-   position: absolute;
    bottom: -2.5rem;
    left: 0;
-   height: 2.5rem;
-   width: 2.5rem;
    border-top-left-radius: 50%;
-   background-color: transparent;
    box-shadow: 0px -12px 0 0 var(--bg-tertiary);
-   z-index: 100;
 }
 
 .tab > :first-child {
@@ -86,13 +72,16 @@
 }
 
 .container {
+   background-color: var(--bg-secondary);
+   height: calc(100% - 8.4rem);
+   padding: 2.5rem;
+   border-radius: 0 0 2rem 2rem;
+}
+
+.container > div {
    display: flex;
    flex-direction: column;
    gap: 2rem;
-   background-color: var(--bg-secondary);
-   height: calc(100% - 8.4rem);
-   padding: 2rem 2.5rem;
-   border-radius: 0 0 2rem 2rem;
 }
 
 .block {
@@ -118,6 +107,10 @@
    padding-bottom: 0;
 }
 
+.editor__title {
+   font-size: 1.5rem;
+}
+
 .editor__options {
    display: flex;
    align-items: center;
@@ -129,6 +122,10 @@
    .editor {
       font-size: 1.4rem;
       height: 50rem;
+   }
+
+   .editor__title {
+      font-size: 1.4rem;
    }
 
    .container {
@@ -159,11 +156,11 @@
    .editor {
       height: 48rem;
    }
-   
+
    .container {
       height: calc(100% - 6rem);
    }
-   
+
    .tab {
       padding: 1.2rem;
       font-size: 1.3rem;

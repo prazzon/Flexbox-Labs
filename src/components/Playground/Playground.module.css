@@ -1,7 +1,7 @@
 .playground {
    display: flex;
    gap: 2rem;
-   height: 54rem;
+   height: 54.3rem;
    padding: 2rem;
    grid-column: 1 / 2;
    background-color: var(--bg-secondary);
@@ -19,10 +19,12 @@
    overflow: hidden;
    transition: all 0.3s ease;
    min-width: 7rem;
+   min-height: 5.5rem;
 }
 
 .item__text {
    width: fit-content;
+   margin: 0 auto;
    background-color: #08090b;
    padding: 0.5rem 1.5rem;
    border-radius: 1rem;
@@ -41,7 +43,6 @@
 .selected .item__text {
    box-shadow: inset 0px -2.5px 0 0 var(--color-primary);
 }
-
 
 @media screen and (max-width: 1000px) {
    .playground {

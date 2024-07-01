@@ -22,7 +22,7 @@ function Footer() {
                   <Tooltip position="bottom">About</Tooltip>
                </div>
             </Modal.OpenBtn>
-            <Modal.Content size="large">
+            <Modal.Content>
                <About />
             </Modal.Content>
          </Modal>

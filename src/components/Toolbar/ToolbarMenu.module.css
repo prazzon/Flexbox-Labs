@@ -1,3 +1,9 @@
+.container {
+   position: absolute;
+   top: 100%;
+   right: 0;
+}
+
 .toolbar__menu {
    position: absolute;
    top: 105%;

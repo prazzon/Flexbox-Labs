@@ -1,8 +1,17 @@
-.modal {
+.container {
    position: fixed;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+}
+
+.modal {
+   position: relative;
    padding-bottom: 5rem;
    border-radius: 1.5rem;
    background-color: var(--bg-primary);
@@ -10,19 +19,6 @@
    box-shadow: rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
    border: none;
    transition: all 0.3s ease-out;
-   overflow: auto;
-}
-
-.modal.large {
-   min-width: 90%;
-   max-height: 82%;
-   padding: 5rem;
-}
-
-.modal.medium {
-   min-width: 100rem;
-   max-height: 70rem;
-   padding: 3rem 5rem;
 }
 
 .overlay {
@@ -45,7 +41,7 @@
    background: var(--bg-secondary);
    color: var(--text-color-dark);
    cursor: pointer;
-   padding: .8rem;
+   padding: 0.8rem;
    display: flex;
    align-items: center;
    border-radius: 1rem;
@@ -57,29 +53,14 @@
    box-shadow: 1.5px 3px 0 0 var(--color-primary);
 }
 
-@media screen and (max-width: 1100px) {
-   .modal.medium {
-      min-width: 90%;
-   }
-}
-
-@media screen and (max-width: 800px) {
-   .modal.large {
-      min-width: 95%;
-      padding: 3rem;
-   }
-   
-   .modal.medium {
-      min-width: 80%;
-      padding: 3rem 4rem;
-      padding-bottom: 4rem;
+@media screen and (max-width: 850px) {
+   .modal {
+      padding-bottom: 3rem;
    }
 }
 
 @media screen and (max-width: 450px) {
-   .modal.medium {
-      min-width: 90%;
-      padding: 2rem 3rem;
-      padding-bottom: 3rem;
+   .modal {
+      padding-bottom: 2.5rem;
    }
 }
