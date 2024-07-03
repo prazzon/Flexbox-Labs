@@ -94,17 +94,15 @@
    padding: 1.5rem 2.5rem;
 }
 
-.editor__item {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+.block > :not(:last-child) {
    border-bottom: 1px solid var(--color-shadow);
    padding-bottom: 1rem;
 }
 
-.editor__item:last-child {
-   border-bottom: none;
-   padding-bottom: 0;
+.editor__item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .editor__title {

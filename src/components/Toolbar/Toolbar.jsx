@@ -112,45 +112,43 @@ function Toolbar() {
          </ToolbarBtn>
 
          {/* For small screens */}
-         {showMenu && (
-            <ToolbarMenu hide={toggleMenu}>
-               <ToolbarBtn
-                  value="Clone"
-                  onClick={duplicateItem}
-                  disabled={emptySelected}
-                  alert={true}
-               >
-                  <IoDuplicateOutline />
-                  Clone
-               </ToolbarBtn>
+         <ToolbarMenu hide={toggleMenu} show={showMenu}>
+            <ToolbarBtn
+               value="Clone"
+               onClick={duplicateItem}
+               disabled={emptySelected}
+               alert={true}
+            >
+               <IoDuplicateOutline />
+               Clone
+            </ToolbarBtn>
 
-               <Modal>
-                  <Modal.OpenBtn>
-                     <ToolbarBtn>
-                        <HiOutlineCodeBracket />
-                        Code
-                     </ToolbarBtn>
-                  </Modal.OpenBtn>
-                  <Modal.Content>
-                     <DisplayCode />
-                  </Modal.Content>
-               </Modal>
+            <Modal>
+               <Modal.OpenBtn>
+                  <ToolbarBtn>
+                     <HiOutlineCodeBracket />
+                     Code
+                  </ToolbarBtn>
+               </Modal.OpenBtn>
+               <Modal.Content>
+                  <DisplayCode />
+               </Modal.Content>
+            </Modal>
 
-               <ToolbarBtn onClick={resetContainer}>
-                  <RxReset />
-                  Reset
-               </ToolbarBtn>
+            <ToolbarBtn onClick={resetContainer}>
+               <RxReset />
+               Reset
+            </ToolbarBtn>
 
-               <ToolbarBtn
-                  value="Select Multiple"
-                  onClick={() => setSelectMultiple(!selectMultiple)}
-                  active={selectMultiple}
-               >
-                  <BiSelectMultiple />
-                  <Slider checked={selectMultiple} />
-               </ToolbarBtn>
-            </ToolbarMenu>
-         )}
+            <ToolbarBtn
+               value="Select Multiple"
+               onClick={() => setSelectMultiple(!selectMultiple)}
+               active={selectMultiple}
+            >
+               <BiSelectMultiple />
+               <Slider checked={selectMultiple} />
+            </ToolbarBtn>
+         </ToolbarMenu>
       </div>
    );
 }

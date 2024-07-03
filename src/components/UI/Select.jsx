@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import style from "./Select.module.css";
+import styles from "./Select.module.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
@@ -28,14 +28,26 @@ function Select({ children, active, onSelect }) {
 
    return (
       <SelectContext.Provider value={{ open, toggleOpen, select, active }}>
-         <div className={style.select} ref={ref}>
-            <button className={style.select__button} onClick={toggleOpen}>
-               {active.length > 8 ? active.slice(0, 8) + "..." : active}
-               <IoIosArrowDown />
-            </button>
+         <div className={styles.select} ref={ref}>
             {children}
          </div>
       </SelectContext.Provider>
+   );
+}
+
+function Toggle({ maxLength, title }) {
+   const { toggleOpen, active } = useContext(SelectContext);
+
+   return (
+      <button className={styles.select__toggle} onClick={toggleOpen}>
+         <div className={styles.select__title}>{title}</div>
+         <div className={styles.select__toggle_text}>
+            {active.length > maxLength
+               ? active.slice(0, maxLength) + "..."
+               : active}
+            <IoIosArrowDown />
+         </div>
+      </button>
    );
 }
 
@@ -46,7 +58,7 @@ function Options({ children }) {
       <AnimatePresence>
          {open && (
             <motion.div
-               className={`${style.select__options}`}
+               className={`${styles.select__options}`}
                variants={selectVariant}
                initial="hidden"
                animate="visible"
@@ -64,8 +76,8 @@ function Option({ value }) {
 
    return (
       <div
-         className={`${style.select__option} ${
-            active === value ? style.active : ""
+         className={`${styles.select__option} ${
+            active === value ? styles.active : ""
          }`}
          onClick={() => select(value)}
       >
@@ -74,6 +86,7 @@ function Option({ value }) {
    );
 }
 
+Select.Toggle = Toggle;
 Select.Options = Options;
 Select.Option = Option;
 

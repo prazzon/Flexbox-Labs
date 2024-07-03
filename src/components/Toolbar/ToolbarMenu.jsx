@@ -4,28 +4,33 @@ import { AnimatePresence, motion } from "framer-motion";
 const container = {
    hidden: { opacity: 0 },
    visible: { opacity: 1 },
+   exit: { opacity: 0 },
 };
 
 const menu = {
-   hidden: { y: -30, opacity: 0 },
+   hidden: { y: -10, opacity: 0 },
    visible: { y: 0, opacity: 1 },
+   exit: { y: -10 },
 };
 
-function ToolbarMenu({ children, hide }) {
+function ToolbarMenu({ children, hide, show }) {
+   console.log(show);
    return (
       <AnimatePresence>
-         <motion.div
-            className={styles.container}
-            variants={container}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-         >
-            <motion.div className={styles.toolbar__menu} variants={menu}>
-               {children}
+         {show && (
+            <motion.div
+               className={styles.container}
+               variants={container}
+               initial="hidden"
+               animate="visible"
+               exit="exit"
+            >
+               <motion.div className={styles.toolbar__menu} variants={menu}>
+                  {children}
+               </motion.div>
+               <div className={styles.overlay} onClick={hide}></div>
             </motion.div>
-            <div className={styles.overlay} onClick={hide}></div>
-         </motion.div>
+         )}
       </AnimatePresence>
    );
 }

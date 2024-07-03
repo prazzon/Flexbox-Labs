@@ -1,5 +1,5 @@
 import { IoMdQrScanner } from "react-icons/io";
-import style from "./Editor.module.css";
+import styles from "./Editor.module.css";
 import { GoContainer } from "react-icons/go";
 import Select from "../UI/Select";
 import { usePlayground } from "../../context/PlaygroundContext";
@@ -25,15 +25,15 @@ function Editor() {
    const lastSelectedId = selectedItems.at(-1)?.id;
 
    return (
-      <div className={style.editor}>
-         <div className={style.tabs}>
+      <div className={styles.editor}>
+         <div className={styles.tabs}>
             <div
-               className={`${style.tab} ${!lastSelectedId ? style.active : ""}`}
+               className={`${styles.tab} ${!lastSelectedId ? styles.active : ""}`}
             >
                <GoContainer /> Container
             </div>
             <div
-               className={`${style.tab} ${lastSelectedId ? style.active : ""}`}
+               className={`${styles.tab} ${lastSelectedId ? styles.active : ""}`}
             >
                <IoMdQrScanner />
                {selectedItems.length > 1
@@ -42,7 +42,7 @@ function Editor() {
             </div>
          </div>
 
-         <div className={style.container}>
+         <div className={styles.container}>
             <AnimatePresence mode="wait">
                {!lastSelectedId && (
                   <motion.div
@@ -52,130 +52,112 @@ function Editor() {
                      animate="visible"
                      exit="hidden"
                   >
-                     <div className={style.block}>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Display</div>
-                           <Select
-                              active={container?.display || "flex"}
-                              onSelect={(value) =>
-                                 editContainer("display", value)
-                              }
-                           >
-                              <Select.Options>
-                                 <Select.Option value="flex" />
-                                 <Select.Option value="inline-flex" />
-                              </Select.Options>
-                           </Select>
-                        </div>
+                     <div className={styles.block}>
+                        <Select
+                           active={container?.display || "flex"}
+                           onSelect={(value) => editContainer("display", value)}
+                        >
+                           <Select.Toggle maxLength={8} title="Display" />
+                           <Select.Options>
+                              <Select.Option value="flex" />
+                              <Select.Option value="inline-flex" />
+                           </Select.Options>
+                        </Select>
                      </div>
-                     <div className={style.block}>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>
-                              Flex Direction
-                           </div>
-                           <Select
-                              active={container?.flexDirection || "row"}
-                              onSelect={(value) =>
-                                 editContainer("flexDirection", value)
-                              }
-                           >
-                              <Select.Options>
-                                 <Select.Option value="row" />
-                                 <Select.Option value="row-reverse" />
-                                 <Select.Option value="column" />
-                                 <Select.Option value="column-reverse" />
-                              </Select.Options>
-                           </Select>
-                        </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Flex Wrap</div>
-                           <Select
-                              active={container?.flexWrap || "nowrap"}
-                              onSelect={(value) =>
-                                 editContainer("flexWrap", value)
-                              }
-                           >
-                              <Select.Options>
-                                 <Select.Option value="nowrap" />
-                                 <Select.Option value="wrap" />
-                                 <Select.Option value="wrap-reverse" />
-                              </Select.Options>
-                           </Select>
-                        </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>
-                              Justify Content
-                           </div>
-                           <Select
-                              active={container?.justifyContent || "start"}
-                              onSelect={(value) =>
-                                 editContainer("justifyContent", value)
-                              }
-                           >
-                              <Select.Options>
-                                 <Select.Option value="start" />
-                                 <Select.Option value="center" />
-                                 <Select.Option value="end" />
-                                 <Select.Option value="space-between" />
-                                 <Select.Option value="space-around" />
-                              </Select.Options>
-                           </Select>
-                        </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>
-                              Align Items
-                           </div>
-                           <Select
-                              active={container?.alignItems || "stretch"}
-                              onSelect={(value) =>
-                                 editContainer("alignItems", value)
-                              }
-                           >
-                              <Select.Options>
-                                 <Select.Option value="stretch" />
-                                 <Select.Option value="start" />
-                                 <Select.Option value="center" />
-                                 <Select.Option value="end" />
-                                 <Select.Option value="baseline" />
-                              </Select.Options>
-                           </Select>
-                        </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>
-                              Align Content
-                           </div>
-                           <Select
-                              active={container?.alignContent || "stretch"}
-                              onSelect={(value) =>
-                                 editContainer("alignContent", value)
-                              }
-                           >
-                              <Select.Options>
-                                 <Select.Option value="stretch" />
-                                 <Select.Option value="start" />
-                                 <Select.Option value="center" />
-                                 <Select.Option value="end" />
-                                 <Select.Option value="space-between" />
-                                 <Select.Option value="space-around" />
-                              </Select.Options>
-                           </Select>
-                        </div>
+                     <div className={styles.block}>
+
+                        <Select
+                           active={container?.flexDirection || "row"}
+                           onSelect={(value) =>
+                              editContainer("flexDirection", value)
+                           }
+                        >
+                           <Select.Toggle title="Flex Direction" maxLength={10} />
+                           <Select.Options>
+                              <Select.Option value="row" />
+                              <Select.Option value="row-reverse" />
+                              <Select.Option value="column" />
+                              <Select.Option value="column-reverse" />
+                           </Select.Options>
+                        </Select>
+
+                        <Select
+                           active={container?.flexWrap || "nowrap"}
+                           onSelect={(value) =>
+                              editContainer("flexWrap", value)
+                           }
+                        >
+                           <Select.Toggle title="Flex Wrap" />
+                           <Select.Options>
+                              <Select.Option value="nowrap" />
+                              <Select.Option value="wrap" />
+                              <Select.Option value="wrap-reverse" />
+                           </Select.Options>
+                        </Select>
+
+                        <Select
+                           active={container?.justifyContent || "start"}
+                           onSelect={(value) =>
+                              editContainer("justifyContent", value)
+                           }
+                        >
+                           <Select.Toggle title="Justify Content" maxLength={8} />
+                           <Select.Options>
+                              <Select.Option value="start" />
+                              <Select.Option value="center" />
+                              <Select.Option value="end" />
+                              <Select.Option value="space-between" />
+                              <Select.Option value="space-around" />
+                           </Select.Options>
+                        </Select>
+
+                        <Select
+                           active={container?.alignItems || "stretch"}
+                           onSelect={(value) =>
+                              editContainer("alignItems", value)
+                           }
+                        >
+                           <Select.Toggle title="Align Items" />
+                           <Select.Options>
+                              <Select.Option value="stretch" />
+                              <Select.Option value="start" />
+                              <Select.Option value="center" />
+                              <Select.Option value="end" />
+                              <Select.Option value="baseline" />
+                           </Select.Options>
+                        </Select>
+
+                        <Select
+                           active={container?.alignContent || "stretch"}
+                           onSelect={(value) =>
+                              editContainer("alignContent", value)
+                           }
+                        >
+                           <Select.Toggle title="Align Content" maxLength={9} />
+                           <Select.Options>
+                              <Select.Option value="stretch" />
+                              <Select.Option value="start" />
+                              <Select.Option value="center" />
+                              <Select.Option value="end" />
+                              <Select.Option value="space-between" />
+                              <Select.Option value="space-around" />
+                           </Select.Options>
+                        </Select>
                      </div>
-                     <div className={style.block}>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Gap</div>
-                           <Select
-                              active={container?.gap || "20px"}
-                              onSelect={(value) => editContainer("gap", value)}
-                           >
-                              <Select.Options>
-                                 <Select.Option value="10px" />
-                                 <Select.Option value="15px" />
-                                 <Select.Option value="20px" />
-                                 <Select.Option value="25px" />
-                              </Select.Options>
-                           </Select>
-                        </div>
+                     <div className={styles.block}>
+
+                        <Select
+                           active={container?.gap || "20px"}
+                           onSelect={(value) => editContainer("gap", value)}
+                        >
+                           <Select.Toggle title="Gap" />
+                           <Select.Options>
+                              <Select.Option value="10px" />
+                              <Select.Option value="15px" />
+                              <Select.Option value="20px" />
+                              <Select.Option value="25px" />
+                           </Select.Options>
+                        </Select>
                      </div>
                   </motion.div>
                )}
@@ -188,10 +170,10 @@ function Editor() {
                      animate="visible"
                      exit="exit"
                   >
-                     <div className={style.block}>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Order</div>
-                           <div className={style.editor__options}>
+                     <div className={styles.block}>
+                        <div className={styles.editor__item}>
+                           <div className={styles.editor__title}>Order</div>
+                           <div className={styles.editor__options}>
                               <TextInput
                                  size="small"
                                  value={getItemStyle(lastSelectedId, "order")}
@@ -202,9 +184,9 @@ function Editor() {
                               />
                            </div>
                         </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Flex</div>
-                           <div className={style.editor__options}>
+                        <div className={styles.editor__item}>
+                           <div className={styles.editor__title}>Flex</div>
+                           <div className={styles.editor__options}>
                               <TextInput
                                  size="small"
                                  value={getItemStyle(
@@ -240,34 +222,28 @@ function Editor() {
                               />
                            </div>
                         </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Align Self</div>
-                           <div className={style.editor__options}>
-                              <Select
-                                 active={getItemStyle(
-                                    lastSelectedId,
-                                    "alignSelf"
-                                 )}
-                                 onSelect={(value) =>
-                                    editItemStyle("alignSelf", value)
-                                 }
-                              >
-                                 <Select.Options>
-                                    <Select.Option value="auto" />
-                                    <Select.Option value="start" />
-                                    <Select.Option value="center" />
-                                    <Select.Option value="end" />
-                                    <Select.Option value="baseline" />
-                                    <Select.Option value="stretch" />
-                                 </Select.Options>
-                              </Select>
-                           </div>
-                        </div>
+
+                        <Select
+                           active={getItemStyle(lastSelectedId, "alignSelf")}
+                           onSelect={(value) =>
+                              editItemStyle("alignSelf", value)
+                           }
+                        >
+                           <Select.Toggle title="Align Self" />
+                           <Select.Options>
+                              <Select.Option value="auto" />
+                              <Select.Option value="start" />
+                              <Select.Option value="center" />
+                              <Select.Option value="end" />
+                              <Select.Option value="baseline" />
+                              <Select.Option value="stretch" />
+                           </Select.Options>
+                        </Select>
                      </div>
-                     <div className={style.block}>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Text</div>
-                           <div className={style.editor__options}>
+                     <div className={styles.block}>
+                        <div className={styles.editor__item}>
+                           <div className={styles.editor__title}>Text</div>
+                           <div className={styles.editor__options}>
                               <TextInput
                                  size="large"
                                  value={getItem(lastSelectedId, "text")}
@@ -278,9 +254,9 @@ function Editor() {
                               />
                            </div>
                         </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Font-size</div>
-                           <div className={style.editor__options}>
+                        <div className={styles.editor__item}>
+                           <div className={styles.editor__title}>Font-size</div>
+                           <div className={styles.editor__options}>
                               <TextInput
                                  size="medium"
                                  value={getItemStyle(
@@ -294,9 +270,9 @@ function Editor() {
                               />
                            </div>
                         </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Width</div>
-                           <div className={style.editor__options}>
+                        <div className={styles.editor__item}>
+                           <div className={styles.editor__title}>Width</div>
+                           <div className={styles.editor__options}>
                               <TextInput
                                  size="medium"
                                  value={getItemStyle(lastSelectedId, "width")}
@@ -307,9 +283,9 @@ function Editor() {
                               />
                            </div>
                         </div>
-                        <div className={style.editor__item}>
-                           <div className={style.editor__title}>Height</div>
-                           <div className={style.editor__options}>
+                        <div className={styles.editor__item}>
+                           <div className={styles.editor__title}>Height</div>
+                           <div className={styles.editor__options}>
                               <TextInput
                                  size="medium"
                                  value={getItemStyle(lastSelectedId, "height")}

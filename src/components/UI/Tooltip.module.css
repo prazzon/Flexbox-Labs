@@ -8,6 +8,7 @@
    visibility: hidden;
    background: var(--bg-tertiary);
    color: var(--text-color-light);
+   text-transform: capitalize;
    font-size: 14px;
    font-weight: 500;
    height: max-content;

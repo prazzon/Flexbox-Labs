@@ -23,8 +23,7 @@
    display: flex;
    justify-content: center;
    padding: 1.7rem 1.5rem;
-   text-transform: uppercase;
-   font-size: 1.2rem;
+   font-size: 1.3rem;
 }
 
 .toolbar__menu > button > :first-child {

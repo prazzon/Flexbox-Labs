@@ -1,4 +1,4 @@
-import style from "./TextInput.module.css";
+import styles from "./TextInput.module.css";
 
 function TextInput({ size, value, type, onChange }) {
    return (
@@ -6,7 +6,7 @@ function TextInput({ size, value, type, onChange }) {
          <input
             type={type}
             value={value}
-            className={`${style.input} ${style[size]}`}
+            className={`${styles.input} ${styles[size]}`}
             onChange={onChange}
          />
       </div>

@@ -13,7 +13,7 @@ function ToolbarBtn({
    const handleClick = () => {
       if (disabled && alert)
          return toast.error(`Select an item to ${value.toLowerCase()}`);
-      onClick();
+      onClick?.();
    };
 
    return (

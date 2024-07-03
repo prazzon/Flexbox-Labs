@@ -6,17 +6,29 @@
    display: none;
 }
 
-.select__button {
+.select__toggle {
    display: flex;
+   justify-content: space-between;
    align-items: center;
-   gap: 0.5rem;
-   text-transform: lowercase;
+   width: 100%;
    font-family: inherit;
    color: inherit;
    font-size: inherit;
    border: none;
    background: transparent;
    cursor: pointer;
+}
+
+.select__title {
+   text-transform: capitalize;
+   font-size: 1.5rem;
+}
+
+.select__toggle_text {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+   text-transform: lowercase;
 }
 
 .select__options {
@@ -29,7 +41,7 @@
    border-radius: 1rem;
    width: max-content;
    z-index: 100;
-   box-shadow: rgba(0, 0, 0, .5) 0px 20px 30px -10px;
+   box-shadow: rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
 }
 
 .select__option {
@@ -50,4 +62,10 @@
    color: var(--text-color-light);
    background-color: var(--bg-hover);
    box-shadow: inset 0px 1.5px 0 0 var(--color-shadow);
+}
+
+@media screen and (max-width: 1000px) {
+   .select__title {
+      font-size: 1.4rem;
+   }
 }

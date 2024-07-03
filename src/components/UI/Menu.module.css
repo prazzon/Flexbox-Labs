@@ -1,0 +1,34 @@
+.menu__list {
+   position: absolute;
+   z-index: 1001;
+   background: var(--bg-secondary);
+   padding: 0.5rem;
+   border-radius: 1rem;
+   width: max-content;
+   z-index: 100;
+   box-shadow: rgba(0, 0, 0, .5) 0px 20px 30px -10px;
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+}
+
+.menu__btn {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+}
+
+.menu__btn > svg {
+   font-size: 1.8rem;
+}
+
+.overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.2);
+   z-index: 1000;
+   transition: all 0.15s linear;
+}

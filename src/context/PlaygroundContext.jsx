@@ -111,7 +111,7 @@ const PlaygroundProvider = ({ children }) => {
    };
 
    const clearSelectedItems = () => {
-      setSelectedItems([]);
+      if (selectedItems.length > 0) setSelectedItems([]);
    }
 
    const editContainer = (key, value) => {
