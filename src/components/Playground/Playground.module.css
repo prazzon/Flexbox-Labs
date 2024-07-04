@@ -37,11 +37,7 @@
 }
 
 .selected {
-   box-shadow: inset 0px 5px 0 0 var(--color-primary);
-}
-
-.selected .item__text {
-   box-shadow: inset 0px -2.5px 0 0 var(--color-primary);
+   box-shadow: inset -2.5px 2.5px 0 0 var(--color-primary);
 }
 
 @media screen and (max-width: 1000px) {
@@ -62,6 +58,7 @@
    .item {
       padding: 1rem 1.2rem;
       min-width: 5.5rem;
+      min-height: 4.5rem;
    }
 
    .item__text {
