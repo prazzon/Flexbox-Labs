@@ -31,9 +31,12 @@ p {
    line-height: 2;
 }
 
-ul,
-ol {
+ul {
    margin-left: 3rem;
+}
+
+ol {
+   margin-left: 2rem;
 }
 
 ol li {

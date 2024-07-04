@@ -6,170 +6,157 @@ function About() {
          <div className={styles.about__content}>
             <h2>About</h2>
             <p>
-               FlexLab is a web-based tool specifically designed to assist
-               developers, designers, and learners in crafting adaptable and
-               responsive layouts through CSS Flexbox. It offers an intuitive
-               interface where users can tailor and preview the organization of
-               elements within a container. Additionally, users can tweak
-               various parameters for each flex item, including order, flex,
-               alignment, text properties, font size, and sizing, all within an
-               easy-to-use environment.
+               FlexLab is a tool designed to assist users in creating layouts
+               through CSS Flexbox. It offers an intuitive interface where users
+               can adjust and preview changes made to the flex container and
+               flex items.
             </p>
          </div>
 
          <div className={styles.about__content}>
             <h3>What is Flexbox?</h3>
             <p>
-               Flexbox, short for Flexible Box Layout, is a powerful CSS layout
-               model that allows you to design complex web layouts with
-               simplicity and precision. It&apos;s particularly useful for
-               building responsive designs and arranging elements within a
-               container, regardless of their size or screen resolution. With
-               Flexbox, you have the flexibility to control the alignment,
-               order, and sizing of elements with minimal effort.
+               Flexbox is a layout model in CSS that makes arranging elements on
+               a web page much easier and flexible. It&apos;s particularly
+               useful for creating responsive designs by simplifying the process
+               of aligning and distributing spaces among items within a
+               container.
             </p>
          </div>
 
          <div className={styles.about__content}>
-            <h3>Flexbox Fundamentals: Containers and Items</h3>
+            <h3>Containers and Items</h3>
             <p>
-               Flexbox revolves around two key concepts:{" "}
-               <strong>flex containers</strong> and <strong>flex items</strong>.
+               <p>
+                  <strong>Flex Container:</strong> This is the parent element
+                  that houses the items you want to arrange using Flexbox. You
+                  define a container using the display: flex property in your
+                  CSS.
+               </p>
+
+               <p>
+                  <strong>Flex Items:</strong> These are the child elements
+                  within the flex container. They respond to the properties you
+                  set for the container and can be further customized
+                  individually.
+               </p>
+            </p>
+         </div>
+
+         <div className={styles.about__content}>
+            <h3>Flex Container Properties</h3>
+            <p>
+               These properties define how flex items are arranged and sized
+               within the container.
+            </p>
+
+            <p>
+               <strong>flex-direction:</strong> Sets the direction of the main
+               axis.
                <ul>
                   <li>
-                     <strong>Flex Container:</strong> This is the parent element
-                     that houses the items you want to arrange using Flexbox.
-                     You define a container using the display: flex property in
-                     your CSS.
+                     row (default): Items are laid out horizontally from left to
+                     right.
                   </li>
                   <li>
-                     <strong>Flex Items:</strong> These are the child elements
-                     within the flex container. They respond to the properties
-                     you set for the container and can be further customized
-                     individually.
+                     column: Items are stacked vertically, one on top of
+                     another.
+                  </li>
+                  <li>row-reverse: Items are arranged from right to left.</li>
+                  <li>column-reverse: Items are stacked from bottom to top.</li>
+               </ul>
+            </p>
+
+            <p>
+               <strong>flex-wrap:</strong> Determines whether flex items can be
+               wrapped onto multiple lines.
+               <ul>
+                  <li>
+                     nowrap (default): Items do not wrap if they exceed the
+                     container&apos;s width.
+                  </li>
+                  <li>wrap: Items wrap onto multiple lines as needed.</li>
+                  <li>wrap-reverse: Items wrap in reverse order.</li>
+               </ul>
+            </p>
+
+            <p>
+               <strong>justify-content:</strong> Aligns flex items along the
+               main axis of the container.
+               <ul>
+                  <li>
+                     flex-start (default): Items are aligned to the beginning of
+                     the container.
+                  </li>
+                  <li>
+                     flex-end: Items are aligned to the end of the container.
+                  </li>
+                  <li>center: Items are centered along the main axis.</li>
+                  <li>
+                     space-between: Items are evenly distributed with space
+                     between them.
+                  </li>
+                  <li>
+                     space-around: Items are evenly distributed with space
+                     around and between them.
+                  </li>
+               </ul>
+            </p>
+
+            <p>
+               <strong>align-items:</strong> Aligns flex items along the cross
+               axis of the container.
+               <ul>
+                  <li>
+                     flex-start (default): Items are aligned at the top of the
+                     container.
+                  </li>
+                  <li>
+                     center: Items are vertically centered within the container.
+                  </li>
+                  <li>
+                     flex-end: Items are aligned at the bottom of the container.
+                  </li>
+                  <li>
+                     stretch (default for single-line layouts): Items stretch to
+                     fill the container&apos;s height.
+                  </li>
+               </ul>
+            </p>
+
+            <p>
+               <strong>align-content:</strong> Controls spacing between multiple
+               lines of flex items.
+               <ul>
+                  <li>
+                     flex-start (default): Flex lines are aligned at the top of
+                     the container.
+                  </li>
+                  <li>center: Flex lines are centered on the cross-axis.</li>
+                  <li>
+                     flex-end: Flex lines are aligned at the bottom of the
+                     container.
+                  </li>
+                  <li>
+                     space-between: Flex lines are evenly distributed with space
+                     between them.
+                  </li>
+                  <li>
+                     space-around: Flex lines are distributed with space around
+                     and between them.
                   </li>
                </ul>
             </p>
          </div>
 
          <div className={styles.about__content}>
-            <h3>Flex Container Properties:</h3>
-            <p>
-               These properties define the overall layout behavior of the
-               container and how it distributes space among its flex items.
-            </p>
-            <ol>
-               <li>
-                  <strong>flex-direction:</strong> Sets the direction of the
-                  main axis.
-                  <ul>
-                     <li>
-                        row (default): Items are laid out horizontally from left
-                        to right.
-                     </li>
-                     <li>
-                        column: Items are stacked vertically, one on top of
-                        another.
-                     </li>
-                     <li>
-                        row-reverse: Items are arranged from right to left.
-                     </li>
-                     <li>
-                        column-reverse: Items are stacked from bottom to top.
-                     </li>
-                  </ul>
-               </li>
-               <li>
-                  <strong>flex-wrap:</strong> Determines whether flex items are
-                  forced onto a single line or can be wrapped onto multiple
-                  lines.
-                  <ul>
-                     <li>
-                        nowrap (default): Items do not wrap and overflow if they
-                        exceed the container&apos;s width.
-                     </li>
-                     <li>wrap: Items wrap onto multiple lines as needed.</li>
-                     <li>wrap-reverse: Items wrap in reverse order.</li>
-                  </ul>
-               </li>
-               <li>
-                  <strong>justify-content:</strong> Aligns flex items along the
-                  main axis of the container.
-                  <ul>
-                     <li>
-                        flex-start (default): Items are aligned to the beginning
-                        of the container (left for `row`, top for `column`).
-                     </li>
-                     <li>
-                        flex-end: Items are aligned to the end of the container
-                        (right for `row`, bottom for `column`).
-                     </li>
-                     <li>center: Items are centered along the main axis.</li>
-                     <li>
-                        space-between: Items are evenly distributed with space
-                        between them.
-                     </li>
-                     <li>
-                        space-around: Similar to `space-between` but with
-                        additional space at the beginning and end of the
-                        container.
-                     </li>
-                  </ul>
-               </li>
-               <li>
-                  <strong>align-items:</strong> Aligns flex items along the
-                  cross axis of the container.
-                  <ul>
-                     <li>
-                        flex-start (default): Items are aligned at the top of
-                        the container.
-                     </li>
-                     <li>
-                        center: Items are vertically centered within the
-                        container.
-                     </li>
-                     <li>
-                        flex-end: Items are aligned at the bottom of the
-                        container.
-                     </li>
-                     <li>
-                        stretch (default for single-line layouts): Items stretch
-                        to fill the container&apos;s height.
-                     </li>
-                  </ul>
-               </li>
-               <li>
-                  <strong>align-content:</strong> Controls spacing between
-                  multiple lines of flex items.
-                  <ul>
-                     <li>
-                        flex-start (default): Flex lines are aligned at the top
-                        of the container.
-                     </li>
-                     <li>center: Flex lines are centered on the cross-axis.</li>
-                     <li>
-                        flex-end: Flex lines are aligned at the bottom of the
-                        container.
-                     </li>
-                     <li>
-                        space-between: Flex lines are evenly distributed with
-                        space between them.
-                     </li>
-                     <li>
-                        space-around: Similar to `space-between` but with
-                        additional space at the top and bottom of the container.
-                     </li>
-                  </ul>
-               </li>
-            </ol>
-         </div>
-
-         <div className={styles.about__content}>
             <h3>Flex Item Properties:</h3>
+
             <p>
                These properties define the individual behavior of each flex item
                within the container.
             </p>
+
             <ol>
                <li>
                   <strong>order:</strong> This property allows you to override
@@ -214,8 +201,7 @@ function About() {
                   <strong>align-self:</strong> This property overrides the
                   `align-items` property for a specific flex item. It allows you
                   to define individual vertical alignment for each item within
-                  the container. Options are the same as `
-                  align-items`(flex-start, center, flex-end, stretch).
+                  the container. Options are the same as ` align-items`.
                </li>
             </ol>
          </div>
