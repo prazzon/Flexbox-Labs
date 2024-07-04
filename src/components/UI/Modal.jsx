@@ -55,14 +55,13 @@ function Content({ children }) {
                   <button className={styles.close__btn} onClick={closeModal}>
                      <IoCloseOutline />
                   </button>
-                  {/* <div>{children}</div> */}
                   {children}
                </motion.div>
                <div className={styles.overlay} onClick={closeModal}></div>
             </motion.div>
          )}
       </AnimatePresence>,
-      document.body
+      document.querySelector("#root")
    );
 }
 

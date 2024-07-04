@@ -25,9 +25,9 @@ function App() {
             containerStyle={{ margin: "8px" }}
             toastOptions={{
                success: { duration: 3000 },
-               error: { duration: 5000 },
+               error: { duration: 2000 },
                style: {
-                  borderRadius: "100px",
+                  borderRadius: "15px",
                   padding: "12px 18px",
                   backgroundColor: "var(--bg-tertiary)",
                   color: "var(--text-color-light)",
