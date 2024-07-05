@@ -29,7 +29,7 @@ function App() {
                style: {
                   borderRadius: "15px",
                   padding: "12px 18px",
-                  backgroundColor: "var(--bg-tertiary)",
+                  backgroundColor: "var(--bg-secondary-2)",
                   color: "var(--text-color-light)",
                   border: "1px solid rgba(0, 0, 0, 0.2)",
                },

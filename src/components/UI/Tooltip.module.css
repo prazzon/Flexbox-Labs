@@ -2,38 +2,21 @@
    position: absolute;
    left: 50%;
    transform: translateX(-50%);
-   padding: 6px 10px;
-   border-radius: 5px;
-   opacity: 0;
-   visibility: hidden;
-   background: var(--bg-tertiary);
+   pointer-events: none;
+}
+
+.tooltip__content {
    color: var(--text-color-light);
    text-transform: capitalize;
    font-size: 14px;
    font-weight: 500;
    height: max-content;
    width: max-content;
-   letter-spacing: 1.5px;
-   transition: all 0.4s ease;
-   transition-delay: .5s;
-   z-index: 1000;
-}
-
-.tooltip.show {
-   opacity: 1;
-   visibility: visible;
-}
-
-.tooltip.top {
-   bottom: 6.3rem;
-}
-
-.tooltip.bottom {
-   top: 5.5rem;
-}
-
-.tooltip.right {
-   left: 6rem;
+   letter-spacing: 1px;
+   padding: 6px 10px;
+   border-radius: 8px;
+   line-height: 1.4;
+   background: var(--bg-secondary-2);
 }
 
 @media screen and (max-width: 450px) {

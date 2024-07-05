@@ -14,7 +14,6 @@ const menu = {
 };
 
 function ToolbarMenu({ children, hide, show }) {
-   console.log(show);
    return (
       <AnimatePresence>
          {show && (
