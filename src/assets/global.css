@@ -24,6 +24,7 @@
 html {
    font-size: 62.5%;
    font-family: "Poppins", sans-serif;
+   -webkit-tap-highlight-color: transparent;
 }
 
 svg {
@@ -49,7 +50,6 @@ body #root {
    animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
    animation-delay: 0.2s;
 }
-
 
 /* ############################## */
 /* Ripple Styling */
