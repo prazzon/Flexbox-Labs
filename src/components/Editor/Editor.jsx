@@ -22,7 +22,7 @@ function Editor() {
       container,
    } = usePlayground();
 
-   const lastSelectedId = selectedItems.at(-1)?.id;
+   const lastSelectedId = selectedItems?.at(-1);
 
    return (
       <div className={styles.editor}>

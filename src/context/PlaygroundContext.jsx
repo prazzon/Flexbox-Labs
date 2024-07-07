@@ -53,7 +53,7 @@ const PlaygroundProvider = ({ children }) => {
    const editItem = (key, value) => {
       const newItem = items.map((item) => {
          for (const selectedItem of selectedItems) {
-            if (item.id === selectedItem.id) {
+            if (item.id === selectedItem) {
                return { ...item, [key]: value };
             }
          }
@@ -66,7 +66,7 @@ const PlaygroundProvider = ({ children }) => {
    const editItemStyle = (key, value) => {
       const newItemStyles = items.map((item) => {
          for (const selectedItem of selectedItems) {
-            if (item.id === selectedItem.id) {
+            if (item.id === selectedItem) {
                return { ...item, styles: { ...item.styles, [key]: value } };
             }
          }
@@ -77,36 +77,32 @@ const PlaygroundProvider = ({ children }) => {
    };
 
    const removeItem = () => {
-      const newItems = items.filter((item) => !selectedItems.includes(item));
+      const newItems = items.filter((item) => !selectedItems.includes(item.id));
       set({ ...state, items: newItems });
 
       setSelectedItems([]);
    };
 
    const duplicateItem = () => {
-      const newItems = selectedItems.map((item) => {
-         return { ...item, id: Math.random() };
-      });
+      const newItems = selectedItems.map((itemId) => {
+         const item = items.find((item) => item.id === itemId);
+         if (item) return { ...item, id: Math.random() };
+      })
 
       set({ ...state, items: [...state.items, ...newItems] });
    };
 
    const toggleSelectedItems = (id) => {
       if (selectMultiple) {
-         const index = selectedItems.findIndex((item) => item.id === id);
+         const index = selectedItems.findIndex((itemId) => itemId === id);
 
          if (index !== -1) {
-            setSelectedItems((prev) => prev.filter((item) => item.id !== id));
+            setSelectedItems((prev) => prev.filter((itemId) => itemId !== id));
          } else {
-            setSelectedItems((prev) => [
-               ...prev,
-               items.find((item) => item.id === id),
-            ]);
+            setSelectedItems((prev) => [...prev, id]);
          }
       } else {
-         setSelectedItems((prev) =>
-            prev.at(0)?.id === id ? [] : [items.find((item) => item.id === id)]
-         );
+         setSelectedItems((prev) => (prev.at(0) === id ? [] : [id]));
       }
    };
 

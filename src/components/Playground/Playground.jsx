@@ -24,8 +24,7 @@ function Playground() {
                   item={item}
                   onClick={() => toggleSelectedItems(item.id)}
                   isSelected={
-                     selectedItems.filter((x) => x.id === item.id)[0]?.id
-                     // selectedItems.includes(item)
+                     selectedItems.includes(item.id)
                   }
                />
             ))}
