@@ -32,13 +32,13 @@
 @media screen and (max-width: 700px) {
    .item {
       padding: 1rem 1.2rem;
-      min-width: 5.5rem;
+      min-width: 6.5rem;
       min-height: 4.5rem;
    }
 
    .item__text {
       font-size: 1.4rem;
-      padding: 0.3rem 1.2rem;
+      padding: 0.5rem 1rem;
       border-radius: 0.9rem;
    }
 }
