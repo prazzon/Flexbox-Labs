@@ -17,6 +17,11 @@
    background: var(--bg-hover);
 }
 
+.toolbar__btn:active > svg {
+   transform: scale(0.8);
+   transition: transform .3s ease;
+}
+
 .toolbar__btn.disabled {
    cursor: not-allowed;
    color: #919795;

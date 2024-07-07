@@ -10,36 +10,6 @@
    overflow: auto;
 }
 
-.item {
-   background: var(--bg-tertiary);
-   border-radius: 1.5rem;
-   padding: 1rem 1.5rem;
-   cursor: pointer;
-   box-shadow: inset 0px 2px 0 0 var(--color-shadow);
-   overflow: hidden;
-   transition: all 0.3s ease;
-   min-width: 7rem;
-   min-height: 5.5rem;
-}
-
-.item__text {
-   width: fit-content;
-   margin: 0 auto;
-   background-color: var(--bg-secondary);
-   padding: 0.5rem 1.5rem;
-   border-radius: 1rem;
-   box-shadow: inset 0px -1.5px 0 0 var(--color-shadow);
-   transition: all 0.3s ease;
-}
-
-.item:hover {
-   background: var(--bg-hover);
-}
-
-.selected {
-   box-shadow: inset 0px 2.5px 0 0 var(--color-primary);
-}
-
 @media screen and (max-width: 1000px) {
    .playground {
       height: 50rem;
@@ -54,33 +24,8 @@
    }
 }
 
-@media screen and (max-width: 700px) {
-   .item {
-      padding: 1rem 1.2rem;
-      min-width: 5.5rem;
-      min-height: 4.5rem;
-   }
-
-   .item__text {
-      font-size: 1.4rem;
-      padding: 0.3rem 1.2rem;
-      border-radius: 0.9rem;
-   }
-}
-
 @media screen and (max-height: 450px) and (max-width: 1000px) {
    .playground {
       height: 48rem;
-   }
-
-   .item {
-      padding: 1rem;
-      min-width: 5rem;
-   }
-
-   .item__text {
-      font-size: 1.3rem;
-      padding: 0.3rem 1.2rem;
-      border-radius: 0.9rem;
    }
 }

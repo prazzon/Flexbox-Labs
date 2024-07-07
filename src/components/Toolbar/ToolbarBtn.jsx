@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import Tooltip from "../UI/Tooltip";
 import styles from "./ToolbarBtn.module.css";
 import toast from "react-hot-toast";
+import { useRipple } from "../../hooks/useRipple";
 
 function ToolbarBtn({
    children,
@@ -16,12 +18,17 @@ function ToolbarBtn({
       onClick?.();
    };
 
+   const ref = useRef()
+
+   useRipple(ref);
+
    return (
       <button
          className={`${styles.toolbar__btn} ${
             disabled ? styles.disabled : ""
          } ${screen !== "all" ? styles[screen] : ""}`}
          onClick={handleClick}
+         ref={ref}
       >
          {children}
          {value && <Tooltip>{value}</Tooltip>}

@@ -1,12 +1,8 @@
 import { usePlayground } from "../../context/PlaygroundContext";
 import { useInsideContainerClick } from "../../hooks/useInsideContainerClick";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import styles from "./Playground.module.css";
-
-const itemVariants = {
-   hidden: { opacity: 0, scale: 0.95 },
-   visible: { opacity: 1, scale: 1 },
-};
+import PlaygroundItem from "./PlaygroundItem";
 
 function Playground() {
    const {
@@ -23,25 +19,15 @@ function Playground() {
       <div className={styles.playground} style={container} ref={ref}>
          <AnimatePresence mode="popLayout">
             {items?.map((item) => (
-               <motion.div
-                  // className={`${styles.item} ${
-                  //    selectedItems.includes(item) ? styles.selected : ""
-                  // }`}
-                  className={`${styles.item} ${
-                     selectedItems.filter((x) => x.id === item.id)[0]?.id
-                        ? styles.selected
-                        : ""
-                  }`}
+               <PlaygroundItem
                   key={item.id}
+                  item={item}
                   onClick={() => toggleSelectedItems(item.id)}
-                  style={item.styles}
-                  variants={itemVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-               >
-                  <div className={styles.item__text}>{item.text}</div>
-               </motion.div>
+                  isSelected={
+                     selectedItems.filter((x) => x.id === item.id)[0]?.id
+                     // selectedItems.includes(item)
+                  }
+               />
             ))}
          </AnimatePresence>
       </div>

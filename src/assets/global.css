@@ -7,7 +7,7 @@
 
    --bg-primary: #161d26;
    --bg-secondary: #08090b;
-   --bg-secondary-2:#101114;
+   --bg-secondary-2: #101114;
    --bg-tertiary: #24292d;
    --bg-hover: #2c3236;
 
@@ -24,6 +24,10 @@
 html {
    font-size: 62.5%;
    font-family: "Poppins", sans-serif;
+}
+
+svg {
+   pointer-events: none;
 }
 
 body {
@@ -44,6 +48,55 @@ body #root {
    gap: 1.6rem;
    animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
    animation-delay: 0.2s;
+}
+
+
+/* ############################## */
+/* Ripple Styling */
+/* ############################## */
+
+.ripple {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   pointer-events: none;
+   overflow: hidden;
+   border-radius: 1rem;
+
+   --top: 0;
+   --left: 0;
+   --color: rgba(255, 255, 255, 0.5);
+   --duration: 500ms;
+   --scaleSize: 20;
+}
+
+.ripple::before {
+   content: "";
+   display: block;
+   position: absolute;
+   top: var(--top);
+   left: var(--left);
+   overflow: hidden;
+   height: 10px;
+   width: 10px;
+   background-color: var(--color);
+   opacity: 0.3;
+   border-radius: 50%;
+   animation: ripple var(--duration) linear forwards;
+   pointer-events: none;
+}
+
+@keyframes ripple {
+   from {
+      transform: scale(0);
+   }
+
+   to {
+      transform: scale(var(--scaleSize));
+      opacity: 0;
+   }
 }
 
 /* ############################## */
