@@ -58,7 +58,7 @@ const PlaygroundProvider = ({ children }) => {
             }
          }
          return item;
-      })
+      });
 
       set({ ...state, items: newItem });
    };
@@ -71,7 +71,7 @@ const PlaygroundProvider = ({ children }) => {
             }
          }
          return item;
-      })
+      });
 
       set({ ...state, items: newItemStyles });
    };
@@ -112,7 +112,7 @@ const PlaygroundProvider = ({ children }) => {
 
    const clearSelectedItems = () => {
       if (selectedItems.length > 0) setSelectedItems([]);
-   }
+   };
 
    const editContainer = (key, value) => {
       set({ ...state, container: { ...state.container, [key]: value } });
@@ -121,6 +121,16 @@ const PlaygroundProvider = ({ children }) => {
    const resetContainer = () => {
       clear();
       setSelectedItems([]);
+   };
+
+   const undoAction = () => {
+      undo();
+      clearSelectedItems();
+   };
+
+   const redoAction = () => {
+      redo();
+      clearSelectedItems();
    };
 
    return (
@@ -142,11 +152,10 @@ const PlaygroundProvider = ({ children }) => {
             selectMultiple,
             setSelectMultiple,
             defaultItemStyle,
-            undo,
-            redo,
+            undoAction,
+            redoAction,
             canUndo,
             canRedo,
-            clear,
             resetContainer,
          }}
       >
