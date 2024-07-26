@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 const itemVariants = {
    hidden: { opacity: 0, scale: 0.85 },
    visible: { opacity: 1, scale: 1 },
-   exit: { opacity: 0, scale: 0.8, transition: { type: "spring" } },
 };
 
 const PlaygroundItem = forwardRef(function PlaygroundItem(
@@ -25,7 +24,7 @@ const PlaygroundItem = forwardRef(function PlaygroundItem(
          variants={itemVariants}
          initial="hidden"
          animate="visible"
-         exit="exit"
+         exit="hidden"
          whileTap={{ scale: 0.99 }}
       >
          <div className={styles.item__text}>{item.text}</div>

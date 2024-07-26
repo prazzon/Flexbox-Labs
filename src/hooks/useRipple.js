@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export function useRipple(ref, scaleSize = 20, duration = 500) {
    useEffect(() => {
-      const { current } = ref;
+      const { current } = ref || {};
 
       function handleClick(e) {
          current.style.position = "relative";
@@ -21,8 +21,8 @@ export function useRipple(ref, scaleSize = 20, duration = 500) {
          setTimeout(() => current.removeChild(ripple), duration);
       }
 
-      current.addEventListener("click", handleClick);
+      current?.addEventListener("click", handleClick);
 
-      return () => current.removeEventListener("click", handleClick);
+      return () => current?.removeEventListener("click", handleClick);
    }, [ref, scaleSize, duration]);
 }
