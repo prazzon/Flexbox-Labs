@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 
-export function useInsideContainerClick(handler) {
-   const ref = useRef();
+export function useInsideContainerClick(handler: () => void) {
+   const ref = useRef<HTMLDivElement>(null);
 
    useEffect(() => {
-      function handleClick(e) {
+      function handleClick(e: MouseEvent) {
          if (ref.current && ref.current === e.target) {
             handler();
          }
@@ -13,7 +13,7 @@ export function useInsideContainerClick(handler) {
       document.addEventListener("click", handleClick);
 
       return () => document.removeEventListener("click", handleClick);
-   }, [handler]);
+   }, [ref, handler]);
 
    return ref;
 }

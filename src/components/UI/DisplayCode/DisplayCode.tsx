@@ -1,14 +1,14 @@
 import styles from "./DisplayCode.module.css";
-import { usePlayground } from "../../context/PlaygroundContext";
-import { camelToDash } from "../../helpers/helpers";
-import Copy from "./Copy";
+import usePlayground from "../../../hooks/usePlayground";
+import { camelToDash, getKeys } from "../../../helpers/helpers";
+import Copy from "../Copy/Copy";
 import { useRef } from "react";
 
 function DisplayCode() {
    const { container, items, defaultItemStyle } = usePlayground();
 
-   const cssRef = useRef();
-   const htmlRef = useRef();
+   const cssRef = useRef<HTMLPreElement>(null);
+   const htmlRef = useRef<HTMLPreElement>(null);
 
    return (
       <>
@@ -19,7 +19,7 @@ function DisplayCode() {
                   <pre className={styles.css__code} ref={cssRef}>
                      <span className={styles.selector}>.flex</span>
                      {" {"} <br />
-                     {Object.keys(container).map((key, index) => (
+                     {getKeys(container).map((key, index) => (
                         <span key={index}>
                            <span className={styles.property}>
                               {"   "}
@@ -27,7 +27,7 @@ function DisplayCode() {
                            </span>
                            <span className={styles.value}>
                               {" "}
-                              {container[key]};
+                              {container[key]}
                            </span>
                            <br />
                         </span>
@@ -43,7 +43,7 @@ function DisplayCode() {
                                  .flex__item:nth-child({index + 1})
                               </span>
                               {" {"} <br />
-                              {Object.keys(item.styles).map((key, index) => {
+                              {getKeys(item.styles).map((key, index) => {
                                  if (item.styles[key] !== defaultItemStyle[key])
                                     return (
                                        <span key={index}>
@@ -78,7 +78,8 @@ function DisplayCode() {
                      &gt;
                      {items?.map((item, index) => (
                         <span key={index}>
-                           <br />{"   "}&lt;
+                           <br />
+                           {"   "}&lt;
                            <span className={styles.tag}>div</span>
                            <span className={styles.property}> class</span>=
                            <span className={styles.value}>

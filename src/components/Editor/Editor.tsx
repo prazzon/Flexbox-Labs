@@ -1,9 +1,9 @@
 import { IoMdQrScanner } from "react-icons/io";
 import styles from "./Editor.module.css";
 import { GoContainer } from "react-icons/go";
-import Select from "../UI/Select";
-import { usePlayground } from "../../context/PlaygroundContext";
-import TextInput from "../UI/TextInput";
+import Select from "../UI/Select/Select";
+import usePlayground from "../../hooks/usePlayground";
+import TextInput from "../UI/TextInput/TextInput";
 import { AnimatePresence, motion } from "framer-motion";
 
 const containerVariants = {
@@ -13,7 +13,7 @@ const containerVariants = {
 
 function Editor() {
    const {
-      getItem,
+      getItemText,
       getItemStyle,
       editContainer,
       selectedItems,
@@ -22,18 +22,22 @@ function Editor() {
       container,
    } = usePlayground();
 
-   const lastSelectedId = selectedItems?.at(-1);
+   const lastSelectedId = selectedItems[selectedItems.length - 1];
 
    return (
       <div className={styles.editor}>
          <div className={styles.tabs}>
             <div
-               className={`${styles.tab} ${!lastSelectedId ? styles.active : ""}`}
+               className={`${styles.tab} ${
+                  !lastSelectedId ? styles.active : ""
+               }`}
             >
                <GoContainer /> Container
             </div>
             <div
-               className={`${styles.tab} ${lastSelectedId ? styles.active : ""}`}
+               className={`${styles.tab} ${
+                  lastSelectedId ? styles.active : ""
+               }`}
             >
                <IoMdQrScanner />
                {selectedItems.length > 1
@@ -65,14 +69,16 @@ function Editor() {
                         </Select>
                      </div>
                      <div className={styles.block}>
-
                         <Select
                            active={container?.flexDirection || "row"}
                            onSelect={(value) =>
                               editContainer("flexDirection", value)
                            }
                         >
-                           <Select.Toggle title="Flex Direction" maxLength={10} />
+                           <Select.Toggle
+                              title="Flex Direction"
+                              maxLength={10}
+                           />
                            <Select.Options>
                               <Select.Option value="row" />
                               <Select.Option value="row-reverse" />
@@ -101,7 +107,10 @@ function Editor() {
                               editContainer("justifyContent", value)
                            }
                         >
-                           <Select.Toggle title="Justify Content" maxLength={8} />
+                           <Select.Toggle
+                              title="Justify Content"
+                              maxLength={8}
+                           />
                            <Select.Options>
                               <Select.Option value="start" />
                               <Select.Option value="center" />
@@ -145,9 +154,8 @@ function Editor() {
                         </Select>
                      </div>
                      <div className={styles.block}>
-
                         <Select
-                           active={container?.gap || "20px"}
+                           active={container?.gap?.toString() || "20px"}
                            onSelect={(value) => editContainer("gap", value)}
                         >
                            <Select.Toggle title="Gap" />
@@ -224,7 +232,7 @@ function Editor() {
                         </div>
 
                         <Select
-                           active={getItemStyle(lastSelectedId, "alignSelf")}
+                           active={getItemStyle(lastSelectedId, "alignSelf").toString()}
                            onSelect={(value) =>
                               editItemStyle("alignSelf", value)
                            }
@@ -246,7 +254,7 @@ function Editor() {
                            <div className={styles.editor__options}>
                               <TextInput
                                  size="large"
-                                 value={getItem(lastSelectedId, "text")}
+                                 value={getItemText(lastSelectedId)}
                                  type="text"
                                  onChange={(e) =>
                                     editItem("text", e.target.value)

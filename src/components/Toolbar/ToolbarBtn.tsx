@@ -1,8 +1,17 @@
-import { useRef } from "react";
-import Tooltip from "../UI/Tooltip";
+import { ReactNode, useRef } from "react";
+import Tooltip from "../UI/Tooltip/Tooltip";
 import styles from "./ToolbarBtn.module.css";
 import toast from "react-hot-toast";
 import { useRipple } from "../../hooks/useRipple";
+
+interface Props {
+   children: ReactNode;
+   onClick?: () => void;
+   disabled?: boolean;
+   alert?: boolean;
+   value?: string;
+   screen?: string;
+}
 
 function ToolbarBtn({
    children,
@@ -11,16 +20,16 @@ function ToolbarBtn({
    alert = false,
    value = "",
    screen = "all",
-}) {
+}: Props) {
    const handleClick = () => {
       if (disabled && alert)
          return toast.error(`Select an item to ${value.toLowerCase()}`);
       onClick?.();
    };
 
-   const ref = useRef()
+   const ref = useRef<HTMLButtonElement>(null);
 
-   useRipple(ref);
+   useRipple<HTMLButtonElement>(ref);
 
    return (
       <button

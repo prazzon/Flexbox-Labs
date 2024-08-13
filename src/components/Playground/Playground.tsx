@@ -1,19 +1,13 @@
-import { usePlayground } from "../../context/PlaygroundContext";
+import usePlayground from "../../hooks/usePlayground";
 import { useInsideContainerClick } from "../../hooks/useInsideContainerClick";
 import { AnimatePresence } from "framer-motion";
 import styles from "./Playground.module.css";
 import PlaygroundItem from "./PlaygroundItem";
 
 function Playground() {
-   const {
-      items,
-      container,
-      selectedItems,
-      toggleSelectedItems,
-      clearSelectedItems,
-   } = usePlayground();
+   const { items, container, selectedItems, toggleSelected, clearSelected } = usePlayground();
 
-   const ref = useInsideContainerClick(() => clearSelectedItems());
+   const ref = useInsideContainerClick(() => clearSelected());
 
    return (
       <div className={styles.playground} style={container} ref={ref}>
@@ -22,10 +16,8 @@ function Playground() {
                <PlaygroundItem
                   key={item.id}
                   item={item}
-                  onClick={() => toggleSelectedItems(item.id)}
-                  isSelected={
-                     selectedItems.includes(item.id)
-                  }
+                  onClick={() => toggleSelected(item.id)}
+                  isSelected={selectedItems.includes(item.id)}
                />
             ))}
          </AnimatePresence>

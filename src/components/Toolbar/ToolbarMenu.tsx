@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import styles from "./ToolbarMenu.module.css";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -13,7 +14,13 @@ const menu = {
    exit: { y: -10 },
 };
 
-function ToolbarMenu({ children, hide, show }) {
+interface Props {
+   children: ReactNode;
+   hide: () => void;
+   show: boolean;
+}
+
+function ToolbarMenu({ children, hide, show }: Props) {
    return (
       <AnimatePresence>
          {show && (

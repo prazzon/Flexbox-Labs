@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { RefObject, useEffect } from "react";
 
-export function useRipple(ref, scaleSize = 20, duration = 500) {
+export function useRipple<T extends HTMLElement>(ref: RefObject<T>, scaleSize = 20, duration = 500) {
    useEffect(() => {
       const { current } = ref || {};
 
-      function handleClick(e) {
+      function handleClick(e: MouseEvent) {
+         if (!current) return;
+
          current.style.position = "relative";
 
          const { offsetX, offsetY } = e;

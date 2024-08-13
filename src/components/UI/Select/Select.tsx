@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import styles from "./Select.module.css";
 import { IoIosArrowDown } from "react-icons/io";
-import { useOutsideClick } from "../../hooks/useOutsideClick";
+import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
 
 const selectVariant = {
@@ -10,16 +10,34 @@ const selectVariant = {
    exit: { y: -10, opacity: 0 },
 };
 
-const SelectContext = createContext();
+interface SelectProps {
+   children: React.ReactNode;
+   active: string;
+   onSelect: (value: string) => void;
+}
 
-function Select({ children, active, onSelect }) {
+interface ToggleProps {
+   title: string;
+   maxLength?: number;
+}
+
+interface Context {
+   open: boolean;
+   toggleOpen: () => void;
+   select: (value: string) => void;
+   active: string;
+}
+
+const SelectContext = createContext<Context | null>(null);
+
+function Select({ children, active, onSelect }: SelectProps) {
    const [open, setOpen] = useState(false);
 
    const toggleOpen = () => {
       setOpen((prev) => !prev);
    };
 
-   const select = (value) => {
+   const select = (value: string) => {
       onSelect(value);
       setOpen(false);
    };
@@ -35,8 +53,8 @@ function Select({ children, active, onSelect }) {
    );
 }
 
-function Toggle({ maxLength, title }) {
-   const { toggleOpen, active } = useContext(SelectContext);
+function Toggle({ maxLength = 20, title }: ToggleProps) {
+   const { toggleOpen, active } = useContext(SelectContext) as Context;
 
    return (
       <button className={styles.select__toggle} onClick={toggleOpen}>
@@ -51,8 +69,8 @@ function Toggle({ maxLength, title }) {
    );
 }
 
-function Options({ children }) {
-   const { open } = useContext(SelectContext);
+function Options({ children }: { children: React.ReactNode }) {
+   const { open } = useContext(SelectContext) as Context;
 
    return (
       <AnimatePresence>
@@ -71,8 +89,8 @@ function Options({ children }) {
    );
 }
 
-function Option({ value }) {
-   const { active, select } = useContext(SelectContext);
+function Option({ value }: { value: string }) {
+   const { active, select } = useContext(SelectContext) as Context;
 
    return (
       <div

@@ -1,15 +1,16 @@
 import styles from "./Footer.module.css";
 import { TiInfoLarge } from "react-icons/ti";
-import Modal from "../UI/Modal";
+import Modal from "../UI/Modal/Modal";
 import About from "./About";
-import Tooltip from "../UI/Tooltip";
+import Tooltip from "../UI/Tooltip/Tooltip";
 import { FaGithub } from "react-icons/fa";
 
 function Footer() {
    return (
       <div className={styles.footer}>
          <a
-            href="https://github.com/prazzon/FlexLab" target="_blank"
+            href="https://github.com/prazzon/FlexLab"
+            target="_blank"
             className={styles.footer__item}
          >
             <FaGithub className={styles.icon} />

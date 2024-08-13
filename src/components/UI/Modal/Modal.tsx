@@ -1,5 +1,5 @@
 import styles from "./Modal.module.css";
-import { cloneElement, createContext, useContext, useState } from "react";
+import { cloneElement, createContext, ReactElement, ReactNode, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { IoCloseOutline } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
@@ -16,9 +16,15 @@ const modal = {
    exit: { y: -30 },
 };
 
-const ModalContext = createContext();
+interface Context {
+   showModal: boolean;
+   openModal: () => void;
+   closeModal: () => void;
+}
 
-function Modal({ children }) {
+const ModalContext = createContext<Context | null>(null);
+
+function Modal({ children }: { children: ReactNode }) {
    const [showModal, setShowModal] = useState(false);
 
    const openModal = () => setShowModal(true);
@@ -32,14 +38,14 @@ function Modal({ children }) {
    );
 }
 
-function OpenBtn({ children }) {
-   const { openModal } = useContext(ModalContext);
+function OpenBtn({ children }: { children: ReactElement }) {
+   const { openModal } = useContext(ModalContext) as Context;
 
    return cloneElement(children, { onClick: () => openModal() });
 }
 
-function Content({ children }) {
-   const { showModal, closeModal } = useContext(ModalContext);
+function Content({ children }: { children: ReactNode }) {
+   const { showModal, closeModal } = useContext(ModalContext) as Context;
 
    return createPortal(
       <AnimatePresence>
@@ -61,7 +67,7 @@ function Content({ children }) {
             </motion.div>
          )}
       </AnimatePresence>,
-      document.querySelector("#root")
+      document.querySelector("#root") as HTMLElement
    );
 }
 

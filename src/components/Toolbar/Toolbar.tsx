@@ -8,14 +8,14 @@ import { BiSelectMultiple } from "react-icons/bi";
 import { LuRedo, LuTrash2, LuUndo } from "react-icons/lu";
 import { HiOutlineCodeBracket } from "react-icons/hi2";
 import { RxReset } from "react-icons/rx";
-import { usePlayground } from "../../context/PlaygroundContext";
-import DisplayCode from "../UI/DisplayCode";
-import Modal from "../UI/Modal";
+import usePlayground from "../../hooks/usePlayground";
+import DisplayCode from "../UI/DisplayCode/DisplayCode";
+import Modal from "../UI/Modal/Modal";
 import { CiMenuKebab } from "react-icons/ci";
 import ToolbarMenu from "./ToolbarMenu";
 import { useState } from "react";
 import ToolbarBtn from "./ToolbarBtn";
-import Slider from "../UI/Slider";
+import Slider from "../UI/Slider/Slider";
 
 function Toolbar() {
    const {
@@ -96,7 +96,6 @@ function Toolbar() {
          <ToolbarBtn
             value="Select Multiple"
             onClick={() => setSelectMultiple(!selectMultiple)}
-            active={selectMultiple}
             screen="lso"
          >
             <BiSelectMultiple />
@@ -143,7 +142,6 @@ function Toolbar() {
             <ToolbarBtn
                value="Select Multiple"
                onClick={() => setSelectMultiple(!selectMultiple)}
-               active={selectMultiple}
             >
                <BiSelectMultiple />
                <Slider checked={selectMultiple} />

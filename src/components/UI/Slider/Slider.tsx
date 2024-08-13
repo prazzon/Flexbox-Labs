@@ -1,6 +1,6 @@
 import styles from "./Slider.module.css";
 
-function Slider({ checked }) {
+function Slider({ checked }: { checked: boolean }) {
    return (
       <>
          <input

@@ -1,11 +1,13 @@
 import { FaRegCopy } from "react-icons/fa6";
 import styles from "./Copy.module.css";
-import { forwardRef } from "react";
+import { forwardRef, MutableRefObject } from "react";
 import toast from "react-hot-toast";
 
-const Copy = forwardRef((props, ref) => {
+const Copy = forwardRef<HTMLElement>((_, ref) => {
+   const elRef = ref as MutableRefObject<HTMLElement>;
+
    function copy() {
-      navigator.clipboard.writeText(ref.current.innerText).then(() => {
+      navigator.clipboard.writeText(elRef.current.innerText).then(() => {
          toast.success("Copied to clipboard", { position: "top-center" });
       });
    }

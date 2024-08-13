@@ -1,6 +1,13 @@
 import styles from "./TextInput.module.css";
 
-function TextInput({ size, value, type, onChange }) {
+interface Props {
+   size: "small" | "medium" | "large";
+   value: string | number;
+   type: string;
+   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function TextInput({ size, value, type, onChange }: Props) {
    return (
       <div>
          <input
