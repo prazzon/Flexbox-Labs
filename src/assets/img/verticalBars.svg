@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="270px" height="270px" viewBox="0 0 270 270" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" clip-rule="evenodd" fill-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="verticalBars">
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="verticalBars" fill="transparent" stroke="none" />
+    <path d="M40 170C45.5236 170 50 174.476 50 180L50 250C50 255.524 45.5236 260 40 260L20 260C14.4764 260 10 255.524 10 250L10 180C10 174.476 14.4764 170 20 170L40 170Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M90 140C95.5236 140 100 144.476 100 150L100 250C100 255.524 95.5236 260 90 260L70 260C64.4764 260 60 255.524 60 250L60 150C60 144.476 64.4764 140 70 140L90 140Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M140 110C145.524 110 150 114.476 150 120L150 250C150 255.524 145.524 260 140 260L120 260C114.476 260 110 255.524 110 250L110 120C110 114.476 114.476 110 120 110L140 110Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M190 210C195.524 210 200 214.476 200 220L200 250C200 255.524 195.524 260 190 260L170 260C164.476 260 160 255.524 160 250L160 220C160 214.476 164.476 210 170 210L190 210Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M240 190C245.524 190 250 194.476 250 200L250 250C250 255.524 245.524 260 240 260L220 260C214.476 260 210 255.524 210 250L210 200C210 194.476 214.476 190 220 190L240 190Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+  </g>
+</svg>

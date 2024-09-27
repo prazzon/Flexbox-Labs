@@ -1,0 +1,44 @@
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+   appearance: textfield;
+   -moz-appearance: textfield;
+}
+
+.input {
+   border: none;
+   color: inherit;
+   font-size: 1.4rem;
+   font-weight: 600;
+   font-family: inherit;
+   text-align: center;
+   border-radius: 0.8rem;
+   padding: 0.5rem 0.7rem;
+   background: var(--bg-secondary);
+   color: var(--text-secondary);
+   transition: all 0.3s ease;
+
+   &:focus {
+      outline: none;
+      box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+         rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+   }
+
+   &.small {
+      width: 3.5rem;
+   }
+
+   &.medium {
+      width: 6rem;
+   }
+
+   &.large {
+      width: 15rem;
+   }
+}

@@ -1,21 +1,45 @@
-import styles from "./DisplayCode.module.css";
+import styles from "./DisplayCode.module.scss";
+import { useRef } from "react";
+import Copy from "../Copy/Copy";
 import usePlayground from "../../../hooks/usePlayground";
 import { camelToDash, getKeys } from "../../../helpers/helpers";
-import Copy from "../Copy/Copy";
-import { useRef } from "react";
+import { ItemStyle } from "../../../context/PlaygroundContext";
+
+const defaultItemStyle: ItemStyle = {
+   order: 0,
+   flexGrow: 0,
+   flexShrink: 1,
+   flexBasis: "auto",
+   alignSelf: "auto",
+   width: "150px",
+   height: "150px",
+};
+
+function isDefaultItemStyle(styles: ItemStyle) {
+   for (const key in styles) {
+      if (
+         defaultItemStyle[key as keyof ItemStyle]?.toString() !==
+         styles[key as keyof ItemStyle]
+      ) {
+         return false;
+      }
+   }
+
+   return true;
+}
 
 function DisplayCode() {
-   const { container, items, defaultItemStyle } = usePlayground();
+   const { container, items } = usePlayground();
 
    const cssRef = useRef<HTMLPreElement>(null);
    const htmlRef = useRef<HTMLPreElement>(null);
 
    return (
       <>
-         <div className={styles.code__container}>
-            <div className={styles.container}>
-               <div className={styles.container__title}>CSS</div>
-               <div className={styles.container__text}>
+         <div className={styles.container}>
+            <div className={styles.code__container}>
+               <h3 className={styles.code__container_title}>CSS</h3>
+               <div className={styles.code__container_text}>
                   <pre className={styles.css__code} ref={cssRef}>
                      <span className={styles.selector}>.flex</span>
                      {" {"} <br />
@@ -28,13 +52,14 @@ function DisplayCode() {
                            <span className={styles.value}>
                               {" "}
                               {container[key]}
+                              {";"}
                            </span>
                            <br />
                         </span>
                      ))}
                      {"}"}
                      {items?.map((item, index) => {
-                        if (item.styles === defaultItemStyle) return null;
+                        if (isDefaultItemStyle(item.styles)) return null;
 
                         return (
                            <span key={index}>
@@ -67,9 +92,9 @@ function DisplayCode() {
                   <Copy ref={cssRef} />
                </div>
             </div>
-            <div className={styles.container}>
-               <div className={styles.container__title}>HTML</div>
-               <div className={styles.container__text}>
+            <div className={styles.code__container}>
+               <h3 className={styles.code__container_title}>HTML</h3>
+               <div className={styles.code__container_text}>
                   <pre className={styles.html__code} ref={htmlRef}>
                      &lt;
                      <span className={styles.tag}>div</span>

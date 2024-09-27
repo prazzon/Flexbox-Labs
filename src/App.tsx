@@ -1,23 +1,22 @@
 import { useEffect } from "react";
-import Editor from "./components/Editor/Editor";
-import Footer from "./components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 import Header from "./components/Header/Header";
 import Playground from "./components/Playground/Playground";
-import Toolbar from "./components/Toolbar/Toolbar";
-import { Toaster } from "react-hot-toast";
+import SideBar from "./components/SideBar/SideBar";
+import { LayoutGroup } from "framer-motion";
 
 function App() {
    useEffect(() => {
       document.body.classList.add("show");
-   })
-   
+   }, []);
+
    return (
       <>
          <Header />
-         <Toolbar />
-         <Playground />
-         <Editor />
-         <Footer />
+         <LayoutGroup>
+            <SideBar />
+            <Playground />
+         </LayoutGroup>
          <Toaster
             position="bottom-center"
             reverseOrder={true}
@@ -29,8 +28,8 @@ function App() {
                style: {
                   borderRadius: "15px",
                   padding: "12px 18px",
-                  backgroundColor: "var(--bg-secondary-2)",
-                  color: "var(--text-color-light)",
+                  backgroundColor: "#101114",
+                  color: "#fff",
                   border: "1px solid rgba(0, 0, 0, 0.2)",
                },
             }}

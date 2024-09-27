@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Itim&display=swap");
+
+.container {
+   height: auto;
+   width: auto;
+   font-family: "Inconsolata", monospace;
+   display: flex;
+   gap: 4rem;
+   justify-content: space-between;
+   transition: all 0.3s;
+   padding: 3rem 5rem;
+   padding-top: 5rem;
+   padding-bottom: 0;
+   width: 100rem;
+
+   @media (max-width: 1100px) {
+      width: 80vw;
+   }
+
+   @media (max-width: 850px) and (min-height: 528px) {
+      flex-direction: column;
+      gap: 3rem;
+      width: 70vw;
+      min-width: 40rem;
+      padding: 3rem;
+      padding-top: 4rem;
+      padding-bottom: 0;
+   }
+
+   @media (max-width: 450px) {
+      gap: 2rem;
+      width: 90vw;
+      min-width: 30rem;
+   }
+
+   @media (max-height: 528px) {
+      width: 90vw;
+      gap: 2.5rem;
+   }
+}
+
+.code__container {
+   width: 50%;
+
+   @media (max-width: 850px) {
+      width: 100%;
+   }
+
+   @media (max-width: 700px) {
+      overflow: auto;
+   }
+
+   &_title {
+      display: inline-block;
+      transform: translateY(1rem);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--color-primary);
+      padding: 1rem 2rem;
+      border-radius: 1.5rem 1.5rem 0 0;
+      font-size: 1.8rem;
+      font-weight: 500;
+      font-family: "Itim", cursive;
+      background-color: var(--bg-secondary);
+      color: var(--text-secondary);
+
+      @media (max-width: 450px) {
+         font-size: 1.6rem;
+      }
+   }
+
+   &_text {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      overflow-y: auto;
+      border-radius: 0 2rem 2rem 2rem;
+      padding: 2rem;
+      padding-bottom: 0;
+      color: var(--text-secondary);
+      max-height: 40rem;
+      position: relative;
+      background-color: var(--bg-secondary);
+
+      @media (max-width: 450px) {
+         font-size: 1.2rem;
+      }
+   }
+}
+
+.css__code {
+   overflow: auto;
+   padding-bottom: 2rem;
+   
+   .selector {
+      color: #70a982;
+   }
+
+   .property {
+      color: #db9ef2;
+   }
+
+   .value {
+      color: #f1c40f;
+   }
+}
+
+.html__code {
+   overflow: auto;
+   padding-bottom: 2rem;
+
+   .tag {
+      color: #e74c3c;
+   }
+
+   .property {
+      color: #f1c40f;
+   }
+
+   .value {
+      color: #2ecc71;
+   }
+}

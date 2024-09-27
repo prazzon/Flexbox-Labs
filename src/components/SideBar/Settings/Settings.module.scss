@@ -1,0 +1,258 @@
+.container {
+   margin-top: 1rem;
+}
+
+.block {
+   background: var(--bg-content);
+   border-radius: 1.5rem;
+   margin-bottom: 1.5rem;
+
+   .item {
+      padding: 2rem;
+
+      &:not(:last-child) {
+         border-bottom: 1px solid var(--bg-divider);
+      }
+   }
+
+   .title {
+      display: flex;
+      align-items: center;
+   }
+
+   .icon {
+      margin-right: 1.5rem;
+      font-size: 2.2rem;
+      display: flex;
+   }
+
+   .text {
+      margin-right: auto;
+      font-size: 1.5rem;
+      font-weight: 600;
+   }
+}
+
+/** ################ **/
+/** Radio Tile **/
+/** ################ **/
+
+.tile__container {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   margin-top: 2rem;
+}
+
+.tile {
+   position: relative;
+   cursor: pointer;
+
+   &__input {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+
+      &:checked + .tile__text svg {
+         color: var(--text-primary);
+      }
+
+      &:checked + .tile__text .tile__text_title {
+         color: var(--text-primary);
+         font-weight: 800;
+      }
+   }
+
+   &__text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2rem;
+      gap: 1rem;
+      cursor: pointer;
+      position: relative;
+
+      svg {
+         font-size: 2.8rem;
+         color: var(--text-secondary);
+         transition: transform 0.2s ease-in-out;
+      }
+
+      &_icon {
+         border: 2px solid var(--bg-content-hover);
+         display: flex;
+         padding: 2rem;
+         border-radius: 50%;
+         background-color: var(--bg-content-hover);
+         box-shadow: inset 0 1.5px 0 0 var(--icon-shadow);
+         border: 1px solid var(--icon-border);
+         color: var(--text-secondary);
+         transition: transform 0.2s ease-in-out;
+      }
+
+      &_title {
+         text-align: center;
+         font-size: 1.2rem;
+         font-weight: 600;
+         letter-spacing: 1px;
+         color: var(--text-secondary);
+      }
+   }
+}
+
+/** ################ **/
+/** Radio Slider **/
+/** ################ **/
+
+.color__container {
+   display: flex;
+   gap: 1rem;
+
+   @media (max-width: 1024px) {
+      gap: 0.5rem;
+   }
+}
+
+.color {
+   position: relative;
+   cursor: pointer;
+   width: 2rem;
+   height: 2rem;
+
+   /* Hide the browser's default radio button */
+   input {
+      display: none;
+   }
+
+   /* Create a custom radio button */
+   span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+
+      /* Create and style the indicator (the dot/circle - hidden when not checked) */
+      &:after {
+         content: "";
+         display: block;
+         position: absolute;
+         top: 5px;
+         left: 5px;
+         width: 10px;
+         height: 10px;
+         border-radius: 50%;
+         background: var(--bg-secondary);
+         box-shadow: rgba(0, 0, 0, 0.117647) 0 0 0.8vw 0,
+            rgba(0, 0, 0, 0.239216) 0 0.8vw 0.8vw 0;
+         transition: all 0.2s;
+         transform: scale(0);
+      }
+   }
+
+   &:hover span {
+      box-shadow: 0 0 1.5px 1.5px var(--text-secondary);
+   }
+
+   /* Show the indicator (dot/circle) when checked */
+   input:checked ~ span:after {
+      transform: scale(1);
+   }
+
+   /* Style background colors */
+   &__purple {
+      background-color: #9e71ff;
+   }
+
+   &__green {
+      background-color: #45d09e;
+   }
+
+   &__blue {
+      background-color: #1771F1;
+   }
+
+   &__yellow {
+      background-color: #D8664D;
+   }
+
+   &__turquoise {
+      background-color: #55b8b3;
+   }
+}
+
+/** ################ **/
+/** Range Slider **/
+/** ################ **/
+
+.range {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+
+   /* From Uiverse.io by satisshTechie */
+   &__slider {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 10rem;
+      height: 4px;
+      border-radius: 5px;
+      background: var(--text-primary);
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: 0.2s;
+      transition: opacity 0.2s;
+
+      &::-webkit-slider-thumb {
+         -webkit-appearance: none;
+         appearance: none;
+         width: 15px;
+         height: 15px;
+         border-radius: 50%;
+         background-color: var(--text-primary);
+         cursor: pointer;
+         transition: 0.3s ease-in-out;
+      }
+
+      &::-webkit-slider-thumb:hover {
+         box-shadow: 0px 0px 0px 8px rgba(255, 255, 255, 0.16);
+         transition: 0.3s ease-in-out;
+      }
+
+      &::-moz-range-thumb {
+         width: 15px;
+         height: 15px;
+         border-radius: 50%;
+         background-color: var(--text-primary);
+         cursor: pointer;
+      }
+   }
+
+   &__icon {
+      display: flex;
+      font-size: 1.8rem;
+   }
+
+   &__icon:first-of-type {
+      font-size: 1.3rem;
+   }
+}
+
+.btn {
+   font-size: 1.5rem;
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   background-color: var(--bg-button);
+   color: var(--text-button);
+   border-radius: 3rem;
+   padding: 1rem 1.5rem;
+   padding-right: 2rem;
+   font-weight: 600;
+}

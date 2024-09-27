@@ -1,0 +1,158 @@
+.container {
+   margin-top: 1rem;
+}
+
+.form {
+   background: var(--bg-content);
+   padding: 0.5rem;
+   border-radius: 1rem;
+   display: flex;
+   align-items: center;
+   margin-bottom: 1.5rem;
+
+   &:focus-within {
+      box-shadow: 0 0 0 0.25rem var(--bg-content-hover);
+   }
+
+   .input {
+      background-color: transparent;
+      border: none;
+      color: var(--text-primary);
+      padding: 1rem 0;
+      padding-left: 1rem;
+      padding-right: 0.5rem;
+      font-size: 1.5rem;
+      flex: 1;
+      font-family: inherit;
+      font-weight: 800;
+
+      &:focus {
+         outline: none;
+      }
+   }
+
+   .form__btn {
+      margin-left: auto;
+      padding: 1rem;
+      border-radius: 0.8rem;
+      color: #1c1e21;
+      background-color: var(--color-primary);
+      border: 1px solid var(--bg-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      gap: 0.5rem;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1.4rem;
+      white-space: nowrap;
+
+      &:disabled {
+         background: var(--bg-secondary);
+         color: var(--text-secondary);
+         cursor: not-allowed;
+         opacity: 0.7;
+      }
+
+      svg {
+         display: flex;
+         font-size: 2rem;
+      }
+   }
+}
+
+.list {
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+   list-style-type: none;
+   margin-bottom: 2rem;
+
+   .item {
+      background: var(--bg-content);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      @media (max-width: 1024px) {
+         padding: 1rem;
+      }
+
+      &__info {
+         display: flex;
+         flex-direction: column;
+         gap: 0.5rem;
+         margin-right: auto;
+         width: 80%;
+         overflow: hidden;
+      }
+
+      &__name {
+         font-size: 1.6rem;
+         font-weight: 600;
+         color: var(--text-primary);
+
+         @media (max-width: 1024px) {
+            font-size: 1.3rem;
+         }
+      }
+
+      &__date {
+         font-size: 1.3rem;
+         font-weight: 500;
+
+         @media (max-width: 1024px) {
+            font-size: 1.1rem;
+         }
+      }
+
+      &__btn {
+         padding: 0.8rem;
+         padding: 1rem;
+         border-radius: 8rem;
+         border: none;
+         background: var(--bg-secondary);
+         display: flex;
+         cursor: pointer;
+         transition: all 0.2s ease-in-out;
+
+         & svg {
+            font-size: 2.2rem;
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+            transition: all 0.2s ease-in-out;
+         }
+
+         &:hover svg {
+            color: var(--text-primary);
+            opacity: 1;
+         }
+
+         &.delete:hover svg {
+            color: var(--red);
+         }
+      }
+   }
+}
+
+.clear__btn {
+   font-size: 1.5rem;
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   background-color: var(--red);
+   color: var(--black);
+   border-radius: 0.8rem;
+   padding: 1rem 1.5rem;
+   padding-right: 2rem;
+   font-weight: 700;
+   opacity: 0.9;
+
+   &:hover {
+      opacity: 1;
+   }
+}

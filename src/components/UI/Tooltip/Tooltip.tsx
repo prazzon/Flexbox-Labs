@@ -1,35 +1,35 @@
-import styles from "./Tooltip.module.css";
+import styles from "./Tooltip.module.scss";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const tooltipVariants = {
    hidden: (pos: string) => ({
       opacity: 0,
-      y: pos === "top" ? -30 : pos === "bottom" ? 30 : 0,
+      y: pos === "top" ? -30 : pos === "bottom" ? 30 : 5,
       x: pos === "left" ? -30 : pos === "right" ? 30 : 0,
    }),
 
    visible: (pos: string) => ({
       opacity: 1,
-      y: pos === "top" ? -50 : pos === "bottom" ? 50 : 0,
-      x: pos === "left" ? -65 : pos === "right" ? 65 : 0,
+      y: pos === "top" ? -55 : pos === "bottom" ? 50 : 5,
+      x: pos === "left" ? -55 : pos === "right" ? 55 : 0,
       transition: { delay: 0.5, ease: [0.165, 0.84, 0.44, 1] },
    }),
 
    exit: (pos: string) => ({
       opacity: 0,
-      y: pos === "top" ? -30 : pos === "bottom" ? 30 : 0,
+      y: pos === "top" ? -30 : pos === "bottom" ? 30 : 5,
       x: pos === "left" ? -30 : pos === "right" ? 30 : 0,
-      transition: { duration: 0.2 },
    }),
 };
 
 interface Props {
    children: ReactNode;
    position?: "top" | "bottom" | "left" | "right";
+   background?: string;
 }
 
-function Tooltip({ children, position = "top" }: Props) {
+function Tooltip({ children, position = "top", background }: Props) {
    const [showTooltip, setShowTooltip] = useState(false);
 
    const ref = useRef<HTMLDivElement | null>(null);
@@ -41,7 +41,7 @@ function Tooltip({ children, position = "top" }: Props) {
       const parent = ref.current?.parentElement;
 
       if (!parent) return;
-      
+
       parent.style.position = "relative";
 
       parent.addEventListener("mouseenter", handleHover);
@@ -54,7 +54,7 @@ function Tooltip({ children, position = "top" }: Props) {
    }, []);
 
    return (
-      <div ref={ref} className={styles.tooltip}>
+      <div ref={ref} className={`${styles.tooltip} ${styles[position]}`}>
          <AnimatePresence>
             {showTooltip && (
                <motion.div
@@ -64,6 +64,7 @@ function Tooltip({ children, position = "top" }: Props) {
                   animate="visible"
                   exit="exit"
                   custom={position}
+                  style={{ backgroundColor: background }}
                >
                   {children}
                </motion.div>

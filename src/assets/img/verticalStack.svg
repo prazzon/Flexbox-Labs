@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="270px" height="270px" viewBox="0 0 270 270" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" clip-rule="evenodd" fill-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="verticalStack">
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="verticalStack" fill="transparent" stroke="none" />
+    <path d="M183 10C188.524 10 193 14.4764 193 20L193 55C193 60.5236 188.524 65 183 65L88 65C82.4764 65 78 60.5236 78 55L78 20C78 14.4764 82.4764 10 88 10L183 10Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M183 75C188.524 75 193 79.4764 193 85L193 120C193 125.524 188.524 130 183 130L88 130C82.4764 130 78 125.524 78 120L78 85C78 79.4764 82.4764 75 88 75L183 75Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M183 140C188.524 140 193 144.476 193 150L193 185C193 190.524 188.524 195 183 195L88 195C82.4764 195 78 190.524 78 185L78 150C78 144.476 82.4764 140 88 140L183 140Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M183 205C188.524 205 193 209.476 193 215L193 250C193 255.524 188.524 260 183 260L88 260C82.4764 260 78 255.524 78 250L78 215C78 209.476 82.4764 205 88 205L183 205Z" id="Rectangle" fill="#757575" stroke="none" clip-path="url(#clip_1)" />
+  </g>
+</svg>

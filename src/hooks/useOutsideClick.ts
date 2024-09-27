@@ -6,13 +6,17 @@ export function useOutsideClick(handler: () => void, listenCapturing = true) {
    useEffect(() => {
       function handleClick(e: MouseEvent) {
          if (ref.current && !ref.current.contains(e.target as Node)) {
-            handler();
+            // Added timeout to ensure the event happens last
+            setTimeout(() => {
+               handler();
+            }, 10)
          }
       }
 
       document.addEventListener("click", handleClick, listenCapturing);
 
-      return () => document.removeEventListener("click", handleClick, listenCapturing);
+      return () =>
+         document.removeEventListener("click", handleClick, listenCapturing);
    }, [handler, listenCapturing]);
 
    return ref;

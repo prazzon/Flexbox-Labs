@@ -1,0 +1,82 @@
+.tabs {
+   border-radius: 1.5rem;
+   background: var(--bg-secondary);
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   padding: 1rem;
+   box-shadow: var(--content-shadow);
+   z-index: 10;
+
+   @media (max-width: 825px) {
+      width: 100%;
+      flex-direction: row;
+      height: fit-content;
+      justify-content: space-around;
+      border-radius: 0;
+   }
+
+   @media (max-width: 528px) {
+      & .btn__github,
+      & .btn__about {
+         display: none;
+      }
+   }
+
+   @media (max-height: 528px) {
+      & .btn__github,
+      & .btn__about {
+         display: none;
+      }
+   }
+}
+
+.btn {
+   color: #474d57;
+   font-size: 2rem;
+   padding: 1rem;
+   border-radius: 1rem;
+   display: flex;
+
+   &:hover {
+      background: var(--bg-content);
+      color: var(--text-primary);
+   }
+}
+
+.btn__toggle {
+   @extend .btn;
+   color: var(--text-primary);
+
+   @media (max-width: 825px) {
+      transform: rotate(-90deg);
+   }
+
+   span {
+      display: flex;
+   }
+}
+
+.btn__switch {
+   @extend .btn;
+
+   &.active {
+      background-color: var(--bg-content-active);
+      color: #fff;
+   }
+}
+
+.hr {
+   width: 3rem;
+   align-self: center;
+   border: 1px solid var(--bg-divider);
+   border-radius: 5rem;
+
+   @media (max-width: 825px), (max-height: 528px) {
+      display: none;
+}
+
+   &:last-of-type {
+      margin-top: auto;
+   }
+}

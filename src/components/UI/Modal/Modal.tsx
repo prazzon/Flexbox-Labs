@@ -1,19 +1,24 @@
-import styles from "./Modal.module.css";
-import { cloneElement, createContext, ReactElement, ReactNode, useContext, useState } from "react";
+import styles from "./Modal.module.scss";
+import {
+   cloneElement,
+   createContext,
+   ReactElement,
+   ReactNode,
+   useContext,
+   useState,
+} from "react";
 import { createPortal } from "react-dom";
-import { IoCloseOutline } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
+import { FiMinimize2 } from "react-icons/fi";
 
 const container = {
-   hidden: { opacity: 0 },
-   visible: { opacity: 1 },
    exit: { opacity: 0, transition: { duration: 0.3 } },
 };
 
 const modal = {
-   hidden: { y: -30, opacity: 0 },
-   visible: { y: 0, opacity: 1 },
-   exit: { y: -30 },
+   hidden: { opacity: 0, scale: 0 },
+   visible: { opacity: 1, scale: 1 },
+   exit: { opacity: 0, scale: 0 },
 };
 
 interface Context {
@@ -51,6 +56,7 @@ function Content({ children }: { children: ReactNode }) {
       <AnimatePresence>
          {showModal && (
             <motion.div
+               key="modal"
                className={styles.container}
                variants={container}
                initial="hidden"
@@ -59,11 +65,14 @@ function Content({ children }: { children: ReactNode }) {
             >
                <motion.div className={styles.modal} variants={modal}>
                   <button className={styles.close__btn} onClick={closeModal}>
-                     <IoCloseOutline />
+                     <FiMinimize2 />
                   </button>
                   {children}
                </motion.div>
-               <div className={styles.overlay} onClick={closeModal}></div>
+               <motion.div
+                  className={styles.overlay}
+                  onClick={closeModal}
+               ></motion.div>
             </motion.div>
          )}
       </AnimatePresence>,

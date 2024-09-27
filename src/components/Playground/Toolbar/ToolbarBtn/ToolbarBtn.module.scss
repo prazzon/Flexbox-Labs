@@ -1,0 +1,30 @@
+.toolbar__btn {
+   cursor: pointer;
+   border-radius: 1.2rem;
+   font-size: 2.2rem;
+   display: flex;
+   gap: 1rem;
+   align-items: center;
+   padding: 1.2rem;
+   border: none;
+   color: var(--text-primary);
+   transition: all 0.3s ease;
+
+   &:not(.disabled):hover {
+      background: var(--bg-secondary);
+   }
+
+   &:active > svg {
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+   }
+
+   &.disabled {
+      cursor: not-allowed;
+      color: var(--color-disabled);
+   }
+
+   &.delete {
+      color: var(--red);
+   }
+}

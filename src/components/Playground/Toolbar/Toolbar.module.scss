@@ -1,0 +1,32 @@
+.toolbar {
+   grid-column: 1 / -1;
+   justify-self: center;
+   align-self: center;
+   display: flex;
+   justify-content: flex-start;
+   gap: 0.5rem;
+   border-radius: 1.8rem;
+   padding: 1rem;
+   background-color: var(--bg-primary);
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+   position: relative;
+   margin: 0 1.5rem;
+
+   @media (max-width: 370px) {
+      margin: 0;
+      width: 100%;
+      justify-content: space-around;
+      border-radius: 0;
+      gap: 0;
+   }
+
+   .divider {
+      width: 2px;
+      height: 2.5rem;
+      margin-top: 1rem;
+      background-color: var(--bg-divider);
+      opacity: 0.5;
+      border: none;
+      border-radius: 5rem;
+   }
+}

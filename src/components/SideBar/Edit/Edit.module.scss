@@ -1,0 +1,56 @@
+.edit {
+   position: relative;
+   height: 100%;
+}
+
+.tab_switcher {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 1rem;
+   background: var(--bg-container);
+   border-radius: 1.2rem;
+   padding: 0.5rem;
+   margin-bottom: 1.5rem;
+
+   &::after {
+      content: "";
+      display: block;
+      width: 17rem;
+      width: 50%;
+      width: calc(50% - 0.5rem);
+      height: 4rem;
+      position: absolute;
+      top: 0.5rem;
+      border-radius: .9rem;
+      transition: right 0.2s ease;
+      background-color: var(--bg-content-active);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+         0 1px 2px 0 rgba(0, 0, 0, 0.06);
+   }
+
+   &:has(:first-child[data-active="true"])::after {
+      right: 50%;
+   }
+
+   &:has(:last-child[data-active="true"])::after {
+      right: 0.5rem;
+   }
+
+   .switch {
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      padding: 1rem;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 600;
+      z-index: 1000;
+   }
+
+   .switch:hover {
+      color: var(--text-primary);
+   }
+
+   .switch[data-active="true"] {
+      color: #fff;
+   }
+}

@@ -1,0 +1,42 @@
+.tooltip {
+   position: absolute;
+   top: 0;
+   left: 0;
+   pointer-events: none;
+   z-index: 1000;
+   display: none;
+
+   @media (hover: hover) and (pointer: fine) {
+      display: block;
+   }
+
+   &.top,
+   &.bottom {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: auto;
+   }
+
+   &.left,
+   &.right {
+      width: 100%;
+      height: 100%;
+   }
+
+   &__content {
+      text-transform: capitalize;
+      font-size: 14px;
+      font-weight: 500;
+      height: max-content;
+      width: max-content;
+      letter-spacing: 1px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      line-height: 1.4;
+      background: #1c1e21;
+      color: #e3e3e3;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   }
+}

@@ -1,7 +1,7 @@
-import { FaRegCopy } from "react-icons/fa6";
-import styles from "./Copy.module.css";
-import { forwardRef, MutableRefObject } from "react";
+import styles from "./Copy.module.scss";
 import toast from "react-hot-toast";
+import { forwardRef, MutableRefObject } from "react";
+import { FaRegCopy } from "react-icons/fa6";
 
 const Copy = forwardRef<HTMLElement>((_, ref) => {
    const elRef = ref as MutableRefObject<HTMLElement>;

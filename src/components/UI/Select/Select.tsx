@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
-import styles from "./Select.module.css";
-import { IoIosArrowDown } from "react-icons/io";
+import styles from "./Select.module.scss";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
+import { FaCaretDown } from "react-icons/fa";
 
 const selectVariant = {
    hidden: { y: -10 },
@@ -17,7 +17,6 @@ interface SelectProps {
 }
 
 interface ToggleProps {
-   title: string;
    maxLength?: number;
 }
 
@@ -26,6 +25,7 @@ interface Context {
    toggleOpen: () => void;
    select: (value: string) => void;
    active: string;
+   close: () => void;
 }
 
 const SelectContext = createContext<Context | null>(null);
@@ -37,50 +37,52 @@ function Select({ children, active, onSelect }: SelectProps) {
       setOpen((prev) => !prev);
    };
 
+   const close = () => setOpen(false);
+
    const select = (value: string) => {
       onSelect(value);
       setOpen(false);
    };
 
-   const ref = useOutsideClick(() => setOpen(false));
-
    return (
-      <SelectContext.Provider value={{ open, toggleOpen, select, active }}>
-         <div className={styles.select} ref={ref}>
-            {children}
-         </div>
+      <SelectContext.Provider
+         value={{ open, toggleOpen, select, active, close }}
+      >
+         <div className={styles.select}>{children}</div>
       </SelectContext.Provider>
    );
 }
 
-function Toggle({ maxLength = 20, title }: ToggleProps) {
+function Toggle({ maxLength = 20 }: ToggleProps) {
    const { toggleOpen, active } = useContext(SelectContext) as Context;
 
    return (
-      <button className={styles.select__toggle} onClick={toggleOpen}>
-         <div className={styles.select__title}>{title}</div>
-         <div className={styles.select__toggle_text}>
-            {active.length > maxLength
-               ? active.slice(0, maxLength) + "..."
-               : active}
-            <IoIosArrowDown />
-         </div>
-      </button>
+      <>
+         <button className={styles.toggle} onClick={toggleOpen}>
+            <div className={styles.toggle__text}>
+               {active.length > maxLength ? active.slice(0, maxLength) : active}
+               <FaCaretDown />
+            </div>
+         </button>
+      </>
    );
 }
 
 function Options({ children }: { children: React.ReactNode }) {
-   const { open } = useContext(SelectContext) as Context;
+   const { open, close } = useContext(SelectContext) as Context;
+
+   const ref = useOutsideClick(() => close());
 
    return (
       <AnimatePresence>
          {open && (
             <motion.div
-               className={`${styles.select__options}`}
+               className={`${styles.options}`}
                variants={selectVariant}
                initial="hidden"
                animate="visible"
                exit="exit"
+               ref={ref}
             >
                {children}
             </motion.div>
@@ -90,14 +92,16 @@ function Options({ children }: { children: React.ReactNode }) {
 }
 
 function Option({ value }: { value: string }) {
-   const { active, select } = useContext(SelectContext) as Context;
+   const { active, select, close } = useContext(SelectContext) as Context;
 
    return (
       <div
-         className={`${styles.select__option} ${
-            active === value ? styles.active : ""
-         }`}
-         onClick={() => select(value)}
+         className={styles.option}
+         data-active={active === value}
+         onClick={() => {
+            select(value);
+            close();
+         }}
       >
          {value}
       </div>

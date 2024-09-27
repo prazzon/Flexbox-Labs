@@ -1,7 +1,8 @@
 import { createContext, CSSProperties, useState } from "react";
 import { useHistoryState } from "@uidotdev/usehooks";
+import useSettings from "../hooks/useSettings";
 
-interface Container {
+export interface Container {
    display: CSSProperties["display"];
    gap: CSSProperties["gap"];
    flexDirection?: CSSProperties["flexDirection"];
@@ -12,29 +13,36 @@ interface Container {
 }
 
 export interface ItemStyle {
-   order: number;
-   flexGrow: number;
-   flexShrink: number;
-   flexBasis: string;
-   alignSelf: string;
-   fontSize: string;
-   width: string;
-   height: string;
+   order?: number;
+   flexGrow?: number;
+   flexShrink?: number;
+   flexBasis?: string;
+   alignSelf?: string;
+   width?: string;
+   height?: string;
 }
 
-interface Item {
+export interface Item {
    id: number;
    text: string;
    styles: ItemStyle;
 }
 
+export interface State {
+   items: Item[];
+   container: Container;
+}
+
 interface Context {
+   state: State;
+   set: (newState: State) => void;
    container: Container;
    items: Item[];
    editContainer: (key: keyof Container, value: string) => void;
    editItem: (key: string, value: string) => void;
    editItemStyle: (key: string, value: string) => void;
    getItemText: (id: number) => string;
+   editItemText: (id: number, value: string) => void;
    getItemStyle: (
       id: number,
       key: keyof ItemStyle
@@ -44,10 +52,8 @@ interface Context {
    duplicateItem: () => void;
    selectedItems: number[];
    toggleSelected: (id: number) => void;
+   toggleAllSelected: () => void;
    clearSelected: () => void;
-   selectMultiple: boolean;
-   setSelectMultiple: (value: boolean) => void;
-   defaultItemStyle: ItemStyle;
    undoAction: () => void;
    redoAction: () => void;
    canUndo: boolean;
@@ -55,17 +61,20 @@ interface Context {
    resetContainer: () => void;
 }
 
+interface Provider {
+   children: React.ReactNode;
+}
+
 export const PlaygroundContext = createContext<Context | null>(null);
 
 const defaultItemStyle: ItemStyle = {
-   order: 0,
-   flexGrow: 0,
-   flexShrink: 1,
-   flexBasis: "auto",
-   alignSelf: "auto",
-   fontSize: "16px",
-   width: "auto",
-   height: "auto",
+   width: "150px",
+   height: "150px",
+};
+
+const defaultContainer: Container = {
+   display: "flex",
+   gap: "20px",
 };
 
 const newItem = (length: number): Item => {
@@ -76,17 +85,14 @@ const newItem = (length: number): Item => {
    };
 };
 
-export const PlaygroundProvider = ({ children }: { children: React.ReactNode }) => {
+export const PlaygroundProvider = ({ children }: Provider) => {
    const { state, set, undo, redo, clear, canUndo, canRedo } = useHistoryState({
       items: [newItem(0), newItem(1), newItem(2)],
-      container: {
-         display: "flex",
-         gap: "20px",
-      },
+      container: defaultContainer,
    });
+   const { selectMultiple } = useSettings();
 
    const [selectedItems, setSelectedItems] = useState<number[]>([]);
-   const [selectMultiple, setSelectMultiple] = useState(true);
 
    const items = state.items;
    const container = state.container;
@@ -97,6 +103,16 @@ export const PlaygroundProvider = ({ children }: { children: React.ReactNode }) 
 
    const getItemText: Context["getItemText"] = (id) => {
       return items.find((item) => item.id === id)!.text;
+   };
+
+   const editItemText: Context["editItemText"] = (id, value) => {
+      const newItem = items.map((item) => {
+         if (item.id === id) {
+            return { ...item, text: value };
+         }
+         return item;
+      });
+      set({ ...state, items: newItem });
    };
 
    const getItemStyle: Context["getItemStyle"] = (id, key) => {
@@ -163,6 +179,14 @@ export const PlaygroundProvider = ({ children }: { children: React.ReactNode }) 
       }
    };
 
+   const toggleAllSelected = () => {
+      if (selectedItems.length === items.length) {
+         setSelectedItems([]);
+      } else {
+         setSelectedItems(items.map((item) => item.id));
+      }
+   };
+
    const clearSelected = () => {
       if (selectedItems.length > 0) setSelectedItems([]);
    };
@@ -185,22 +209,23 @@ export const PlaygroundProvider = ({ children }: { children: React.ReactNode }) 
    return (
       <PlaygroundContext.Provider
          value={{
+            state,
+            set,
             container,
             items,
             editContainer,
             editItem,
             editItemStyle,
             getItemText,
+            editItemText,
             getItemStyle,
             addItem,
             removeItem,
             duplicateItem,
             selectedItems,
             toggleSelected,
+            toggleAllSelected,
             clearSelected,
-            selectMultiple,
-            setSelectMultiple,
-            defaultItemStyle,
             undoAction,
             redoAction,
             canUndo,
