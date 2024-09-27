@@ -25,11 +25,7 @@ function Layout() {
                      clearSelected();
                   }}
                >
-                  <img
-                     src={layout.imgUrl}
-                     className={styles.layout__img}
-                     alt={layout.name}
-                  />
+                  {layout.img && <layout.img />}
                   <h4 className={styles.layout__title}>{layout.name}</h4>
                </div>
             ))}

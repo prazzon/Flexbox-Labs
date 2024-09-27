@@ -30,8 +30,9 @@
       transform: scale(1.05);
    }
 
-   &__img {
+   svg {
       height: 5rem;
+      fill: var(--text-secondary);
    }
 
    &__title {

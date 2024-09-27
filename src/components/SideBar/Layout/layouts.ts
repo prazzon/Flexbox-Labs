@@ -1,8 +1,18 @@
 import { Container, Item } from "../../../context/PlaygroundContext";
+import fillSpace from "../../../assets/img/fillSpace.svg?react";
+import stretchMiddle from "../../../assets/img/stretchMiddle.svg?react";
+import grid3x3 from "../../../assets/img/grid3x3.svg?react";
+import alternatingGrid from "../../../assets/img/alternatingGrid.svg?react";
+import fillRemainingSpace from "../../../assets/img/fillRemainingSpace.svg?react";
+import fillRemainingSpace2 from "../../../assets/img/fillRemainingSpace2.svg?react";
+import rowWrap from "../../../assets/img/rowWrap.svg?react";
+import horizontalBars from "../../../assets/img/horizontalBars.svg?react";
+import verticalBars from "../../../assets/img/verticalBars.svg?react";
+import verticalStack from "../../../assets/img/verticalStack.svg?react";
 
 interface layout {
    name: string;
-   imgUrl: string;
+   img: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
    layout: {
       items: Item[];
       container: Container;
@@ -12,7 +22,7 @@ interface layout {
 export const layouts: layout[] = [
    {
       name: "Fill Space",
-      imgUrl: "src/assets/img/fillSpace.svg",
+      img: fillSpace,
       layout: {
          items: [
             {
@@ -39,7 +49,7 @@ export const layouts: layout[] = [
    },
    {
       name: "Stretch Middle",
-      imgUrl: "src/assets/img/stretchMiddle.svg",
+      img: stretchMiddle,
       layout: {
          items: [
             { id: 1, text: "1", styles: { width: "150px" } },
@@ -54,7 +64,7 @@ export const layouts: layout[] = [
    },
    {
       name: "3x3 Grid",
-      imgUrl: "src/assets/img/grid3x3.svg",
+      img: grid3x3,
       layout: {
          items: [
             { id: 1, text: "1", styles: { width: "32%" } },
@@ -76,7 +86,7 @@ export const layouts: layout[] = [
    },
    {
       name: "Alternating Grid",
-      imgUrl: "src/assets/img/alternatingGrid.svg",
+      img: alternatingGrid,
       layout: {
          items: [
             { id: 1, text: "1", styles: { flexGrow: 1 } },
@@ -94,7 +104,7 @@ export const layouts: layout[] = [
    },
    {
       name: "Fill Right Space",
-      imgUrl: "src/assets/img/fillRemainingSpace.svg",
+      img: fillRemainingSpace,
       layout: {
          items: [
             { id: 1, text: "1", styles: { height: "150px", width: "150px" } },
@@ -114,7 +124,7 @@ export const layouts: layout[] = [
    },
    {
       name: "Fill Center Space",
-      imgUrl: "src/assets/img/fillRemainingSpace2.svg",
+      img: fillRemainingSpace2,
       layout: {
          items: [
             { id: 1, text: "1", styles: { height: "150px", width: "150px" } },
@@ -134,7 +144,7 @@ export const layouts: layout[] = [
    },
    {
       name: "Row Wrap",
-      imgUrl: "src/assets/img/rowWrap.svg",
+      img: rowWrap,
       layout: {
          items: [
             { id: 1, text: "1", styles: { height: "150px", width: "23.5%" } },
@@ -162,7 +172,7 @@ export const layouts: layout[] = [
    },
    {
       name: "Horizontal Bars",
-      imgUrl: "src/assets/img/horizontalBars.svg",
+      img: horizontalBars,
       layout: {
          items: [
             { id: 1, text: "1", styles: { width: "300px" } },
@@ -180,7 +190,7 @@ export const layouts: layout[] = [
    },
    {
       name: "Vertical Bars",
-      imgUrl: "src/assets/img/verticalBars.svg",
+      img: verticalBars,
       layout: {
          items: [
             { id: 1, text: "1", styles: { height: "300px" } },
@@ -198,7 +208,7 @@ export const layouts: layout[] = [
    },
    {
       name: "Vertical Stack",
-      imgUrl: "src/assets/img/verticalStack.svg",
+      img: verticalStack,
       layout: {
          items: [
             { id: 1, text: "1", styles: { width: "250px", flexGrow: 1 } },
