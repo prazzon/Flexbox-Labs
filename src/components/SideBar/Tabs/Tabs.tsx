@@ -18,6 +18,13 @@ interface Props {
    togglePanel: () => void;
 }
 
+const tabs = [
+   { name: "Edit", icon: <MdOutlineEdit /> },
+   { name: "Save", icon: <FaFloppyDisk /> },
+   { name: "Layout", icon: <TbLayoutGrid /> },
+   { name: "Settings", icon: <LuSettings2 /> },
+];
+
 function Tabs({ switchState, onSwitch, panelState, togglePanel }: Props) {
    const ref = useRef<HTMLDivElement>(null);
 
@@ -50,38 +57,26 @@ function Tabs({ switchState, onSwitch, panelState, togglePanel }: Props) {
 
          <hr className={styles.hr} />
 
-         <button
-            className={styles.btn__switch}
-            data-switch={1}
-            onClick={() => onSwitch(1)}
-         >
-            <MdOutlineEdit />
-            <Tooltip position="right">Edit</Tooltip>
-         </button>
-         <button
-            className={styles.btn__switch}
-            data-switch={2}
-            onClick={() => onSwitch(2)}
-         >
-            <FaFloppyDisk />
-            <Tooltip position="right">Save</Tooltip>
-         </button>
-         <button
-            className={styles.btn__switch}
-            data-switch={3}
-            onClick={() => onSwitch(3)}
-         >
-            <TbLayoutGrid />
-            <Tooltip position="right">Layout</Tooltip>
-         </button>
-         <button
-            className={styles.btn__switch}
-            data-switch={4}
-            onClick={() => onSwitch(4)}
-         >
-            <LuSettings2 />
-            <Tooltip position="right">Settings</Tooltip>
-         </button>
+         {tabs.map((tab, index) => (
+            <button
+               key={index}
+               className={styles.btn__switch}
+               data-switch={index + 1}
+               onClick={() => onSwitch(index + 1)}
+            >
+               {tab.icon}
+
+               <Tooltip position="right">{tab.name}</Tooltip>
+               
+               {switchState === index + 1 && panelState === true && (
+                  <motion.span
+                     className={styles.active}
+                     transition={{ duration: 0.2 }}
+                     layoutId="activeTab"
+                  ></motion.span>
+               )}
+            </button>
+         ))}
 
          <hr className={styles.hr} />
 
@@ -103,7 +98,7 @@ function Tabs({ switchState, onSwitch, panelState, togglePanel }: Props) {
             <Modal.OpenBtn>
                <a className={`${styles.btn} ${styles.btn__about}`}>
                   <FaRegQuestionCircle />
-                  {/* <Tooltip position="right">About</Tooltip> */}
+                  <Tooltip position="right">About</Tooltip>
                </a>
             </Modal.OpenBtn>
             <Modal.Content>
@@ -117,7 +112,7 @@ function Tabs({ switchState, onSwitch, panelState, togglePanel }: Props) {
             className={`${styles.btn} ${styles.btn__github}`}
          >
             <FaGithub />
-            {/* <Tooltip position="right">GitHub</Tooltip> */}
+            <Tooltip position="right">GitHub</Tooltip>
          </a>
       </motion.div>
    );
