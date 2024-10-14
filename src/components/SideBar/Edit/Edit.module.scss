@@ -11,14 +11,13 @@
    border-radius: 1.2rem;
    padding: 0.5rem;
    margin-bottom: 1.5rem;
+   position: relative;
 
    &::after {
       content: "";
       display: block;
-      width: 17rem;
-      width: 50%;
-      width: calc(50% - 0.5rem);
-      height: 4rem;
+      width: calc(50% - 1rem);
+      height: calc(100% - 1rem);
       position: absolute;
       top: 0.5rem;
       border-radius: .9rem;
@@ -29,7 +28,7 @@
    }
 
    &:has(:first-child[data-active="true"])::after {
-      right: 50%;
+      right: calc(50% + 0.5rem);
    }
 
    &:has(:last-child[data-active="true"])::after {
@@ -44,6 +43,7 @@
       text-align: center;
       font-weight: 600;
       z-index: 1000;
+      position: relative;
    }
 
    .switch:hover {
