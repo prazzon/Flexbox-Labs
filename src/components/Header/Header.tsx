@@ -1,10 +1,13 @@
 import styles from "./Header.module.scss";
 import Logo from "../../assets/img/logo.svg?react";
 import Modal from "../UI/Modal/Modal";
-import { FaGithub, FaRegQuestionCircle } from "react-icons/fa";
+import { FaGithub, FaRegQuestionCircle, FaStar } from "react-icons/fa";
 import About from "../SideBar/About/About";
+import { useStarCount } from "../../hooks/useStarCount";
 
 function Header() {
+   const stars = useStarCount();
+
    return (
       <div className={styles.header}>
          <h1 className={styles.logo}>
@@ -36,6 +39,18 @@ function Header() {
                <FaGithub />
             </a>
          </div>
+
+         <a href="https://github.com/prazzon/flexbox-labs" className={styles.star_btn} target="_blank">
+            <span className={styles.hover_effect}></span>
+            <div className={styles.icon_text}>
+               <FaGithub />
+               <span className={styles.label}>Star on GitHub</span>
+            </div>
+            <div className={styles.count}>
+               <FaStar />
+               <span className={styles.count_number}>{stars}</span>
+            </div>
+         </a>
       </div>
    );
 }
