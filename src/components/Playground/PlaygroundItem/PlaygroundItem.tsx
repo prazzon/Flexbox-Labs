@@ -56,6 +56,7 @@ const PlaygroundItem = forwardRef<HTMLDivElement, Props>(
                   onChange={(e) => editItemText(item.id, e.target.value)}
                   onClick={(e) => (e.target as HTMLInputElement).select()}
                   value={item.text}
+                  maxLength={50}
                   spellCheck={false}
                />
             </motion.label>
