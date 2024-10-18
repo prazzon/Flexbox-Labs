@@ -12,6 +12,15 @@
 
    &:hover {
       background: var(--bg-content-hover);
+
+      .text_container .text {
+         opacity: 0.8;
+      }
+
+      .text_container:has(> .input:not(:focus)) .edit_icon {
+         opacity: 1;
+         transform: scale(1);
+      }
    }
 }
 
@@ -21,7 +30,6 @@
    display: inline-block;
    max-width: 100%;
    max-height: 100%;
-   overflow: hidden;
    white-space: pre-wrap;
    border-radius: 1rem;
    background-color: var(--bg-content-border);
@@ -37,10 +45,12 @@
       max-width: 100%;
       overflow: hidden;
       min-width: 4rem;
+      transition: all 0.3s ease;
    }
 
    .input {
       position: absolute;
+      border-radius: 1rem;
       width: 0;
       height: 100%;
       opacity: 0;
@@ -64,6 +74,17 @@
          opacity: 1;
       }
    }
+
+   .edit_icon {
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      font-size: 1.8rem;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: all 0.3s ease;
+      z-index: 10;
+   }
 }
 
 .checkbox {
@@ -76,7 +97,7 @@
    cursor: pointer;
    pointer-events: none;
    transition: all 0.2s ease;
-   z-index: 1;
+   z-index: 100;
 
    /* Hide the default checkbox */
    input {

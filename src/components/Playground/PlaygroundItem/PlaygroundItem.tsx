@@ -4,6 +4,7 @@ import styles from "./PlaygroundItem.module.scss";
 import { motion } from "framer-motion";
 import { ItemStyle } from "../../../context/PlaygroundContext";
 import usePlayground from "../../../hooks/usePlayground";
+import { MdModeEditOutline } from "react-icons/md";
 
 const popIn = {
    hidden: { opacity: 0, scale: 0.85 },
@@ -50,6 +51,9 @@ const PlaygroundItem = forwardRef<HTMLDivElement, Props>(
                transition={{ duration: 0.1 }}
                className={styles.text_container}
             >
+               <span className={styles.edit_icon}>
+                  <MdModeEditOutline />
+               </span>
                <div className={styles.text}>{item.text}</div>
                <textarea
                   className={styles.input}
