@@ -29,11 +29,18 @@ const PlaygroundItem = forwardRef<HTMLDivElement, Props>(
 
       useRipple<HTMLDivElement>(elRef, 100);
 
+      function handleClick(e: React.MouseEvent) {
+         const target = e.target as HTMLElement;
+         if (target.classList.contains(styles.item)) {
+            onClick();
+         }
+      }
+
       return (
          <motion.div
             layout
             className={styles.item}
-            onClick={onClick}
+            onClick={handleClick}
             style={item.styles}
             ref={ref}
             variants={popIn}
