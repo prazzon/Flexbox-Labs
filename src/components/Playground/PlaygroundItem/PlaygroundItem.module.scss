@@ -77,11 +77,15 @@
 
    .edit_icon {
       position: absolute;
-      top: -0.5rem;
-      right: -0.5rem;
-      font-size: 1.8rem;
+      top: -.6rem;
+      right: -1rem;
+      font-size: 1.7rem;
       opacity: 0;
       transform: scale(0.7);
+      display: flex;
+      background-color: var(--bg-content);
+      padding: .4rem;
+      border-radius: 5rem;
       transition: all 0.3s ease;
       z-index: 10;
    }
