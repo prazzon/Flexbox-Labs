@@ -7,8 +7,6 @@ export function useRipple<T extends HTMLElement>(ref: RefObject<T>, scaleSize = 
       function handleClick(e: MouseEvent) {
          if (!current) return;
 
-         current.style.position = "relative";
-
          const { offsetX, offsetY } = e;
 
          const ripple = document.createElement("span");
