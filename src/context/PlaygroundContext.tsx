@@ -85,11 +85,13 @@ const newItem = (length: number): Item => {
    };
 };
 
+const defaultState: State = {
+   items: [newItem(0), newItem(1), newItem(2)],
+   container: defaultContainer,
+};
+
 export const PlaygroundProvider = ({ children }: Provider) => {
-   const { state, set, undo, redo, clear, canUndo, canRedo } = useHistoryState({
-      items: [newItem(0), newItem(1), newItem(2)],
-      container: defaultContainer,
-   });
+   const { state, set, undo, redo, canUndo, canRedo } = useHistoryState(defaultState);
    const { selectMultiple } = useSettings();
 
    const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -192,7 +194,7 @@ export const PlaygroundProvider = ({ children }: Provider) => {
    };
 
    const resetContainer = () => {
-      clear();
+      set(defaultState);
       setSelectedItems([]);
    };
 
