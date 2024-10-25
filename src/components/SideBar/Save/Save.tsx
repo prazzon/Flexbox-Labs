@@ -43,6 +43,11 @@ function Save() {
       saveEdit([]);
    }
 
+   function handleView(data: State) {
+      set(data);
+      clearSelected();
+   }
+
    function handleDelete(key: string) {
       saveEdit((prevEdits) => prevEdits.filter((edit) => edit.name !== key));
    }
@@ -88,10 +93,7 @@ function Save() {
                      </div>
                      <button
                         className={styles.item__btn}
-                        onClick={() => {
-                           set(edit.data);
-                           clearSelected();
-                        }}
+                        onClick={() => handleView(edit.data)}
                      >
                         <FaEye />
                      </button>

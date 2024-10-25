@@ -2,9 +2,15 @@ import styles from "./Layout.module.scss";
 import usePlayground from "../../../hooks/usePlayground";
 import { layouts } from "./layouts";
 import { motion } from "framer-motion";
+import { State } from "../../../context/PlaygroundContext";
 
 function Layout() {
    const { set, clearSelected } = usePlayground();
+
+   function handleClick(layout: State) {
+      set(layout);
+      clearSelected();
+   }
 
    return (
       <motion.div
@@ -20,10 +26,7 @@ function Layout() {
                <div
                   key={index}
                   className={styles.layout}
-                  onClick={() => {
-                     set(layout.layout);
-                     clearSelected();
-                  }}
+                  onClick={() => handleClick(layout.layout)}
                >
                   {layout.img && <layout.img />}
                   <h4 className={styles.layout__title}>{layout.name}</h4>
