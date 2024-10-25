@@ -37,6 +37,7 @@
    padding: 1rem;
    border-radius: 1rem;
    display: flex;
+   cursor: pointer;
 
    &:hover {
       color: var(--text-primary);
