@@ -6,6 +6,7 @@ import { HiOutlineDuplicate } from "react-icons/hi";
 import { VscDebugRestart } from "react-icons/vsc";
 import { motion } from "framer-motion";
 import { IoAddOutline } from "react-icons/io5";
+import { useKeyPress } from "../../../hooks/useKeyPress";
 
 function Toolbar() {
    const {
@@ -21,6 +22,13 @@ function Toolbar() {
    } = usePlayground();
 
    const emptySelected = selectedItems.length === 0;
+
+   useKeyPress("ctrlKey + a", addItem);
+   useKeyPress("ctrlKey + z", undo, { condition: canUndo });
+   useKeyPress("ctrlKey + y", redo, { condition: canRedo });
+   useKeyPress("ctrlKey + d", duplicateItem, { condition: !emptySelected });
+   useKeyPress("ctrlKey + x", removeItem, { condition: !emptySelected });
+   useKeyPress("ctrlKey + shiftKey + r", resetContainer);
 
    return (
       <motion.div layout className={styles.toolbar}>
