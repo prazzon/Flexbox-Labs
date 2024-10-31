@@ -27,4 +27,12 @@
    &.delete {
       color: var(--red);
    }
+
+   .shortcut {
+      font-size: 12px;
+      background-color: var(--bg-secondary);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      margin-right: -0.5rem;
+   }
 }

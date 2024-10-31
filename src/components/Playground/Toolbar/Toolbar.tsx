@@ -8,6 +8,14 @@ import { motion } from "framer-motion";
 import { IoAddOutline } from "react-icons/io5";
 import { useKeyPress } from "../../../hooks/useKeyPress";
 
+const getOS = () => {
+   const userAgent = window.navigator.userAgent;
+   if (userAgent.indexOf("Win") !== -1) return "Windows";
+   if (userAgent.indexOf("Mac") !== -1) return "Mac";
+   if (userAgent.indexOf("Linux") !== -1) return "Linux";
+   return "Unknown";
+};
+
 function Toolbar() {
    const {
       addItem,
@@ -30,9 +38,15 @@ function Toolbar() {
    useKeyPress("ctrlKey + x", removeItem, { condition: !emptySelected });
    useKeyPress("ctrlKey + shiftKey + r", resetContainer);
 
+   const OS = getOS();
+
    return (
       <motion.div layout className={styles.toolbar}>
-         <ToolbarBtn value="Add" onClick={addItem}>
+         <ToolbarBtn
+            value="Add"
+            shortcut={OS === "Mac" ? "cmd + a" : "ctrl + a"}
+            onClick={addItem}
+         >
             <IoAddOutline />
          </ToolbarBtn>
 
@@ -40,6 +54,7 @@ function Toolbar() {
 
          <ToolbarBtn
             value="Duplicate"
+            shortcut={OS === "Mac" ? "cmd + d" : "ctrl + d"}
             onClick={duplicateItem}
             disabled={emptySelected}
             alert={true}
@@ -49,6 +64,7 @@ function Toolbar() {
 
          <ToolbarBtn
             value="Delete"
+            shortcut={OS === "Mac" ? "cmd + x" : "ctrl + x"}
             onClick={removeItem}
             disabled={emptySelected}
             alert={true}
@@ -57,17 +73,31 @@ function Toolbar() {
             <LuTrash2 />
          </ToolbarBtn>
 
-         <ToolbarBtn value="Reset" onClick={resetContainer}>
+         <ToolbarBtn
+            value="Reset"
+            shortcut={OS === "Mac" ? "cmd + shift + r" : "ctrl + shift + r"}
+            onClick={resetContainer}
+         >
             <VscDebugRestart />
          </ToolbarBtn>
 
          <hr className={styles.divider} />
 
-         <ToolbarBtn value="Undo" onClick={undo} disabled={!canUndo}>
+         <ToolbarBtn
+            value="Undo"
+            shortcut={OS === "Mac" ? "cmd + z" : "ctrl + z"}
+            onClick={undo}
+            disabled={!canUndo}
+         >
             <LuUndo />
          </ToolbarBtn>
 
-         <ToolbarBtn value="Redo" onClick={redo} disabled={!canRedo}>
+         <ToolbarBtn
+            value="Redo"
+            shortcut={OS === "Mac" ? "cmd + y" : "ctrl + y"}
+            onClick={redo}
+            disabled={!canRedo}
+         >
             <LuRedo />
          </ToolbarBtn>
       </motion.div>

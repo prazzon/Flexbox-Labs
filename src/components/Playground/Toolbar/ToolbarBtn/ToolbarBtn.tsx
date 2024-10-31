@@ -6,6 +6,7 @@ import { useRipple } from "../../../../hooks/useRipple";
 
 interface Props {
    children: ReactNode;
+   shortcut?: string;
    onClick?: () => void;
    type?: string;
    disabled?: boolean;
@@ -15,6 +16,7 @@ interface Props {
 
 function ToolbarBtn({
    children,
+   shortcut,
    onClick,
    disabled = false,
    alert = false,
@@ -38,7 +40,12 @@ function ToolbarBtn({
    return (
       <button className={className} onClick={handleClick} ref={ref}>
          {children}
-         {value && <Tooltip>{value}</Tooltip>}
+         {value && !disabled && (
+            <Tooltip>
+               {value}{" "}
+               {shortcut && <span className={styles.shortcut}>{shortcut}</span>}
+            </Tooltip>
+         )}
       </button>
    );
 }
