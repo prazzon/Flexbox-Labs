@@ -69,7 +69,7 @@
    background-color: var(--bg-secondary);
    color: var(--text-primary);
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-   padding: 1.1rem 1.6rem;
+   padding: 1.1rem 1.3rem;
    border-radius: 1rem;
    transition: all 0.3s ease-out;
    position: relative;
@@ -113,29 +113,4 @@
 
 .label {
    margin-left: 0.25rem;
-}
-
-.count {
-   display: flex;
-   align-items: center;
-   gap: 0.25rem;
-   margin-left: 0.5rem;
-}
-
-.count svg {
-   font-size: 1.4rem;
-   color: gray;
-   transition: color 0.3s ease-out;
-}
-
-.star_btn:hover .count svg {
-   color: #d4aa20;
-}
-
-.count_number {
-   font-size: 1.5rem;
-   font-weight: 800;
-   letter-spacing: 0.05rem;
-   color: gray;
-   transition: color 0.3s ease-out;
 }
