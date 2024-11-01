@@ -30,6 +30,10 @@
       margin-right: auto;
       font-size: 1.5rem;
       font-weight: 600;
+
+      @media (max-width: 525px) {
+         font-size: 1.4rem;
+      }
    }
 }
 
@@ -81,6 +85,10 @@
          font-size: 2.8rem;
          color: var(--text-secondary);
          transition: transform 0.2s ease-in-out;
+
+         @media (max-width: 525px) {
+            font-size: 2rem;
+         }
       }
 
       &_icon {
@@ -175,11 +183,11 @@
    }
 
    &__blue {
-      background-color: #1771F1;
+      background-color: #1771f1;
    }
 
    &__yellow {
-      background-color: #D8664D;
+      background-color: #d8664d;
    }
 
    &__turquoise {
@@ -255,4 +263,8 @@
    padding: 1rem 1.5rem;
    padding-right: 2rem;
    font-weight: 600;
+
+   @media (max-width: 525px) {
+      font-size: 1.4rem;
+   }
 }
