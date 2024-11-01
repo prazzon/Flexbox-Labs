@@ -8,6 +8,7 @@
    padding: 1.2rem;
    border: none;
    color: var(--text-primary);
+   position: relative;
    transition: all 0.3s ease;
 
    &:not(.disabled):hover {
