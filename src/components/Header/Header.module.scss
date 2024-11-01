@@ -79,6 +79,10 @@
    @media (max-width: 825px) {
       display: none;
    }
+
+   @media (max-width: 528px), (max-height: 528px) {
+      display: none;
+   }
 }
 
 .star_btn:hover {
