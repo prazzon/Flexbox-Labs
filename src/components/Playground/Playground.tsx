@@ -7,6 +7,7 @@ import Toolbar from "./Toolbar/Toolbar";
 import Snackbar from "./Snackbar/Snackbar";
 
 import { motion } from "framer-motion";
+import MainAxisPointer from "./MainAxisPointer/MainAxisPointer";
 
 function Playground() {
    const {
@@ -28,6 +29,7 @@ function Playground() {
          layoutId="playground"
       >
          <Toolbar />
+         <MainAxisPointer />
          <motion.div
             layout
             className={styles.playground_view}
