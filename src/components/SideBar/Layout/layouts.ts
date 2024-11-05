@@ -41,10 +41,7 @@ export const layouts: layout[] = [
                styles: { width: "auto", height: "auto", flexGrow: 1 },
             },
          ],
-         container: {
-            display: "flex",
-            gap: "20px",
-         },
+         container: { display: "flex", gap: "20px" },
       },
    },
    {
@@ -56,10 +53,7 @@ export const layouts: layout[] = [
             { id: 2, text: "2", styles: { flexGrow: 1 } },
             { id: 3, text: "3", styles: { width: "150px" } },
          ],
-         container: {
-            display: "flex",
-            gap: "20px",
-         },
+         container: { display: "flex", gap: "20px" },
       },
    },
    {
@@ -77,11 +71,7 @@ export const layouts: layout[] = [
             { id: 8, text: "8", styles: { width: "32%" } },
             { id: 9, text: "9", styles: { width: "32%" } },
          ],
-         container: {
-            display: "flex",
-            gap: "20px",
-            flexWrap: "wrap",
-         },
+         container: { display: "flex", gap: "2%", flexWrap: "wrap" },
       },
    },
    {
@@ -95,51 +85,31 @@ export const layouts: layout[] = [
             { id: 4, text: "4", styles: { flexGrow: 1 } },
             { id: 5, text: "5", styles: { flexGrow: 1 } },
          ],
-         container: {
-            display: "flex",
-            gap: "20px",
-            flexWrap: "wrap",
-         },
+         container: { display: "flex", gap: "20px", flexWrap: "wrap" },
       },
    },
    {
-      name: "Fill Right Space",
+      name: "Fill Right",
       img: fillRemainingSpace,
       layout: {
          items: [
-            { id: 1, text: "1", styles: { height: "150px", width: "150px" } },
-            { id: 2, text: "2", styles: { height: "150px", width: "150px" } },
-            {
-               id: 3,
-               text: "3",
-               styles: { height: "150px", width: "150px", flexGrow: 1 },
-            },
+            { id: 1, text: "1", styles: { height: "150px" } },
+            { id: 2, text: "2", styles: { height: "150px" } },
+            { id: 3, text: "3", styles: { height: "150px", flexGrow: 1 } },
          ],
-         container: {
-            display: "flex",
-            gap: "20px",
-            flexWrap: "wrap",
-         },
+         container: { display: "flex", gap: "20px", flexWrap: "wrap" },
       },
    },
    {
-      name: "Fill Center Space",
+      name: "Fill Center",
       img: fillRemainingSpace2,
       layout: {
          items: [
-            { id: 1, text: "1", styles: { height: "150px", width: "150px" } },
-            {
-               id: 2,
-               text: "2",
-               styles: { height: "150px", width: "150px", flexGrow: 1 },
-            },
-            { id: 3, text: "3", styles: { height: "150px", width: "150px" } },
+            { id: 1, text: "1", styles: { height: "150px" } },
+            { id: 2, text: "2", styles: { height: "150px", flexGrow: 1 } },
+            { id: 3, text: "3", styles: { height: "150px" } },
          ],
-         container: {
-            display: "flex",
-            gap: "20px",
-            flexWrap: "wrap",
-         },
+         container: { display: "flex", gap: "20px", flexWrap: "wrap" },
       },
    },
    {
@@ -164,7 +134,7 @@ export const layouts: layout[] = [
          ],
          container: {
             display: "flex",
-            gap: "20px",
+            gap: "2%",
             flexWrap: "wrap",
             alignContent: "start",
          },
@@ -175,17 +145,13 @@ export const layouts: layout[] = [
       img: horizontalBars,
       layout: {
          items: [
-            { id: 1, text: "1", styles: { width: "300px" } },
-            { id: 2, text: "2", styles: { width: "450px" } },
-            { id: 3, text: "3", styles: { width: "600px" } },
-            { id: 4, text: "4", styles: { width: "150px" } },
-            { id: 5, text: "5", styles: { width: "250px" } },
+            { id: 1, text: "1", styles: { width: "40%" } },
+            { id: 2, text: "2", styles: { width: "80%" } },
+            { id: 3, text: "3", styles: { width: "100%" } },
+            { id: 4, text: "4", styles: { width: "25%" } },
+            { id: 5, text: "5", styles: { width: "35%" } },
          ],
-         container: {
-            display: "flex",
-            gap: "20px",
-            flexDirection: "column",
-         },
+         container: { display: "flex", gap: "20px", flexDirection: "column" },
       },
    },
    {
@@ -193,17 +159,13 @@ export const layouts: layout[] = [
       img: verticalBars,
       layout: {
          items: [
-            { id: 1, text: "1", styles: { height: "300px" } },
-            { id: 2, text: "2", styles: { height: "450px" } },
-            { id: 3, text: "3", styles: { height: "600px" } },
-            { id: 4, text: "4", styles: { height: "150px" } },
-            { id: 5, text: "5", styles: { height: "250px" } },
+            { id: 1, text: "1", styles: { height: "40%" } },
+            { id: 2, text: "2", styles: { height: "80%" } },
+            { id: 3, text: "3", styles: { height: "100%" } },
+            { id: 4, text: "4", styles: { height: "25%" } },
+            { id: 5, text: "5", styles: { height: "35%" } },
          ],
-         container: {
-            display: "flex",
-            gap: "20px",
-            alignItems: "end",
-         },
+         container: { display: "flex", gap: "20px", alignItems: "end" },
       },
    },
    {
@@ -215,7 +177,6 @@ export const layouts: layout[] = [
             { id: 2, text: "2", styles: { width: "250px", flexGrow: 1 } },
             { id: 3, text: "3", styles: { width: "250px", flexGrow: 1 } },
             { id: 4, text: "4", styles: { width: "250px", flexGrow: 1 } },
-            { id: 5, text: "5", styles: { width: "250px", flexGrow: 1 } },
          ],
          container: {
             display: "flex",
