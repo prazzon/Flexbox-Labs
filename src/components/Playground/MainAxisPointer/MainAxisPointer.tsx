@@ -50,7 +50,7 @@ function MainAxisPointer() {
          >
             <FaLongArrowAltRight />
          </motion.span>
-         <Tooltip position="bottom">main axis</Tooltip>
+         <Tooltip position="bottom">main axis direction</Tooltip>
       </motion.div>
    );
 }
