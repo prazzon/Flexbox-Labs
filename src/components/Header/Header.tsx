@@ -7,10 +7,12 @@ import About from "../SideBar/About/About";
 function Header() {
    return (
       <div className={styles.header}>
-         <h1 className={styles.logo}>
-            <Logo className={styles.logo_svg} />
-            Flexbox Labs
-         </h1>
+         <a href="/" className={styles.link}>
+            <h1 className={styles.logo}>
+               <Logo className={styles.logo_svg} />
+               Flexbox Labs
+            </h1>
+         </a>
          <hr className={styles.divider} />
          <div className={styles.description}>
             A visual tool for experimenting with flexbox layouts
