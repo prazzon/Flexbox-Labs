@@ -26,10 +26,15 @@ function About() {
                always saved, and you can return to it anytime.
             </p>
 
-            <p>
+            {/* <p>
                Flexbox Labs provides pre-built layouts in the{" "}
                <strong>Layout Tab</strong>. Load templates with a click to start
                quickly or get inspired by ready-made designs.
+            </p> */}
+            <p>
+               The <strong>Layout Tab</strong> provides pre-built layouts. Load
+               templates with a click to start quickly or get inspired by ready-
+               made designs.
             </p>
 
             <p>
@@ -41,7 +46,15 @@ function About() {
 
             <p>
                The project is <strong>Open Source</strong> and available on{" "}
-               <a href="https://github.com/prazzon/flexlab" target="_blank">GitHub</a>.
+               <a href="https://github.com/prazzon/flexlab" target="_blank">
+                  GitHub
+               </a>
+               .<br />
+               If you have any feedback, suggestions, or issues, please{" "}
+               <a href="https://github.com/yourusername/flexbox-labs/issues">
+                  open an issue
+               </a>{" "}
+               on Github.
             </p>
          </div>
       </div>
