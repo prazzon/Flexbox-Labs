@@ -89,7 +89,7 @@ function DisplayCode() {
                         );
                      })}
                   </pre>
-                  <Copy ref={cssRef} />
+                  <Copy ref={cssRef} id="css" />
                </div>
             </div>
             <div className={styles.code__container}>
@@ -118,7 +118,7 @@ function DisplayCode() {
                      <br />
                      &lt;/<span className={styles.tag}>div</span>&gt;
                   </pre>
-                  <Copy ref={htmlRef} />
+                  <Copy ref={htmlRef} id="html" />
                </div>
             </div>
          </div>

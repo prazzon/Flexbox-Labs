@@ -4,7 +4,11 @@ import { forwardRef, MutableRefObject } from "react";
 import { FaRegCopy } from "react-icons/fa6";
 import { useRipple } from "../../../hooks/useRipple";
 
-const Copy = forwardRef<HTMLElement>((_, ref) => {
+interface Props {
+   id: string;
+}
+
+const Copy = forwardRef<HTMLElement, Props>(({ id }, ref) => {
    const elRef = ref as MutableRefObject<HTMLDivElement>;
    const btnRef = ref as MutableRefObject<HTMLDivElement>;
 
@@ -12,7 +16,7 @@ const Copy = forwardRef<HTMLElement>((_, ref) => {
 
    function copy() {
       navigator.clipboard.writeText(elRef.current.innerText).then(() => {
-         toast.success("Copied to clipboard", { position: "top-center" });
+         toast.success("Copied to clipboard", { id, position: "top-center" });
       });
    }
 

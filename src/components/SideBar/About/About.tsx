@@ -26,11 +26,6 @@ function About() {
                always saved, and you can return to it anytime.
             </p>
 
-            {/* <p>
-               Flexbox Labs provides pre-built layouts in the{" "}
-               <strong>Layout Tab</strong>. Load templates with a click to start
-               quickly or get inspired by ready-made designs.
-            </p> */}
             <p>
                The <strong>Layout Tab</strong> provides pre-built layouts. Load
                templates with a click to start quickly or get inspired by ready-
