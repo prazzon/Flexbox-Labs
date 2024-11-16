@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { RiSaveFill } from "react-icons/ri";
 import { LuTrash2 } from "react-icons/lu";
 import { FaEye } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 interface Edits {
    name: string;
@@ -19,6 +20,10 @@ function Save() {
    const [name, setName] = useState("");
    const { state, set, clearSelected } = usePlayground();
    const [edits, saveEdit] = useLocalStorage<Edits[]>("edits", []);
+
+   let prevEdits: Edits[];
+
+   const toastConfig = { duration: 10000, style: { paddingRight: "15px" } };
 
    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
@@ -40,7 +45,28 @@ function Save() {
    }
 
    function Clear() {
+      prevEdits = edits;
+
       saveEdit([]);
+
+      toast.error(
+         (t) => (
+            <div className={styles.toast}>
+               <p>All edits has been deleted</p>
+               <button
+                  onClick={() => {
+                     saveEdit(prevEdits);
+                     toast.dismiss(t.id);
+                  }}
+                  className={styles.undo}
+               >
+                  Undo
+               </button>
+               <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
+            </div>
+         ),
+         toastConfig
+      );
    }
 
    function handleView(data: State) {
@@ -49,7 +75,28 @@ function Save() {
    }
 
    function handleDelete(key: string) {
+      prevEdits = edits;
+
       saveEdit((prevEdits) => prevEdits.filter((edit) => edit.name !== key));
+
+      toast.error(
+         (t) => (
+            <div className={styles.toast}>
+               <p>Edit has been deleted</p>
+               <button
+                  onClick={() => {
+                     saveEdit(prevEdits);
+                     toast.dismiss(t.id);
+                  }}
+                  className={styles.undo}
+               >
+                  Undo
+               </button>
+               <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
+            </div>
+         ),
+         toastConfig
+      );
    }
 
    return (

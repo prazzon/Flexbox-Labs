@@ -26,6 +26,7 @@ function App() {
                success: { duration: 3000 },
                error: { duration: 2000 },
                style: {
+                  maxWidth: "100%",
                   borderRadius: "15px",
                   padding: "12px 18px",
                   backgroundColor: "#101114",

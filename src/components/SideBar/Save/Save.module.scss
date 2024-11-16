@@ -156,3 +156,18 @@
       opacity: 1;
    }
 }
+
+.toast {
+   display: flex;
+   gap: 2rem;
+   padding: 0.5rem 0;
+
+   button {
+      font-weight: 500;
+   }
+
+   .undo {
+      color: var(--color-primary);
+      font-weight: 600;
+   }
+}
