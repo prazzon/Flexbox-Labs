@@ -162,6 +162,16 @@
    gap: 2rem;
    padding: 0.5rem 0;
 
+   @media (max-width: 528px) {
+      font-size: 1.4rem;
+      gap: 1.5rem;
+   }
+
+   @media (max-width: 380px) {
+      font-size: 1.3rem;
+      gap: 1rem;
+   }
+
    button {
       font-weight: 500;
    }
