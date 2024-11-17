@@ -112,6 +112,7 @@ function Save() {
             <input
                type="text"
                placeholder="Name"
+               maxLength={20}
                className={styles.input}
                value={name}
                onChange={(e) => setName(e.target.value)}
