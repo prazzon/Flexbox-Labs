@@ -11,6 +11,7 @@ import { FaEye } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 interface Edits {
+   id: number;
    name: string;
    date: string;
    data: State;
@@ -35,6 +36,7 @@ function Save() {
       saveEdit((prevEdits) => [
          ...prevEdits,
          {
+            id: Date.now(),
             name,
             date,
             data: state,
@@ -74,10 +76,14 @@ function Save() {
       clearSelected();
    }
 
-   function handleDelete(key: string) {
+   function handleDelete(id: number, name: string) {
       prevEdits = edits;
 
-      saveEdit((prevEdits) => prevEdits.filter((edit) => edit.name !== key));
+      if (id) {
+         saveEdit((prevEdits) => prevEdits.filter((edit) => edit.id !== id));
+      } else {
+         saveEdit((prevEdits) => prevEdits.filter((edit) => edit.name !== name));
+      }
 
       toast.error(
          (t) => (
@@ -147,7 +153,8 @@ function Save() {
                      </button>
                      <button
                         className={`${styles.item__btn} ${styles.delete}`}
-                        onClick={() => handleDelete(edit.name)}
+                        // onClick={() => handleDelete(edit.name)}
+                        onClick={() => handleDelete(edit.id, edit.name)}
                      >
                         <LuTrash2 />
                      </button>
