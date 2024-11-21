@@ -1,14 +1,14 @@
-import styles from "./Save.module.scss";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { useState } from "react";
-import usePlayground from "../../../hooks/usePlayground";
-import { State } from "../../../context/PlaygroundContext";
 import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { State } from "../../../context/PlaygroundContext";
+import usePlayground from "../../../hooks/usePlayground";
+import styles from "./Save.module.scss";
 
-import { RiSaveFill } from "react-icons/ri";
-import { LuTrash2 } from "react-icons/lu";
-import { FaEye } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { FaEye } from "react-icons/fa";
+import { LuTrash2 } from "react-icons/lu";
+import { RiSaveFill } from "react-icons/ri";
 
 interface Edits {
    id: number;
@@ -22,9 +22,11 @@ function Save() {
    const { state, set, clearSelected } = usePlayground();
    const [edits, saveEdit] = useLocalStorage<Edits[]>("edits", []);
 
-   let prevEdits: Edits[];
-
-   const toastConfig = { duration: 10000, style: { paddingRight: "15px" } };
+   const toastConfig = {
+      duration: 10000,
+      style: { paddingRight: "15px" },
+      id: "save",
+   };
 
    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
@@ -46,15 +48,13 @@ function Save() {
       setName("");
    }
 
-   function Clear() {
-      prevEdits = edits;
-
-      saveEdit([]);
+   function handleDeleteEditToast(message: string) {
+      const prevEdits = edits;
 
       toast.error(
          (t) => (
             <div className={styles.toast}>
-               <p>All edits has been deleted</p>
+               <p>{message}</p>
                <button
                   onClick={() => {
                      saveEdit(prevEdits);
@@ -69,6 +69,12 @@ function Save() {
          ),
          toastConfig
       );
+   }
+
+   function Clear() {
+      saveEdit([]);
+
+      handleDeleteEditToast("All edits has been deleted");
    }
 
    function handleView(data: State) {
@@ -77,32 +83,15 @@ function Save() {
    }
 
    function handleDelete(id: number, name: string) {
-      prevEdits = edits;
-
       if (id) {
          saveEdit((prevEdits) => prevEdits.filter((edit) => edit.id !== id));
       } else {
-         saveEdit((prevEdits) => prevEdits.filter((edit) => edit.name !== name));
+         saveEdit((prevEdits) =>
+            prevEdits.filter((edit) => edit.name !== name)
+         );
       }
 
-      toast.error(
-         (t) => (
-            <div className={styles.toast}>
-               <p>Edit has been deleted</p>
-               <button
-                  onClick={() => {
-                     saveEdit(prevEdits);
-                     toast.dismiss(t.id);
-                  }}
-                  className={styles.undo}
-               >
-                  Undo
-               </button>
-               <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
-            </div>
-         ),
-         toastConfig
-      );
+      handleDeleteEditToast("Edit has been deleted");
    }
 
    return (
@@ -153,7 +142,6 @@ function Save() {
                      </button>
                      <button
                         className={`${styles.item__btn} ${styles.delete}`}
-                        // onClick={() => handleDelete(edit.name)}
                         onClick={() => handleDelete(edit.id, edit.name)}
                      >
                         <LuTrash2 />
