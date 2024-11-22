@@ -36,6 +36,8 @@ function TextInput({ size, value, type, onChange, unitOptions, step }: Props) {
       const { value } = e.target;
 
       if (type === "number") {
+         // removes leading zeros
+         e.target.value = value.replace(/^0+(\d+)/, "$1");
          onChange(value);
          setLastValue(value);
       } else {
