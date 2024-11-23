@@ -1,18 +1,19 @@
-import { Container, Item } from "../../../context/PlaygroundContext";
-import fillSpace from "../../../assets/img/fillSpace.svg?react";
-import stretchMiddle from "../../../assets/img/stretchMiddle.svg?react";
-import html5 from "../../../assets/img/html5.svg?react";
-import masonry from "../../../assets/img/masonry.svg?react";
-import grid3x3 from "../../../assets/img/grid3x3.svg?react";
-import grid4x4 from "../../../assets/img/grid4x4.svg?react";
-import alternatingGrid from "../../../assets/img/alternatingGrid.svg?react";
 import alignCenter from "../../../assets/img/alignCenter.svg?react";
+import alternatingGrid from "../../../assets/img/alternatingGrid.svg?react";
 import fillRemainingSpace from "../../../assets/img/fillRemainingSpace.svg?react";
 import fillRemainingSpace2 from "../../../assets/img/fillRemainingSpace2.svg?react";
+import fillSpace from "../../../assets/img/fillSpace.svg?react";
+import grid3x3 from "../../../assets/img/grid3x3.svg?react";
+import grid4x4 from "../../../assets/img/grid4x4.svg?react";
 import horizontalBars from "../../../assets/img/horizontalBars.svg?react";
-import verticalBars from "../../../assets/img/verticalBars.svg?react";
+import html5 from "../../../assets/img/html5.svg?react";
+import masonryRow from "../../../assets/img/masonryRow.svg?react";
+import masonryColumn from "../../../assets/img/masonryColumn.svg?react";
 import rowWrap from "../../../assets/img/rowWrap.svg?react";
+import stretchMiddle from "../../../assets/img/stretchMiddle.svg?react";
+import verticalBars from "../../../assets/img/verticalBars.svg?react";
 import verticalStack from "../../../assets/img/verticalStack.svg?react";
+import { Container, Item } from "../../../context/PlaygroundContext";
 
 interface layout {
    name: string;
@@ -29,21 +30,9 @@ export const layouts: layout[] = [
       img: fillSpace,
       layout: {
          items: [
-            {
-               id: 1,
-               text: "1",
-               styles: { width: "auto", height: "auto", flexGrow: 1 },
-            },
-            {
-               id: 2,
-               text: "2",
-               styles: { width: "auto", height: "auto", flexGrow: 1 },
-            },
-            {
-               id: 3,
-               text: "3",
-               styles: { width: "auto", height: "auto", flexGrow: 1 },
-            },
+            { id: 1, text: "1", styles: { flexGrow: 1 } },
+            { id: 2, text: "2", styles: { flexGrow: 1 } },
+            { id: 3, text: "3", styles: { flexGrow: 1 } },
          ],
          container: { display: "flex", gap: "20px" },
       },
@@ -79,47 +68,60 @@ export const layouts: layout[] = [
       },
    },
    {
-      name: "Masonry",
-      img: masonry,
+      name: "Alternating Grid",
+      img: alternatingGrid,
       layout: {
          items: [
-            {
-               id: 1,
-               text: "1",
-               styles: { width: "32%", height: "40%", flexGrow: 1 },
-            },
-            {
-               id: 2,
-               text: "2",
-               styles: { width: "32%", height: "30%", flexGrow: 1 },
-            },
+            { id: 1, text: "1", styles: { flexGrow: 1 } },
+            { id: 2, text: "2", styles: { flexGrow: 1 } },
+            { id: 3, text: "3", styles: { width: "100%" } },
+            { id: 4, text: "4", styles: { flexGrow: 1 } },
+            { id: 5, text: "5", styles: { flexGrow: 1 } },
+         ],
+         container: { display: "flex", gap: "20px", flexWrap: "wrap" },
+      },
+   },
+   {
+      name: "Masonry Row",
+      img: masonryRow,
+      layout: {
+         items: [
+            { id: 1, text: "1", styles: { width: "32%", height: "40%" } },
+            { id: 2, text: "2", styles: { width: "32%", height: "30%" } },
             { id: 3, text: "3", styles: { width: "32%", flexGrow: 1 } },
-            {
-               id: 4,
-               text: "4",
-               styles: { width: "32%", height: "25%", flexGrow: 1 },
-            },
-            {
-               id: 5,
-               text: "5",
-               styles: { width: "32%", height: "40%", flexGrow: 1 },
-            },
+            { id: 4, text: "4", styles: { width: "32%", height: "25%" } },
+            { id: 5, text: "5", styles: { width: "32%", height: "40%" } },
             { id: 6, text: "6", styles: { width: "32%", flexGrow: 1 } },
-            {
-               id: 7,
-               text: "7",
-               styles: { width: "32%", height: "40%", flexGrow: 1 },
-            },
-            {
-               id: 8,
-               text: "8",
-               styles: { width: "32%", height: "30%", flexGrow: 1 },
-            },
+            { id: 7, text: "7", styles: { width: "32%", height: "40%" } },
+            { id: 8, text: "8", styles: { width: "32%", height: "30%" } },
             { id: 9, text: "9", styles: { width: "32%", flexGrow: 1 } },
          ],
          container: {
             display: "flex",
             flexDirection: "column",
+            gap: "2%",
+            flexWrap: "wrap",
+         },
+      },
+   },
+   {
+      name: "Masonry Column",
+      img: masonryColumn,
+      layout: {
+         items: [
+            { id: 1, text: "1", styles: { height: "32%", width: "40%" } },
+            { id: 2, text: "2", styles: { height: "32%", width: "30%" } },
+            { id: 3, text: "3", styles: { height: "32%", flexGrow: 1 } },
+            { id: 4, text: "4", styles: { height: "32%", width: "25%" } },
+            { id: 5, text: "5", styles: { height: "32%", width: "40%" } },
+            { id: 6, text: "6", styles: { height: "32%", flexGrow: 1 } },
+            { id: 7, text: "7", styles: { height: "32%", width: "40%" } },
+            { id: 8, text: "8", styles: { height: "32%", width: "30%" } },
+            { id: 9, text: "9", styles: { height: "32%", flexGrow: 1 } },
+         ],
+         container: {
+            display: "flex",
+            flexDirection: "row",
             gap: "2%",
             flexWrap: "wrap",
          },
@@ -166,20 +168,6 @@ export const layouts: layout[] = [
             { id: 16, text: "16", styles: { width: "23.5%", height: "23.5%" } },
          ],
          container: { display: "flex", gap: "2%", flexWrap: "wrap" },
-      },
-   },
-   {
-      name: "Alternating Grid",
-      img: alternatingGrid,
-      layout: {
-         items: [
-            { id: 1, text: "1", styles: { flexGrow: 1 } },
-            { id: 2, text: "2", styles: { flexGrow: 1 } },
-            { id: 3, text: "3", styles: { width: "100%" } },
-            { id: 4, text: "4", styles: { flexGrow: 1 } },
-            { id: 5, text: "5", styles: { flexGrow: 1 } },
-         ],
-         container: { display: "flex", gap: "20px", flexWrap: "wrap" },
       },
    },
    {

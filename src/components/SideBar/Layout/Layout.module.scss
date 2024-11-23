@@ -26,6 +26,10 @@
    cursor: pointer;
    transition: 0.2s;
 
+   @media (max-width: 1028px) {
+      padding: 1.5rem 1.3rem;
+   }
+
    &:hover {
       transform: scale(1.05);
    }
@@ -33,6 +37,10 @@
    svg {
       height: 5rem;
       fill: var(--text-secondary);
+
+      @media (max-width: 1028px) {
+         height: 4rem;
+      }
    }
 
    &__title {
