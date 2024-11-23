@@ -82,8 +82,8 @@ export const layouts: layout[] = [
       },
    },
    {
-      name: "Masonry Row",
-      img: masonryRow,
+      name: "Masonry Column",
+      img: masonryColumn,
       layout: {
          items: [
             { id: 1, text: "1", styles: { width: "32%", height: "40%" } },
@@ -105,8 +105,8 @@ export const layouts: layout[] = [
       },
    },
    {
-      name: "Masonry Column",
-      img: masonryColumn,
+      name: "Masonry Row",
+      img: masonryRow,
       layout: {
          items: [
             { id: 1, text: "1", styles: { height: "32%", width: "40%" } },

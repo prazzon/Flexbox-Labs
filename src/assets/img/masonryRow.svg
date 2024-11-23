@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="270px" height="270px" viewBox="0 0 270 270" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="path_1" />
-    <clipPath id="clip_1">
-      <use xlink:href="#path_1" clip-rule="evenodd" fill-rule="evenodd" />
-    </clipPath>
-  </defs>
-  <g id="Masonry">
-    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="Masonry" fill="none" stroke="none" />
-    <path d="M77 10C81.4189 10 85 13.5811 85 18L85 92C85 96.4189 81.4189 100 77 100L23 100C18.5811 100 15 96.4189 15 92L15 18C15 13.5811 18.5811 10 23 10L77 10Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
-    <path d="M162 10C166.419 10 170 13.5811 170 18L170 67C170 71.4189 166.419 75 162 75L108 75C103.581 75 100 71.4189 100 67L100 18C100 13.5811 103.581 10 108 10L162 10Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
-    <path d="M247 10C251.419 10 255 13.5811 255 18L255 92C255 96.4189 251.419 100 247 100L193 100C188.581 100 185 96.4189 185 92L185 18C185 13.5811 188.581 10 193 10L247 10Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
-    <path d="M77 115C81.4189 115 85 118.581 85 123L85 182C85 186.419 81.4189 190 77 190L23 190C18.5811 190 15 186.419 15 182L15 123C15 118.581 18.5811 115 23 115L77 115Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
-    <path d="M162 90C166.419 90 170 93.5811 170 98L170 172C170 176.419 166.419 180 162 180L108 180C103.581 180 100 176.419 100 172L100 98C100 93.5811 103.581 90 108 90L162 90Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
-    <path d="M247 115C251.419 115 255 118.581 255 123L255 187C255 191.419 251.419 195 247 195L193 195C188.581 195 185 191.419 185 187L185 123C185 118.581 188.581 115 193 115L247 115Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
-    <path d="M77 205C81.4189 205 85 208.581 85 213L85 247C85 251.419 81.4189 255 77 255L23 255C18.5811 255 15 251.419 15 247L15 213C15 208.581 18.5811 205 23 205L77 205Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
-    <path d="M162 195C166.419 195 170 198.581 170 203L170 247C170 251.419 166.419 255 162 255L108 255C103.581 255 100 251.419 100 247L100 203C100 198.581 103.581 195 108 195L162 195Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
-    <path d="M247 210C251.419 210 255 213.581 255 218L255 247C255 251.419 251.419 255 247 255L193 255C188.581 255 185 251.419 185 247L185 218C185 213.581 188.581 210 193 210L247 210Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+<svg width="270" height="270" viewBox="0 0 270 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <rect width="270" height="270" fill="none" />
+    <path id="Rectangle" d="M82 0C86.4189 0 90 3.58112 90 8L90 62C90 66.4189 86.4189 70 82 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L82 0Z" transform="translate(13 15)" />
+    <path id="Rectangle" d="M82 0C86.4189 0 90 3.58112 90 8L90 62C90 66.4189 86.4189 70 82 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L82 0Z" transform="translate(93 100)" />
+    <path id="Rectangle" d="M82 0C86.4189 0 90 3.58112 90 8L90 62C90 66.4189 86.4189 70 82 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L82 0Z" transform="translate(13 185)" />
+    <path id="Rectangle" d="M67 0C71.4189 0 75 3.58112 75 8L75 62C75 66.4189 71.4189 70 67 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L67 0Z" transform="translate(118 185)" />
+    <path id="Rectangle" d="M42 0C46.4189 0 50 3.58112 50 8L50 62C50 66.4189 46.4189 70 42 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L42 0Z" transform="translate(208 185)" />
+    <path id="Rectangle" d="M52 0C56.4189 0 60 3.58112 60 8L60 62C60 66.4189 56.4189 70 52 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L52 0Z" transform="translate(198 100)" />
+    <path id="Rectangle" d="M57 0C61.4189 0 65 3.58112 65 8L65 62C65 66.4189 61.4189 70 57 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L57 0Z" transform="translate(13 100)" />
+    <path id="Rectangle" d="M72 0C76.4189 0 80 3.58112 80 8L80 62C80 66.4189 76.4189 70 72 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L72 0Z" transform="translate(118 15)" />
+    <path id="Rectangle" d="M37 0C41.4189 0 45 3.58112 45 8L45 62C45 66.4189 41.4189 70 37 70L8 70C3.58112 70 0 66.4189 0 62L0 8C0 3.58112 3.58112 0 8 0L37 0Z" transform="translate(213 15)" />
   </g>
 </svg>
