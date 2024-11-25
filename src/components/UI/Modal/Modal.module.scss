@@ -59,6 +59,12 @@
    border: none;
    transition: all 0.3s;
 
+   @media (max-width: 450px) {
+      font-size: 2rem;
+      top: 1.5rem;
+      right: 1.5rem;
+   }
+
    &:hover {
       background-color: var(--bg-content-hover);
    }

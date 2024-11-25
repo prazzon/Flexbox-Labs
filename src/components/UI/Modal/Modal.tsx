@@ -63,7 +63,12 @@ function Content({ children }: { children: ReactNode }) {
                animate="visible"
                exit="exit"
             >
-               <motion.div className={styles.modal} variants={modal}>
+               <motion.div
+                  className={styles.modal}
+                  variants={modal}
+                  layout
+                  transition={{ duration: 0.2 }}
+               >
                   <button className={styles.close__btn} onClick={closeModal}>
                      <FiMinimize2 />
                   </button>

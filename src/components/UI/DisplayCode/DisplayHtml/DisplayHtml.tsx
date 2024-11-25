@@ -1,15 +1,13 @@
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import usePlayground from "../../../../hooks/usePlayground";
-import Copy from "../../Copy/Copy";
 import styles from "./DisplayHtml.module.scss";
 
 function DisplayHtml() {
    const { items } = usePlayground();
-   const htmlRef = useRef<HTMLPreElement>(null);
 
    return (
-      <>
-         <pre className={styles.html__code} ref={htmlRef}>
+      <motion.div layout>
+         <pre className={styles.html__code}>
             &lt;
             <span className={styles.tag}>div</span>
             <span className={styles.property}> class</span>=
@@ -30,9 +28,7 @@ function DisplayHtml() {
             <br />
             &lt;/<span className={styles.tag}>div</span>&gt;
          </pre>
-         
-         <Copy ref={htmlRef} id="html" />
-      </>
+      </motion.div>
    );
 }
 

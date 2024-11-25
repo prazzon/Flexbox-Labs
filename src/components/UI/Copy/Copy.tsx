@@ -1,8 +1,8 @@
 import styles from "./Copy.module.scss";
 import toast from "react-hot-toast";
 import { forwardRef, MutableRefObject, useRef } from "react";
-import { FaRegCopy } from "react-icons/fa6";
 import { useRipple } from "../../../hooks/useRipple";
+import { TbClipboardText } from "react-icons/tb";
 
 interface Props {
    id: string;
@@ -23,7 +23,7 @@ const Copy = forwardRef<HTMLElement, Props>(({ id }, ref) => {
    return (
       <>
          <div className={styles.copy} ref={btnRef} onClick={() => copy()}>
-            <FaRegCopy />
+            <TbClipboardText />
          </div>
       </>
    );
