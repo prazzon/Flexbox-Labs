@@ -7,6 +7,8 @@
    gap: 1rem;
    position: relative;
    user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
 
    @media (max-width: 1024px) {
       padding: 1rem;
@@ -16,7 +18,7 @@
       cursor: grab;
       font-size: 2rem;
    }
-   
+
    &__info {
       display: flex;
       flex-direction: column;

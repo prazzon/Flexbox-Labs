@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ItemStyle } from "../../../../context/PlaygroundContext";
 import usePlayground from "../../../../hooks/usePlayground";
 import { convertCssToTailwind } from "../../../../utils/cssTailwindConverter";
@@ -28,42 +27,40 @@ function DisplayTailwind() {
    const { container, items } = usePlayground();
 
    return (
-      <motion.div layout>
-         <pre className={styles.tailwind__code}>
-            &lt;
-            <span className={styles.tag}>div</span>
-            <span className={styles.property}> class</span>=
-            <span className={styles.value}>
-               &quot;{convertCssToTailwind(container)}&quot;
-            </span>
-            &gt;
-            {items?.map((item, index) => {
-               const notDefaultStyles = getNotDefaultStyles(item.styles);
+      <pre className={styles.tailwind__code}>
+         &lt;
+         <span className={styles.tag}>div</span>
+         <span className={styles.property}> class</span>=
+         <span className={styles.value}>
+            &quot;{convertCssToTailwind(container)}&quot;
+         </span>
+         &gt;
+         {items?.map((item, index) => {
+            const notDefaultStyles = getNotDefaultStyles(item.styles);
 
-               return (
-                  <span key={index}>
-                     <br />
-                     {"   "}&lt;
-                     <span className={styles.tag}>div</span>
-                     {notDefaultStyles ? (
-                        <>
-                           <span className={styles.property}> class</span>=
-                           <span className={styles.value}>
-                              &quot;{convertCssToTailwind(notDefaultStyles)}
-                              &quot;
-                           </span>
-                        </>
-                     ) : null}
-                     &gt;
-                     {item.text}
-                     &lt;/<span className={styles.tag}>div</span>&gt;
-                  </span>
-               );
-            })}
-            <br />
-            &lt;/<span className={styles.tag}>div</span>&gt;
-         </pre>
-      </motion.div>
+            return (
+               <span key={index}>
+                  <br />
+                  {"   "}&lt;
+                  <span className={styles.tag}>div</span>
+                  {notDefaultStyles ? (
+                     <>
+                        <span className={styles.property}> class</span>=
+                        <span className={styles.value}>
+                           &quot;{convertCssToTailwind(notDefaultStyles)}
+                           &quot;
+                        </span>
+                     </>
+                  ) : null}
+                  &gt;
+                  {item.text}
+                  &lt;/<span className={styles.tag}>div</span>&gt;
+               </span>
+            );
+         })}
+         <br />
+         &lt;/<span className={styles.tag}>div</span>&gt;
+      </pre>
    );
 }
 

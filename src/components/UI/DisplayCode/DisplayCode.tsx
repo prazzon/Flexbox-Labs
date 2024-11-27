@@ -47,10 +47,17 @@ function DisplayCode() {
                   layout
                   transition={{ duration: 0.2 }}
                >
-                  <AnimatePresence>
-                     {switchState === 0 && <DisplayHtml />}
-                     {switchState === 1 && <DisplayCss />}
-                     {switchState === 2 && <DisplayTailwind />}
+                  <AnimatePresence mode="wait">
+                     <motion.div
+                        key={switchState}
+                        layout
+                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.15 }}
+                     >
+                        {tabs[switchState].component}
+                     </motion.div>
                   </AnimatePresence>
                   <Copy id="code" ref={codeRef} />
                </motion.div>

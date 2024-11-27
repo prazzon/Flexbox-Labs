@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ItemStyle } from "../../../../context/PlaygroundContext";
 import { camelToDash, getKeys } from "../../../../helpers/helpers";
 import usePlayground from "../../../../hooks/usePlayground";
@@ -28,58 +27,56 @@ function DisplayCss() {
    const { container, items } = usePlayground();
 
    return (
-      <motion.div layout>
-         <pre className={styles.css__code}>
-            <span className={styles.selector}>.flex</span>
-            {" {"} <br />
-            {getKeys(container).map((key, index) => (
-               <span key={index}>
-                  <span className={styles.property}>
-                     {"   "}
-                     {camelToDash(key)}:
-                  </span>
-                  <span className={styles.value}>
-                     {" "}
-                     {container[key]}
-                     {";"}
-                  </span>
-                  <br />
+      <pre className={styles.css__code}>
+         <span className={styles.selector}>.flex</span>
+         {" {"} <br />
+         {getKeys(container).map((key, index) => (
+            <span key={index}>
+               <span className={styles.property}>
+                  {"   "}
+                  {camelToDash(key)}:
                </span>
-            ))}
-            {"}"}
-            {items?.map((item, index) => {
-               const notDefaultStyles = getNotDefaultStyles(item.styles);
+               <span className={styles.value}>
+                  {" "}
+                  {container[key]}
+                  {";"}
+               </span>
+               <br />
+            </span>
+         ))}
+         {"}"}
+         {items?.map((item, index) => {
+            const notDefaultStyles = getNotDefaultStyles(item.styles);
 
-               if (!notDefaultStyles) return null;
+            if (!notDefaultStyles) return null;
 
-               return (
-                  <span key={index}>
-                     <br /> <br />
-                     <span className={styles.selector}>
-                        .flex__item:nth-child({index + 1})
-                     </span>
-                     {" {"} <br />
-                     {getKeys(notDefaultStyles).map((key, index) => {
-                        return (
-                           <span key={index}>
-                              <span className={styles.property}>
-                                 {"   "}
-                                 {camelToDash(key)}:
-                              </span>
-                              <span className={styles.value}>
-                                 {" "}
-                                 {item.styles[key]};
-                              </span>
-                              <br />
-                           </span>
-                        );
-                     })}
-                     {"}"}
+            return (
+               <span key={index}>
+                  <br /> <br />
+                  <span className={styles.selector}>
+                     .flex__item:nth-child({index + 1})
                   </span>
-               );
-            })}
-         </pre>
-      </motion.div>
+                  {" {"} <br />
+                  {getKeys(notDefaultStyles).map((key, index) => {
+                     return (
+                        <span key={index}>
+                           <span className={styles.property}>
+                              {"   "}
+                              {camelToDash(key)}:
+                           </span>
+                           <span className={styles.value}>
+                              {" "}
+                              {item.styles[key]};
+                           </span>
+                           <br />
+                        </span>
+                     );
+                  })}
+                  {"}"}
+               </span>
+            );
+         })}
+      </pre>
    );
 }
 

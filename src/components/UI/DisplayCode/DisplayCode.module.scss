@@ -114,12 +114,9 @@
    &_text {
       font-size: 1.5rem;
       line-height: 1.5;
-      overflow-y: auto;
+      overflow: hidden;
       border-radius: 0 2rem 2rem 2rem;
-      padding: 2rem;
-      padding-bottom: 0;
       color: var(--text-secondary);
-      max-height: 40rem;
       position: relative;
       background-color: var(--bg-secondary);
 
@@ -130,6 +127,12 @@
 
       @media (max-height: 528px) {
          max-height: 15rem;
+      }
+
+      pre {
+         max-height: 40rem;
+         overflow-y: auto;
+         padding: 2rem;
       }
    }
 }
