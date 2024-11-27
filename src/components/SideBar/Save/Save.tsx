@@ -1,16 +1,14 @@
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Reorder } from "framer-motion";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { RiSaveFill } from "react-icons/ri";
 import { State } from "../../../context/PlaygroundContext";
 import usePlayground from "../../../hooks/usePlayground";
 import styles from "./Save.module.scss";
+import SaveItem from "./SaveItem/SaveItem";
 
-import toast from "react-hot-toast";
-import { FaEye } from "react-icons/fa";
-import { LuTrash2 } from "react-icons/lu";
-import { RiSaveFill } from "react-icons/ri";
-
-interface Edits {
+export interface Edit {
    id: number;
    name: string;
    date: string;
@@ -19,8 +17,8 @@ interface Edits {
 
 function Save() {
    const [name, setName] = useState("");
+   const [edits, saveEdit] = useLocalStorage<Edit[]>("edits", []);
    const { state, set, clearSelected } = usePlayground();
-   const [edits, saveEdit] = useLocalStorage<Edits[]>("edits", []);
 
    const toastConfig = {
       duration: 10000,
@@ -119,40 +117,31 @@ function Save() {
 
          <h2 className="title">Saved Edits</h2>
 
-         <ul className={styles.list}>
+         <Reorder.Group
+            axis="y"
+            values={edits}
+            onReorder={saveEdit}
+            className={styles.list}
+         >
             <AnimatePresence mode="popLayout" initial={false}>
                {edits.map((edit) => (
-                  <motion.li
+                  <SaveItem
                      key={edit.name}
-                     className={styles.item}
-                     layout
-                     initial={{ scale: 0.8, opacity: 0 }}
-                     animate={{ scale: 1, opacity: 1 }}
-                     exit={{ scale: 0.8, opacity: 0 }}
-                  >
-                     <div className={styles.item__info}>
-                        <p className={styles.item__name}>{edit.name}</p>
-                        <p className={styles.item__date}>{edit.date}</p>
-                     </div>
-                     <button
-                        className={styles.item__btn}
-                        onClick={() => handleView(edit.data)}
-                     >
-                        <FaEye />
-                     </button>
-                     <button
-                        className={`${styles.item__btn} ${styles.delete}`}
-                        onClick={() => handleDelete(edit.id, edit.name)}
-                     >
-                        <LuTrash2 />
-                     </button>
-                  </motion.li>
+                     edit={edit}
+                     handleView={handleView}
+                     handleDelete={handleDelete}
+                  />
                ))}
             </AnimatePresence>
-         </ul>
+         </Reorder.Group>
 
          {edits.length > 0 && (
-            <motion.button layout className={styles.clear__btn} onClick={Clear}>
+            <motion.button
+               layout
+               className={styles.clear__btn}
+               onClick={Clear}
+               type="button"
+            >
                Clear All Saves
             </motion.button>
          )}
