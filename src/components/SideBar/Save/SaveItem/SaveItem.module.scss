@@ -17,6 +17,7 @@
    .drag {
       cursor: grab;
       font-size: 2rem;
+      display: flex;
    }
 
    &__info {
