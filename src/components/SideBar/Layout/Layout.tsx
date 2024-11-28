@@ -1,8 +1,7 @@
-import styles from "./Layout.module.scss";
-import usePlayground from "../../../hooks/usePlayground";
-import { layouts } from "./layouts";
-import { motion } from "framer-motion";
 import { State } from "../../../context/PlaygroundContext";
+import usePlayground from "../../../hooks/usePlayground";
+import styles from "./Layout.module.scss";
+import { layouts } from "./layouts";
 
 function Layout() {
    const { set, clearSelected } = usePlayground();
@@ -13,13 +12,7 @@ function Layout() {
    }
 
    return (
-      <motion.div
-         className={styles.container}
-         initial={{ y: 10, opacity: 0.5 }}
-         animate={{ y: 0, opacity: 1 }}
-         transition={{ duration: 0.2 }}
-         exit={{ y: -10, opacity: 0.5 }}
-      >
+      <div className={styles.container}>
          <h2 className="title">Layouts</h2>
          <div className={styles.layout_container}>
             {layouts.map((layout, index) => (
@@ -33,7 +26,7 @@ function Layout() {
                </div>
             ))}
          </div>
-      </motion.div>
+      </div>
    );
 }
 

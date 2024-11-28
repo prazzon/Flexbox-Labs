@@ -93,13 +93,7 @@ function Save() {
    }
 
    return (
-      <motion.div
-         className={styles.container}
-         initial={{ y: 10, opacity: 0.5 }}
-         animate={{ y: 0, opacity: 1 }}
-         transition={{ duration: 0.2 }}
-         exit={{ y: -10, opacity: 0.5 }}
-      >
+      <div className={styles.container}>
          <h2 className="title">Add Edit</h2>
          <form className={styles.form} onSubmit={handleSubmit}>
             <input
@@ -145,7 +139,7 @@ function Save() {
                Clear All Saves
             </motion.button>
          )}
-      </motion.div>
+      </div>
    );
 }
 

@@ -1,14 +1,13 @@
-import styles from "./Settings.module.scss";
-import Toggle from "../../UI/Toggle/Toggle";
-import useSettings from "../../../hooks/useSettings";
-import { motion } from "framer-motion";
-import { TbSunset2, TbTextSize } from "react-icons/tb";
-import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { CgDarkMode } from "react-icons/cg";
-import { IoColorPaletteOutline } from "react-icons/io5";
-import { ImTextColor } from "react-icons/im";
 import { FiLoader } from "react-icons/fi";
 import { GrMultiple } from "react-icons/gr";
+import { ImTextColor } from "react-icons/im";
+import { IoColorPaletteOutline } from "react-icons/io5";
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { TbSunset2, TbTextSize } from "react-icons/tb";
+import useSettings from "../../../hooks/useSettings";
+import Toggle from "../../UI/Toggle/Toggle";
+import styles from "./Settings.module.scss";
 
 function Settings() {
    const {
@@ -26,13 +25,7 @@ function Settings() {
    } = useSettings();
 
    return (
-      <motion.div
-         className={styles.container}
-         initial={{ y: 10, opacity: 0.5 }}
-         animate={{ y: 0, opacity: 1 }}
-         transition={{ duration: 0.2 }}
-         exit={{ y: -10, opacity: 0.5 }}
-      >
+      <div className={styles.container}>
          <h2 className="title">Settings</h2>
 
          <div className={styles.block}>
@@ -210,7 +203,7 @@ function Settings() {
          <button className={styles.btn} onClick={reset}>
             Reset to Defaults
          </button>
-      </motion.div>
+      </div>
    );
 }
 

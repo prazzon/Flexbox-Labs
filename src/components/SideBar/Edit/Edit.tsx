@@ -1,9 +1,9 @@
+import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import usePlayground from "../../../hooks/usePlayground";
 import styles from "./Edit.module.scss";
 import EditContainer from "./EditContainer/EditContainer";
 import EditItems from "./EditItems/EditItems";
-import usePlayground from "../../../hooks/usePlayground";
-import { AnimatePresence, motion } from "framer-motion";
 
 function Edit() {
    const [switchState, setSwitchState] = useState(1);
@@ -14,13 +14,7 @@ function Edit() {
    }, [selectedItems]);
 
    return (
-      <motion.div
-         className={styles.edit}
-         initial={{ y: 10, opacity: 0.5 }}
-         animate={{ y: 0, opacity: 1 }}
-         transition={{ duration: 0.2 }}
-         exit={{ y: -10, opacity: 0.5 }}
-      >
+      <div className={styles.edit}>
          <div className={styles.tab_switcher}>
             <div
                className={styles.switch}
@@ -42,7 +36,7 @@ function Edit() {
             {switchState === 1 && <EditContainer key={"container"} />}
             {switchState === 2 && <EditItems key={"items"} />}
          </AnimatePresence>
-      </motion.div>
+      </div>
    );
 }
 

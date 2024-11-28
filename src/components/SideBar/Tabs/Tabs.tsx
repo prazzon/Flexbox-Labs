@@ -1,31 +1,23 @@
-import styles from "./Tabs.module.scss";
-import { useEffect, useRef } from "react";
-import Modal from "../../UI/Modal/Modal";
-import DisplayCode from "../../UI/DisplayCode/DisplayCode";
-import About from "../About/About";
-import { LuPanelRightOpen, LuSettings2 } from "react-icons/lu";
-import { TbLayoutGrid } from "react-icons/tb";
-import { FaCode, FaFloppyDisk, FaGithub } from "react-icons/fa6";
-import { MdOutlineEdit } from "react-icons/md";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import Tooltip from "../../UI/Tooltip/Tooltip";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { FaRegQuestionCircle } from "react-icons/fa";
+import { FaCode, FaGithub } from "react-icons/fa6";
+import { LuPanelRightOpen } from "react-icons/lu";
+import DisplayCode from "../../UI/DisplayCode/DisplayCode";
+import Modal from "../../UI/Modal/Modal";
+import Tooltip from "../../UI/Tooltip/Tooltip";
+import About from "../About/About";
+import styles from "./Tabs.module.scss";
 
 interface Props {
+   tabs: { name: string; component: JSX.Element; icon: JSX.Element }[];
    switchState: number;
    onSwitch: (switchState: number) => void;
    panelState: boolean;
    togglePanel: () => void;
 }
 
-const tabs = [
-   { name: "Edit", icon: <MdOutlineEdit /> },
-   { name: "Save", icon: <FaFloppyDisk /> },
-   { name: "Layout", icon: <TbLayoutGrid /> },
-   { name: "Settings", icon: <LuSettings2 /> },
-];
-
-function Tabs({ switchState, onSwitch, panelState, togglePanel }: Props) {
+function Tabs({ tabs, switchState, onSwitch, panelState, togglePanel }: Props) {
    const ref = useRef<HTMLDivElement>(null);
 
    useEffect(() => {
@@ -61,14 +53,14 @@ function Tabs({ switchState, onSwitch, panelState, togglePanel }: Props) {
             <button
                key={index}
                className={styles.btn__switch}
-               data-switch={index + 1}
-               onClick={() => onSwitch(index + 1)}
+               data-switch={index}
+               onClick={() => onSwitch(index)}
             >
                {tab.icon}
 
                <Tooltip position="right">{tab.name}</Tooltip>
-               
-               {switchState === index + 1 && panelState === true && (
+
+               {switchState === index && panelState === true && (
                   <motion.span
                      className={styles.active}
                      transition={{ duration: 0.2 }}
