@@ -1,10 +1,10 @@
-import { forwardRef, MutableRefObject } from "react";
-import { useRipple } from "../../../hooks/useRipple";
-import styles from "./PlaygroundItem.module.scss";
 import { motion } from "framer-motion";
+import { forwardRef, MutableRefObject } from "react";
+import { MdModeEditOutline } from "react-icons/md";
 import { ItemStyle } from "../../../context/PlaygroundContext";
 import usePlayground from "../../../hooks/usePlayground";
-import { MdModeEditOutline } from "react-icons/md";
+import { useRipple } from "../../../hooks/useRipple";
+import styles from "./PlaygroundItem.module.scss";
 
 const popIn = {
    hidden: { opacity: 0, scale: 0.85 },
@@ -17,13 +17,13 @@ interface Props {
       text: string;
       styles: ItemStyle;
    };
-   isSelected: boolean;
-   onClick: () => void;
 }
 
 const PlaygroundItem = forwardRef<HTMLDivElement, Props>(
-   function PlaygroundItem({ item, isSelected, onClick }, ref) {
-      const { editItemText } = usePlayground();
+   function PlaygroundItem({ item }, ref) {
+      const { editItemText, toggleSelected, selectedItems } = usePlayground();
+      
+      const isSelected = selectedItems.includes(item.id);
 
       const elRef = ref as MutableRefObject<HTMLDivElement>;
 
@@ -32,7 +32,7 @@ const PlaygroundItem = forwardRef<HTMLDivElement, Props>(
       function handleClick(e: React.MouseEvent) {
          const target = e.target as HTMLElement;
          if (target.classList.contains(styles.item)) {
-            onClick();
+            toggleSelected(item.id);
          }
       }
 

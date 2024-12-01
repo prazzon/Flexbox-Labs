@@ -1,23 +1,16 @@
 import { AnimatePresence } from "framer-motion";
-import styles from "./Playground.module.scss";
-import usePlayground from "../../hooks/usePlayground";
 import { useInsideContainerClick } from "../../hooks/useInsideContainerClick";
+import usePlayground from "../../hooks/usePlayground";
+import styles from "./Playground.module.scss";
 import PlaygroundItem from "./PlaygroundItem/PlaygroundItem";
-import Toolbar from "./Toolbar/Toolbar";
 import Snackbar from "./Snackbar/Snackbar";
+import Toolbar from "./Toolbar/Toolbar";
 
 import { motion } from "framer-motion";
 import MainAxisPointer from "./MainAxisPointer/MainAxisPointer";
 
 function Playground() {
-   const {
-      items,
-      container,
-      selectedItems,
-      toggleSelected,
-      toggleAllSelected,
-      clearSelected,
-   } = usePlayground();
+   const { items, container, clearSelected } = usePlayground();
 
    const ref = useInsideContainerClick(clearSelected);
 
@@ -38,20 +31,11 @@ function Playground() {
          >
             <AnimatePresence mode="popLayout">
                {items?.map((item) => (
-                  <PlaygroundItem
-                     key={item.id}
-                     item={item}
-                     onClick={() => toggleSelected(item.id)}
-                     isSelected={selectedItems.includes(item.id)}
-                  />
+                  <PlaygroundItem key={item.id} item={item} />
                ))}
             </AnimatePresence>
          </motion.div>
-         <Snackbar
-            selectedItems={selectedItems}
-            clearSelected={clearSelected}
-            toggleAllSelected={toggleAllSelected}
-         />
+         <Snackbar />
       </motion.div>
    );
 }

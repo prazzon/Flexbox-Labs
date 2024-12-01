@@ -1,17 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
-import styles from "./Snackbar.module.scss";
 import { FaCheckCircle } from "react-icons/fa";
-import { TbCopyCheck } from "react-icons/tb";
 import { IoClose } from "react-icons/io5";
+import { TbCopyCheck } from "react-icons/tb";
+import usePlayground from "../../../hooks/usePlayground";
 import Tooltip from "../../UI/Tooltip/Tooltip";
+import styles from "./Snackbar.module.scss";
 
-type Props = {
-   clearSelected: () => void;
-   toggleAllSelected: () => void;
-   selectedItems: number[];
-};
+function Snackbar() {
+   const { selectedItems, toggleAllSelected, clearSelected } = usePlayground();
 
-function Snackbar({ selectedItems, clearSelected, toggleAllSelected }: Props) {
    return (
       <AnimatePresence>
          {selectedItems.length > 0 && (
