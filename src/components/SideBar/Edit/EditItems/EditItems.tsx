@@ -1,27 +1,17 @@
-import itemStyles from "../Item.module.scss";
-import emptyStyles from "../Empty.module.scss";
+import { motion } from "framer-motion";
 import usePlayground from "../../../../hooks/usePlayground";
 import Select from "../../../UI/Select/Select";
 import TextInput from "../../../UI/TextInput/TextInput";
-import { motion } from "framer-motion";
+import emptyStyles from "../Empty.module.scss";
+import itemStyles from "../Item.module.scss";
 
 import { FcInfo } from "react-icons/fc";
-import {
-   TbArrowAutofitHeight,
-   TbArrowAutofitWidth,
-   TbReorder,
-} from "react-icons/tb";
-import {
-   LuAlignVerticalSpaceAround,
-   LuExpand,
-   LuScan,
-   LuShrink,
-} from "react-icons/lu";
+import { itemsConfig } from "./itemsConfig";
 
 function EditItems() {
    const { getItemStyle, selectedItems, editItemStyle } = usePlayground();
 
-   if (!selectedItems.length)
+   if (!selectedItems.length) {
       return (
          <motion.div
             className={emptyStyles.empty}
@@ -37,6 +27,7 @@ function EditItems() {
             <p className={emptyStyles.empty__text}>Select an item to edit</p>
          </motion.div>
       );
+   }
 
    const lastSelectedId = selectedItems[selectedItems.length - 1];
 
@@ -48,157 +39,61 @@ function EditItems() {
          exit={{ scale: 0.99, opacity: 0.8 }}
          transition={{ duration: 0.1 }}
       >
-         <label className={itemStyles.item}>
-            <div className={itemStyles.icon}>
-               <TbReorder />
-            </div>
-            <div className={itemStyles.text}>
-               <div className={itemStyles.title}>Order</div>
-               <div className={itemStyles.description}>
-                  Controls position of a flex item
+         {itemsConfig.map((item) => (
+            <label className={itemStyles.item} key={item.key}>
+               <div className={itemStyles.icon}>
+                  <item.icon />
                </div>
-            </div>
-
-            <TextInput
-               size="small"
-               value={getItemStyle(lastSelectedId, "order")?.toString() || ""}
-               type="number"
-               onChange={(value) => editItemStyle("order", value)}
-            />
-         </label>
-
-         <label className={itemStyles.item}>
-            <div className={itemStyles.icon}>
-               <LuExpand />
-            </div>
-            <div className={itemStyles.text}>
-               <div className={itemStyles.title}>Flex Grow</div>
-               <div className={itemStyles.description}>
-                  Controls size of an item
+               <div className={itemStyles.text}>
+                  <div className={itemStyles.title}>{item.title}</div>
+                  <div className={itemStyles.description}>
+                     {item.description}
+                  </div>
                </div>
-            </div>
-            <TextInput
-               size="small"
-               value={
-                  getItemStyle(lastSelectedId, "flexGrow")?.toString() || ""
-               }
-               type="number"
-               onChange={(value) => editItemStyle("flexGrow", value)}
-            />
-         </label>
+               {item.type === "select" ? (
+                  <Select
+                     active={
+                        getItemStyle(lastSelectedId, item.key)?.toString() ||
+                        item.defaultValue
+                     }
+                     onSelect={(value) => editItemStyle(item.key, value)}
+                  >
+                     <Select.Toggle />
+                     <Select.Options>
+                        {item.options.map((option) => (
+                           <Select.Option value={option} key={option} />
+                        ))}
+                     </Select.Options>
+                  </Select>
+               ) : null}
 
-         <label className={itemStyles.item}>
-            <div className={itemStyles.icon}>
-               <LuShrink />
-            </div>
-            <div className={itemStyles.text}>
-               <div className={itemStyles.title}>Flex Shrink</div>
-               <div className={itemStyles.description}>
-                  Controls maximum shrink
-               </div>
-            </div>
-            <TextInput
-               size="small"
-               value={
-                  getItemStyle(lastSelectedId, "flexShrink")?.toString() || "1"
-               }
-               type="number"
-               onChange={(value) => editItemStyle("flexShrink", value)}
-            />
-         </label>
+               {item.type === "input" && item.inputType === "unit" ? (
+                  <TextInput
+                     size="small"
+                     value={
+                        getItemStyle(lastSelectedId, item.key)?.toString() ||
+                        item.defaultValue
+                     }
+                     type={item.inputType}
+                     unitOptions={item.unitOptions}
+                     onChange={(value) => editItemStyle(item.key, value)}
+                  />
+               ) : null}
 
-         <label className={itemStyles.item}>
-            <div className={itemStyles.icon}>
-               <LuScan />
-            </div>
-            <div className={itemStyles.text}>
-               <div className={itemStyles.title}>Flex Basis</div>
-               <div className={itemStyles.description}>
-                  Sets initial size of an item
-               </div>
-            </div>
-            <TextInput
-               size="small"
-               value={
-                  getItemStyle(lastSelectedId, "flexBasis")?.toString() ||
-                  "auto"
-               }
-               type="unit"
-               unitOptions={["auto", "px", "%"]}
-               onChange={(value) => editItemStyle("flexBasis", value)}
-            />
-         </label>
-
-         <label className={itemStyles.item}>
-            <div className={itemStyles.icon}>
-               <LuAlignVerticalSpaceAround />
-            </div>
-            <div className={itemStyles.text}>
-               <div className={itemStyles.title}>Align Self</div>
-               <div className={itemStyles.description}>
-                  Aligns item on cross axis
-               </div>
-            </div>
-            <Select
-               active={
-                  getItemStyle(lastSelectedId, "alignSelf")?.toString() ||
-                  "auto"
-               }
-               onSelect={(value) => editItemStyle("alignSelf", value)}
-            >
-               <Select.Toggle />
-               <Select.Options>
-                  <Select.Option value="auto" />
-                  <Select.Option value="flex-start" />
-                  <Select.Option value="flex-end" />
-                  <Select.Option value="center" />
-                  <Select.Option value="baseline" />
-                  <Select.Option value="stretch" />
-               </Select.Options>
-            </Select>
-         </label>
-
-         <label className={itemStyles.item}>
-            <div className={itemStyles.icon}>
-               <TbArrowAutofitWidth />
-            </div>
-            <div className={itemStyles.text}>
-               <div className={itemStyles.title}>Width</div>
-               <div className={itemStyles.description}>
-                  Sets an element's width
-               </div>
-            </div>
-            <TextInput
-               size="small"
-               value={
-                  getItemStyle(lastSelectedId, "width")?.toString() || "auto"
-               }
-               type="unit"
-               unitOptions={["auto", "px", "%"]}
-               onChange={(value) => editItemStyle("width", value)}
-            />
-         </label>
-
-         <label className={itemStyles.item}>
-            <div className={itemStyles.icon}>
-               <TbArrowAutofitHeight />
-            </div>
-            <div className={itemStyles.text}>
-               <div className={itemStyles.title}>Height</div>
-               <div className={itemStyles.description}>
-                  Sets an element's height
-               </div>
-            </div>
-            <TextInput
-               size="small"
-               value={
-                  getItemStyle(lastSelectedId, "height")?.toString() || "auto"
-               }
-               type="unit"
-               unitOptions={["auto", "px", "%"]}
-               onChange={(value) => editItemStyle("height", value)}
-            />
-         </label>
+               {item.type === "input" && item.inputType === "number" ? (
+                  <TextInput
+                     size="small"
+                     value={
+                        getItemStyle(lastSelectedId, item.key)?.toString() ||
+                        item.defaultValue
+                     }
+                     type={item.inputType}
+                     step={item.step}
+                     onChange={(value) => editItemStyle(item.key, value)}
+                  />
+               ) : null}
+            </label>
+         ))}
       </motion.div>
    );
 }
