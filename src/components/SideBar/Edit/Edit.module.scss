@@ -1,6 +1,15 @@
 .edit {
    position: relative;
    height: 100%;
+   display: grid;
+   grid-template-rows: auto 1fr;
+
+   .container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+   }
 }
 
 .tab_switcher {
@@ -20,7 +29,7 @@
       height: calc(100% - 1rem);
       position: absolute;
       top: 0.5rem;
-      border-radius: .9rem;
+      border-radius: 0.9rem;
       transition: right 0.2s ease;
       background-color: var(--bg-content-active);
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),

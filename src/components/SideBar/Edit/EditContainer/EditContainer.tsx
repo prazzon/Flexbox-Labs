@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import usePlayground from "../../../../hooks/usePlayground";
 import Select from "../../../UI/Select/Select";
 import TextInput from "../../../UI/TextInput/TextInput";
@@ -9,13 +8,7 @@ function EditContainer() {
    const { editContainer, container } = usePlayground();
 
    return (
-      <motion.div
-         className={itemStyles.container}
-         initial={{ scale: 0.99, opacity: 0.8 }}
-         animate={{ scale: 1, opacity: 1 }}
-         exit={{ scale: 0.99, opacity: 0.8 }}
-         transition={{ duration: 0.1 }}
-      >
+      <>
          {configContainer.map((item) => (
             <label className={itemStyles.item} key={item.key}>
                <div className={itemStyles.icon}>
@@ -68,7 +61,7 @@ function EditContainer() {
                ) : null}
             </label>
          ))}
-      </motion.div>
+      </>
    );
 }
 

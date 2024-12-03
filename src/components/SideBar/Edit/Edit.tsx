@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import usePlayground from "../../../hooks/usePlayground";
 import styles from "./Edit.module.scss";
@@ -33,8 +33,17 @@ function Edit() {
          </div>
 
          <AnimatePresence mode="wait" initial={false}>
-            {switchState === 1 && <EditContainer key={"container"} />}
-            {switchState === 2 && <EditItems key={"items"} />}
+            <motion.div
+               key={switchState}
+               className={styles.container}
+               animate={{ opacity: 1, y: 0 }}
+               initial={{ opacity: 0, y: 5 }}
+               exit={{ opacity: 0, y: -5 }}
+               transition={{ duration: 0.15 }}
+            >
+               {switchState === 1 && <EditContainer />}
+               {switchState === 2 && <EditItems />}
+            </motion.div>
          </AnimatePresence>
       </div>
    );

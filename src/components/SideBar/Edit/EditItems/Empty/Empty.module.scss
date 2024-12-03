@@ -1,18 +1,17 @@
 .empty {
-   text-align: center;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%) !important;
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 5rem;
 
    @media (max-width: 825px) {
-      transform: translate(-50%, 0) !important;
-      top: 35%;
+      margin-bottom: 0;
    }
 
    &__icon {
       display: flex;
-      justify-content: center;
       margin-bottom: 2rem;
       font-size: 8rem;
 

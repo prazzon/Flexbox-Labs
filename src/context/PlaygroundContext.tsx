@@ -118,7 +118,7 @@ export const PlaygroundProvider = ({ children }: Provider) => {
    };
 
    const getItemStyle: Context["getItemStyle"] = (id, key) => {
-      return items.find((item) => item.id === id)!.styles[key];
+      return items.find((item) => item.id === id)?.styles[key];
    };
 
    const addItem = () => {
