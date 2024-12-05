@@ -1,0 +1,67 @@
+.tab_switcher {
+   @media (max-width: 450px) {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+   }
+
+   .switch {
+      display: inline-block;
+      transform: translateY(1rem);
+      margin-bottom: 1rem;
+      padding: 1rem 2rem;
+      padding-bottom: 1rem;
+      font-size: 1.7rem;
+      font-family: "Itim", cursive;
+      background-color: var(--bg-container);
+      color: var(--text-secondary);
+      position: relative;
+      transition: all 0.3s;
+
+      @media (max-width: 450px) {
+         font-size: 1.5rem;
+         width: 100%;
+      }
+
+      &:first-of-type {
+         border-radius: 1.5rem 0 0 0;
+
+         > .active {
+            border-radius: 1.5rem 0 0 0;
+         }
+      }
+
+      &:last-of-type {
+         border-radius: 0 1.5rem 0 0;
+
+         > .active {
+            border-radius: 0 1.5rem 0 0;
+         }
+      }
+
+      &.active {
+         z-index: 10;
+         color: var(--text-primary);
+      }
+
+      & > .active {
+         background-color: var(--bg-secondary);
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         height: 100%;
+         width: 100%;
+         z-index: -1;
+
+         &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-primary);
+         }
+      }
+   }
+}
