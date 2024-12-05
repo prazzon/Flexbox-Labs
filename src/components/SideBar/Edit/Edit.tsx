@@ -6,8 +6,8 @@ import EditContainer from "./EditContainer/EditContainer";
 import EditItems from "./EditItems/EditItems";
 
 function Edit() {
-   const [switchState, setSwitchState] = useState(1);
    const { selectedItems } = usePlayground();
+   const [switchState, setSwitchState] = useState(selectedItems.length ? 2 : 1);
 
    useEffect(() => {
       if (selectedItems.length) setSwitchState(2);
