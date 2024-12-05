@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import usePlayground from "../../../hooks/usePlayground";
+import {  generateFullHTML } from "../../../utils/generateFullHtml";
 import {
    formatCSS,
    formatHTML,
@@ -11,6 +12,7 @@ import {
 import Copy from "../Copy/Copy";
 import CodeTabs from "./CodeTabs/CodeTabs";
 import styles from "./DisplayCode.module.scss";
+import ExportButton from "./ExportButton/ExportButton";
 
 const tabs = [{ title: "HTML" }, { title: "CSS" }, { title: "Tailwind" }];
 
@@ -61,7 +63,18 @@ function DisplayCode() {
                      </SyntaxHighlighter>
                   </motion.div>
                </AnimatePresence>
-               <Copy id="code" text={code} />
+               <motion.div className={styles.btn__container} layout>
+                  <AnimatePresence mode="wait" initial={false}>
+                     {switchState !== 2 && (
+                        <ExportButton
+                           data={generateFullHTML(state)}
+                           fileName="code"
+                           extension="html"
+                        />
+                     )}
+                  </AnimatePresence>
+                  <Copy id="code" text={code} />
+               </motion.div>
             </motion.div>
          </div>
       </div>

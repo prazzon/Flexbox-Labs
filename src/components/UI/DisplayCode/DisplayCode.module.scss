@@ -60,7 +60,22 @@
       pre {
          max-height: 40rem;
          overflow-y: auto;
-         padding: 2rem;
+
+         @media (max-width: 528px) {
+            padding: 2rem 1em !important;
+         }
+      }
+   }
+
+   .btn__container {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+
+      @media (max-width: 528px) {
+         flex-direction: column-reverse;
       }
    }
 }

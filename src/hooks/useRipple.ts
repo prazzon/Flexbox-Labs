@@ -9,6 +9,8 @@ export function useRipple<T extends HTMLElement>(ref: RefObject<T>, scaleSize = 
 
          const { offsetX, offsetY } = e;
 
+         current.style.position = "relative";
+
          const ripple = document.createElement("span");
          ripple.classList.add("ripple");
          ripple.style.setProperty("--top", `${offsetY}px`);
