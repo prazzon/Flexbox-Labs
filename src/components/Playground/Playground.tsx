@@ -7,6 +7,7 @@ import Snackbar from "./Snackbar/Snackbar";
 import Toolbar from "./Toolbar/Toolbar";
 
 import { motion } from "framer-motion";
+import Resizable from "../UI/Resizable/Resizable";
 import MainAxisPointer from "./MainAxisPointer/MainAxisPointer";
 
 function Playground() {
@@ -16,26 +17,28 @@ function Playground() {
 
    return (
       <motion.div
-         className={styles.playground}
+         className={styles.playground_wrapper}
          ref={ref}
          layout
          layoutId="playground"
       >
-         <Toolbar />
-         <MainAxisPointer />
-         <motion.div
-            layout
-            className={styles.playground_view}
-            id="playground_view"
-            style={container}
-         >
-            <AnimatePresence mode="popLayout">
-               {items?.map((item) => (
-                  <PlaygroundItem key={item.id} item={item} />
-               ))}
-            </AnimatePresence>
-         </motion.div>
-         <Snackbar />
+         <Resizable className={styles.playground}>
+            <Toolbar />
+            <MainAxisPointer />
+            <motion.div
+               layout
+               className={styles.playground_view}
+               id="playground_view"
+               style={container}
+            >
+               <AnimatePresence mode="popLayout">
+                  {items?.map((item) => (
+                     <PlaygroundItem key={item.id} item={item} />
+                  ))}
+               </AnimatePresence>
+            </motion.div>
+            <Snackbar />
+         </Resizable>
       </motion.div>
    );
 }

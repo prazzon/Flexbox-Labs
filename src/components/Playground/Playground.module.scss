@@ -1,3 +1,12 @@
+.playground_wrapper {
+   border-radius: 1.5rem;
+   background-image: radial-gradient(
+      var(--bg-content-dot) 0.8px,
+      var(--bg-primary) 0.8px
+   );
+   background-size: 24px 24px;
+}
+
 .playground {
    display: grid;
    grid-template-rows: 6.6rem auto;

@@ -6,9 +6,9 @@ export function useInsideContainerClick(handler: () => void) {
    useEffect(() => {
       if (!ref.current) return;
 
-      const currentRef = ref.current;
-      
-      function handleClick(e: MouseEvent) {         
+      const currentRef = ref.current.children[0] as HTMLElement;
+
+      function handleClick(e: Event) {
          if (currentRef && currentRef === e.target) {
             handler();
          }
