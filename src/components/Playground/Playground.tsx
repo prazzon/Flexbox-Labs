@@ -16,12 +16,7 @@ function Playground() {
    const ref = useInsideContainerClick(clearSelected);
 
    return (
-      <motion.div
-         className={styles.playground_wrapper}
-         ref={ref}
-         layout
-         layoutId="playground"
-      >
+      <motion.div layout className={styles.playground_wrapper} ref={ref}>
          <Resizable className={styles.playground}>
             <Toolbar />
             <MainAxisPointer />

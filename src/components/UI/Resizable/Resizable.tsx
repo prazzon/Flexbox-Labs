@@ -9,7 +9,7 @@ interface Props {
 
 export function Resizable({ children, className = "" }: Props) {
    const wrapperRef = useRef<HTMLDivElement>(null);
-   const { dimensions, startResize } = useResize({ ref: wrapperRef });
+   const { dimensions, startResize, reset } = useResize({ ref: wrapperRef });
 
    return (
       <div
@@ -24,6 +24,7 @@ export function Resizable({ children, className = "" }: Props) {
 
          <div
             onMouseDown={(e) => startResize(e, "horizontal")}
+            onDoubleClick={() => reset("horizontal")}
             className={styles.rightHandle}
          >
             <div className={`${styles.handle} ${styles.horizontal}`}>
@@ -33,6 +34,7 @@ export function Resizable({ children, className = "" }: Props) {
 
          <div
             onMouseDown={(e) => startResize(e, "vertical")}
+            onDoubleClick={() => reset("vertical")}
             className={styles.bottomHandle}
          >
             <div className={`${styles.handle} ${styles.vertical}`}>
