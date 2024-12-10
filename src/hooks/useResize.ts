@@ -81,10 +81,10 @@ export const useResize = ({
          const startWidth = ref.current.offsetWidth;
          const startHeight = ref.current.offsetHeight;
 
-         setDimensions({
-            width: startWidth,
-            height: startHeight,
-         });
+         // setDimensions({
+         //    width: startWidth,
+         //    height: startHeight,
+         // });
 
          const handleMouseMove = (e: MouseEvent) => {
             if (direction === "horizontal") {
