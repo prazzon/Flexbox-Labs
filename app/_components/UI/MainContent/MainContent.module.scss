@@ -1,0 +1,16 @@
+.main_content {
+   display: grid;
+   grid-template-columns: auto 1fr;
+   grid-template-rows: 5rem calc(100% - 6rem);
+   gap: 1rem;
+   animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+   animation-delay: 0.2s;
+   height: 100%;
+   width: 100%;
+
+   @media (max-width: 825px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 5rem minmax(50vh, 1fr) minmax(6rem, auto);
+      gap: 0.3rem;
+   }
+}

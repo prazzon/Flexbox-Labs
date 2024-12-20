@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 270 270" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" clip-rule="evenodd" fill-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="AlignCenter">
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="AlignCenter" fill="none" stroke="none" />
+    <path d="M82 80C86.4189 80 90 83.5811 90 88L90 122C90 126.419 86.4189 130 82 130L28 130C23.5811 130 20 126.419 20 122L20 88C20 83.5811 23.5811 80 28 80L82 80Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M162 80C166.419 80 170 83.5811 170 88L170 122C170 126.419 166.419 130 162 130L108 130C103.581 130 100 126.419 100 122L100 88C100 83.5811 103.581 80 108 80L162 80Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M242 80C246.419 80 250 83.5811 250 88L250 122C250 126.419 246.419 130 242 130L188 130C183.581 130 180 126.419 180 122L180 88C180 83.5811 183.581 80 188 80L242 80Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M82 140C86.4189 140 90 143.581 90 148L90 182C90 186.419 86.4189 190 82 190L28 190C23.5811 190 20 186.419 20 182L20 148C20 143.581 23.5811 140 28 140L82 140Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M162 140C166.419 140 170 143.581 170 148L170 182C170 186.419 166.419 190 162 190L108 190C103.581 190 100 186.419 100 182L100 148C100 143.581 103.581 140 108 140L162 140Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M242 140C246.419 140 250 143.581 250 148L250 182C250 186.419 246.419 190 242 190L188 190C183.581 190 180 186.419 180 182L180 148C180 143.581 183.581 140 188 140L242 140Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+.sidebar {
+   display: flex;
+   gap: 1rem;
+
+   @media (max-width: 825px) {
+      flex-direction: column-reverse;
+      gap: 0.3rem;
+      grid-row: 3 / 4;
+   }
+}

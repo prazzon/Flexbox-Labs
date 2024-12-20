@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 270 270" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" clip-rule="evenodd" fill-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="stretchMiddle">
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="stretchMiddle" fill="transparent" stroke="none" />
+    <path d="M40 10C45.5236 10 50 14.4764 50 20L50 250C50 255.524 45.5236 260 40 260L20 260C14.4764 260 10 255.524 10 250L10 20C10 14.4764 14.4764 10 20 10L40 10Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M200 10C205.524 10 210 14.4764 210 20L210 250C210 255.524 205.524 260 200 260L70 260C64.4764 260 60 255.524 60 250L60 20C60 14.4764 64.4764 10 70 10L200 10Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M250 10C255.524 10 260 14.4764 260 20L260 250C260 255.524 255.524 260 250 260L230 260C224.476 260 220 255.524 220 250L220 20C220 14.4764 224.476 10 230 10L250 10Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+  </g>
+</svg>

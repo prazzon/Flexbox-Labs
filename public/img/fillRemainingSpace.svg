@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 270 270" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" clip-rule="evenodd" fill-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="fillRemainingSpace">
+    <path d="M270 0L270 0L270 270L0 270L0 0L270 0Z" id="fillRemaingingSpace" fill="transparent" stroke="none" />
+    <path d="M60 105C65.5236 105 70 109.476 70 115L70 155C70 160.524 65.5236 165 60 165L20 165C14.4764 165 10 160.524 10 155L10 115C10 109.476 14.4764 105 20 105L60 105Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M130 105C135.524 105 140 109.476 140 115L140 155C140 160.524 135.524 165 130 165L90 165C84.4764 165 80 160.524 80 155L80 115C80 109.476 84.4764 105 90 105L130 105Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+    <path d="M250 105C255.524 105 260 109.476 260 115L260 155C260 160.524 255.524 165 250 165L160 165C154.476 165 150 160.524 150 155L150 115C150 109.476 154.476 105 160 105L250 105Z" id="Rectangle" stroke="none" clip-path="url(#clip_1)" />
+  </g>
+</svg>
