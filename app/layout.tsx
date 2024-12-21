@@ -18,12 +18,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
    return (
       <html lang="en">
          <body>
-            <div id="root">
-               {/* <Header /> */}
-               <SettingsProvider>
-                  <StoreProvider>{children}</StoreProvider>
-               </SettingsProvider>
-            </div>
+            {/* <Header /> */}
+            <SettingsProvider>
+               <StoreProvider>{children}</StoreProvider>
+            </SettingsProvider>
          </body>
       </html>
    );
