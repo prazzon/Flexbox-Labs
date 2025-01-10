@@ -1,6 +1,5 @@
 "use client";
 
-import { IconType } from "react-icons";
 import {
    LuAlignVerticalSpaceAround,
    LuExpand,
@@ -12,32 +11,7 @@ import {
    TbArrowAutofitWidth,
    TbReorder,
 } from "react-icons/tb";
-import { FlexboxItemStyle } from "@/app/_lib/types/flexbox";
-
-type ItemConfigBase = {
-   key: keyof FlexboxItemStyle;
-   title: string;
-   description: string;
-   icon: IconType;
-   type: "select" | "input";
-   defaultValue: string;
-};
-
-type SelectItemConfig = ItemConfigBase & {
-   type: "select";
-   options: string[];
-};
-
-type InputType =
-   | { inputType: "unit"; unitOptions: string[] }
-   | { inputType: "number"; step?: number };
-
-type InputItemConfig = ItemConfigBase &
-   InputType & {
-      type: "input";
-   };
-
-export type ItemConfig = SelectItemConfig | InputItemConfig;
+import { ItemConfig } from "../dataTypes";
 
 export const itemsConfig: ItemConfig[] = [
    {

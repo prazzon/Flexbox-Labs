@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useFlexbox } from "@/app/_hooks/useFlexbox";
-import Tooltip from "../../UI/Tooltip/Tooltip";
+import Tooltip from "../../../UI/Tooltip/Tooltip";
 import styles from "./MainAxisPointer.module.scss";
 
 function MainAxisPointer() {

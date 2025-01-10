@@ -2,9 +2,9 @@ import { HiOutlineDuplicate } from "react-icons/hi";
 import { IoAddOutline } from "react-icons/io5";
 import { LuRedo, LuTrash2, LuUndo } from "react-icons/lu";
 import { VscDebugRestart } from "react-icons/vsc";
-import { useFlexbox } from "../../../_hooks/useFlexbox";
-import Toolbar, { ToolbarDivider } from "../../Playground/Toolbar/Toolbar";
-import ToolbarBtn from "../../Playground/Toolbar/ToolbarBtn/ToolbarBtn";
+import { useFlexbox } from "@/app/_hooks/useFlexbox";
+import Toolbar, { ToolbarDivider } from "../../../Playground/Toolbar/Toolbar";
+import ToolbarBtn from "../../../Playground/Toolbar/ToolbarBtn/ToolbarBtn";
 import { getOS } from "@/app/_helpers/helpers";
 
 export default function FlexboxToolbar() {

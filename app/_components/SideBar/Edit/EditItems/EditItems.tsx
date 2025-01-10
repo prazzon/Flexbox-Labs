@@ -1,19 +1,21 @@
 "use client";
 
-import { itemsConfig } from "@/app/_data/flexbox/itemsConfig";
+import { ItemConfig } from "@/app/_data/dataTypes";
 import { ItemStyle } from "@/app/types";
 import { AnimatePresence, motion } from "framer-motion";
-import Select from "../../../UI/Select/Select";
-import TextInput from "../../../UI/TextInput/TextInput";
+import { Fragment } from "react";
 import itemStyles from "../Item.module.scss";
+import Item from "../Item/Item";
+import ItemDropdown from "../Item/ItemDropdown";
 import Empty from "./Empty/Empty";
 
 interface Props {
    selectedItemStyles: ItemStyle | undefined;
    editItemStyle: (key: keyof ItemStyle, value: string) => void;
+   itemsConfig: ItemConfig[];
 }
 
-function EditItems({ selectedItemStyles, editItemStyle }: Props) {
+function EditItems({ selectedItemStyles, editItemStyle, itemsConfig }: Props) {
    const isEmpty = Object.keys(selectedItemStyles || {}).length === 0 ? 1 : 0;
 
    return (
@@ -33,6 +35,7 @@ function EditItems({ selectedItemStyles, editItemStyle }: Props) {
                   <ItemsConfig
                      selectedItemStyles={selectedItemStyles}
                      editItemStyle={editItemStyle}
+                     itemsConfig={itemsConfig}
                   />
                )}
             </motion.div>
@@ -41,61 +44,44 @@ function EditItems({ selectedItemStyles, editItemStyle }: Props) {
    );
 }
 
-function ItemsConfig({ selectedItemStyles, editItemStyle }: Props) {
+function ItemsConfig({
+   selectedItemStyles,
+   editItemStyle,
+   itemsConfig,
+}: Props) {
    return (
       <>
-         {itemsConfig.map((item) => (
-            <label className={itemStyles.item} key={item.key}>
-               <div className={itemStyles.icon}>
-                  <item.icon />
-               </div>
-               <div className={itemStyles.text}>
-                  <div className={itemStyles.title}>{item.title}</div>
-                  <div className={itemStyles.description}>
-                     {item.description}
-                  </div>
-               </div>
-               {item.type === "select" ? (
-                  <Select
-                     active={
-                        selectedItemStyles?.[item.key]?.toString() ||
-                        item.defaultValue
-                     }
-                     onSelect={(value) => editItemStyle(item.key, value)}
-                  >
-                     <Select.Toggle />
-                     <Select.Options>
-                        {item.options.map((option) => (
-                           <Select.Option value={option} key={option} />
-                        ))}
-                     </Select.Options>
-                  </Select>
-               ) : null}
-               {item.type === "input" && item.inputType === "unit" ? (
-                  <TextInput
-                     size="small"
+         {itemsConfig?.map((item) => (
+            <Fragment key={item.key}>
+               {item.itemType === "dropdown" && (
+                  <ItemDropdown
+                     item={item}
                      value={
-                        selectedItemStyles?.[item.key]?.toString() ||
-                        item.defaultValue
+                        selectedItemStyles?.[
+                           item.key as keyof ItemStyle
+                        ]?.toString() || item.defaultValue
                      }
-                     type={item.inputType}
-                     unitOptions={item.unitOptions}
-                     onChange={(value) => editItemStyle(item.key, value)}
+                     separator={item.dropDownSeparator || " "}
+                     onChange={(key, value) =>
+                        editItemStyle(key as keyof ItemStyle, value)
+                     }
                   />
-               ) : null}
-               {item.type === "input" && item.inputType === "number" ? (
-                  <TextInput
-                     size="small"
+               )}
+
+               {!item.itemType && (
+                  <Item
+                     item={item}
                      value={
-                        selectedItemStyles?.[item.key]?.toString() ||
-                        item.defaultValue
+                        selectedItemStyles?.[
+                           item.key as keyof ItemStyle
+                        ]?.toString() || item.defaultValue
                      }
-                     type={item.inputType}
-                     step={item.step}
-                     onChange={(value) => editItemStyle(item.key, value)}
+                     onChange={(key, value) =>
+                        editItemStyle(key as keyof ItemStyle, value)
+                     }
                   />
-               ) : null}
-            </label>
+               )}
+            </Fragment>
          ))}
       </>
    );

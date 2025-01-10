@@ -5,7 +5,14 @@ import {
    FlexboxItemStyle,
 } from "./_lib/types/flexbox";
 
-export type State = Flexbox;
-export type ItemStyle = FlexboxItemStyle;
-export type Container = FlexboxContainer;
-export type Item = FlexboxItem;
+import {
+   Grid,
+   GridContainer,
+   GridItem,
+   GridItemStyle,
+} from "./_lib/types/grid";
+
+export type State = Flexbox | Grid;
+export type Item = FlexboxItem | GridItem;
+export type ItemStyle = FlexboxItemStyle | GridItemStyle;
+export type Container = FlexboxContainer | GridContainer;

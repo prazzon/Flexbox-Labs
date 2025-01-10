@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { forwardRef, MutableRefObject } from "react";
 import { MdModeEditOutline } from "react-icons/md";
 import { useFlexbox } from "@/app/_hooks/useFlexbox";
-import { useRipple } from "../../../_hooks/useRipple";
-import { type FlexboxItem } from "../../../_lib/types/flexbox";
+import { useRipple } from "@/app/_hooks/useRipple";
+import { type FlexboxItem } from "@/app/_lib/types/flexbox";
 import styles from "./FlexboxItem.module.scss";
 
 const popIn = {

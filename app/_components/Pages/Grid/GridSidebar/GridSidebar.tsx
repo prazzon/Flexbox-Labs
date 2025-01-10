@@ -1,28 +1,29 @@
-import { configContainer } from "@/app/_data/flexbox/containerConfig";
-import { layouts } from "@/app/_data/flexbox/layouts";
+import { containerConfig } from "@/app/_data/grid/containerConfig";
+import { layouts } from "@/app/_data/grid/layouts";
+import { useGrid } from "@/app/_hooks/useGrid";
 import { FaFloppyDisk } from "react-icons/fa6";
 import { LuSettings2 } from "react-icons/lu";
 import { MdOutlineEdit } from "react-icons/md";
 import { TbLayoutGrid } from "react-icons/tb";
-import { useFlexbox } from "../../../_hooks/useFlexbox";
-import Edit from "../../SideBar/Edit/Edit";
-import Layout from "../../SideBar/Layout/Layout";
-import Save from "../../SideBar/Save/Save";
-import Settings from "../../SideBar/Settings/Settings";
-import SideBar from "../../SideBar/SideBar";
+import Edit from "../../../SideBar/Edit/Edit";
+import Layout from "../../../SideBar/Layout/Layout";
+import Save from "../../../SideBar/Save/Save";
+import Settings from "../../../SideBar/Settings/Settings";
+import SideBar from "../../../SideBar/SideBar";
+import { itemsConfig } from "@/app/_data/grid/itemsConfig";
 
-export default function FlexboxSidebar() {
+export default function GridSidebar() {
    const {
       items,
       container,
       selectedItems,
-      flexbox,
-      setFlexbox,
+      grid,
+      setGrid,
       editContainer,
       editItemStyle,
       clearSelected,
-   } = useFlexbox();
-   
+   } = useGrid();
+
    const lastSelectedItem = selectedItems[selectedItems.length - 1];
 
    const selectedItemStyles = items.find(
@@ -37,7 +38,8 @@ export default function FlexboxSidebar() {
                selectedItems={selectedItems}
                editContainer={editContainer}
                container={container}
-               configContainer={configContainer}
+               containerConfig={containerConfig}
+               itemsConfig={itemsConfig}
                selectedItemStyles={selectedItemStyles}
                editItemStyle={editItemStyle}
             />
@@ -47,7 +49,7 @@ export default function FlexboxSidebar() {
       {
          name: "Save",
          component: (
-            <Save storageKey="flexbox" state={flexbox} setState={setFlexbox} />
+            <Save storageKey="grid" state={grid} setState={setGrid} />
          ),
          icon: <FaFloppyDisk />,
       },
@@ -56,7 +58,7 @@ export default function FlexboxSidebar() {
          component: (
             <Layout
                layouts={layouts}
-               setState={setFlexbox}
+               setState={setGrid}
                clearSelected={clearSelected}
             />
          ),
@@ -65,5 +67,5 @@ export default function FlexboxSidebar() {
       { name: "Settings", component: <Settings />, icon: <LuSettings2 /> },
    ];
 
-   return <SideBar tabs={tabs} state={flexbox} />;
+   return <SideBar tabs={tabs} state={grid} />;
 }

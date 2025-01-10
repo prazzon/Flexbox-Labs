@@ -1,0 +1,105 @@
+// .grid_area {
+//    display: grid;
+//    height: 100%;
+//    width: 100%;
+//    position: absolute;
+//    row-gap: 1.5rem;
+//    column-gap: 1.5rem;
+//    padding: 1.5rem;
+//    border-radius: 1.5rem;
+//    overflow: hidden;
+// }
+
+.grid_section {
+   // border: 1px dashed #555;
+   transition: all 0.3s ease;
+   z-index: 100;
+   min-height: 5.3rem;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   padding: 1.5rem;
+
+   &:hover:has(> div) {
+      background: transparent;
+   }
+
+   &:hover .add_btn_content {
+      opacity: 1;
+      transform: scale(1);
+   }
+
+   &:hover .add_btn {
+      background: rgba($color: #24292d, $alpha: 0.2);
+   }
+
+   .add_btn {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+   }
+
+   .add_btn_content {
+      opacity: 0;
+      padding: 1rem 1.2rem;
+      background: var(--bg-content);
+      border-radius: 3rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+
+      & svg {
+         font-size: 2rem;
+      }
+   }
+}
+
+.grid_track_column,
+.grid_track_row {
+   position: absolute;
+   z-index: 1000;
+   width: 100%;
+   height: 100%;
+   pointer-events: none;
+}
+
+.grid_track_row:not([data-row="last"]) {
+   border-bottom: 1px dashed;
+   border-bottom: 1px dashed #555;
+}
+
+.grid_track_row:not([data-row="first"]) {
+   border-top: 1px dashed;
+   border-top: 1px dashed #555;
+}
+
+.grid_track_column:not([data-column="first"]) {
+   border-left: 1px dashed;
+   border-left: 1px dashed #555;
+}
+
+.grid_track_column:not([data-column="last"]) {
+   border-right: 1px dashed;
+   border-right: 1px dashed #555;
+}
+
+// .grid_track_row {
+//    border-bottom: 1px dashed #555;
+//    border-top: 1px dashed #555;
+//    // border-radius: 1.5rem;
+// }
+
+// .grid_track_column {
+//    border-left: 1px dashed #555;
+//    border-right: 1px dashed #555;
+//    // border-radius: 1.5rem;
+// }

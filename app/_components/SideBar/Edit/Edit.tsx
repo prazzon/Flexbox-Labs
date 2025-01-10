@@ -1,18 +1,19 @@
 "use client";
 
-import { ContainerConfig } from "@/app/_data/flexbox/containerConfig";
-import { Container, ItemStyle,  } from "@/app/types";
+import { Container, ItemStyle } from "@/app/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import styles from "./Edit.module.scss";
 import EditContainer from "./EditContainer/EditContainer";
 import EditItems from "./EditItems/EditItems";
+import { ContainerConfig, ItemConfig } from "@/app/_data/dataTypes";
 
 interface Props {
    selectedItems: number[];
    editContainer: (key: keyof Container, value: string) => void;
    container: Container;
-   configContainer: ContainerConfig[];
+   containerConfig: ContainerConfig[];
+   itemsConfig: ItemConfig[];
    selectedItemStyles: ItemStyle | undefined;
    editItemStyle: (key: keyof ItemStyle, value: string) => void;
 }
@@ -21,7 +22,8 @@ function Edit({
    selectedItems,
    editContainer,
    container,
-   configContainer,
+   containerConfig,
+   itemsConfig,
    selectedItemStyles,
    editItemStyle,
 }: Props) {
@@ -63,13 +65,14 @@ function Edit({
                   <EditContainer
                      editContainer={editContainer}
                      container={container}
-                     configContainer={configContainer}
+                     containerConfig={containerConfig}
                   />
                )}
                {switchState === 2 && (
                   <EditItems
                      selectedItemStyles={selectedItemStyles}
                      editItemStyle={editItemStyle}
+                     itemsConfig={itemsConfig}
                   />
                )}
             </motion.div>

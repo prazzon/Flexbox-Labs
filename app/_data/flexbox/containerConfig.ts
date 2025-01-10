@@ -1,6 +1,5 @@
 "use client";
 
-import { IconType } from "react-icons";
 import { DiGhostSmall } from "react-icons/di";
 import {
    LuAlignHorizontalJustifyStart,
@@ -10,34 +9,9 @@ import {
 } from "react-icons/lu";
 import { RxSpaceEvenlyHorizontally } from "react-icons/rx";
 import { TbArrowsRightDown } from "react-icons/tb";
-import { FlexboxContainer } from "@/app/_lib/types/flexbox";
+import { ContainerConfig } from "../dataTypes";
 
-type ContainerConfigBase = {
-   key: keyof FlexboxContainer;
-   title: string;
-   description: string;
-   icon: IconType;
-   type: "select" | "input";
-   defaultValue: string;
-};
-
-type SelectContainerConfig = ContainerConfigBase & {
-   type: "select";
-   options: string[];
-};
-
-type InputType =
-   | { inputType: "unit"; unitOptions: string[] }
-   | { inputType: "number"; step?: number };
-
-type InputContainerConfig = ContainerConfigBase &
-   InputType & {
-      type: "input";
-   };
-
-export type ContainerConfig = SelectContainerConfig | InputContainerConfig;
-
-export const configContainer: ContainerConfig[] = [
+export const containerConfig: ContainerConfig[] = [
    {
       key: "display",
       title: "Display",

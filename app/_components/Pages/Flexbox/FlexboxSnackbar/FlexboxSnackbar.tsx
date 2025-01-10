@@ -1,5 +1,5 @@
-import { useFlexbox } from "../../../_hooks/useFlexbox";
-import Snackbar from "../../Playground/Snackbar/Snackbar";
+import { useFlexbox } from "@/app/_hooks/useFlexbox";
+import Snackbar from "../../../Playground/Snackbar/Snackbar";
 
 export default function FlexboxSnackbar() {
    const { selectedItems, toggleAllSelected, clearSelected } = useFlexbox();

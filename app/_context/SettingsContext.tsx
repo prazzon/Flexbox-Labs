@@ -89,12 +89,12 @@ export const SettingsProvider = ({ children }: Props) => {
       document.documentElement.setAttribute("data-accent", accent);
    }, [accent]);
 
-   useEffect(() => {
-      const playground = document.getElementById("playground_view");
-      if (playground) {
-         playground.style.fontSize = `${textSize}px`;
-      }
-   }, [textSize]);
+   // useEffect(() => {
+   //    const playground = document.getElementById("playground_view");
+   //    if (playground) {
+   //       playground.style.fontSize = `${textSize}px`;
+   //    }
+   // }, [textSize]);
 
    return (
       <SettingsContext.Provider
