@@ -1,4 +1,10 @@
+import { CSSProperties } from "react";
 import { GridContainer, GridItem } from "../_lib/types/grid";
+
+interface GridSection {
+   key: string;
+   style: CSSProperties;
+}
 
 export const generateGridElements = (
    container: GridContainer,
@@ -25,7 +31,7 @@ export const generateGridElements = (
       }
    }
 
-   const gridSections = [];
+   const gridSections: GridSection[] = [];
    for (let row = 1; row <= rows; row++) {
       for (let col = 1; col <= columns; col++) {
          gridSections.push({
