@@ -1,5 +1,5 @@
 
-import { type Layout } from "@/app/_data/flexbox/layouts";
+import { type Layout } from "@/app/_data/dataTypes";
 import { State } from "@/app/types";
 import styles from "./Layout.module.scss";
 

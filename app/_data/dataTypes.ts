@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
-import { FlexboxContainer, FlexboxItemStyle } from "../_lib/types/flexbox";
-import { GridContainer, GridItemStyle } from "../_lib/types/grid";
+import { FlexboxContainer, FlexboxItem, FlexboxItemStyle } from "../_lib/types/flexbox";
+import { GridContainer, GridItem, GridItemStyle } from "../_lib/types/grid";
 
 type ConfigBase = TypeConfig & ItemType & {
    title: string;
@@ -50,3 +50,11 @@ export type ContainerConfig = ConfigBase & {
 export type ItemConfig = ConfigBase & {
    key: keyof FlexboxItemStyle | keyof GridItemStyle;
 };
+export interface Layout {
+   name: string;
+   img: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+   layout: {
+      items: FlexboxItem[] | GridItem[];
+      container: FlexboxContainer | GridContainer;
+   };
+}
