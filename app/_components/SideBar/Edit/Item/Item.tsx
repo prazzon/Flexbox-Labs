@@ -30,7 +30,7 @@ const Item = ({ item, value, onChange }: Props) => {
                active={value || item.defaultValue}
                onSelect={(value) => onChange(key, value)}
             >
-               <Select.Toggle maxLength={10} />
+               <Select.Toggle />
                <Select.Options>
                   {item.options.map((option) => (
                      <Select.Option value={option} key={option} />

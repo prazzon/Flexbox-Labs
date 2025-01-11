@@ -24,6 +24,13 @@
       background: var(--bg-secondary);
       padding: 0.5rem 0.8rem;
       border-radius: 0.8rem;
+
+      p {
+         max-width: 5.8rem;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+      }
    }
 }
 

@@ -18,10 +18,6 @@ interface SelectProps {
    onSelect: (value: string) => void;
 }
 
-interface ToggleProps {
-   maxLength?: number;
-}
-
 interface Context {
    open: boolean;
    toggleOpen: () => void;
@@ -55,14 +51,14 @@ function Select({ children, active, onSelect }: SelectProps) {
    );
 }
 
-function Toggle({ maxLength = 20 }: ToggleProps) {
+function Toggle() {
    const { toggleOpen, active } = useContext(SelectContext) as Context;
 
    return (
       <>
          <button className={styles.toggle} onClick={toggleOpen}>
             <div className={styles.toggle__text}>
-               {active.length > maxLength ? active.slice(0, maxLength) : active}
+               <p>{active}</p>
                <FaCaretDown />
             </div>
          </button>
