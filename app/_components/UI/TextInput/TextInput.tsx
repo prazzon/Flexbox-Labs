@@ -35,9 +35,8 @@ function TextInput({ size, value, type, onChange, unitOptions, step }: Props) {
    const [lastValue, setLastValue] = useState(value);
 
    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { value } = e.target;
-      // removes leading zeros
-      e.target.value = value.replace(/^0+(\d+)/, "$1");
+      // remove leading zeros
+      const value = e.target.value.replace(/^0+(\d+)/, "$1");
 
       if (type === "number") {
          onChange(value);
