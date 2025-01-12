@@ -1,17 +1,4 @@
-// .grid_area {
-//    display: grid;
-//    height: 100%;
-//    width: 100%;
-//    position: absolute;
-//    row-gap: 1.5rem;
-//    column-gap: 1.5rem;
-//    padding: 1.5rem;
-//    border-radius: 1.5rem;
-//    overflow: hidden;
-// }
-
 .grid_section {
-   // border: 1px dashed #555;
    transition: all 0.3s ease;
    z-index: 100;
    min-height: 5.3rem;
@@ -72,34 +59,28 @@
    pointer-events: none;
 }
 
-.grid_track_row:not([data-row="last"]) {
-   border-bottom: 1px dashed;
+.grid_track_row {
    border-bottom: 1px dashed #555;
-}
-
-.grid_track_row:not([data-row="first"]) {
-   border-top: 1px dashed;
    border-top: 1px dashed #555;
+
+   &[data-row="first"] {
+      border-radius: 1.5rem 1.5rem 0 0;
+   }
+
+   &[data-row="last"] {
+      border-radius: 0 0 1.5rem 1.5rem;
+   }
 }
 
-.grid_track_column:not([data-column="first"]) {
-   border-left: 1px dashed;
+.grid_track_column {
    border-left: 1px dashed #555;
-}
-
-.grid_track_column:not([data-column="last"]) {
-   border-right: 1px dashed;
    border-right: 1px dashed #555;
+
+   &[data-column="first"] {
+      border-radius: 1.5rem 0 0 1.5rem;
+   }
+
+   &[data-column="last"] {
+      border-radius: 0 1.5rem 1.5rem 0;
+   }
 }
-
-// .grid_track_row {
-//    border-bottom: 1px dashed #555;
-//    border-top: 1px dashed #555;
-//    // border-radius: 1.5rem;
-// }
-
-// .grid_track_column {
-//    border-left: 1px dashed #555;
-//    border-right: 1px dashed #555;
-//    // border-radius: 1.5rem;
-// }

@@ -8,13 +8,14 @@
    border: 2px solid transparent;
    transition: background 0.3s ease, border 0.3s ease;
    position: relative;
+   min-height: 6.5rem;
 
    border: 3px solid var(--bg-content-border);
    box-shadow: 4px 4px 0 0 var(--bg-content-border);
 
-   // &:hover {
-   //    background: var(--bg-content-hover);
-   // }
+   &:hover {
+      background: var(--bg-content-hover);
+   }
 
    &.selected {
       border: 2px solid var(--color-primary);
@@ -40,8 +41,6 @@
       max-width: 100%;
       max-height: 100%;
       white-space: pre-wrap;
-      border-radius: 1.5rem;
-      border-radius: 2rem;
       border-radius: 0.7rem;
       background-color: var(--bg-content-border);
 
@@ -61,7 +60,7 @@
 
       .input {
          position: absolute;
-         border-radius: 1rem;
+         border-radius: 0.7rem;
          width: 0;
          height: 100%;
          opacity: 0;
