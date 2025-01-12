@@ -68,10 +68,8 @@ const Item = ({ item, value, separator, onChange }: Props) => {
                <div className={styles.description}>{item.description}</div>
             </div>
             <div className={styles.value}>
-               {currValue.length > 10
-                  ? `${currValue.slice(0, 9)}...`
-                  : currValue}
-            <FaCaretDown />
+               <p>{currValue}</p>
+               <FaCaretDown />
             </div>
          </motion.label>
 

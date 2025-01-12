@@ -72,6 +72,13 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+
+      p {
+         max-width: 5.8rem;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+      }
    }
 }
 
