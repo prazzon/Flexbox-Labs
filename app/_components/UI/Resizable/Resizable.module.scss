@@ -15,6 +15,7 @@
    opacity: 0;
    right: 0;
    transition: opacity 0.2s;
+   z-index: 9999;
 
    @media (max-width: 825px) {
       display: none;
