@@ -49,6 +49,10 @@ const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridItem(
          className={`${styles.item} ${isSelected ? styles.selected : ""}`}
          style={item.styles}
       >
+         <label className={styles.checkbox}>
+            <input checked={isSelected} type="checkbox" readOnly />
+            <div className={styles.checkmark}></div>
+         </label>
          <motion.label
             layout
             transition={{ duration: 0.1 }}
