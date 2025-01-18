@@ -2,6 +2,7 @@ import Logo from "@/public/img/logo.svg";
 import { FaGithub, FaRegQuestionCircle } from "react-icons/fa";
 import About from "../SideBar/About/About";
 import Modal, { Content, OpenBtn } from "../UI/Modal/Modal";
+import ShinyText from "../UI/ShinyText/ShinyText";
 import styles from "./Header.module.scss";
 
 function Header() {
@@ -47,7 +48,7 @@ function Header() {
             <span className={styles.hover_effect}></span>
             <div className={styles.icon_text}>
                <FaGithub />
-               <span className={styles.label}>Star on GitHub</span>
+               <ShinyText text="Star on GitHub" className={styles.label} />
             </div>
          </a>
       </div>
