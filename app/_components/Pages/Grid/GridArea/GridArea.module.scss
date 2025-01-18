@@ -33,7 +33,7 @@
    .add_btn_content {
       opacity: 0;
       padding: 1rem 1.2rem;
-      background: var(--bg-content);
+      // background: var(--bg-content);
       border-radius: 3rem;
       font-size: 1.4rem;
       font-weight: 600;
@@ -46,6 +46,7 @@
 
       & svg {
          font-size: 2rem;
+         font-size: 3rem;
       }
    }
 }
@@ -60,8 +61,8 @@
 }
 
 .grid_track_row {
-   border-bottom: 1px dashed #555;
-   border-top: 1px dashed #555;
+   border-bottom: 2px dotted #333;
+   border-top: 2px dotted #333;
 
    &[data-row="first"] {
       border-radius: 1.5rem 1.5rem 0 0;
@@ -73,8 +74,8 @@
 }
 
 .grid_track_column {
-   border-left: 1px dashed #555;
-   border-right: 1px dashed #555;
+   border-left: 2px dotted #333;
+   border-right: 2px dotted #333;
 
    &[data-column="first"] {
       border-radius: 1.5rem 0 0 1.5rem;
