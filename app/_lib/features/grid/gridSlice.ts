@@ -27,10 +27,7 @@ const defaultContainer: GridContainer = {
    display: "grid",
    gridTemplateColumns: "1fr 1fr 1fr",
    gridTemplateRows: "1fr 1fr 1fr",
-   // gridAutoRows: "1fr",
-   // rowGap: "15px",
-   // columnGap: "15px",
-   gap: "15px 15px",
+   gap: "10px 10px",
 };
 
 const newItem = (length: number, styles = defaultItemStyle): GridItem => ({
