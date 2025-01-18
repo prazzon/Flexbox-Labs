@@ -12,6 +12,7 @@ interface Props {
    onClick?: () => void;
    type?: string;
    disabled?: boolean;
+   inActive?: boolean;
    alert?: boolean;
    value?: string;
 }
@@ -21,6 +22,7 @@ function ToolbarBtn({
    shortcut,
    onClick,
    disabled = false,
+   inActive = false,
    alert = false,
    value = "",
    type,
@@ -39,6 +41,7 @@ function ToolbarBtn({
 
    let className = styles.toolbar__btn;
    if (disabled) className += " " + styles.disabled;
+   if (inActive) className += " " + styles.inactive;
    if (type === "delete" && !disabled) className += " " + styles.delete;
 
    return (

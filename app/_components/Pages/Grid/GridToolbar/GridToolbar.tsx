@@ -5,6 +5,7 @@ import Toolbar, { ToolbarDivider } from "../../../Playground/Toolbar/Toolbar";
 import ToolbarBtn from "../../../Playground/Toolbar/ToolbarBtn/ToolbarBtn";
 import { getOS } from "@/app/_helpers/helpers";
 import { useGrid } from "@/app/_hooks/useGrid";
+import { MdGrid3X3 } from "react-icons/md";
 
 export default function FlexboxToolbar() {
    const {
@@ -12,6 +13,8 @@ export default function FlexboxToolbar() {
       removeItem,
       resetContainer,
       selectedItems,
+      toggleGridLines,
+      gridLines,
       undo,
       redo,
       canUndo,
@@ -70,6 +73,16 @@ export default function FlexboxToolbar() {
             disabled={!canRedo}
          >
             <LuRedo />
+         </ToolbarBtn>
+
+         <ToolbarDivider />
+
+         <ToolbarBtn
+            value="Grid Lines"
+            onClick={toggleGridLines}
+            inActive={!gridLines}
+         >
+            <MdGrid3X3 />
          </ToolbarBtn>
       </Toolbar>
    );

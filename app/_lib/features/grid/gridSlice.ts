@@ -44,6 +44,7 @@ const initialState: GridState = {
    items: [],
    container: defaultContainer,
    selectedItems: [],
+   gridLines: false,
 };
 
 export const gridSlice = createSlice({
@@ -145,6 +146,9 @@ export const gridSlice = createSlice({
       resetContainer: () => {
          return initialState;
       },
+      toggleGridLines: (state) => {
+         state.gridLines = !state.gridLines;
+      },
    },
 });
 
@@ -161,6 +165,7 @@ export const {
    toggleAllSelected,
    clearSelected,
    resetContainer,
+   toggleGridLines,
 } = gridSlice.actions;
 
 const gridReducer = enableHistory(gridSlice.reducer, "grid", [
@@ -176,6 +181,8 @@ export const selectContainer = (state: RootState) =>
    state.grid.present.container;
 export const selectSelectedItems = (state: RootState) =>
    state.grid.present.selectedItems;
+export const selectGridLines = (state: RootState) =>
+   state.grid.present.gridLines;
 export const selectCanUndoGrid = (state: RootState) => canUndo(state.grid);
 export const selectCanRedoGrid = (state: RootState) => canRedo(state.grid);
 
