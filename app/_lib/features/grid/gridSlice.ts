@@ -18,10 +18,7 @@ type RootState = {
    grid: HistoryEnabledState<GridState>;
 };
 
-const defaultItemStyle: GridItemStyle = {
-   width: "auto",
-   height: "auto",
-};
+const defaultItemStyle: GridItemStyle = {};
 
 const defaultContainer: GridContainer = {
    display: "grid",
@@ -37,7 +34,6 @@ const newItem = (length: number, styles = defaultItemStyle): GridItem => ({
 });
 
 const initialState: GridState = {
-   // items: [newItem(0), newItem(1), newItem(2), { ...newItem(3), styles: { width: "auto", height: "auto", gridArea: "2 / 2 / 3 / 3" } }, newItem(4)],
    items: [],
    container: defaultContainer,
    selectedItems: [],

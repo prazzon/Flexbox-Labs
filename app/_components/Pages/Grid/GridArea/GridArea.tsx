@@ -30,7 +30,6 @@ function GridArea() {
                >
                   <div className={styles.add_btn_content}>
                      <IoAddOutline />
-                     {/* Add Item */}
                   </div>
                </button>
             </div>

@@ -70,6 +70,7 @@ function Edit({
                )}
                {switchState === 2 && (
                   <EditItems
+                     selectedItems={selectedItems}
                      selectedItemStyles={selectedItemStyles}
                      editItemStyle={editItemStyle}
                      itemsConfig={itemsConfig}
