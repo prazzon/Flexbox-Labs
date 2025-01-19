@@ -32,8 +32,8 @@
 
    .add_btn_content {
       opacity: 0;
-      padding: 1rem 1.2rem;
-      // background: var(--bg-content);
+      padding: .8rem;
+      background: var(--bg-content);
       border-radius: 3rem;
       font-size: 1.4rem;
       font-weight: 600;
@@ -45,8 +45,7 @@
       transition: all 0.3s ease;
 
       & svg {
-         font-size: 2rem;
-         font-size: 3rem;
+         font-size: 2.5rem;
       }
    }
 }

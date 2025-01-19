@@ -41,7 +41,7 @@ const initialState: GridState = {
    items: [],
    container: defaultContainer,
    selectedItems: [],
-   gridLines: false,
+   gridLines: true,
 };
 
 export const gridSlice = createSlice({
