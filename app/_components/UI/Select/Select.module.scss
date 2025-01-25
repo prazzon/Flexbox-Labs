@@ -12,7 +12,6 @@
    border: none;
    background: transparent;
    cursor: pointer;
-   padding-left: 0.5rem;
 
    &__text {
       display: flex;
@@ -22,11 +21,11 @@
       font-weight: 600;
       color: var(--text-secondary);
       background: var(--bg-secondary);
-      padding: 0.5rem 0.8rem;
-      border-radius: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
 
       p {
-         max-width: 5.8rem;
+         width: 100%;
          white-space: nowrap;
          overflow: hidden;
          text-overflow: ellipsis;

@@ -58,7 +58,7 @@ function TextInput({ size, value, type, onChange, unitOptions, step }: Props) {
    };
 
    return (
-      <>
+      <div className={styles.container}>
          {value !== "auto" && (
             <input
                type={type === "unit" ? "number" : type}
@@ -83,7 +83,7 @@ function TextInput({ size, value, type, onChange, unitOptions, step }: Props) {
                </Select.Options>
             </Select>
          )}
-      </>
+      </div>
    );
 }
 

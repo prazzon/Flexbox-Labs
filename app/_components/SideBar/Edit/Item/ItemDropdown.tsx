@@ -6,9 +6,11 @@ import { Container, ItemStyle } from "@/app/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaCaretDown } from "react-icons/fa6";
+import { IoInformation } from "react-icons/io5";
 import { MdAddCircleOutline } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
 import styles from "../Item.module.scss";
+import Popover from "@/app/_components/UI/Popover/Popover";
 
 interface Props {
    item: ContainerConfig | ItemConfig;
@@ -65,12 +67,16 @@ const Item = ({ item, value, separator, onChange }: Props) => {
             </div>
             <div className={styles.text}>
                <div className={styles.title}>{item.title}</div>
-               <div className={styles.description}>{item.description}</div>
+
+               <div className={styles.value}>
+                  <p>{currValue}</p>
+                  <FaCaretDown />
+               </div>
             </div>
-            <div className={styles.value}>
-               <p>{currValue}</p>
-               <FaCaretDown />
-            </div>
+            <span className={styles.info}>
+               <IoInformation />
+               <Popover position="bottom">{item.description}</Popover>
+            </span>
          </motion.label>
 
          <AnimatePresence mode="popLayout">
