@@ -8,7 +8,7 @@ import GridItem from "../GridItem/GridItem";
 import styles from "./GridArea.module.scss";
 
 function GridArea() {
-   const { container, items, addItemStyle } = useGrid();
+   const { container, items, addItemStyle, gridLines } = useGrid();
 
    const { gridSections, rowTracks, columnTracks } = generateGridElements(
       container,
@@ -30,7 +30,6 @@ function GridArea() {
                >
                   <div className={styles.add_btn_content}>
                      <IoAddOutline />
-                     Add Item
                   </div>
                </button>
             </div>
@@ -40,24 +39,28 @@ function GridArea() {
                <GridItem item={item} key={item.id} />
             ))}
          </AnimatePresence>
-         {rowTracks.map((track) => (
-            <motion.div
-               layout
-               key={track.key}
-               className={styles.grid_track_row}
-               data-row={track.data}
-               style={track.style}
-            />
-         ))}
-         {columnTracks.map((track) => (
-            <motion.div
-               layout
-               key={track.key}
-               className={styles.grid_track_column}
-               data-column={track.data}
-               style={track.style}
-            />
-         ))}
+
+         {gridLines &&
+            rowTracks.map((track) => (
+               <motion.div
+                  layout
+                  key={track.key}
+                  className={styles.grid_track_row}
+                  data-row={track.data}
+                  style={track.style}
+               />
+            ))}
+         
+         {gridLines &&
+            columnTracks.map((track) => (
+               <motion.div
+                  layout
+                  key={track.key}
+                  className={styles.grid_track_column}
+                  data-column={track.data}
+                  style={track.style}
+               />
+            ))}
       </>
    );
 }

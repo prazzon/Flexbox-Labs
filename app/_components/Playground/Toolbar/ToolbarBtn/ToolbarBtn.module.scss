@@ -25,6 +25,10 @@
       color: var(--color-disabled);
    }
 
+   &.inactive {
+      color: var(--color-disabled);
+   }
+
    &.delete {
       color: var(--red);
    }
@@ -36,5 +40,15 @@
       border-radius: 0.5rem;
       margin-right: -0.5rem;
       color: var(--text-primary);
+   }
+
+   .active {
+      position: absolute;
+      right: .5rem;
+      top: .5rem;
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      background: var(--color-primary);
    }
 }

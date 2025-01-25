@@ -2,7 +2,7 @@
    border-radius: 1rem;
    padding: 1.5rem;
    background: var(--bg-content);
-   margin: 1.5rem;
+   margin: 1rem;
    z-index: 100;
    cursor: pointer;
    border: 2px solid transparent;
@@ -15,10 +15,6 @@
 
    &:hover {
       background: var(--bg-content-hover);
-   }
-
-   &.selected {
-      border: 2px solid var(--color-primary);
    }
 
    &:hover {
@@ -100,5 +96,82 @@
          cursor: pointer;
          z-index: 10;
       }
+   }
+}
+
+.checkbox {
+   font-size: 20px;
+   height: 10px;
+   width: 10px;
+   position: absolute;
+   top: -1rem;
+   right: 1rem;
+   cursor: pointer;
+   pointer-events: none;
+   transition: all 0.2s ease;
+   z-index: 100;
+
+   /* Hide the default checkbox */
+   input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+   }
+
+   /* Create a custom checkbox */
+   .checkmark {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 3rem;
+      width: 3rem;
+      border-radius: 50px;
+      opacity: 0;
+      transition: all 0.3s;
+   }
+
+   /* When the checkbox is checked, add a background */
+   input:checked ~ .checkmark {
+      background-color: var(--color-primary);
+      /* background-color: #a5a5b0; */
+      animation: keyframes-fill 0.5s;
+      animation-direction: alternate;
+      opacity: 1;
+   }
+
+   /* Create the checkmark/indicator (hidden when not checked) */
+   .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+   }
+
+   /* Show the checkmark when checked */
+   input:checked ~ .checkmark:after {
+      display: block;
+   }
+
+   /* Style the checkmark/indicator */
+   .checkmark:after {
+      left: 1.1rem;
+      top: 0.7rem;
+      width: 0.5rem;
+      height: 0.5em;
+      border: solid var(--bg-primary);
+      border-width: 0 0.3rem 0.3rem 0;
+      transform: rotate(45deg);
+   }
+}
+
+@keyframes keyframes-fill {
+   0% {
+      transform: scale(0);
+      opacity: 0;
+   }
+
+   50% {
+      transform: scale(1.2) rotate(15deg);
    }
 }

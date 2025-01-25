@@ -21,6 +21,8 @@ import {
    toggleAllSelected,
    toggleSelected,
    undoGrid,
+   toggleGridLines,
+   selectGridLines,
 } from "../_lib/features/grid/gridSlice";
 import { Grid, GridContainer, GridItemStyle } from "../_lib/types/grid";
 import useSettings from "./useSettings";
@@ -31,6 +33,7 @@ export const useGrid = () => {
    const items = useSelector(selectItems);
    const container = useSelector(selectContainer);
    const selectedItems = useSelector(selectSelectedItems);
+   const gridLines = useSelector(selectGridLines);
    const canUndo = useSelector(selectCanUndoGrid);
    const canRedo = useSelector(selectCanRedoGrid);
    const grid = useSelector(selectGrid);
@@ -112,11 +115,16 @@ export const useGrid = () => {
       dispatch(redoGrid());
    }, [dispatch]);
 
+   const handleToggleGridLines = useCallback(() => {
+      dispatch(toggleGridLines());
+   }, [dispatch]);
+
    return {
       grid,
       items,
       container,
       selectedItems,
+      gridLines,
       canUndo,
       canRedo,
       setGrid: handleSetGrid,
@@ -131,6 +139,7 @@ export const useGrid = () => {
       toggleAllSelected: handleToggleAllSelected,
       clearSelected: handleClearSelected,
       resetContainer: handleResetContainer,
+      toggleGridLines: handleToggleGridLines,
       undo: handleUndo,
       redo: handleRedo,
    };

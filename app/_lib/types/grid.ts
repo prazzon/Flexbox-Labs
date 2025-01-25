@@ -41,6 +41,7 @@ export interface GridState {
    items: GridItem[];
    container: GridContainer;
    selectedItems: number[];
+   gridLines: boolean;
 }
 
 export interface Grid {

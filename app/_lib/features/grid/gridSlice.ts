@@ -18,19 +18,13 @@ type RootState = {
    grid: HistoryEnabledState<GridState>;
 };
 
-const defaultItemStyle: GridItemStyle = {
-   width: "auto",
-   height: "auto",
-};
+const defaultItemStyle: GridItemStyle = {};
 
 const defaultContainer: GridContainer = {
    display: "grid",
    gridTemplateColumns: "1fr 1fr 1fr",
    gridTemplateRows: "1fr 1fr 1fr",
-   // gridAutoRows: "1fr",
-   // rowGap: "15px",
-   // columnGap: "15px",
-   gap: "15px 15px",
+   gap: "10px 10px",
 };
 
 const newItem = (length: number, styles = defaultItemStyle): GridItem => ({
@@ -40,10 +34,10 @@ const newItem = (length: number, styles = defaultItemStyle): GridItem => ({
 });
 
 const initialState: GridState = {
-   // items: [newItem(0), newItem(1), newItem(2), { ...newItem(3), styles: { width: "auto", height: "auto", gridArea: "2 / 2 / 3 / 3" } }, newItem(4)],
    items: [],
    container: defaultContainer,
    selectedItems: [],
+   gridLines: true,
 };
 
 export const gridSlice = createSlice({
@@ -145,6 +139,9 @@ export const gridSlice = createSlice({
       resetContainer: () => {
          return initialState;
       },
+      toggleGridLines: (state) => {
+         state.gridLines = !state.gridLines;
+      },
    },
 });
 
@@ -161,6 +158,7 @@ export const {
    toggleAllSelected,
    clearSelected,
    resetContainer,
+   toggleGridLines,
 } = gridSlice.actions;
 
 const gridReducer = enableHistory(gridSlice.reducer, "grid", [
@@ -176,6 +174,8 @@ export const selectContainer = (state: RootState) =>
    state.grid.present.container;
 export const selectSelectedItems = (state: RootState) =>
    state.grid.present.selectedItems;
+export const selectGridLines = (state: RootState) =>
+   state.grid.present.gridLines;
 export const selectCanUndoGrid = (state: RootState) => canUndo(state.grid);
 export const selectCanRedoGrid = (state: RootState) => canRedo(state.grid);
 

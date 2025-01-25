@@ -32,11 +32,23 @@
    .text {
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      gap: 0.5rem;
       font-size: 1.5rem;
       text-align: start;
       padding: 0 1rem;
       margin-right: auto;
+   }
+
+   .info {
+      padding: 1rem;
+      background: var(--bg-secondary);
+      border-radius: 50%;
+      display: flex;
+      box-shadow: inset 0 -1.5px 0 0 var(--icon-shadow);
+
+      svg {
+         font-size: 2rem;
+      }
    }
 
    .title {
@@ -46,6 +58,7 @@
       font-weight: 600;
       gap: 0.5rem;
       color: var(--text-primary);
+      padding-left: 0.5rem;
 
       @media (max-width: 1024px) {
          font-size: 1.4rem;
@@ -63,8 +76,8 @@
    }
 
    .value {
-      border-radius: 0.8rem;
-      padding: 0.5rem 0.7rem;
+      border-radius: 1rem;
+      padding: 0.5rem 1rem;
       background: var(--bg-secondary);
       color: var(--text-secondary);
       font-size: 1.4rem;
@@ -72,12 +85,17 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      width: fit-content;
 
       p {
-         max-width: 5.8rem;
          white-space: nowrap;
          overflow: hidden;
          text-overflow: ellipsis;
+         max-width: 17.5rem;
+
+         @media (max-width: 1024px) {
+            max-width: 14rem;
+         }
       }
    }
 }

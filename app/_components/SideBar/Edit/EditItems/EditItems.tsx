@@ -10,19 +10,25 @@ import ItemDropdown from "../Item/ItemDropdown";
 import Empty from "./Empty/Empty";
 
 interface Props {
+   selectedItems?: number[];
    selectedItemStyles: ItemStyle | undefined;
    editItemStyle: (key: keyof ItemStyle, value: string) => void;
    itemsConfig: ItemConfig[];
 }
 
-function EditItems({ selectedItemStyles, editItemStyle, itemsConfig }: Props) {
-   const isEmpty = Object.keys(selectedItemStyles || {}).length === 0 ? 1 : 0;
+function EditItems({
+   selectedItems,
+   selectedItemStyles,
+   editItemStyle,
+   itemsConfig,
+}: Props) {
+   const isEmpty = !selectedItems?.length;
 
    return (
       <>
          <AnimatePresence mode="wait">
             <motion.div
-               key={isEmpty}
+               key={isEmpty.toString()}
                className={itemStyles.wrapper}
                animate={{ opacity: 1, y: 0 }}
                initial={{ opacity: 0, y: 5 }}
