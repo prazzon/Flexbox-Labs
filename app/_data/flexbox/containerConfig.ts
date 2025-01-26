@@ -15,7 +15,7 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "display",
       title: "Display",
-      description: "Sets the display type",
+      description: "Defines the layout type, such as flex or block.",
       icon: DiGhostSmall,
       type: "select",
       options: ["flex", "block"],
@@ -24,7 +24,7 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "flexDirection",
       title: "Flex Direction",
-      description: "Sets main axis direction",
+      description: "Specifies the direction of the main axis for item layout.",
       icon: TbArrowsRightDown,
       type: "select",
       options: ["row", "row-reverse", "column", "column-reverse"],
@@ -33,7 +33,8 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "flexWrap",
       title: "Flex Wrap",
-      description: "Controls items wrapping",
+      description:
+         "Determines whether items wrap onto multiple lines or stay on one line.",
       icon: LuWrapText,
       type: "select",
       options: ["nowrap", "wrap", "wrap-reverse"],
@@ -42,7 +43,8 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "justifyContent",
       title: "Justify Content",
-      description: "Aligns items on main axis",
+      description:
+         "Aligns items along the main axis, controlling horizontal spacing.",
       icon: LuAlignHorizontalJustifyStart,
       type: "select",
       options: [
@@ -58,7 +60,8 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "alignItems",
       title: "Align Items",
-      description: "Aligns items on cross axis",
+      description:
+         "Aligns items along the cross axis, affecting vertical alignment.",
       icon: LuAlignVerticalJustifyEnd,
       type: "select",
       options: ["stretch", "start", "center", "end", "baseline"],
@@ -67,7 +70,8 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "alignContent",
       title: "Align Content",
-      description: "Controls flex line spacing",
+      description:
+         "Defines the spacing between flex lines when wrapping occurs.",
       icon: LuAlignVerticalDistributeEnd,
       type: "select",
       options: [
@@ -83,7 +87,8 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "gap",
       title: "Gap",
-      description: "Sets gap between items",
+      description:
+         "Specifies the spacing between flex items within the container.",
       icon: RxSpaceEvenlyHorizontally,
       type: "input",
       defaultValue: "20px",
