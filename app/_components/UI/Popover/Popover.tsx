@@ -37,7 +37,7 @@ function Popover({
    children,
    position = "top",
    background,
-   width = 300,
+   width = 320,
 }: Props) {
    const [showPopover, setShowPopover] = useState(false);
 
