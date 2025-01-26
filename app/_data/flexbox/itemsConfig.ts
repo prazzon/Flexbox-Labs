@@ -17,7 +17,7 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "order",
       title: "Order",
-      description: "Controls position of a flex item",
+      description: "Specifies the order of the flex item within the container.",
       icon: TbReorder,
       type: "input",
       inputType: "number",
@@ -26,7 +26,7 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "flexGrow",
       title: "Flex Grow",
-      description: "Controls size of an item",
+      description: "Determines how much the item will grow relative to others.",
       icon: LuExpand,
       type: "input",
       inputType: "number",
@@ -35,7 +35,8 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "flexShrink",
       title: "Flex Shrink",
-      description: "Controls maximum shrink",
+      description:
+         "Controls how much the item will shrink when space is limited.",
       icon: LuShrink,
       type: "input",
       inputType: "number",
@@ -44,7 +45,8 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "flexBasis",
       title: "Flex Basis",
-      description: "Sets initial size of an item",
+      description:
+         "Defines the initial size of the item before space distribution.",
       icon: LuScan,
       type: "input",
       inputType: "unit",
@@ -54,7 +56,8 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "alignSelf",
       title: "Align Self",
-      description: "Aligns item on cross axis",
+      description:
+         "Overrides the container's alignment for this item on the cross axis.",
       icon: LuAlignVerticalSpaceAround,
       type: "select",
       options: [
@@ -70,7 +73,7 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "width",
       title: "Width",
-      description: "Sets an element's width",
+      description: "Specifies the item's width, overriding its default size.",
       icon: TbArrowAutofitWidth,
       type: "input",
       inputType: "unit",
@@ -80,7 +83,7 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "height",
       title: "Height",
-      description: "Sets an element's height",
+      description: "Specifies the item's height, overriding its default size.",
       icon: TbArrowAutofitHeight,
       type: "input",
       inputType: "unit",
