@@ -10,7 +10,8 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "display",
       title: "Display",
-      description: "Sets the display type",
+      description:
+         "Defines the layout type of the container, such as grid or block.",
       icon: DiGhostSmall,
       type: "select",
       options: ["grid", "block"],
@@ -22,7 +23,8 @@ export const containerConfig: ContainerConfig[] = [
       placeholder: "Grid Column",
       key: "gridTemplateColumns",
       title: "Grid Template Columns",
-      description: "Sets the columns of the grid",
+      description:
+         "Specifies the column structure of the grid, including sizes and units.",
       icon: LuAlignHorizontalJustifyStart,
       type: "input",
       inputType: "unit",
@@ -35,7 +37,8 @@ export const containerConfig: ContainerConfig[] = [
       placeholder: "Grid Row",
       key: "gridTemplateRows",
       title: "Grid Template Rows",
-      description: "Sets the rows of the grid",
+      description:
+         "Specifies the row structure of the grid, including sizes and units.",
       icon: LuAlignVerticalJustifyEnd,
       type: "input",
       inputType: "unit",
@@ -49,7 +52,7 @@ export const containerConfig: ContainerConfig[] = [
          {
             key: "rowGap",
             title: "Row Gap",
-            description: "Sets the gap between rows",
+            description: "Defines the spacing between rows in the grid.",
             type: "input",
             inputType: "unit",
             unitOptions: ["px", "%"],
@@ -57,7 +60,7 @@ export const containerConfig: ContainerConfig[] = [
          {
             key: "columnGap",
             title: "Column Gap",
-            description: "Sets the gap between columns",
+            description: "Defines the spacing between columns in the grid.",
             type: "input",
             inputType: "unit",
             unitOptions: ["px", "%"],
@@ -65,7 +68,8 @@ export const containerConfig: ContainerConfig[] = [
       ],
       key: "gap",
       title: "Gap",
-      description: "Sets gap between items",
+      description:
+         "Specifies the spacing between rows and columns in the grid.",
       icon: RxSpaceEvenlyHorizontally,
       type: "input",
       inputType: "unit",
@@ -75,7 +79,7 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "justifyItems",
       title: "Justify Items",
-      description: "Sets the alignment of items on the main axis",
+      description: "Aligns items horizontally within their grid cells.",
       icon: LuAlignHorizontalJustifyStart,
       type: "select",
       options: ["stretch", "start", "center", "end"],
@@ -84,7 +88,7 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "alignItems",
       title: "Align Items",
-      description: "Sets the alignment of items on the cross axis",
+      description: "Aligns items vertically within their grid cells.",
       icon: LuAlignVerticalJustifyEnd,
       type: "select",
       options: ["stretch", "start", "center", "end"],
@@ -93,7 +97,7 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "justifyContent",
       title: "Justify Content",
-      description: "Sets the alignment of items on the main axis",
+      description: "Distributes items horizontally within the container.",
       icon: LuAlignHorizontalJustifyStart,
       type: "select",
       options: [
@@ -109,7 +113,7 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "alignContent",
       title: "Align Content",
-      description: "Sets the alignment of items on the cross axis",
+      description: "Distributes items vertically within the container.",
       icon: LuAlignVerticalJustifyEnd,
       type: "select",
       options: [
@@ -125,7 +129,8 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "gridAutoColumns",
       title: "Grid Auto Columns",
-      description: "Sets the size of the columns that are not defined",
+      description:
+         "Defines the width of columns automatically added to the grid.",
       icon: LuAlignHorizontalJustifyStart,
       type: "input",
       inputType: "unit",
@@ -135,7 +140,8 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "gridAutoRows",
       title: "Grid Auto Rows",
-      description: "Sets the size of the rows that are not defined",
+      description:
+         "Defines the height of rows automatically added to the grid.",
       icon: LuAlignVerticalJustifyEnd,
       type: "input",
       inputType: "unit",
@@ -145,7 +151,7 @@ export const containerConfig: ContainerConfig[] = [
    {
       key: "gridAutoFlow",
       title: "Grid Auto Flow",
-      description: "Controls the auto placement of items",
+      description: "Controls how items are automatically placed in the grid.",
       icon: DiGhostSmall,
       type: "select",
       options: ["row", "column", "row dense", "column dense"],
