@@ -4,8 +4,8 @@ import TextInput from "@/app/_components/UI/TextInput/TextInput";
 import { ContainerConfig, ItemConfig } from "@/app/_data/dataTypes";
 import { Container, ItemStyle } from "@/app/types";
 import { motion } from "framer-motion";
-import { IoInformation } from "react-icons/io5";
 import styles from "../Item.module.scss";
+import { FaInfo } from "react-icons/fa";
 
 interface Props {
    item: ContainerConfig | ItemConfig;
@@ -60,7 +60,7 @@ const Item = ({ item, value, onChange }: Props) => {
          </div>
 
          <span className={styles.info}>
-            <IoInformation />
+            <FaInfo />
             <Popover position="bottom">{item.description}</Popover>
          </span>
       </motion.div>

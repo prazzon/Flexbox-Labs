@@ -1,16 +1,16 @@
 "use client";
 
+import Popover from "@/app/_components/UI/Popover/Popover";
 import TextInput from "@/app/_components/UI/TextInput/TextInput";
 import { ContainerConfig, ItemConfig } from "@/app/_data/dataTypes";
 import { Container, ItemStyle } from "@/app/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { FaInfo } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa6";
-import { IoInformation } from "react-icons/io5";
 import { MdAddCircleOutline } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
 import styles from "../Item.module.scss";
-import Popover from "@/app/_components/UI/Popover/Popover";
 
 interface Props {
    item: ContainerConfig | ItemConfig;
@@ -74,7 +74,7 @@ const Item = ({ item, value, separator, onChange }: Props) => {
                </div>
             </div>
             <span className={styles.info}>
-               <IoInformation />
+               <FaInfo />
                <Popover position="bottom">{item.description}</Popover>
             </span>
          </motion.label>
