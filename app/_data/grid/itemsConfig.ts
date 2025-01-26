@@ -12,21 +12,24 @@ export const itemsConfig: ItemConfig[] = [
          {
             key: "gridColumnStart",
             title: "Grid Column Start",
-            description: "Sets an element's column start",
+            description:
+               "Specifies the starting column for an element within the grid.",
             type: "input",
             inputType: "number",
          },
          {
             key: "gridColumnEnd",
             title: "Grid Column End",
-            description: "Sets an element's column end",
+            description:
+               "Specifies the ending column for an element within the grid.",
             type: "input",
             inputType: "number",
          },
       ],
       key: "gridColumn",
       title: "Grid Column",
-      description: "Sets an element's column",
+      description:
+         "Defines the start and end columns for an element in the grid.",
       icon: LuAlignVerticalSpaceAround,
       type: "input",
       inputType: "number",
@@ -40,21 +43,23 @@ export const itemsConfig: ItemConfig[] = [
          {
             key: "gridRowStart",
             title: "Grid Row Start",
-            description: "Sets an element's row start",
+            description:
+               "Specifies the starting row for an element within the grid.",
             type: "input",
             inputType: "number",
          },
          {
             key: "gridRowEnd",
             title: "Grid Row End",
-            description: "Sets an element's row end",
+            description:
+               "Specifies the ending row for an element within the grid.",
             type: "input",
             inputType: "number",
          },
       ],
       key: "gridRow",
       title: "Grid Row",
-      description: "Sets an element's row",
+      description: "Defines the start and end rows for an element in the grid.",
       icon: LuAlignVerticalSpaceAround,
       type: "input",
       inputType: "number",
@@ -63,7 +68,8 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "justifySelf",
       title: "Justify Self",
-      description: "Aligns item on row axis",
+      description:
+         "Controls horizontal alignment of an element within its grid container.",
       icon: LuAlignVerticalSpaceAround,
       type: "select",
       options: ["stretch", "start", "center", "end"],
@@ -72,7 +78,8 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "alignSelf",
       title: "Align Self",
-      description: "Aligns item on column axis",
+      description:
+         "Controls vertical alignment of an element within its grid container.",
       icon: LuAlignVerticalSpaceAround,
       type: "select",
       options: ["stretch", "start", "center", "end"],
@@ -81,7 +88,7 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "width",
       title: "Width",
-      description: "Sets an element's width",
+      description: "Specifies the width of an element, including unit options.",
       icon: LuAlignVerticalSpaceAround,
       type: "input",
       inputType: "unit",
@@ -91,7 +98,8 @@ export const itemsConfig: ItemConfig[] = [
    {
       key: "height",
       title: "Height",
-      description: "Sets an element's height",
+      description:
+         "Specifies the height of an element, including unit options.",
       icon: LuAlignVerticalSpaceAround,
       type: "input",
       inputType: "unit",
