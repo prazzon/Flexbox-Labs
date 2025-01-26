@@ -1,9 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { ReactNode, useEffect, useState } from "react";
 import styles from "./Popover.module.scss";
+import { useOutsideClick } from "@/app/_hooks/useOutsideClick";
 
 const popoverVariants = {
    hidden: (pos: string) => ({
@@ -41,22 +41,12 @@ function Popover({
 }: Props) {
    const [showPopover, setShowPopover] = useState(false);
 
-   const ref = useRef<HTMLDivElement | null>(null);
-
-   const rect = ref.current?.getBoundingClientRect();
-
-   let rectPosition;
-   if (rect) {
-      rectPosition = {
-         x: rect.x - width / 2 + rect.width / 2,
-         y: rect.y,
-      };
-   }
-
    const togglePopover = (e: React.MouseEvent) => {
       e.stopPropagation();
       setShowPopover((prev) => !prev);
    };
+
+   const ref = useOutsideClick(() => setShowPopover(false));
 
    useEffect(() => {
       const parent = ref.current?.parentElement;
@@ -64,7 +54,7 @@ function Popover({
       if (!parent) return;
 
       parent.style.position = "relative";
-   }, []);
+   }, [ref]);
 
    return (
       <div
@@ -74,52 +64,24 @@ function Popover({
       >
          <AnimatePresence>
             {showPopover && (
-               <PopoverContent
-                  position={position}
-                  background={background}
-                  rectPosition={rectPosition}
-                  width={width}
+               <motion.div
+                  className={styles.popover__content}
+                  variants={popoverVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  custom={position}
+                  style={{
+                     maxWidth: `${width}px`,
+                     backgroundColor: background,
+                     zIndex: "9999",
+                  }}
                >
                   {children}
-               </PopoverContent>
+               </motion.div>
             )}
          </AnimatePresence>
       </div>
-   );
-}
-
-type PopoverContentProps = Props & {
-   rectPosition: { x: number; y: number } | undefined;
-}
-
-function PopoverContent({
-   children,
-   position,
-   background,
-   rectPosition,
-   width,
-}: PopoverContentProps) {
-
-   return createPortal(
-      <motion.div
-         className={styles.popover__content}
-         variants={popoverVariants}
-         initial="hidden"
-         animate="visible"
-         exit="exit"
-         custom={position}
-         style={{
-            position: "fixed",
-            left: rectPosition?.x,
-            top: rectPosition?.y,
-            width: `${width}px`,
-            backgroundColor: background,
-            zIndex: "9999",
-         }}
-      >
-         {children}
-      </motion.div>,
-      document.body
    );
 }
 

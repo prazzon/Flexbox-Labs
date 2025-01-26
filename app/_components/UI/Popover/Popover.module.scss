@@ -8,18 +8,27 @@
 
    &__content {
       position: absolute;
+      right: 0;
       font-size: 14px;
       font-weight: 500;
       height: max-content;
       width: max-content;
       letter-spacing: 1px;
-      padding: 6px 10px;
-      padding: 1.5rem;
-      text-align: center;
+      padding: 1rem 1.5rem;
       border-radius: 8px;
       line-height: 1.4;
       background: #1c1e21;
       color: #e3e3e3;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+      &::after {
+         content: "";
+         position: absolute;
+         top: -0.7rem;
+         right: 1rem;
+         border-style: solid;
+         border-width: 0 1rem 1rem 1rem;
+         border-color: transparent transparent #1c1e21 transparent;
+      }
    }
 }
