@@ -4,53 +4,48 @@ function About() {
    return (
       <div className={styles.about}>
          <div className={styles.content}>
-            <h2>About</h2>
-            <p>
-               <strong>Flexbox Labs</strong> is a visual tool that helps you
-               create layouts using CSS Flexbox. It offers an intuitive
-               interface that shows changes in real-time, making it easy to
-               experiment and learn.
-            </p>
+            <h1>About Flexbox Labs</h1>
+            <p><strong>Flexbox Labs</strong> is a visual tool designed to help you create layouts using CSS Flexbox. With an intuitive interface and real-time previews, it makes experimenting and learning effortless.</p>
 
-            <h3>Feature Overview</h3>
-            <p>
-               Use the playground toolbar to add, delete, or duplicate flex
-               items. You can also undo, redo, or reset changes. For detailed
-               adjustments, use the <strong>Edit Tab</strong> to customize the
-               flex container and items.
-            </p>
+            <div>
+               <h2>Contribution</h2>
+               <p>
+                  Flexbox Labs is open source! You can find the project on{" "}
+                  <a
+                     href="https://github.com/prazzon/flexboxlabs"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                  >
+                     GitHub
+                  </a>
+                  . If you have feedback, suggestions, or encounter any issues,
+                  please open an issue{" "}
+                  <a
+                     href="https://github.com/prazzon/flexlab/issues"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                  >
+                     here
+                  </a>
+                  .
+               </p>
+            </div>
 
-            <p>
-               The <strong>Save Tab</strong> lets you save your work, load
-               previous layouts, or delete edits. This ensures your work is
-               always saved, and you can return to it anytime.
-            </p>
-
-            <p>
-               The <strong>Layout Tab</strong> provides pre-built layouts. Load
-               templates with a click to start quickly or get inspired by ready-
-               made designs.
-            </p>
-
-            <p>
-               Once satisfied with your layout, click the code button on the tab
-               to get the generated HTML and CSS code.
-            </p>
-
-            <h3>Contribution</h3>
-
-            <p>
-               The project is <strong>Open Source</strong> and available on{" "}
-               <a href="https://github.com/prazzon/flexlab" target="_blank">
-                  GitHub
-               </a>
-               .<br />
-               If you have any feedback, suggestions, or issues, please{" "}
-               <a href="https://github.com/yourusername/flexbox-labs/issues">
-                  open an issue
-               </a>{" "}
-               on Github.
-            </p>
+            <div>
+               <h2>Support</h2>
+               <p>
+                  If you find Flexbox Labs helpful, consider supporting its
+                  development by{" "}
+                  <a
+                     href="https://buymeacoffee.com/prazzon"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                  >
+                     buying me a coffee
+                  </a>
+                  . Your support helps improve and maintain the project.
+               </p>
+            </div>
          </div>
       </div>
    );

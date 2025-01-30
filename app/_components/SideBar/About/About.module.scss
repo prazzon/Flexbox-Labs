@@ -3,15 +3,11 @@
    padding: 4rem;
    padding-bottom: 0;
    padding-top: 3rem;
-   width: 75rem;
+   width: 52rem;
    margin-bottom: -2rem;
 
-   @media (max-width: 1100px) {
-      width: 75vw;
-   }
-
    @media (max-width: 850px) {
-      width: 80vw;
+      width: 48rem;
       padding: 3rem 4rem;
    }
 
@@ -32,33 +28,30 @@
    .content {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 1.5rem;
 
-      @media (max-width: 850px) {
-         gap: 0.5rem;
-      }
-
-      h2,
-      h3 {
-         color: var(--text-primary);
+      h1 {
+         font-size: 3rem;
+         padding-bottom: 1.2rem;
+         border-bottom: 1px solid var(--bg-divider);
+         font-weight: 800;
       }
 
       h2 {
-         font-size: 2.5rem;
-      }
-
-      h3 {
-         font-size: 1.5rem;
+         color: var(--text-primary);
+         margin-bottom: 1rem;
+         font-size: 2rem;
       }
 
       p {
          margin-bottom: 0.4rem;
          line-height: 1.625;
          font-weight: 500;
-         font-size: 1.5rem;
+         font-size: 1.6rem;
+         letter-spacing: 0.2px;
 
          @media (max-width: 850px) {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
          }
       }
 
