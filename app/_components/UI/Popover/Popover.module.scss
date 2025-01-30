@@ -16,9 +16,9 @@
       padding: 1rem 1.5rem;
       border-radius: 8px;
       line-height: 1.4;
-      background: #1c1e21;
-      color: #e3e3e3;
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
 
       &::after {
          content: "";
@@ -27,7 +27,7 @@
          right: 1rem;
          border-style: solid;
          border-width: 0 1rem 1rem 1rem;
-         border-color: transparent transparent #1c1e21 transparent;
+         border-color: transparent transparent var(--bg-secondary) transparent;
       }
    }
 }
