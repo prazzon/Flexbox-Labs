@@ -46,6 +46,19 @@ function About() {
                   . Your support helps improve and maintain the project.
                </p>
             </div>
+
+            <footer>
+               <p>
+                  Made with ❤️ by{" "}
+                  <a
+                     href="https://github.com/prazzon"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                  >
+                     prazzon
+                  </a>
+               </p>
+            </footer>
          </div>
       </div>
    );
