@@ -7,7 +7,7 @@
    .link {
       text-decoration: none;
    }
-   
+
    .logo {
       display: flex;
       align-items: center;
@@ -16,10 +16,53 @@
       font-size: 1.7rem;
       color: var(--text-primary);
 
+      @media (max-width: 425px) {
+         font-size: 1.4rem;
+      }
+
       &_svg {
          height: 2.6rem;
          width: 2.6rem;
          fill: var(--color-primary);
+      }
+   }
+
+   .grid_link {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.1rem 1.5rem;
+      border-radius: 2.5rem;
+      background-color: var(--bg-secondary);
+      transition: all 0.3s ease-out;
+
+      @media (max-width: 825px) {
+         padding: 0.8rem 1.2rem;
+      }
+
+      &:hover {
+         color: var(--text-primary);
+      }
+
+      svg {
+         font-size: 1.8rem;
+
+         @media (max-width: 525px) {
+            display: none;
+         }
+      }
+
+      .beta {
+         font-size: 1.2rem;
+         font-weight: 600;
+         padding: 0.5rem 1rem;
+         border-radius: 2rem;
+         background-color: var(--bg-primary);
+         line-height: 1;
       }
    }
 
@@ -33,8 +76,8 @@
    }
 
    .divider {
-      height: 30%;
-      width: 1.5px;
+      height: 40%;
+      width: 2px;
       background-color: var(--bg-divider);
       border: none;
       border-radius: 2rem;

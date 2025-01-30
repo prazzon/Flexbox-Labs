@@ -1,11 +1,18 @@
+"use client";
+
 import Logo from "@/public/img/logo.svg";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FaGithub, FaRegQuestionCircle } from "react-icons/fa";
+import { HiOutlineExternalLink } from "react-icons/hi";
 import About from "../SideBar/About/About";
 import Modal, { Content, OpenBtn } from "../UI/Modal/Modal";
 import ShinyText from "../UI/ShinyText/ShinyText";
 import styles from "./Header.module.scss";
 
 function Header() {
+   const pathname = usePathname();
+
    return (
       <div className={styles.header}>
          <a href="/" className={styles.link}>
@@ -14,10 +21,22 @@ function Header() {
                Flexbox Labs
             </h1>
          </a>
+         
          <hr className={styles.divider} />
-         <div className={styles.description}>
-            A visual tool for experimenting with flexbox layouts
-         </div>
+
+         {pathname !== "/grid" && (
+            <Link href="/grid" className={styles.grid_link}>
+               <HiOutlineExternalLink />
+               Grids <span className={styles.beta}>beta</span>
+            </Link>
+         )}
+
+         {pathname === "/grid" && (
+            <Link href="/flexbox" className={styles.grid_link}>
+               <HiOutlineExternalLink />
+               Flexbox
+            </Link>
+         )}
 
          <div className={styles.links}>
             <Modal>
