@@ -57,15 +57,15 @@ Check out the live demo of Flexbox Labs: [Demo](https://flexboxlabs.netlify.app/
 git clone https://github.com/your-username/flexbox-labs.git
 ```
 
-#### 2. Install npm dependencies
+#### 2. Navigate to the app directory
+```shell
+cd flexbox-labs
+```
+
+#### 3. Install npm dependencies
 
 ```shell
 npm install
-```
-
-#### 3. Navigate to the app directory
-```shell
-cd flexbox-labs
 ```
 
 #### 4. Run the dev server
