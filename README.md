@@ -54,7 +54,7 @@ Check out the live demo of Flexbox Labs: [Demo](https://flexboxlabs.netlify.app/
 #### 1. Clone the repository
 
 ```shell
-git clone https://github.com/your-username/flexbox-labs.git
+git clone https://github.com/prazzon/flexbox-labs.git
 ```
 
 #### 2. Navigate to the app directory
