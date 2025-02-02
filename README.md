@@ -92,7 +92,7 @@ Flexbox Labs is licensed under the [MIT License](LICENSE).
 
 ## Feedback
 
-If you have any feedback, suggestions, or issues, please [open an issue](https://github.com/yourusername/flexbox-labs/issues).
+If you have any feedback, suggestions, or issues, please [open an issue](https://github.com/prazzon/flexbox-labs/issues).
 Your input is appreciated!
 
 ## Acknowledgements
