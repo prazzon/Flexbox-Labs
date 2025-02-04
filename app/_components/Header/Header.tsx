@@ -51,7 +51,7 @@ function Header() {
             </Modal>
 
             <a
-               href="https://github.com/prazzon/flexlab"
+               href="https://github.com/prazzon/flexbox-labs"
                target="_blank"
                className={styles.links__btn}
             >
