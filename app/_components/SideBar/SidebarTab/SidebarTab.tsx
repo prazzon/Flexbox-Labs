@@ -103,7 +103,7 @@ function SidebarTab({ tabs, switchState, onSwitch, panelState, togglePanel, stat
          </Modal>
 
          <a
-            href="https://github.com/prazzon/flexlab"
+            href="https://github.com/prazzon/flexbox-labs"
             target="_blank"
             className={`${styles.btn} ${styles.btn__github}`}
          >

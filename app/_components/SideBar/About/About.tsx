@@ -12,7 +12,7 @@ function About() {
                <p>
                   Flexbox Labs is open source! You can find the project on{" "}
                   <a
-                     href="https://github.com/prazzon/flexboxlabs"
+                     href="https://github.com/prazzon/flexbox-labs"
                      target="_blank"
                      rel="noopener noreferrer"
                   >
@@ -21,7 +21,7 @@ function About() {
                   . If you have feedback, suggestions, or encounter any issues,
                   please open an issue{" "}
                   <a
-                     href="https://github.com/prazzon/flexlab/issues"
+                     href="https://github.com/prazzon/flexbox-labs/issues"
                      target="_blank"
                      rel="noopener noreferrer"
                   >
