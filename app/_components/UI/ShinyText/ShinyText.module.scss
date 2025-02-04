@@ -12,10 +12,6 @@
    background-clip: text;
    display: inline-block;
    animation: shine 5s linear infinite;
-
-   &:hover {
-      animation: none;
-   }
    
    &.disabled {
       animation: none;
