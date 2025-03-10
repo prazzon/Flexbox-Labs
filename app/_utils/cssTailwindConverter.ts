@@ -121,17 +121,24 @@ const gapMap: Record<string, string> = {
    "3rem": "gap-12",
 };
 
-const sizeMap: Record<string, string> = {
+const sizeMapWidth: Record<string, string> = {
    "0px": "w-0",
    "100%": "w-full",
-   "100vh": "h-screen",
    "100vw": "w-screen",
    auto: "w-auto",
 };
 
+const sizeMapHeight: Record<string, string> = {
+    "0px": "h-0",
+    "100%": "h-full",
+    "100vh": "h-screen",
+    auto: "h-auto",
+ };
+
 function convertSize(value: string, property: "width" | "height"): string {
    const prefix = property === "width" ? "w" : "h";
-   if (sizeMap[value]) return sizeMap[value];
+   if (prefix === "w" && sizeMapWidth[value]) return sizeMapWidth[value];
+   else if(prefix === "h" && sizeMapHeight[value]) return sizeMapHeight[value];
    if (value.endsWith("px")) {
       const numValue = parseInt(value);
       if (numValue % 4 === 0) return `${prefix}-${numValue / 4}`;
