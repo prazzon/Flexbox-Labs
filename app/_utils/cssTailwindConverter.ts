@@ -133,7 +133,7 @@ const sizeMapHeight: Record<string, string> = {
     "100%": "h-full",
     "100vh": "h-screen",
     auto: "h-auto",
- };
+};
 
 function convertSize(value: string, property: "width" | "height"): string {
    const prefix = property === "width" ? "w" : "h";
