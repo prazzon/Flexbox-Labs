@@ -98,7 +98,7 @@ Your input is appreciated!
 ## Acknowledgements
 
 - [use-hooks](https://usehooks.com/)
-- [react icons](https://usehooks.com/)
+- [react icons](https://react-icons.github.io/react-icons/)
 
 [nextjs-image]: https://img.shields.io/badge/NextJS-1a1a1a?style=for-the-badge&logo=nextdotjs
 [react-image]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
