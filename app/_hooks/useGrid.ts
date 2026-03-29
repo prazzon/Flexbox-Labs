@@ -67,7 +67,7 @@ export const useGrid = () => {
    );
 
    const handleEditItemText = useCallback(
-      (id: number, value: string) => {
+      (id: string, value: string) => {
          dispatch(editItemText({ id, value }));
       },
       [dispatch]
@@ -89,7 +89,7 @@ export const useGrid = () => {
    }, [dispatch]);
 
    const handleToggleSelected = useCallback(
-      (id: number) => {
+      (id: string) => {
          dispatch(toggleSelected({ id, selectMultiple }));
       },
       [dispatch, selectMultiple]

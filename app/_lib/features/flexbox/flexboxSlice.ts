@@ -29,7 +29,7 @@ const defaultContainer: FlexboxContainer = {
 };
 
 const newItem = (length: number): FlexboxItem => ({
-   id: Math.random(),
+   id: crypto.randomUUID(),
    text: `${length + 1}`,
    styles: defaultItemStyle,
 });
@@ -86,7 +86,7 @@ export const flexboxSlice = createSlice({
       },
       editItemText: (
          state,
-         action: PayloadAction<{ id: number; value: string }>
+         action: PayloadAction<{ id: string; value: string }>
       ) => {
          const { id, value } = action.payload;
          const item = state.items.find((item) => item.id === id);
@@ -106,13 +106,13 @@ export const flexboxSlice = createSlice({
       duplicateItem: (state) => {
          const newItems = state.selectedItems.map((itemId) => {
             const item = state.items.find((item) => item.id === itemId)!;
-            return { ...item, id: Math.random() };
+            return { ...item, id: crypto.randomUUID() };
          });
          state.items = [...state.items, ...newItems];
       },
       toggleSelected: (
          state,
-         action: PayloadAction<{ id: number; selectMultiple: boolean }>
+         action: PayloadAction<{ id: string; selectMultiple: boolean }>
       ) => {
          const { id, selectMultiple } = action.payload;
 

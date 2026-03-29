@@ -21,7 +21,7 @@ export interface FlexboxItemStyle {
 }
 
 export interface FlexboxItem {
-   id: number;
+   id: string;
    text: string;
    styles: FlexboxItemStyle;
 }
@@ -29,7 +29,7 @@ export interface FlexboxItem {
 export interface FlexboxState {
    items: FlexboxItem[];
    container: FlexboxContainer;
-   selectedItems: number[];
+   selectedItems: string[];
 }
 
 export interface Flexbox {

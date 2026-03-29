@@ -32,7 +32,7 @@ export interface GridItemStyle {
 }
 
 export interface GridItem {
-   id: number;
+   id: string;
    text: string;
    styles: GridItemStyle;
 }
@@ -40,7 +40,7 @@ export interface GridItem {
 export interface GridState {
    items: GridItem[];
    container: GridContainer;
-   selectedItems: number[];
+   selectedItems: string[];
    gridLines: boolean;
 }
 

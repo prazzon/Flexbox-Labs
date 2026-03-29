@@ -28,7 +28,7 @@ const defaultContainer: GridContainer = {
 };
 
 const newItem = (length: number, styles = defaultItemStyle): GridItem => ({
-   id: Math.random(),
+   id: crypto.randomUUID(),
    text: `${length + 1}`,
    styles,
 });
@@ -86,7 +86,7 @@ export const gridSlice = createSlice({
       },
       editItemText: (
          state,
-         action: PayloadAction<{ id: number; value: string }>
+         action: PayloadAction<{ id: string; value: string }>
       ) => {
          const { id, value } = action.payload;
          const item = state.items.find((item) => item.id === id);
@@ -111,7 +111,7 @@ export const gridSlice = createSlice({
       },
       toggleSelected: (
          state,
-         action: PayloadAction<{ id: number; selectMultiple: boolean }>
+         action: PayloadAction<{ id: string; selectMultiple: boolean }>
       ) => {
          const { id, selectMultiple } = action.payload;
 
