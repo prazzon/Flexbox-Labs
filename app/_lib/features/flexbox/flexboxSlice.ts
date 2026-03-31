@@ -67,10 +67,9 @@ export const flexboxSlice = createSlice({
          action: PayloadAction<{ key: string; value: string }>
       ) => {
          const { key, value } = action.payload;
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.map((item) =>
-            state.selectedItems.includes(item.id)
-               ? { ...item, [key]: value }
-               : item
+            selectedSet.has(item.id) ? { ...item, [key]: value } : item
          );
       },
       editItemStyle: (
@@ -78,8 +77,9 @@ export const flexboxSlice = createSlice({
          action: PayloadAction<{ key: string; value: string | number }>
       ) => {
          const { key, value } = action.payload;
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.map((item) =>
-            state.selectedItems.includes(item.id)
+            selectedSet.has(item.id)
                ? { ...item, styles: { ...item.styles, [key]: value } }
                : item
          );
@@ -98,14 +98,16 @@ export const flexboxSlice = createSlice({
          state.items.push(newItem(state.items.length));
       },
       removeItem: (state) => {
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.filter(
-            (item) => !state.selectedItems.includes(item.id)
+            (item) => !selectedSet.has(item.id)
          );
          state.selectedItems = [];
       },
       duplicateItem: (state) => {
+         const itemsMap = new Map(state.items.map((item) => [item.id, item]));
          const newItems = state.selectedItems.map((itemId) => {
-            const item = state.items.find((item) => item.id === itemId)!;
+            const item = itemsMap.get(itemId)!;
             return { ...item, id: crypto.randomUUID() };
          });
          state.items = [...state.items, ...newItems];

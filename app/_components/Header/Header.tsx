@@ -53,6 +53,7 @@ function Header() {
             <a
                href="https://github.com/prazzon/flexbox-labs"
                target="_blank"
+               rel="noopener noreferrer"
                className={styles.links__btn}
             >
                <FaGithub />
@@ -63,6 +64,7 @@ function Header() {
             href="https://github.com/prazzon/flexbox-labs"
             className={styles.star_btn}
             target="_blank"
+            rel="noopener noreferrer"
          >
             <span className={styles.hover_effect}></span>
             <div className={styles.icon_text}>

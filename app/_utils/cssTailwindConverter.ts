@@ -247,7 +247,18 @@ function convertGridItemProperty(property: string, value: string): string {
    }
 }
 
+const conversionCache = new Map<string, string>();
+
+/**
+ * Converts a CSS style object into a Tailwind utility class string.
+ * Memoized to prevent expensive re-computation during rapid state updates.
+ */
 export function convertCssToTailwind(cssObject: CSSProperties): string {
+   const cacheKey = JSON.stringify(cssObject);
+   if (conversionCache.has(cacheKey)) {
+      return conversionCache.get(cacheKey)!;
+   }
+
    const tailwindClasses: string[] = [];
 
    Object.entries(cssObject).forEach(([key, value]) => {
@@ -362,5 +373,7 @@ export function convertCssToTailwind(cssObject: CSSProperties): string {
       }
    });
 
-   return tailwindClasses.join(" ");
+   const result = tailwindClasses.join(" ");
+   conversionCache.set(cacheKey, result);
+   return result;
 }

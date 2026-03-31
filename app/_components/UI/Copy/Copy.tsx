@@ -17,9 +17,15 @@ function Copy({ id, text }: Props) {
    useRipple<HTMLDivElement>(btnRef, 20);
 
    function copy() {
-      navigator.clipboard.writeText(text).then(() => {
-         toast.success("Copied to clipboard", { id, position: "top-center" });
-      });
+      navigator.clipboard
+         .writeText(text)
+         .then(() => {
+            toast.success("Copied to clipboard", { id, position: "top-center" });
+         })
+         .catch((err) => {
+            toast.error("Failed to copy to clipboard", { id, position: "top-center" });
+            console.error("Clipboard access denied or failed:", err);
+         });
    }
 
    return (

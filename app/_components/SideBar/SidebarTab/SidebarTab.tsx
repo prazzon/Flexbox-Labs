@@ -96,6 +96,7 @@ function SidebarTab({
          <a
             href="https://github.com/prazzon/flexbox-labs"
             target="_blank"
+            rel="noopener noreferrer"
             className={`${styles.btn} ${styles.btn__github}`}
          >
             <FaGithub />
