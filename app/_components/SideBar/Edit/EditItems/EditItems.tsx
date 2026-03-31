@@ -2,7 +2,7 @@
 
 import { ItemConfig } from "@/app/_data/dataTypes";
 import { ItemStyle } from "@/app/types";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { Fragment } from "react";
 import itemStyles from "../Item.module.scss";
 import Item from "../Item/Item";

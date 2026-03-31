@@ -1,6 +1,6 @@
 "use client";
 
-import { animate, MotionValue, useMotionValue } from "framer-motion";
+import { animate, MotionValue, useMotionValue } from "motion/react";
 import { useEffect } from "react";
 
 const inactiveShadow = "0px 0px 0px rgba(0,0,0,0.8)";
@@ -23,7 +23,7 @@ export function useRaisedShadow(value: MotionValue<number>) {
                animate(boxShadow, inactiveShadow);
             }
          }
-      })
+      });
 
       return () => value.stop();
    }, [value, boxShadow]);

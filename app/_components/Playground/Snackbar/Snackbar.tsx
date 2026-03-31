@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { TbCopyCheck } from "react-icons/tb";

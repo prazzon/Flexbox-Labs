@@ -4,7 +4,7 @@ import Popover from "@/app/_components/UI/Popover/Popover";
 import TextInput from "@/app/_components/UI/TextInput/TextInput";
 import { ContainerConfig, ItemConfig } from "@/app/_data/dataTypes";
 import { Container, ItemStyle } from "@/app/types";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { FaInfo } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa6";

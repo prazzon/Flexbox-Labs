@@ -1,13 +1,13 @@
 "use client";
 
-import { AnimatePresence, motion, Reorder } from "framer-motion";
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { RiSaveFill } from "react-icons/ri";
 import { State } from "@/app/types";
+import { AnimatePresence, motion, Reorder } from "motion/react";
+import { useState } from "react";
+import toast, { Toast } from "react-hot-toast";
+import { RiSaveFill } from "react-icons/ri";
 import { usePersistedState } from "../../../_hooks/usePersistedState";
-import SaveItem from "./SaveItem/SaveItem";
 import styles from "./Save.module.scss";
+import SaveItem from "./SaveItem/SaveItem";
 
 export interface Edit {
    id: number;
@@ -56,7 +56,7 @@ function Save({ storageKey, state, setState }: Props) {
       const prevEdits = edits;
 
       toast.error(
-         (t) => (
+         (t: Toast) => (
             <div className={styles.toast}>
                <p>{message}</p>
                <button
@@ -71,7 +71,7 @@ function Save({ storageKey, state, setState }: Props) {
                <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
             </div>
          ),
-         toastConfig
+         toastConfig,
       );
    }
 

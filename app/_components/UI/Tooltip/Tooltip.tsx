@@ -1,10 +1,10 @@
 "use client";
 
-import styles from "./Tooltip.module.scss";
+import { AnimatePresence, motion, Variants } from "motion/react";
 import { ReactNode, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import styles from "./Tooltip.module.scss";
 
-const tooltipVariants = {
+const tooltipVariants: Variants = {
    hidden: (pos: string) => ({
       opacity: 0,
       y: pos === "top" ? -30 : pos === "bottom" ? 30 : 5,

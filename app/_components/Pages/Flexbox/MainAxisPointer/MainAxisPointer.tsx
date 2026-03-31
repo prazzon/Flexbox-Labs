@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useFlexbox } from "@/app/_hooks/useFlexbox";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import { useFlexbox } from "@/app/_hooks/useFlexbox";
 import Tooltip from "../../../UI/Tooltip/Tooltip";
 import styles from "./MainAxisPointer.module.scss";
 

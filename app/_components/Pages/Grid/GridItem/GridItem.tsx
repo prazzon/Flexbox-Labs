@@ -3,7 +3,7 @@
 import { useGrid } from "@/app/_hooks/useGrid";
 import { useRipple } from "@/app/_hooks/useRipple";
 import { type GridItem } from "@/app/_lib/types/grid";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { forwardRef, MutableRefObject } from "react";
 import { MdModeEditOutline } from "react-icons/md";
 import styles from "./GridItem.module.scss";
@@ -19,7 +19,7 @@ const popIn = {
 
 const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridItem(
    { item },
-   ref
+   ref,
 ) {
    const { selectedItems, toggleSelected, editItemText } = useGrid();
 

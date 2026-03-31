@@ -1,12 +1,12 @@
 "use client";
 
+import { ContainerConfig, ItemConfig } from "@/app/_data/dataTypes";
 import { Container, ItemStyle } from "@/app/types";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import styles from "./Edit.module.scss";
 import EditContainer from "./EditContainer/EditContainer";
 import EditItems from "./EditItems/EditItems";
-import { ContainerConfig, ItemConfig } from "@/app/_data/dataTypes";
 
 interface Props {
    selectedItems: number[];

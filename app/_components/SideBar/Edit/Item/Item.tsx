@@ -3,9 +3,9 @@ import Select from "@/app/_components/UI/Select/Select";
 import TextInput from "@/app/_components/UI/TextInput/TextInput";
 import { ContainerConfig, ItemConfig } from "@/app/_data/dataTypes";
 import { Container, ItemStyle } from "@/app/types";
-import { motion } from "framer-motion";
-import styles from "../Item.module.scss";
+import { motion } from "motion/react";
 import { FaInfo } from "react-icons/fa";
+import styles from "../Item.module.scss";
 
 interface Props {
    item: ContainerConfig | ItemConfig;

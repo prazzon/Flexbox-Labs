@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { createContext, useContext, useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import { useOutsideClick } from "../../../_hooks/useOutsideClick";
