@@ -1,11 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { useOutsideClick } from "@/app/_hooks/useOutsideClick";
+import { AnimatePresence, motion, Variants } from "motion/react";
 import { ReactNode, useEffect, useState } from "react";
 import styles from "./Popover.module.scss";
-import { useOutsideClick } from "@/app/_hooks/useOutsideClick";
 
-const popoverVariants = {
+const popoverVariants: Variants = {
    hidden: (pos: string) => ({
       opacity: 0,
       y: pos === "top" ? -30 : pos === "bottom" ? 30 : 5,

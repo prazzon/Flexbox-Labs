@@ -2,7 +2,8 @@
 
 import { formatCSS, formatHTML, formatTailwind } from "@/app/_utils/formatters";
 import { generateFullHTML } from "@/app/_utils/generateFullHtml";
-import { AnimatePresence, motion } from "framer-motion";
+import { State } from "@/app/types";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -10,7 +11,6 @@ import Copy from "../Copy/Copy";
 import CodeTabs from "./CodeTabs/CodeTabs";
 import styles from "./DisplayCode.module.scss";
 import ExportButton from "./ExportButton/ExportButton";
-import { State } from "@/app/types";
 
 const tabs = [{ title: "HTML" }, { title: "CSS" }, { title: "Tailwind" }];
 
@@ -21,8 +21,8 @@ function DisplayCode({ state }: { state: State }) {
       switchState === 0
          ? formatHTML(state)
          : switchState === 1
-         ? formatCSS(state)
-         : formatTailwind(state);
+           ? formatCSS(state)
+           : formatTailwind(state);
 
    return (
       <div className={styles.container}>

@@ -2,7 +2,7 @@
 
 import { useGrid } from "@/app/_hooks/useGrid";
 import { generateGridElements } from "@/app/_utils/generateGridElements";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { IoAddOutline } from "react-icons/io5";
 import GridItem from "../GridItem/GridItem";
 import styles from "./GridArea.module.scss";
@@ -12,7 +12,7 @@ function GridArea() {
 
    const { gridSections, rowTracks, columnTracks } = generateGridElements(
       container,
-      items
+      items,
    );
 
    return (
@@ -50,7 +50,7 @@ function GridArea() {
                   style={track.style}
                />
             ))}
-         
+
          {gridLines &&
             columnTracks.map((track) => (
                <motion.div

@@ -1,11 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { forwardRef, MutableRefObject } from "react";
-import { MdModeEditOutline } from "react-icons/md";
 import { useFlexbox } from "@/app/_hooks/useFlexbox";
 import { useRipple } from "@/app/_hooks/useRipple";
 import { type FlexboxItem } from "@/app/_lib/types/flexbox";
+import { motion } from "motion/react";
+import { forwardRef, MutableRefObject } from "react";
+import { MdModeEditOutline } from "react-icons/md";
 import styles from "./FlexboxItem.module.scss";
 
 const popIn = {
@@ -19,7 +19,7 @@ interface Props {
 
 const FlexboxItem = forwardRef<HTMLDivElement, Props>(function FlexboxItem(
    { item },
-   ref
+   ref,
 ) {
    const { selectedItems, toggleSelected, editItemText } = useFlexbox();
 

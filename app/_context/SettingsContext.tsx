@@ -1,6 +1,6 @@
 "use client";
 
-import { MotionConfig, useReducedMotion } from "framer-motion";
+import { MotionConfig, useReducedMotion } from "motion/react";
 import { createContext, useEffect } from "react";
 import { usePersistedState } from "../_hooks/usePersistedState";
 
@@ -9,7 +9,7 @@ interface Context {
    changeTheme: (theme: "light" | "dark" | "auto") => void;
    accent: string;
    changeAccent: (
-      accent: "purple" | "green" | "blue" | "orange" | "turquoise"
+      accent: "purple" | "green" | "blue" | "orange" | "turquoise",
    ) => void;
    textSize: number;
    changeTextSize: (size: number) => void;
@@ -48,7 +48,7 @@ export const SettingsProvider = ({ children }: Props) => {
    };
 
    const changeAccent = (
-      accent: "purple" | "green" | "blue" | "orange" | "turquoise"
+      accent: "purple" | "green" | "blue" | "orange" | "turquoise",
    ) => {
       saveSettings({ ...settings, accent: accent });
    };

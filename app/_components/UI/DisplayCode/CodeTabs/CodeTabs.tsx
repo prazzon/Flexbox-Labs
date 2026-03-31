@@ -1,15 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import styles from "./CodeTabs.module.scss";
 
 type Props = {
    tabs: { title: string }[];
    switchState: number;
    setSwitchState: (index: number) => void;
-}
+};
 
-function CodeTabs({tabs, switchState, setSwitchState}: Props) {
+function CodeTabs({ tabs, switchState, setSwitchState }: Props) {
    return (
       <motion.div className={styles.tab_switcher} layout>
          {tabs.map((tab, index) => (
@@ -34,4 +34,4 @@ function CodeTabs({tabs, switchState, setSwitchState}: Props) {
    );
 }
 
-export default CodeTabs
+export default CodeTabs;

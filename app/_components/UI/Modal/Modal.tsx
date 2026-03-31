@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import {
    cloneElement,
    createContext,
@@ -46,7 +46,11 @@ function Modal({ children }: { children: ReactNode }) {
    );
 }
 
-export function OpenBtn({ children }: { children: ReactElement }) {
+export function OpenBtn({
+   children,
+}: {
+   children: ReactElement<{ onClick?: () => void }>;
+}) {
    const { openModal } = useContext(ModalContext) as Context;
 
    return cloneElement(children, { onClick: () => openModal() });
@@ -93,7 +97,7 @@ export function Content({ children }: { children: ReactNode }) {
             </motion.div>
          )}
       </AnimatePresence>,
-      document.body
+      document.body,
    );
 }
 

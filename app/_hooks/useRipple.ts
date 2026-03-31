@@ -3,7 +3,7 @@
 import { RefObject, useEffect } from "react";
 
 export function useRipple<T extends HTMLElement>(
-   ref: RefObject<T>,
+   ref: RefObject<T | null>,
    scaleSize = 20,
    duration = 500
 ) {

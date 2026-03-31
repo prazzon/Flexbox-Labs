@@ -1,11 +1,11 @@
 "use client";
 
-import { Reorder, useDragControls, useMotionValue } from "framer-motion";
+import { State } from "@/app/types";
+import { Reorder, useDragControls, useMotionValue } from "motion/react";
 import { forwardRef } from "react";
 import { FaEye } from "react-icons/fa";
 import { LuTrash2 } from "react-icons/lu";
 import { PiDotsNineBold } from "react-icons/pi";
-import { State } from "@/app/types";
 import { useRaisedShadow } from "../../../../_hooks/useRaisedShadow";
 import { Edit } from "../Save";
 import styles from "./SaveItem.module.scss";
@@ -16,9 +16,9 @@ type Props = {
    handleDelete: (id: number, name: string) => void;
 };
 
-const SaveItem = forwardRef<HTMLDivElement, Props>(function SaveItem(
+const SaveItem = forwardRef<HTMLLIElement, Props>(function SaveItem(
    { edit, handleView, handleDelete },
-   ref
+   ref,
 ) {
    const y = useMotionValue(0);
    const boxShadow = useRaisedShadow(y);
