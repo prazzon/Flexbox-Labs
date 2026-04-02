@@ -27,7 +27,7 @@ const SaveItem = forwardRef<HTMLLIElement, Props>(function SaveItem(
    return (
       <Reorder.Item
          value={edit}
-         id={edit.name}
+         id={String(edit.id)}
          style={{ boxShadow, y }}
          dragListener={false}
          dragControls={controls}
@@ -38,7 +38,15 @@ const SaveItem = forwardRef<HTMLLIElement, Props>(function SaveItem(
          exit={{ scale: 0.8, opacity: 0 }}
       >
          <span
+            role="button"
+            tabIndex={0}
+            aria-label={`Reorder saved edit: ${edit.name}`}
             onPointerDown={(e) => controls.start(e)}
+            onKeyDown={(e) => {
+               if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+               }
+            }}
             style={{ touchAction: "none" }}
             className={styles.drag}
          >
@@ -49,14 +57,18 @@ const SaveItem = forwardRef<HTMLLIElement, Props>(function SaveItem(
             <p className={styles.item__date}>{edit.date}</p>
          </div>
          <button
+            type="button"
             className={styles.item__btn}
             onClick={() => handleView(edit.data)}
+            aria-label={`Load saved edit: ${edit.name}`}
          >
             <FaEye />
          </button>
          <button
+            type="button"
             className={`${styles.item__btn} ${styles.delete}`}
             onClick={() => handleDelete(edit.id, edit.name)}
+            aria-label={`Delete saved edit: ${edit.name}`}
          >
             <LuTrash2 />
          </button>

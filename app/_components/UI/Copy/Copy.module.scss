@@ -13,4 +13,9 @@
       background-color: var(--bg-content-hover);
       color: var(--text-primary);
    }
+
+   &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+   }
 }

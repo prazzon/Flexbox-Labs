@@ -12,29 +12,39 @@ interface Props {
 }
 
 function Copy({ id, text }: Props) {
-   const btnRef = useRef<HTMLDivElement>(null);
+   const btnRef = useRef<HTMLButtonElement>(null);
 
-   useRipple<HTMLDivElement>(btnRef, 20);
+   useRipple<HTMLButtonElement>(btnRef, 20);
 
    function copy() {
       navigator.clipboard
          .writeText(text)
          .then(() => {
-            toast.success("Copied to clipboard", { id, position: "top-center" });
+            toast.success("Copied to clipboard", {
+               id,
+               position: "top-center",
+            });
          })
          .catch((err) => {
-            toast.error("Failed to copy to clipboard", { id, position: "top-center" });
+            toast.error("Failed to copy to clipboard", {
+               id,
+               position: "top-center",
+            });
             console.error("Clipboard access denied or failed:", err);
          });
    }
 
    return (
-      <div className={styles.copy} ref={btnRef} onClick={() => copy()}>
+      <button
+         type="button"
+         className={styles.copy}
+         ref={btnRef}
+         onClick={() => copy()}
+         aria-label="Copy code to clipboard"
+      >
          <TbClipboardText />
-      </div>
+      </button>
    );
 }
-
-Copy.displayName = "Copy";
 
 export default Copy;
