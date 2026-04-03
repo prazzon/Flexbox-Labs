@@ -8,7 +8,7 @@ import Tooltip from "../../UI/Tooltip/Tooltip";
 import styles from "./Snackbar.module.scss";
 
 interface SnackbarProps {
-   selectedItems: number[];
+   selectedItems: string[];
    toggleAllSelected: () => void;
    clearSelected: () => void;
 }
