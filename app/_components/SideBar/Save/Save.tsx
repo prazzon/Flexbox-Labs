@@ -98,13 +98,18 @@ function Save({ storageKey, state, setState }: Props) {
       <div className={styles.container}>
          <h2 className="title">Add Edit</h2>
          <form className={styles.form} onSubmit={handleSubmit}>
+            <label htmlFor="save-edit-name" className={styles.visuallyHidden}>
+               Name for this saved edit
+            </label>
             <input
+               id="save-edit-name"
                type="text"
                placeholder="Name"
                maxLength={20}
                className={styles.input}
                value={name}
                onChange={(e) => setName(e.target.value)}
+               autoComplete="off"
             />
             <button className={styles.form__btn} type="submit" disabled={!name}>
                <RiSaveFill /> Save Edit
@@ -122,7 +127,7 @@ function Save({ storageKey, state, setState }: Props) {
             <AnimatePresence mode="popLayout" initial={false}>
                {edits.map((edit) => (
                   <SaveItem
-                     key={edit.name}
+                     key={edit.id}
                      edit={edit}
                      handleView={handleView}
                      handleDelete={handleDelete}

@@ -1,0 +1,35 @@
+.wrap {
+   min-height: 50vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 1.5rem;
+   padding: 2rem;
+   text-align: center;
+   color: var(--text-primary);
+}
+
+.title {
+   font-size: 2rem;
+}
+
+.message {
+   font-size: 1.4rem;
+   color: var(--text-secondary);
+   max-width: 40rem;
+}
+
+.retry {
+   padding: 0.8rem 1.6rem;
+   border-radius: 0.8rem;
+   background-color: var(--bg-button);
+   color: var(--text-button);
+   font-weight: 600;
+   cursor: pointer;
+
+   &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+   }
+}

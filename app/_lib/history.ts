@@ -13,6 +13,8 @@ export const createHistoryActions = (sliceName: string) => ({
    redo: createAction(`${sliceName}/REDO`),
 });
 
+const MAX_HISTORY_LENGTH = 50;
+
 export function enableHistory<T, A extends Action = UnknownAction>(
    reducer: (state: T | undefined, action: A) => T,
    sliceName: string,
@@ -47,7 +49,7 @@ export function enableHistory<T, A extends Action = UnknownAction>(
                      {}
                   ),
                   ...future,
-               ],
+               ].slice(0, MAX_HISTORY_LENGTH),
             };
          }
 
@@ -63,7 +65,7 @@ export function enableHistory<T, A extends Action = UnknownAction>(
                      (acc, key) => ({ ...acc, [key]: present[key] }),
                      {}
                   ),
-               ],
+               ].slice(-MAX_HISTORY_LENGTH),
                present: newPresent as T,
                future: newFuture,
             };
@@ -88,7 +90,7 @@ export function enableHistory<T, A extends Action = UnknownAction>(
                {}
             );
             return {
-               past: [...past, trackedState],
+               past: [...past, trackedState].slice(-MAX_HISTORY_LENGTH),
                present: newPresent,
                future: [],
             };

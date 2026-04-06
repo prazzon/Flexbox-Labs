@@ -25,6 +25,9 @@
    box-shadow: 4px 4px 0 0 var(--bg-content-border);
    cursor: pointer;
    transition: 0.2s;
+   width: 100%;
+   text-align: inherit;
+   color: inherit;
 
    @media (max-width: 1028px) {
       padding: 1.5rem 1.3rem;
@@ -32,6 +35,11 @@
 
    &:hover {
       transform: scale(1.05);
+   }
+
+   &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
    }
 
    svg {

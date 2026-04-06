@@ -44,7 +44,13 @@ function MainAxisPointer() {
    }, [container.flexDirection]);
 
    return (
-      <motion.div layout className={styles.pointer} onClick={handleClick}>
+      <motion.button
+         type="button"
+         layout
+         className={styles.pointer}
+         onClick={handleClick}
+         aria-label="Cycle flex main axis direction"
+      >
          <motion.span
             className={styles.icon}
             animate={{ rotate: direction }}
@@ -53,7 +59,7 @@ function MainAxisPointer() {
             <FaLongArrowAltRight />
          </motion.span>
          <Tooltip position="bottom">main axis direction</Tooltip>
-      </motion.div>
+      </motion.button>
    );
 }
 

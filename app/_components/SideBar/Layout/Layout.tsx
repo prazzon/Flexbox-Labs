@@ -19,15 +19,16 @@ function Layout({ layouts, setState, clearSelected }: Props) {
       <div className={styles.container}>
          <h2 className="title">Layouts</h2>
          <div className={styles.layout_container}>
-            {layouts.map((layout, index) => (
-               <div
-                  key={index}
+            {layouts.map((layout) => (
+               <button
+                  key={layout.name}
+                  type="button"
                   className={styles.layout}
                   onClick={() => handleClick(layout.layout)}
                >
                   <layout.img />
                   <h4 className={styles.layout__title}>{layout.name}</h4>
-               </div>
+               </button>
             ))}
          </div>
       </div>

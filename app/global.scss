@@ -1,7 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-
-$font-primary: "Quicksand", sans-serif;
-
 :root {
    --red: #ff4155;
    --black: #150001;
@@ -145,9 +141,18 @@ button {
    color: inherit;
 }
 
+:focus-visible {
+   outline: 2px solid var(--color-primary);
+   outline-offset: 2px;
+}
+
+a:focus-visible {
+   outline-offset: 4px;
+}
+
 html {
    font-size: 62.5%;
-   font-family: $font-primary;
+   font-family: var(--font-quicksand), system-ui, sans-serif;
    -webkit-tap-highlight-color: transparent;
 }
 

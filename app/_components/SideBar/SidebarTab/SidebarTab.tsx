@@ -30,7 +30,13 @@ function SidebarTab({
 }: Props) {
    return (
       <motion.div className={styles.tabs} layout>
-         <button className={styles.btn__toggle} onClick={togglePanel}>
+         <button
+            type="button"
+            className={styles.btn__toggle}
+            onClick={togglePanel}
+            aria-label={panelState ? "Collapse sidebar panel" : "Expand sidebar panel"}
+            aria-expanded={panelState}
+         >
             <motion.span
                animate={{ rotate: panelState ? 0 : 180 }}
                transition={{ duration: 0.3 }}
@@ -45,10 +51,13 @@ function SidebarTab({
             const isActive = switchState === index && panelState;
             return (
                <button
-                  key={index}
+                  type="button"
+                  key={tab.name}
                   className={`${styles.btn__switch} ${isActive ? styles.active : ""}`}
                   data-switch={index}
                   onClick={() => onSwitch(index)}
+                  aria-label={tab.name}
+                  aria-pressed={isActive}
                >
                   {tab.icon}
 
@@ -83,10 +92,14 @@ function SidebarTab({
 
          <Modal>
             <OpenBtn>
-               <a className={`${styles.btn} ${styles.btn__about}`}>
+               <button
+                  type="button"
+                  className={`${styles.btn} ${styles.btn__about}`}
+                  aria-label="About Flexbox Labs"
+               >
                   <FaRegQuestionCircle />
                   <Tooltip position="right">About</Tooltip>
-               </a>
+               </button>
             </OpenBtn>
             <Content>
                <About />
@@ -96,7 +109,9 @@ function SidebarTab({
          <a
             href="https://github.com/prazzon/flexbox-labs"
             target="_blank"
+            rel="noopener noreferrer"
             className={`${styles.btn} ${styles.btn__github}`}
+            aria-label="Flexbox Labs on GitHub (opens in new tab)"
          >
             <FaGithub />
             <Tooltip position="right">GitHub</Tooltip>

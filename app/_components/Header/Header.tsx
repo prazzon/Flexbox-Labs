@@ -41,7 +41,11 @@ function Header() {
          <div className={styles.links}>
             <Modal>
                <OpenBtn>
-                  <button className={styles.links__btn}>
+                  <button
+                     type="button"
+                     className={styles.links__btn}
+                     aria-label="About Flexbox Labs"
+                  >
                      <FaRegQuestionCircle />
                   </button>
                </OpenBtn>
@@ -53,6 +57,7 @@ function Header() {
             <a
                href="https://github.com/prazzon/flexbox-labs"
                target="_blank"
+               rel="noopener noreferrer"
                className={styles.links__btn}
             >
                <FaGithub />
@@ -63,6 +68,8 @@ function Header() {
             href="https://github.com/prazzon/flexbox-labs"
             className={styles.star_btn}
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Star Flexbox Labs on GitHub (opens in new tab)"
          >
             <span className={styles.hover_effect}></span>
             <div className={styles.icon_text}>

@@ -10,7 +10,7 @@ import ItemDropdown from "../Item/ItemDropdown";
 import Empty from "./Empty/Empty";
 
 interface Props {
-   selectedItems?: number[];
+   selectedItems?: string[];
    selectedItemStyles: ItemStyle | undefined;
    editItemStyle: (key: keyof ItemStyle, value: string) => void;
    itemsConfig: ItemConfig[];

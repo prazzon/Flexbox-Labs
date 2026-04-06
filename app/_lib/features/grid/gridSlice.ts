@@ -28,7 +28,7 @@ const defaultContainer: GridContainer = {
 };
 
 const newItem = (length: number, styles = defaultItemStyle): GridItem => ({
-   id: Math.random(),
+   id: crypto.randomUUID(),
    text: `${length + 1}`,
    styles,
 });
@@ -67,10 +67,9 @@ export const gridSlice = createSlice({
          action: PayloadAction<{ key: string; value: string }>
       ) => {
          const { key, value } = action.payload;
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.map((item) =>
-            state.selectedItems.includes(item.id)
-               ? { ...item, [key]: value }
-               : item
+            selectedSet.has(item.id) ? { ...item, [key]: value } : item
          );
       },
       editItemStyle: (
@@ -78,15 +77,16 @@ export const gridSlice = createSlice({
          action: PayloadAction<{ key: string; value: string | number }>
       ) => {
          const { key, value } = action.payload;
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.map((item) =>
-            state.selectedItems.includes(item.id)
+            selectedSet.has(item.id)
                ? { ...item, styles: { ...item.styles, [key]: value } }
                : item
          );
       },
       editItemText: (
          state,
-         action: PayloadAction<{ id: number; value: string }>
+         action: PayloadAction<{ id: string; value: string }>
       ) => {
          const { id, value } = action.payload;
          const item = state.items.find((item) => item.id === id);
@@ -104,14 +104,15 @@ export const gridSlice = createSlice({
          state.items.push(newItem(state.items.length));
       },
       removeItem: (state) => {
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.filter(
-            (item) => !state.selectedItems.includes(item.id)
+            (item) => !selectedSet.has(item.id)
          );
          state.selectedItems = [];
       },
       toggleSelected: (
          state,
-         action: PayloadAction<{ id: number; selectMultiple: boolean }>
+         action: PayloadAction<{ id: string; selectMultiple: boolean }>
       ) => {
          const { id, selectMultiple } = action.payload;
 

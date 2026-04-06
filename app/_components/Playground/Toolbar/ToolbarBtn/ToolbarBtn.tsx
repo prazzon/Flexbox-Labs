@@ -45,7 +45,13 @@ function ToolbarBtn({
    if (type === "delete" && !disabled) className += " " + styles.delete;
 
    return (
-      <button className={className} onClick={handleClick} ref={ref}>
+      <button
+         type="button"
+         className={className}
+         onClick={handleClick}
+         ref={ref}
+         aria-label={value ? `${value}` : "Toolbar action"}
+      >
          {children}
          {value && !disabled && (
             <Tooltip>

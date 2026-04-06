@@ -25,9 +25,9 @@ export const layouts: Layout[] = [
       img: pancakeStack,
       layout: {
          items: [
-            { id: 1, text: "Header", styles: {} },
-            { id: 2, text: "Main", styles: {} },
-            { id: 3, text: "Footer", styles: {} },
+            { id: "1", text: "Header", styles: {} },
+            { id: "2", text: "Main", styles: {} },
+            { id: "3", text: "Footer", styles: {} },
          ],
          container: {
             display: "grid",
@@ -42,8 +42,8 @@ export const layouts: Layout[] = [
       img: sidebar,
       layout: {
          items: [
-            { id: 1, text: "Sidebar", styles: {} },
-            { id: 2, text: "Content", styles: {} },
+            { id: "1", text: "Sidebar", styles: {} },
+            { id: "2", text: "Content", styles: {} },
          ],
          container: {
             display: "grid",
@@ -58,10 +58,10 @@ export const layouts: Layout[] = [
       img: html5,
       layout: {
          items: [
-            { id: 1, text: "Header", styles: { gridColumn: "1 / 3" } },
-            { id: 2, text: "Sidebar", styles: {} },
-            { id: 3, text: "Content", styles: {} },
-            { id: 4, text: "Footer", styles: { gridColumn: "1 / 3" } },
+            { id: "1", text: "Header", styles: { gridColumn: "1 / 3" } },
+            { id: "2", text: "Sidebar", styles: {} },
+            { id: "3", text: "Content", styles: {} },
+            { id: "4", text: "Footer", styles: { gridColumn: "1 / 3" } },
          ],
          container: {
             display: "grid",
@@ -76,11 +76,11 @@ export const layouts: Layout[] = [
       img: html5_2,
       layout: {
          items: [
-            { id: 1, text: "1", styles: { gridColumn: "1 / 4" } },
-            { id: 2, text: "2", styles: {} },
-            { id: 3, text: "3", styles: {} },
-            { id: 4, text: "4", styles: {} },
-            { id: 5, text: "5", styles: { gridColumn: "1 / 4" } },
+            { id: "1", text: "1", styles: { gridColumn: "1 / 4" } },
+            { id: "2", text: "2", styles: {} },
+            { id: "3", text: "3", styles: {} },
+            { id: "4", text: "4", styles: {} },
+            { id: "5", text: "5", styles: { gridColumn: "1 / 4" } },
          ],
          container: {
             display: "grid",
@@ -95,24 +95,24 @@ export const layouts: Layout[] = [
       img: columnSystem,
       layout: {
          items: [
-            { id: 1, text: "Header", styles: { gridColumn: "1 / -1" } },
+            { id: "1", text: "Header", styles: { gridColumn: "1 / -1" } },
             {
-               id: 2,
+               id: "2",
                text: "Sidebar",
                styles: { gridRow: "2 / 4", gridColumn: "1 / 4" },
             },
-            { id: 3, text: "Navigation", styles: { gridColumn: "4 / 10" } },
+            { id: "3", text: "Navigation", styles: { gridColumn: "4 / 10" } },
             {
-               id: 4,
+               id: "4",
                text: "Ads",
                styles: { gridRow: "2 / 4", gridColumn: "10 / 13" },
             },
             {
-               id: 5,
+               id: "5",
                text: "Main",
                styles: { gridColumn: "4 / 10", gridRow: "3 / 4" },
             },
-            { id: 6, text: "Footer", styles: { gridColumn: "1 / -1" } },
+            { id: "6", text: "Footer", styles: { gridColumn: "1 / -1" } },
          ],
          container: {
             display: "grid",
@@ -130,47 +130,47 @@ export const layouts: Layout[] = [
       layout: {
          items: [
             {
-               id: 1,
+               id: "1",
                text: "1",
                styles: { gridRow: "1 / 2", gridColumn: "1 / 3" },
             },
             {
-               id: 2,
+               id: "2",
                text: "2",
                styles: { gridRow: "2 / 4", gridColumn: "2 / 4" },
             },
             {
-               id: 3,
+               id: "3",
                text: "3",
                styles: { gridRow: "1 / 2", gridColumn: "3 / 4" },
             },
             {
-               id: 4,
+               id: "4",
                text: "4",
                styles: { gridRow: "1 / 3", gridColumn: "4 / 5" },
             },
             {
-               id: 5,
+               id: "5",
                text: "5",
                styles: { gridRow: "3 / 5", gridColumn: "1 / 2" },
             },
             {
-               id: 6,
+               id: "6",
                text: "6",
                styles: { gridRow: "3 / 4", gridColumn: "4 / 5" },
             },
             {
-               id: 7,
+               id: "7",
                text: "7",
                styles: { gridRow: "4 / 5", gridColumn: "3 / 5" },
             },
             {
-               id: 8,
+               id: "8",
                text: "8",
                styles: { gridRow: "4 / 5", gridColumn: "2 / 3" },
             },
             {
-               id: 9,
+               id: "9",
                text: "9",
                styles: { gridRow: "2 / 3", gridColumn: "1 / 2" },
             },
@@ -188,15 +188,15 @@ export const layouts: Layout[] = [
       img: grid3x3,
       layout: {
          items: [
-            { id: 1, text: "1", styles: {} },
-            { id: 2, text: "2", styles: {} },
-            { id: 3, text: "3", styles: {} },
-            { id: 4, text: "4", styles: {} },
-            { id: 5, text: "5", styles: {} },
-            { id: 6, text: "6", styles: {} },
-            { id: 7, text: "7", styles: {} },
-            { id: 8, text: "8", styles: {} },
-            { id: 9, text: "9", styles: {} },
+            { id: "1", text: "1", styles: {} },
+            { id: "2", text: "2", styles: {} },
+            { id: "3", text: "3", styles: {} },
+            { id: "4", text: "4", styles: {} },
+            { id: "5", text: "5", styles: {} },
+            { id: "6", text: "6", styles: {} },
+            { id: "7", text: "7", styles: {} },
+            { id: "8", text: "8", styles: {} },
+            { id: "9", text: "9", styles: {} },
          ],
          container: {
             display: "grid",
@@ -211,22 +211,22 @@ export const layouts: Layout[] = [
       img: grid4x4,
       layout: {
          items: [
-            { id: 1, text: "1", styles: {} },
-            { id: 2, text: "2", styles: {} },
-            { id: 3, text: "3", styles: {} },
-            { id: 4, text: "4", styles: {} },
-            { id: 5, text: "5", styles: {} },
-            { id: 6, text: "6", styles: {} },
-            { id: 7, text: "7", styles: {} },
-            { id: 8, text: "8", styles: {} },
-            { id: 9, text: "9", styles: {} },
-            { id: 10, text: "10", styles: {} },
-            { id: 11, text: "11", styles: {} },
-            { id: 12, text: "12", styles: {} },
-            { id: 13, text: "13", styles: {} },
-            { id: 14, text: "14", styles: {} },
-            { id: 15, text: "15", styles: {} },
-            { id: 16, text: "16", styles: {} },
+            { id: "1", text: "1", styles: {} },
+            { id: "2", text: "2", styles: {} },
+            { id: "3", text: "3", styles: {} },
+            { id: "4", text: "4", styles: {} },
+            { id: "5", text: "5", styles: {} },
+            { id: "6", text: "6", styles: {} },
+            { id: "7", text: "7", styles: {} },
+            { id: "8", text: "8", styles: {} },
+            { id: "9", text: "9", styles: {} },
+            { id: "10", text: "10", styles: {} },
+            { id: "11", text: "11", styles: {} },
+            { id: "12", text: "12", styles: {} },
+            { id: "13", text: "13", styles: {} },
+            { id: "14", text: "14", styles: {} },
+            { id: "15", text: "15", styles: {} },
+            { id: "16", text: "16", styles: {} },
          ],
          container: {
             display: "grid",
@@ -241,15 +241,15 @@ export const layouts: Layout[] = [
       img: infiniteRows,
       layout: {
          items: [
-            { id: 1, text: "1", styles: {} },
-            { id: 2, text: "2", styles: {} },
-            { id: 3, text: "3", styles: {} },
-            { id: 4, text: "4", styles: {} },
-            { id: 5, text: "5", styles: {} },
-            { id: 6, text: "6", styles: {} },
-            { id: 7, text: "7", styles: {} },
-            { id: 8, text: "8", styles: {} },
-            { id: 9, text: "9", styles: {} },
+            { id: "1", text: "1", styles: {} },
+            { id: "2", text: "2", styles: {} },
+            { id: "3", text: "3", styles: {} },
+            { id: "4", text: "4", styles: {} },
+            { id: "5", text: "5", styles: {} },
+            { id: "6", text: "6", styles: {} },
+            { id: "7", text: "7", styles: {} },
+            { id: "8", text: "8", styles: {} },
+            { id: "9", text: "9", styles: {} },
          ],
          container: {
             display: "grid",
@@ -265,15 +265,15 @@ export const layouts: Layout[] = [
       img: infiniteColumns,
       layout: {
          items: [
-            { id: 1, text: "1", styles: {} },
-            { id: 2, text: "2", styles: {} },
-            { id: 3, text: "3", styles: {} },
-            { id: 4, text: "4", styles: {} },
-            { id: 5, text: "5", styles: {} },
-            { id: 6, text: "6", styles: {} },
-            { id: 7, text: "7", styles: {} },
-            { id: 8, text: "8", styles: {} },
-            { id: 9, text: "9", styles: {} },
+            { id: "1", text: "1", styles: {} },
+            { id: "2", text: "2", styles: {} },
+            { id: "3", text: "3", styles: {} },
+            { id: "4", text: "4", styles: {} },
+            { id: "5", text: "5", styles: {} },
+            { id: "6", text: "6", styles: {} },
+            { id: "7", text: "7", styles: {} },
+            { id: "8", text: "8", styles: {} },
+            { id: "9", text: "9", styles: {} },
          ],
          container: {
             display: "grid",

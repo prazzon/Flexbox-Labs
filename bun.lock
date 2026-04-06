@@ -7,7 +7,6 @@
       "dependencies": {
         "@reduxjs/toolkit": "^2.5.0",
         "@svgr/webpack": "^8.1.0",
-        "@uidotdev/usehooks": "^2.4.1",
         "motion": "^12.38.0",
         "next": "16.2.1",
         "react": "19.2.4",
@@ -26,6 +25,7 @@
         "@types/react-syntax-highlighter": "^15.5.13",
         "eslint": "^9.8.0",
         "eslint-config-next": "16.2.1",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react-hooks": "^5.1.0-rc.0",
         "eslint-plugin-react-refresh": "^0.4.9",
         "globals": "^15.9.0",
@@ -425,8 +425,6 @@
     "@typescript-eslint/utils": ["@typescript-eslint/utils@8.0.1", "", { "dependencies": { "@eslint-community/eslint-utils": "^4.4.0", "@typescript-eslint/scope-manager": "8.0.1", "@typescript-eslint/types": "8.0.1", "@typescript-eslint/typescript-estree": "8.0.1" }, "peerDependencies": { "eslint": "^8.57.0 || ^9.0.0" } }, "sha512-CBFR0G0sCt0+fzfnKaciu9IBsKvEKYwN9UZ+eeogK1fYHg4Qxk1yf/wLQkLXlq8wbU2dFlgAesxt8Gi76E8RTA=="],
 
     "@typescript-eslint/visitor-keys": ["@typescript-eslint/visitor-keys@8.0.1", "", { "dependencies": { "@typescript-eslint/types": "8.0.1", "eslint-visitor-keys": "^3.4.3" } }, "sha512-W5E+o0UfUcK5EgchLZsyVWqARmsM7v54/qEq6PY3YI5arkgmCzHiuk0zKSJJbm71V0xdRna4BGomkCTXz2/LkQ=="],
-
-    "@uidotdev/usehooks": ["@uidotdev/usehooks@2.4.1", "", { "peerDependencies": { "react": ">=18.0.0", "react-dom": ">=18.0.0" } }, "sha512-1I+RwWyS+kdv3Mv0Vmc+p0dPYH0DTRAo04HLyXReYBL9AeseDWUJyi4THuksBJcu9F0Pih69Ak150VDnqbVnXg=="],
 
     "@unrs/resolver-binding-android-arm-eabi": ["@unrs/resolver-binding-android-arm-eabi@1.11.1", "", { "os": "android", "cpu": "arm" }, "sha512-ppLRUgHVaGRWUx0R0Ut06Mjo9gBaBkg3v/8AxusGLhsIotbBLuRk51rAzqLC8gq6NyyAojEXglNjzf6R948DNw=="],
 

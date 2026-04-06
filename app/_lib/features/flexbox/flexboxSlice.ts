@@ -29,7 +29,7 @@ const defaultContainer: FlexboxContainer = {
 };
 
 const newItem = (length: number): FlexboxItem => ({
-   id: Math.random(),
+   id: crypto.randomUUID(),
    text: `${length + 1}`,
    styles: defaultItemStyle,
 });
@@ -67,10 +67,9 @@ export const flexboxSlice = createSlice({
          action: PayloadAction<{ key: string; value: string }>
       ) => {
          const { key, value } = action.payload;
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.map((item) =>
-            state.selectedItems.includes(item.id)
-               ? { ...item, [key]: value }
-               : item
+            selectedSet.has(item.id) ? { ...item, [key]: value } : item
          );
       },
       editItemStyle: (
@@ -78,15 +77,16 @@ export const flexboxSlice = createSlice({
          action: PayloadAction<{ key: string; value: string | number }>
       ) => {
          const { key, value } = action.payload;
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.map((item) =>
-            state.selectedItems.includes(item.id)
+            selectedSet.has(item.id)
                ? { ...item, styles: { ...item.styles, [key]: value } }
                : item
          );
       },
       editItemText: (
          state,
-         action: PayloadAction<{ id: number; value: string }>
+         action: PayloadAction<{ id: string; value: string }>
       ) => {
          const { id, value } = action.payload;
          const item = state.items.find((item) => item.id === id);
@@ -98,21 +98,23 @@ export const flexboxSlice = createSlice({
          state.items.push(newItem(state.items.length));
       },
       removeItem: (state) => {
+         const selectedSet = new Set(state.selectedItems);
          state.items = state.items.filter(
-            (item) => !state.selectedItems.includes(item.id)
+            (item) => !selectedSet.has(item.id)
          );
          state.selectedItems = [];
       },
       duplicateItem: (state) => {
+         const itemsMap = new Map(state.items.map((item) => [item.id, item]));
          const newItems = state.selectedItems.map((itemId) => {
-            const item = state.items.find((item) => item.id === itemId)!;
-            return { ...item, id: Math.random() };
+            const item = itemsMap.get(itemId)!;
+            return { ...item, id: crypto.randomUUID() };
          });
          state.items = [...state.items, ...newItems];
       },
       toggleSelected: (
          state,
-         action: PayloadAction<{ id: number; selectMultiple: boolean }>
+         action: PayloadAction<{ id: string; selectMultiple: boolean }>
       ) => {
          const { id, selectMultiple } = action.payload;
 
