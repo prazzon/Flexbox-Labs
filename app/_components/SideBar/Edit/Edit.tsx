@@ -9,7 +9,7 @@ import EditContainer from "./EditContainer/EditContainer";
 import EditItems from "./EditItems/EditItems";
 
 interface Props {
-   selectedItems: number[];
+   selectedItems: string[];
    editContainer: (key: keyof Container, value: string) => void;
    container: Container;
    containerConfig: ContainerConfig[];
@@ -36,20 +36,20 @@ function Edit({
    return (
       <div className={styles.edit}>
          <div className={styles.tab_switcher}>
-            <div
+            <button
                className={styles.switch}
                data-active={switchState === 1}
                onClick={() => setSwitchState(1)}
             >
                Container
-            </div>
-            <div
+            </button>
+            <button
                className={styles.switch}
                data-active={switchState === 2}
                onClick={() => setSwitchState(2)}
             >
                Items
-            </div>
+            </button>
          </div>
 
          <AnimatePresence mode="wait" initial={false}>

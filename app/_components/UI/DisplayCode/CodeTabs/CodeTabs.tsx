@@ -14,7 +14,7 @@ function CodeTabs({ tabs, switchState, setSwitchState }: Props) {
       <motion.div className={styles.tab_switcher} layout>
          {tabs.map((tab, index) => (
             <button
-               key={index}
+               key={tab.title}
                className={`${styles.switch} ${
                   index === switchState ? styles.active : ""
                }`}

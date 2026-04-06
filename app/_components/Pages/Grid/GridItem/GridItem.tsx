@@ -1,10 +1,15 @@
 "use client";
 
-import { useGrid } from "@/app/_hooks/useGrid";
 import { useRipple } from "@/app/_hooks/useRipple";
+import useSettings from "@/app/_hooks/useSettings";
+import {
+   editItemText,
+   toggleSelected,
+} from "@/app/_lib/features/grid/gridSlice";
+import { useAppDispatch, useAppSelector } from "@/app/_lib/hooks";
 import { type GridItem } from "@/app/_lib/types/grid";
 import { motion } from "motion/react";
-import { forwardRef, MutableRefObject } from "react";
+import { forwardRef, MutableRefObject, useCallback } from "react";
 import { MdModeEditOutline } from "react-icons/md";
 import styles from "./GridItem.module.scss";
 
@@ -21,18 +26,31 @@ const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridItem(
    { item },
    ref,
 ) {
-   const { selectedItems, toggleSelected, editItemText } = useGrid();
+   const dispatch = useAppDispatch();
+   const { selectMultiple } = useSettings();
+   const isSelected = useAppSelector((state) =>
+      state.grid.present.selectedItems.includes(item.id),
+   );
 
    const elRef = ref as MutableRefObject<HTMLDivElement>;
 
-   const isSelected = selectedItems.includes(item.id);
-
    useRipple<HTMLDivElement>(elRef, 100);
+
+   const handleEditText = useCallback(
+      (value: string) => {
+         dispatch(editItemText({ id: item.id, value }));
+      },
+      [dispatch, item.id],
+   );
+
+   const handleToggle = useCallback(() => {
+      dispatch(toggleSelected({ id: item.id, selectMultiple }));
+   }, [dispatch, item.id, selectMultiple]);
 
    function handleClick(e: React.MouseEvent) {
       const target = e.target as HTMLElement;
       if (target.classList.contains(styles.item)) {
-         toggleSelected(item.id);
+         handleToggle();
       }
    }
 
@@ -49,7 +67,7 @@ const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridItem(
          className={`${styles.item} ${isSelected ? styles.selected : ""}`}
          style={item.styles}
       >
-         <label className={styles.checkbox}>
+         <label className={styles.checkbox} aria-label="Select Item checkbox">
             <input checked={isSelected} type="checkbox" readOnly />
             <div className={styles.checkmark}></div>
          </label>
@@ -64,7 +82,7 @@ const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridItem(
             <div className={styles.text}>{item.text}</div>
             <textarea
                className={styles.input}
-               onChange={(e) => editItemText(item.id, e.target.value)}
+               onChange={(e) => handleEditText(e.target.value)}
                onClick={(e) => (e.target as HTMLInputElement).select()}
                value={item.text}
                maxLength={50}

@@ -1,7 +1,13 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { createContext, useContext, useState } from "react";
+import {
+   createContext,
+   useContext,
+   useId,
+   useState,
+   type KeyboardEvent,
+} from "react";
 import { FaCaretDown } from "react-icons/fa";
 import { useOutsideClick } from "../../../_hooks/useOutsideClick";
 import styles from "./Select.module.scss";
@@ -24,12 +30,14 @@ interface Context {
    select: (value: string) => void;
    active: string;
    close: () => void;
+   listboxId: string;
 }
 
 const SelectContext = createContext<Context | null>(null);
 
 function Select({ children, active, onSelect }: SelectProps) {
    const [open, setOpen] = useState(false);
+   const listboxId = useId();
 
    const toggleOpen = () => {
       setOpen((prev) => !prev);
@@ -44,7 +52,14 @@ function Select({ children, active, onSelect }: SelectProps) {
 
    return (
       <SelectContext.Provider
-         value={{ open, toggleOpen, select, active, close }}
+         value={{
+            open,
+            toggleOpen,
+            select,
+            active,
+            close,
+            listboxId,
+         }}
       >
          <div className={styles.select}>{children}</div>
       </SelectContext.Provider>
@@ -52,22 +67,29 @@ function Select({ children, active, onSelect }: SelectProps) {
 }
 
 function Toggle() {
-   const { toggleOpen, active } = useContext(SelectContext) as Context;
+   const { toggleOpen, active, open, listboxId } = useContext(
+      SelectContext,
+   ) as Context;
 
    return (
-      <>
-         <button className={styles.toggle} onClick={toggleOpen}>
-            <div className={styles.toggle__text}>
-               <p>{active}</p>
-               <FaCaretDown />
-            </div>
-         </button>
-      </>
+      <button
+         type="button"
+         className={styles.toggle}
+         onClick={toggleOpen}
+         aria-haspopup="listbox"
+         aria-expanded={open}
+         aria-controls={listboxId}
+      >
+         <div className={styles.toggle__text}>
+            <p>{active}</p>
+            <FaCaretDown aria-hidden />
+         </div>
+      </button>
    );
 }
 
 function Options({ children }: { children: React.ReactNode }) {
-   const { open, close } = useContext(SelectContext) as Context;
+   const { open, close, listboxId } = useContext(SelectContext) as Context;
 
    const ref = useOutsideClick(() => close());
 
@@ -81,6 +103,9 @@ function Options({ children }: { children: React.ReactNode }) {
                animate="visible"
                exit="exit"
                ref={ref}
+               role="listbox"
+               id={listboxId}
+               aria-label="Options"
             >
                {children}
             </motion.div>
@@ -90,16 +115,26 @@ function Options({ children }: { children: React.ReactNode }) {
 }
 
 function Option({ value }: { value: string }) {
-   const { active, select, close } = useContext(SelectContext) as Context;
+   const { active, select, open } = useContext(SelectContext) as Context;
+
+   const selected = active === value;
+
+   function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+      if (e.key === "Enter" || e.key === " ") {
+         e.preventDefault();
+         select(value);
+      }
+   }
 
    return (
       <div
+         role="option"
+         aria-selected={selected}
+         tabIndex={open ? 0 : -1}
          className={styles.option}
-         data-active={active === value}
-         onClick={() => {
-            select(value);
-            close();
-         }}
+         data-active={selected}
+         onClick={() => select(value)}
+         onKeyDown={onKeyDown}
       >
          {value}
       </div>
