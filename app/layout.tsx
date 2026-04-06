@@ -4,6 +4,7 @@ import { Inconsolata, Quicksand } from "next/font/google";
 import { SettingsProvider } from "./_context/SettingsContext";
 import "./global.scss";
 import StoreProvider from "./storeProvider";
+import CustomToaster from "./_components/CustomToaster";
 
 const quicksand = Quicksand({
    subsets: ["latin"],
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
          <body>
             <SettingsProvider>
                <StoreProvider>{children}</StoreProvider>
+               <CustomToaster />
             </SettingsProvider>
          </body>
       </html>
