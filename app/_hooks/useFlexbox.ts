@@ -22,52 +22,52 @@ import {
    undoFlexbox,
 } from "../_lib/features/flexbox/flexboxSlice";
 import { FlexboxContainer, Flexbox } from "../_lib/types/flexbox";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../_lib/hooks";
 import useSettings from "./useSettings";
 
 export const useFlexbox = () => {
    const { selectMultiple } = useSettings();
-   const dispatch = useDispatch();
-   const items = useSelector(selectItems);
-   const container = useSelector(selectContainer);
-   const selectedItems = useSelector(selectSelectedItems);
-   const canUndo = useSelector(selectCanUndoFlexbox);
-   const canRedo = useSelector(selectCanRedoFlexbox);
-   const flexbox = useSelector(selectFlexbox);
+   const dispatch = useAppDispatch();
+   const items = useAppSelector(selectItems);
+   const container = useAppSelector(selectContainer);
+   const selectedItems = useAppSelector(selectSelectedItems);
+   const canUndo = useAppSelector(selectCanUndoFlexbox);
+   const canRedo = useAppSelector(selectCanRedoFlexbox);
+   const flexbox = useAppSelector(selectFlexbox);
 
    const handleSetFlexbox = useCallback(
       (state: Flexbox) => {
          dispatch(setFlexbox(state));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleEditContainer = useCallback(
       (key: keyof FlexboxContainer, value: string) => {
          dispatch(editContainer({ key, value }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleEditItem = useCallback(
       (key: string, value: string) => {
          dispatch(editItem({ key, value }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleEditItemStyle = useCallback(
       (key: string, value: string) => {
          dispatch(editItemStyle({ key, value }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleEditItemText = useCallback(
       (id: string, value: string) => {
          dispatch(editItemText({ id, value }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleAddItem = useCallback(() => {
@@ -86,7 +86,7 @@ export const useFlexbox = () => {
       (id: string) => {
          dispatch(toggleSelected({ id, selectMultiple }));
       },
-      [dispatch, selectMultiple]
+      [dispatch, selectMultiple],
    );
 
    const handleToggleAllSelected = useCallback(() => {

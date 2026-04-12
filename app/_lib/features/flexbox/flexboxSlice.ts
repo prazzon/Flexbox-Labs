@@ -54,7 +54,7 @@ export const flexboxSlice = createSlice({
          action: PayloadAction<{
             key: keyof FlexboxContainer;
             value: string | number;
-         }>
+         }>,
       ) => {
          const { key, value } = action.payload;
          state.container = {
@@ -64,29 +64,29 @@ export const flexboxSlice = createSlice({
       },
       editItem: (
          state,
-         action: PayloadAction<{ key: string; value: string }>
+         action: PayloadAction<{ key: string; value: string }>,
       ) => {
          const { key, value } = action.payload;
          const selectedSet = new Set(state.selectedItems);
          state.items = state.items.map((item) =>
-            selectedSet.has(item.id) ? { ...item, [key]: value } : item
+            selectedSet.has(item.id) ? { ...item, [key]: value } : item,
          );
       },
       editItemStyle: (
          state,
-         action: PayloadAction<{ key: string; value: string | number }>
+         action: PayloadAction<{ key: string; value: string | number }>,
       ) => {
          const { key, value } = action.payload;
          const selectedSet = new Set(state.selectedItems);
          state.items = state.items.map((item) =>
             selectedSet.has(item.id)
                ? { ...item, styles: { ...item.styles, [key]: value } }
-               : item
+               : item,
          );
       },
       editItemText: (
          state,
-         action: PayloadAction<{ id: string; value: string }>
+         action: PayloadAction<{ id: string; value: string }>,
       ) => {
          const { id, value } = action.payload;
          const item = state.items.find((item) => item.id === id);
@@ -99,22 +99,25 @@ export const flexboxSlice = createSlice({
       },
       removeItem: (state) => {
          const selectedSet = new Set(state.selectedItems);
-         state.items = state.items.filter(
-            (item) => !selectedSet.has(item.id)
-         );
+         state.items = state.items.filter((item) => !selectedSet.has(item.id));
          state.selectedItems = [];
       },
       duplicateItem: (state) => {
          const itemsMap = new Map(state.items.map((item) => [item.id, item]));
          const newItems = state.selectedItems.map((itemId) => {
-            const item = itemsMap.get(itemId)!;
+            const item = itemsMap.get(itemId);
+            if (!item) {
+               throw new Error(
+                  `Item with id ${itemId} not found for duplication`,
+               );
+            }
             return { ...item, id: crypto.randomUUID() };
          });
          state.items = [...state.items, ...newItems];
       },
       toggleSelected: (
          state,
-         action: PayloadAction<{ id: string; selectMultiple: boolean }>
+         action: PayloadAction<{ id: string; selectMultiple: boolean }>,
       ) => {
          const { id, selectMultiple } = action.payload;
 
@@ -184,7 +187,7 @@ export const selectFlexbox = createSelector(
    (items, container) => ({
       items,
       container,
-   })
+   }),
 );
 
 export default flexboxReducer;
