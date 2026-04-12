@@ -1,5 +1,6 @@
 "use client";
 
+import DOMPurify from "dompurify";
 import { State } from "@/app/types";
 import { formatCSS, formatHTML } from "./formatters";
 
@@ -39,6 +40,9 @@ export const generateFullHTML = (data: State): string => {
    const htmlContent = formatHTML(data);
    const cssContent = formatCSS(data);
 
+   // Sanitize user-generated content to prevent XSS attacks
+   const sanitizedHtml = DOMPurify.sanitize(htmlContent);
+
    return `<!DOCTYPE html>
 <html lang="en">
 \t<head>
@@ -51,7 +55,7 @@ ${indentContent(cssContent, 3)}
 \t\t</style>
 \t</head>
 \t<body>
-${indentContent(htmlContent, 2)}
+${indentContent(sanitizedHtml, 2)}
 \t</body>
 </html>`;
 };

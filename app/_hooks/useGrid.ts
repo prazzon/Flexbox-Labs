@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
    addItem,
    addItemStyle,
@@ -15,62 +14,63 @@ import {
    selectCanUndoGrid,
    selectContainer,
    selectGrid,
+   selectGridLines,
    selectItems,
    selectSelectedItems,
    setGrid,
    toggleAllSelected,
+   toggleGridLines,
    toggleSelected,
    undoGrid,
-   toggleGridLines,
-   selectGridLines,
 } from "../_lib/features/grid/gridSlice";
+import { useAppDispatch, useAppSelector } from "../_lib/hooks";
 import { Grid, GridContainer, GridItemStyle } from "../_lib/types/grid";
 import useSettings from "./useSettings";
 
 export const useGrid = () => {
    const { selectMultiple } = useSettings();
-   const dispatch = useDispatch();
-   const items = useSelector(selectItems);
-   const container = useSelector(selectContainer);
-   const selectedItems = useSelector(selectSelectedItems);
-   const gridLines = useSelector(selectGridLines);
-   const canUndo = useSelector(selectCanUndoGrid);
-   const canRedo = useSelector(selectCanRedoGrid);
-   const grid = useSelector(selectGrid);
+   const dispatch = useAppDispatch();
+   const items = useAppSelector(selectItems);
+   const container = useAppSelector(selectContainer);
+   const selectedItems = useAppSelector(selectSelectedItems);
+   const gridLines = useAppSelector(selectGridLines);
+   const canUndo = useAppSelector(selectCanUndoGrid);
+   const canRedo = useAppSelector(selectCanRedoGrid);
+   const grid = useAppSelector(selectGrid);
 
    const handleSetGrid = useCallback(
       (state: Grid) => {
          dispatch(setGrid(state));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleEditContainer = useCallback(
       (key: keyof GridContainer, value: string) => {
          dispatch(editContainer({ key, value }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleEditItem = useCallback(
       (key: string, value: string) => {
          dispatch(editItem({ key, value }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleEditItemStyle = useCallback(
       (key: string, value: string) => {
          dispatch(editItemStyle({ key, value }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleEditItemText = useCallback(
       (id: string, value: string) => {
          dispatch(editItemText({ id, value }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleAddItem = useCallback(() => {
@@ -81,7 +81,7 @@ export const useGrid = () => {
       (style: GridItemStyle) => {
          dispatch(addItemStyle({ style }));
       },
-      [dispatch]
+      [dispatch],
    );
 
    const handleRemoveItem = useCallback(() => {
@@ -92,7 +92,7 @@ export const useGrid = () => {
       (id: string) => {
          dispatch(toggleSelected({ id, selectMultiple }));
       },
-      [dispatch, selectMultiple]
+      [dispatch, selectMultiple],
    );
 
    const handleToggleAllSelected = useCallback(() => {
