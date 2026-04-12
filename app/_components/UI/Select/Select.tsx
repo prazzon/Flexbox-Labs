@@ -1,16 +1,12 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import {
-   createContext,
-   useContext,
-   useId,
-   useState,
-   type KeyboardEvent,
-} from "react";
+import { useId, useState, type KeyboardEvent } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import { useOutsideClick } from "../../../_hooks/useOutsideClick";
 import styles from "./Select.module.scss";
+import { SelectContext } from "./SelectContext";
+import { useSelectContext } from "./useSelectContext";
 
 const selectVariant = {
    hidden: { y: -10 },
@@ -23,17 +19,6 @@ interface SelectProps {
    active: string;
    onSelect: (value: string) => void;
 }
-
-interface Context {
-   open: boolean;
-   toggleOpen: () => void;
-   select: (value: string) => void;
-   active: string;
-   close: () => void;
-   listboxId: string;
-}
-
-const SelectContext = createContext<Context | null>(null);
 
 function Select({ children, active, onSelect }: SelectProps) {
    const [open, setOpen] = useState(false);
@@ -67,9 +52,7 @@ function Select({ children, active, onSelect }: SelectProps) {
 }
 
 function Toggle() {
-   const { toggleOpen, active, open, listboxId } = useContext(
-      SelectContext,
-   ) as Context;
+   const { toggleOpen, active, open, listboxId } = useSelectContext();
 
    return (
       <button
@@ -89,7 +72,7 @@ function Toggle() {
 }
 
 function Options({ children }: { children: React.ReactNode }) {
-   const { open, close, listboxId } = useContext(SelectContext) as Context;
+   const { open, close, listboxId } = useSelectContext();
 
    const ref = useOutsideClick(() => close());
 
@@ -115,7 +98,7 @@ function Options({ children }: { children: React.ReactNode }) {
 }
 
 function Option({ value }: { value: string }) {
-   const { active, select, open } = useContext(SelectContext) as Context;
+   const { active, select, open } = useSelectContext();
 
    const selected = active === value;
 
