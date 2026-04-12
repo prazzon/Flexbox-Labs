@@ -3,11 +3,9 @@
 import { AnimatePresence, motion } from "motion/react";
 import {
    cloneElement,
-   createContext,
    ReactElement,
    ReactNode,
    useCallback,
-   useContext,
    useEffect,
    useId,
    useRef,
@@ -16,6 +14,8 @@ import {
 import { createPortal } from "react-dom";
 import { FiMinimize2 } from "react-icons/fi";
 import styles from "./Modal.module.scss";
+import { ModalContext } from "./ModalContext";
+import { useModalContext } from "./useModalContext";
 
 const container = {
    exit: { opacity: 0, transition: { duration: 0.3 } },
@@ -26,14 +26,6 @@ const modal = {
    visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
    exit: { opacity: 0, y: 30 },
 };
-
-interface Context {
-   showModal: boolean;
-   openModal: () => void;
-   closeModal: () => void;
-}
-
-const ModalContext = createContext<Context | null>(null);
 
 function Modal({ children }: { children: ReactNode }) {
    const [showModal, setShowModal] = useState(false);
@@ -58,7 +50,8 @@ export function OpenBtn({
       "aria-haspopup"?: "dialog";
    }>;
 }) {
-   const { openModal, showModal } = useContext(ModalContext) as Context;
+   const context = useModalContext();
+   const { openModal, showModal } = context;
 
    return cloneElement(children, {
       onClick: () => openModal(),
@@ -68,7 +61,8 @@ export function OpenBtn({
 }
 
 export function Content({ children }: { children: ReactNode }) {
-   const { showModal, closeModal } = useContext(ModalContext) as Context;
+   const context = useModalContext();
+   const { showModal, closeModal } = context;
 
    const [mounted, setMounted] = useState(false);
    const titleId = useId();

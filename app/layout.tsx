@@ -1,10 +1,9 @@
-/* eslint-disable react-refresh/only-export-components */
 import type { Metadata } from "next";
 import { Inconsolata, Quicksand } from "next/font/google";
-import { SettingsProvider } from "./_context/SettingsContext";
+import CustomToaster from "./_components/CustomToaster";
+import { SettingsInit } from "./_components/SettingsInit";
 import "./global.scss";
 import StoreProvider from "./storeProvider";
-import CustomToaster from "./_components/CustomToaster";
 
 const quicksand = Quicksand({
    subsets: ["latin"],
@@ -18,8 +17,7 @@ const inconsolata = Inconsolata({
    display: "swap",
 });
 
-const siteUrl =
-   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
    metadataBase: new URL(siteUrl),
@@ -65,10 +63,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
          className={`${quicksand.variable} ${inconsolata.variable}`}
       >
          <body>
-            <SettingsProvider>
-               <StoreProvider>{children}</StoreProvider>
-               <CustomToaster />
-            </SettingsProvider>
+            <StoreProvider>
+               <SettingsInit>
+                  {children}
+                  <CustomToaster />
+               </SettingsInit>
+            </StoreProvider>
          </body>
       </html>
    );

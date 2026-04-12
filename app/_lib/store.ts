@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import flexboxReducer from "./features/flexbox/flexboxSlice";
 import gridReducer from "./features/grid/gridSlice";
+import settingsReducer from "./features/settings/settingsSlice";
 
 export const makeStore = () => {
    return configureStore({
       reducer: {
          flexbox: flexboxReducer,
-         grid: gridReducer
+         grid: gridReducer,
+         settings: settingsReducer,
       },
    });
 };
