@@ -94,7 +94,7 @@ const Item = ({ item, value, separator, onChange }: Props) => {
                         valueItems.map((value, i) => (
                            <motion.label
                               className={styles.dropdown_item}
-                              key={i}
+                              key={`${item.key}-${value}-${i}`}
                               initial={{ opacity: 0, y: 5 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: -5 }}
@@ -128,7 +128,7 @@ const Item = ({ item, value, separator, onChange }: Props) => {
                         item.combineData.map((value, i) => (
                            <motion.label
                               className={styles.dropdown_item}
-                              key={i}
+                              key={`${item.key}-${value.title}-${i}`}
                               initial={{ opacity: 0, y: 5 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: -5 }}

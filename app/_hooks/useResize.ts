@@ -1,6 +1,6 @@
 "use client";
 
-import { RefObject, useCallback, useEffect, useState } from "react";
+import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
 interface Dimensions {
    width?: number | string;
@@ -11,6 +11,7 @@ interface Props {
    ref: RefObject<HTMLElement | null>;
    minWidth?: number;
    minHeight?: number;
+   throttleMs?: number;
 }
 
 interface ReturnProps {
@@ -18,19 +19,38 @@ interface ReturnProps {
    isResizing: boolean;
    startResize: (
       event: React.MouseEvent | MouseEvent,
-      direction: "horizontal" | "vertical"
+      direction: "horizontal" | "vertical",
    ) => void;
    reset: (direction: "horizontal" | "vertical") => void;
+}
+
+// Throttle utility to limit update frequency
+function throttle<T extends (arg: DOMRectReadOnly) => void>(
+   func: T,
+   limit: number,
+): (arg: DOMRectReadOnly) => void {
+   let inThrottle = false;
+   return (arg: DOMRectReadOnly) => {
+      if (!inThrottle) {
+         func(arg);
+         inThrottle = true;
+         setTimeout(() => (inThrottle = false), limit);
+      }
+   };
 }
 
 export const useResize = ({
    ref,
    minWidth = 400,
    minHeight = 280,
+   throttleMs = 100,
 }: Props): ReturnProps => {
    const [dimensions, setDimensions] = useState<Dimensions>({});
    const [isResizing, setIsResizing] = useState(false);
    const [maxDimensions, setMaxDimensions] = useState<Dimensions>({});
+
+   // Track throttle timer for cleanup
+   const throttleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
    useEffect(() => {
       if (!ref.current?.parentElement) return;
@@ -57,9 +77,12 @@ export const useResize = ({
          });
       };
 
+      // Throttled update function
+      const throttledUpdate = throttle(updateMaxDimensions, throttleMs);
+
       const resizeObserver = new ResizeObserver((entries) => {
          for (const entry of entries) {
-            updateMaxDimensions(entry.contentRect);
+            throttledUpdate(entry.contentRect);
          }
       });
 
@@ -67,13 +90,16 @@ export const useResize = ({
 
       return () => {
          resizeObserver.disconnect();
+         if (throttleTimerRef.current) {
+            clearTimeout(throttleTimerRef.current);
+         }
       };
-   }, [ref]);
+   }, [ref, throttleMs]);
 
    const startResize = useCallback(
       (
          event: React.MouseEvent | MouseEvent,
-         direction: "horizontal" | "vertical"
+         direction: "horizontal" | "vertical",
       ) => {
          event.preventDefault();
          if (!ref.current) return;
@@ -88,18 +114,18 @@ export const useResize = ({
                const newWidth = Math.max(
                   Math.min(
                      startWidth + (e.clientX - startX),
-                     Number(maxDimensions.width) || Infinity
+                     Number(maxDimensions.width) || Infinity,
                   ),
-                  minWidth
+                  minWidth,
                );
                setDimensions((prev) => ({ ...prev, width: newWidth }));
             } else {
                const newHeight = Math.max(
                   Math.min(
                      startHeight + (e.clientY - startY),
-                     Number(maxDimensions.height) || Infinity
+                     Number(maxDimensions.height) || Infinity,
                   ),
-                  minHeight
+                  minHeight,
                );
                setDimensions((prev) => ({ ...prev, height: newHeight }));
             }
@@ -115,7 +141,7 @@ export const useResize = ({
          document.addEventListener("mouseup", handleMouseUp);
          setIsResizing(true);
       },
-      [ref, minWidth, minHeight, maxDimensions]
+      [ref, minWidth, minHeight, maxDimensions],
    );
 
    const reset = useCallback((direction: "horizontal" | "vertical") => {

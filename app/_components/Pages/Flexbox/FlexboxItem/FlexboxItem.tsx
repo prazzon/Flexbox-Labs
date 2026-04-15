@@ -4,12 +4,14 @@ import { useRipple } from "@/app/_hooks/useRipple";
 import useSettings from "@/app/_hooks/useSettings";
 import {
    editItemText,
+   selectSelectedItems,
    toggleSelected,
 } from "@/app/_lib/features/flexbox/flexboxSlice";
 import { useAppDispatch, useAppSelector } from "@/app/_lib/hooks";
 import { type FlexboxItem } from "@/app/_lib/types/flexbox";
+import { createSelector } from "@reduxjs/toolkit";
 import { motion } from "motion/react";
-import { forwardRef, MutableRefObject, useCallback } from "react";
+import { forwardRef, MutableRefObject, useCallback, useMemo } from "react";
 import { MdModeEditOutline } from "react-icons/md";
 import styles from "./FlexboxItem.module.scss";
 
@@ -28,9 +30,17 @@ const FlexboxItem = forwardRef<HTMLDivElement, Props>(function FlexboxItem(
 ) {
    const dispatch = useAppDispatch();
    const { selectMultiple } = useSettings();
-   const isSelected = useAppSelector((state) =>
-      state.flexbox.present.selectedItems.includes(item.id),
+
+   // Create a memoized selector for this specific item's selection status
+   // This prevents re-renders when other items change
+   const selectIsItemSelected = useMemo(
+      () =>
+         createSelector([selectSelectedItems], (selectedItems) =>
+            selectedItems.includes(item.id),
+         ),
+      [item.id],
    );
+   const isSelected = useAppSelector(selectIsItemSelected);
 
    const elRef = ref as MutableRefObject<HTMLDivElement>;
 
