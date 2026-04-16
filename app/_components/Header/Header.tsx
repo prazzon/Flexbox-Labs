@@ -21,13 +21,13 @@ function Header() {
                Flexbox Labs
             </h1>
          </a>
-         
+
          <hr className={styles.divider} />
 
          {pathname !== "/grid" && (
             <Link href="/grid" className={styles.grid_link}>
                <HiOutlineExternalLink />
-               Grids <span className={styles.beta}>beta</span>
+               Grids
             </Link>
          )}
 
