@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, Variants } from "motion/react";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import styles from "./Tooltip.module.scss";
 
 const tooltipVariants: Variants = {
@@ -36,8 +36,8 @@ function Tooltip({ children, position = "top", background }: Props) {
 
    const ref = useRef<HTMLDivElement | null>(null);
 
-   const handleHover = () => setShowTooltip(true);
-   const handleLeave = () => setShowTooltip(false);
+   const handleHover = useCallback(() => setShowTooltip(true), []);
+   const handleLeave = useCallback(() => setShowTooltip(false), []);
 
    useEffect(() => {
       const parent = ref.current?.parentElement;
@@ -53,7 +53,7 @@ function Tooltip({ children, position = "top", background }: Props) {
          parent.removeEventListener("mouseenter", handleHover);
          parent.removeEventListener("mouseleave", handleLeave);
       };
-   }, []);
+   }, [handleHover, handleLeave]);
 
    return (
       <div ref={ref} className={`${styles.tooltip} ${styles[position]}`}>

@@ -1,27 +1,32 @@
-import { useState, useCallback } from "react";
-const useSidebarState = () => {
-  const [switchState, setSwitchState] = useState(0);
-  const [showPanel, setShowPanel] = useState(true);
+import { useCallback, useState } from "react";
 
-  const handleSwitch = useCallback(
-    (dataSwitch: number) => {
-      setSwitchState(dataSwitch);
+/**
+ * Hook for managing sidebar panel state and tab switching.
+ * Follows React hook naming convention: use[Feature][OptionalModifier].
+ */
+export function useSidebar() {
+   const [switchState, setSwitchState] = useState(0);
+   const [showPanel, setShowPanel] = useState(true);
 
-      if (!showPanel) setShowPanel(true);
-    },
-    [showPanel],
-  );
+   const handleSwitch = useCallback(
+      (dataSwitch: number) => {
+         setSwitchState(dataSwitch);
 
-  const handlePanelToggle = useCallback(() => {
-    setShowPanel((prev) => !prev);
-  }, []);
+         if (!showPanel) setShowPanel(true);
+      },
+      [showPanel],
+   );
 
-  return {
-    switchState,
-    handleSwitch,
-    showPanel,
-    handlePanelToggle,
-  };
-};
+   const handlePanelToggle = useCallback(() => {
+      setShowPanel((prev) => !prev);
+   }, []);
 
-export default useSidebarState;
+   return {
+      switchState,
+      handleSwitch,
+      showPanel,
+      handlePanelToggle,
+   };
+}
+
+export default useSidebar;
