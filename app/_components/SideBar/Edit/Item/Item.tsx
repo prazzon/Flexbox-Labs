@@ -59,10 +59,16 @@ const Item = ({ item, value, onChange }: Props) => {
             ) : null}
          </div>
 
-         <span className={styles.info}>
-            <FaInfo />
-            <Popover position="bottom">{item.description}</Popover>
-         </span>
+         <Popover
+            position="bottom"
+            trigger={
+               <span className={styles.info}>
+                  <FaInfo />
+               </span>
+            }
+         >
+            {item.description}
+         </Popover>
       </motion.div>
    );
 };
