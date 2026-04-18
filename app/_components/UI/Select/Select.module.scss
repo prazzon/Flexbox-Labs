@@ -34,9 +34,6 @@
 }
 
 .options {
-   position: absolute;
-   right: -1rem;
-   top: 0;
    border: 2px solid var(--bg-container);
    padding: 0.5rem;
    border-radius: 1.2rem;
@@ -44,6 +41,23 @@
    z-index: 10000;
    box-shadow: rgba(0, 0, 0, 0.5) 0px 20px 30px -10px;
    background: var(--bg-secondary);
+
+   transform-origin: top center;
+   transition:
+      transform 0.2s,
+      opacity 0.2s;
+   transform: translateY(0);
+   opacity: 1;
+
+   &[data-starting-style] {
+      transform: translateY(-5px);
+   }
+
+   &[data-ending-style],
+   &[data-closed] {
+      transform: translateY(-5px);
+      opacity: 0;
+   }
 }
 
 .option {
@@ -62,7 +76,7 @@
    }
 
    &:hover,
-   &[data-active="true"] {
+   &[data-selected] {
       background-color: var(--bg-content);
       color: var(--text-primary);
    }

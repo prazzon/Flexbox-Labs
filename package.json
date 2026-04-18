@@ -11,6 +11,7 @@
       "typecheck": "tsc --noEmit"
    },
    "dependencies": {
+      "@base-ui/react": "^1.4.0",
       "@reduxjs/toolkit": "^2.5.0",
       "@svgr/webpack": "^8.1.0",
       "@types/dompurify": "^3.2.0",
