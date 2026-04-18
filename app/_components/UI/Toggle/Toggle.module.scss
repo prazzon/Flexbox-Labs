@@ -1,8 +1,6 @@
-/* From Uiverse.io by vinodjangid07 */
 .toggle {
    display: flex;
    align-items: center;
-   justify-content: center;
    position: relative;
    width: 48px;
    height: 28px;
@@ -10,33 +8,29 @@
    border-radius: 20px;
    cursor: pointer;
    transition-duration: 0.2s;
+   border: none;
+   padding: 0;
 
-   &::after {
-      content: "";
-      position: absolute;
-      height: 9.5px;
-      width: 9.5px;
-      left: 4px;
-      background-color: transparent;
-      border-radius: 50%;
-      transition-duration: 0.2s;
-      box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
-      border: 5px solid white;
+   &[data-checked] {
+      background-color: var(--color-primary);
    }
 }
 
-.checkbox {
-   display: none;
+.thumb {
+   display: block;
+   height: 19.5px;
+   width: 19.5px;
+   background-color: white;
+   border-radius: 50%;
+   transition: transform 0.2s;
+   box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
+   
+   position: absolute;
+   left: 4px;
+   top: 50%;
+   transform: translateY(-50%) translateX(0);
 
-   &:checked + .toggle::after {
-      transform: translateX(100%);
-      transition-duration: 0.2s;
-      background-color: white;
-   }
-
-   /* Switch background change */
-   &:checked + .toggle {
-      background-color: var(--color-primary);
-      transition-duration: 0.2s;
+   &[data-checked] {
+      transform: translateY(-50%) translateX(20px);
    }
 }
