@@ -50,27 +50,26 @@ function SidebarTab({
          {tabs.map((tab, index) => {
             const isActive = switchState === index && panelState;
             return (
-               <button
-                  type="button"
-                  key={tab.name}
-                  className={`${styles.btn__switch} ${isActive ? styles.active : ""}`}
-                  data-switch={index}
-                  onClick={() => onSwitch(index)}
-                  aria-label={tab.name}
-                  aria-pressed={isActive}
-               >
-                  {tab.icon}
+                  <Tooltip key={tab.name} label={tab.name} position="right">
+                     <button
+                        type="button"
+                        className={`${styles.btn__switch} ${isActive ? styles.active : ""}`}
+                        data-switch={index}
+                        onClick={() => onSwitch(index)}
+                        aria-label={tab.name}
+                        aria-pressed={isActive}
+                     >
+                        {tab.icon}
 
-                  <Tooltip position="right">{tab.name}</Tooltip>
-
-                  {switchState === index && panelState === true && (
-                     <motion.span
-                        className={styles.active}
-                        transition={{ duration: 0.2 }}
-                        layoutId="activeTab"
-                     ></motion.span>
-                  )}
-               </button>
+                        {switchState === index && panelState === true && (
+                           <motion.span
+                              className={styles.active}
+                              transition={{ duration: 0.2 }}
+                              layoutId="activeTab"
+                           ></motion.span>
+                        )}
+                     </button>
+                  </Tooltip>
             );
          })}
 
@@ -78,10 +77,11 @@ function SidebarTab({
 
          <Modal>
             <OpenBtn>
-               <button className={styles.btn}>
-                  <FaCode />
-                  <Tooltip position="right">Code</Tooltip>
-               </button>
+               <Tooltip label="Code" position="right">
+                  <button className={styles.btn}>
+                     <FaCode />
+                  </button>
+               </Tooltip>
             </OpenBtn>
             <Content>
                <DisplayCode state={state} />
@@ -92,30 +92,32 @@ function SidebarTab({
 
          <Modal>
             <OpenBtn>
-               <button
-                  type="button"
-                  className={`${styles.btn} ${styles.btn__about}`}
-                  aria-label="About Flexbox Labs"
-               >
-                  <FaRegQuestionCircle />
-                  <Tooltip position="right">About</Tooltip>
-               </button>
+               <Tooltip label="About" position="right">
+                  <button
+                     type="button"
+                     className={`${styles.btn} ${styles.btn__about}`}
+                     aria-label="About Flexbox Labs"
+                  >
+                     <FaRegQuestionCircle />
+                  </button>
+               </Tooltip>
             </OpenBtn>
             <Content>
                <About />
             </Content>
          </Modal>
 
-         <a
-            href="https://github.com/prazzon/flexbox-labs"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.btn} ${styles.btn__github}`}
-            aria-label="Flexbox Labs on GitHub (opens in new tab)"
-         >
-            <FaGithub />
-            <Tooltip position="right">GitHub</Tooltip>
-         </a>
+         <Tooltip label="GitHub" position="right">
+            <a
+               href="https://github.com/prazzon/flexbox-labs"
+               target="_blank"
+               rel="noopener noreferrer"
+               className={`${styles.btn} ${styles.btn__github}`}
+               aria-label="Flexbox Labs on GitHub (opens in new tab)"
+            >
+               <FaGithub />
+            </a>
+         </Tooltip>
       </motion.div>
    );
 }

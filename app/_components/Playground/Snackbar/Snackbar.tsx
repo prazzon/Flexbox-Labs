@@ -34,20 +34,22 @@ function Snackbar({
                   {selectedItems.length} item
                   {selectedItems.length > 1 && "s"} selected
                </p>
-               <button
-                  className={styles.btn}
-                  onClick={() => toggleAllSelected()}
-               >
-                  <TbCopyCheck />
-                  <Tooltip position="top">Select All</Tooltip>
-               </button>
+               <Tooltip label="Select All" position="top">
+                  <button
+                     className={styles.btn}
+                     onClick={() => toggleAllSelected()}
+                  >
+                     <TbCopyCheck />
+                  </button>
+               </Tooltip>
 
                <hr className={styles.divider} />
 
-               <button className={styles.btn} onClick={clearSelected}>
-                  <IoClose />
-                  <Tooltip position="top">Close</Tooltip>
-               </button>
+               <Tooltip label="Close" position="top">
+                  <button className={styles.btn} onClick={clearSelected}>
+                     <IoClose />
+                  </button>
+               </Tooltip>
             </motion.div>
          )}
       </AnimatePresence>

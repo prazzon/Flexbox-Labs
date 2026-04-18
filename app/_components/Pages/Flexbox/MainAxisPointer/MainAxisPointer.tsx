@@ -44,22 +44,23 @@ function MainAxisPointer() {
    }, [container.flexDirection]);
 
    return (
-      <motion.button
-         type="button"
-         layout
-         className={styles.pointer}
-         onClick={handleClick}
-         aria-label="Cycle flex main axis direction"
-      >
-         <motion.span
-            className={styles.icon}
-            animate={{ rotate: direction }}
-            transition={{ duration: 0.2 }}
+      <Tooltip label="main axis direction" position="bottom">
+         <motion.button
+            type="button"
+            layout
+            className={styles.pointer}
+            onClick={handleClick}
+            aria-label="Cycle flex main axis direction"
          >
-            <FaLongArrowAltRight />
-         </motion.span>
-         <Tooltip position="bottom">main axis direction</Tooltip>
-      </motion.button>
+            <motion.span
+               className={styles.icon}
+               animate={{ rotate: direction }}
+               transition={{ duration: 0.2 }}
+            >
+               <FaLongArrowAltRight />
+            </motion.span>
+         </motion.button>
+      </Tooltip>
    );
 }
 

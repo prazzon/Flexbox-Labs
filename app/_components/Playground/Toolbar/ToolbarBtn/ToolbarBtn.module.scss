@@ -33,22 +33,23 @@
       color: var(--red);
    }
 
-   .shortcut {
-      font-size: 12px;
-      background-color: var(--bg-secondary);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      margin-right: -0.5rem;
-      color: var(--text-primary);
-   }
-
    .active {
       position: absolute;
-      right: .5rem;
-      top: .5rem;
+      right: 0.5rem;
+      top: 0.5rem;
       height: 5px;
       width: 5px;
       border-radius: 50%;
       background: var(--color-primary);
    }
+}
+
+.shortcut {
+   font-size: 1.2rem;
+   background-color: var(--bg-secondary);
+   padding: 0.2rem 0.5rem;
+   border-radius: 0.5rem;
+   color: var(--text-primary);
+   display: inline-flex;
+   align-items: center;
 }

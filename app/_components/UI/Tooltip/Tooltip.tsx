@@ -1,79 +1,79 @@
 "use client";
 
-import { AnimatePresence, motion, Variants } from "motion/react";
-import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { Tooltip as BaseTooltip } from "@base-ui/react";
+import { ReactElement, ReactNode } from "react";
 import styles from "./Tooltip.module.scss";
 
-const tooltipVariants: Variants = {
-   hidden: (pos: string) => ({
-      opacity: 0,
-      y: pos === "top" ? -30 : pos === "bottom" ? 30 : 5,
-      x: pos === "left" ? -30 : pos === "right" ? 30 : 0,
-   }),
-
-   visible: (pos: string) => ({
-      opacity: 1,
-      y: pos === "top" ? -55 : pos === "bottom" ? 50 : 5,
-      x: pos === "left" ? -55 : pos === "right" ? 55 : 0,
-      transition: { delay: 0.5, ease: [0.165, 0.84, 0.44, 1] },
-   }),
-
-   exit: (pos: string) => ({
-      opacity: 0,
-      y: pos === "top" ? -30 : pos === "bottom" ? 30 : 5,
-      x: pos === "left" ? -30 : pos === "right" ? 30 : 0,
-   }),
-};
-
-interface Props {
-   children: ReactNode;
+interface Props extends React.HTMLAttributes<HTMLElement> {
+   children: ReactElement;
+   label: ReactNode;
    position?: "top" | "bottom" | "left" | "right";
    background?: string;
+   delay?: number;
+   closeDelay?: number;
 }
 
-function Tooltip({ children, position = "top", background }: Props) {
-   const [showTooltip, setShowTooltip] = useState(false);
-
-   const ref = useRef<HTMLDivElement | null>(null);
-
-   const handleHover = useCallback(() => setShowTooltip(true), []);
-   const handleLeave = useCallback(() => setShowTooltip(false), []);
-
-   useEffect(() => {
-      const parent = ref.current?.parentElement;
-
-      if (!parent) return;
-
-      parent.style.position = "relative";
-
-      parent.addEventListener("mouseenter", handleHover);
-      parent.addEventListener("mouseleave", handleLeave);
-
-      return () => {
-         parent.removeEventListener("mouseenter", handleHover);
-         parent.removeEventListener("mouseleave", handleLeave);
-      };
-   }, [handleHover, handleLeave]);
-
+function Tooltip({
+   children,
+   label,
+   position = "top",
+   background,
+   delay = 300,
+   closeDelay = 100,
+   ...props
+}: Props) {
    return (
-      <div ref={ref} className={`${styles.tooltip} ${styles[position]}`}>
-         <AnimatePresence>
-            {showTooltip && (
-               <motion.div
+      <BaseTooltip.Root>
+         <BaseTooltip.Trigger
+            {...props}
+            render={children}
+            delay={delay}
+            closeDelay={closeDelay}
+         />
+         <BaseTooltip.Portal>
+            <BaseTooltip.Positioner
+               side={position}
+               sideOffset={10}
+               style={{ zIndex: 999999 }}
+            >
+               <BaseTooltip.Popup
                   className={styles.tooltip__content}
-                  variants={tooltipVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  custom={position}
                   style={{ backgroundColor: background }}
                >
-                  {children}
-               </motion.div>
-            )}
-         </AnimatePresence>
-      </div>
+                  {label}
+               </BaseTooltip.Popup>
+            </BaseTooltip.Positioner>
+         </BaseTooltip.Portal>
+      </BaseTooltip.Root>
    );
 }
+
+// function Tooltip({
+//    children,
+//    label,
+//    position = "top",
+//    background,
+//    ...props
+// }: Props) {
+//    return (
+//       <BaseTooltip.Root>
+//          <BaseTooltip.Trigger {...props} render={children} />
+//          <BaseTooltip.Portal>
+//             <BaseTooltip.Positioner
+//                side={position}
+//                sideOffset={10}
+//                style={{ zIndex: 999999 }}
+//             >
+//                <BaseTooltip.Popup
+//                   className={styles.tooltip__content}
+//                   style={{ backgroundColor: background }}
+//                >
+//                   {label}
+//                </BaseTooltip.Popup>
+//             </BaseTooltip.Positioner>
+//          </BaseTooltip.Portal>
+//       </BaseTooltip.Root>
+//    );
+// }
 
 export default Tooltip;
