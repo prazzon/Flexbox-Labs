@@ -44,7 +44,7 @@ function ToolbarBtn({
    if (inActive) className += " " + styles.inactive;
    if (type === "delete" && !disabled) className += " " + styles.delete;
 
-   return (
+   const button = (
       <button
          type="button"
          className={className}
@@ -53,14 +53,25 @@ function ToolbarBtn({
          aria-label={value ? `${value}` : "Toolbar action"}
       >
          {children}
-         {value && !disabled && (
-            <Tooltip>
-               {value}{" "}
-               {shortcut && <span className={styles.shortcut}>{shortcut}</span>}
-            </Tooltip>
-         )}
       </button>
    );
+
+   if (value && !disabled) {
+      return (
+         <Tooltip
+            label={
+               <>
+                  {value}{" "}
+                  {shortcut && <span className={styles.shortcut}>{shortcut}</span>}
+               </>
+            }
+         >
+            {button}
+         </Tooltip>
+      );
+   }
+
+   return button;
 }
 
 export default ToolbarBtn;
