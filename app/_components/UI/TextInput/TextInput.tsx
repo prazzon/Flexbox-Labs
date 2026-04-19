@@ -1,5 +1,6 @@
 "use client";
 
+import { Input as BaseInput } from "@base-ui/react";
 import { useState } from "react";
 import Select from "../Select/Select";
 import styles from "./TextInput.module.scss";
@@ -20,7 +21,6 @@ function extractUnit(
 ): string {
    if (!units) return defaultUnit;
 
-   // checks if the value ends with any of the units
    for (const unit of units) {
       if (value.endsWith(unit)) {
          return unit;
@@ -35,32 +35,31 @@ function TextInput({ size, value, type, onChange, unitOptions, step }: Props) {
    const [lastValue, setLastValue] = useState(value);
 
    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      // remove leading zeros
-      const value = e.target.value.replace(/^0+(\d+)/, "$1");
+      const val = e.target.value.replace(/^0+(\d+)/, "$1");
 
       if (type === "number") {
-         onChange(value);
-         setLastValue(value);
+         onChange(val);
+         setLastValue(val);
       } else {
-         onChange(`${value}${unit}`);
-         setLastValue(`${value}${unit}`);
+         onChange(`${val}${unit}`);
+         setLastValue(`${val}${unit}`);
       }
    };
 
-   const handleUnitChange = (value: string) => {
-      setUnit(value);
+   const handleUnitChange = (val: string) => {
+      setUnit(val);
 
-      if (value === "auto") {
+      if (val === "auto") {
          onChange("auto");
       } else {
-         onChange(`${parseInt(lastValue) || 0}${value}`);
+         onChange(`${parseInt(lastValue) || 0}${val}`);
       }
    };
 
    return (
       <div className={styles.container}>
          {value !== "auto" && (
-            <input
+            <BaseInput
                type={type === "unit" ? "number" : type}
                value={parseInt(value) || 0}
                className={`${styles.input} ${styles[size]}`}
@@ -73,7 +72,7 @@ function TextInput({ size, value, type, onChange, unitOptions, step }: Props) {
          {type === "unit" && (
             <Select
                active={value.replace(/\d/g, "")}
-               onSelect={(value) => handleUnitChange(value)}
+               onSelect={(val) => handleUnitChange(val)}
             >
                <Select.Toggle />
                <Select.Options>

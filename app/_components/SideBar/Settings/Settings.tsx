@@ -1,3 +1,5 @@
+import useSettings from "@/app/_hooks/useSettings";
+import { Radio, RadioGroup } from "@base-ui/react";
 import { CgDarkMode } from "react-icons/cg";
 import { FiLoader } from "react-icons/fi";
 import { GrMultiple } from "react-icons/gr";
@@ -5,7 +7,7 @@ import { ImTextColor } from "react-icons/im";
 import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { TbSunset2, TbTextSize } from "react-icons/tb";
-import useSettings from "@/app/_hooks/useSettings";
+import Slider from "../../UI/Slider/Slider";
 import Toggle from "../../UI/Toggle/Toggle";
 import styles from "./Settings.module.scss";
 
@@ -37,55 +39,52 @@ function Settings() {
                   <h4 className={styles.text}>Appearance</h4>
                </div>
 
-               <div className={styles.tile__container}>
-                  <label className={styles.tile}>
-                     <input
-                        className={styles.tile__input}
-                        type="radio"
-                        name="appearance"
-                        checked={theme === "light"}
-                        onChange={() => changeTheme("light")}
-                     />
+               <RadioGroup
+                  value={theme}
+                  onValueChange={(val) =>
+                     changeTheme(val as "light" | "dark" | "auto")
+                  }
+                  className={styles.tile__container}
+               >
+                  <Radio.Root
+                     value="light"
+                     className={styles.tile}
+                     aria-label="Light Appearance"
+                  >
                      <div className={styles.tile__text}>
                         <div className={styles.tile__text_icon}>
                            <MdOutlineLightMode />
                         </div>
                         <div className={styles.tile__text_title}>Light</div>
                      </div>
-                  </label>
+                  </Radio.Root>
 
-                  <label className={styles.tile}>
-                     <input
-                        className={styles.tile__input}
-                        type="radio"
-                        name="appearance"
-                        checked={theme === "dark"}
-                        onChange={() => changeTheme("dark")}
-                     />
+                  <Radio.Root
+                     value="dark"
+                     className={styles.tile}
+                     aria-label="Dark Appearance"
+                  >
                      <div className={styles.tile__text}>
                         <div className={styles.tile__text_icon}>
                            <MdDarkMode />
                         </div>
                         <div className={styles.tile__text_title}>Dark</div>
                      </div>
-                  </label>
+                  </Radio.Root>
 
-                  <label className={styles.tile}>
-                     <input
-                        className={styles.tile__input}
-                        type="radio"
-                        name="appearance"
-                        checked={theme === "auto"}
-                        onChange={() => changeTheme("auto")}
-                     />
+                  <Radio.Root
+                     value="auto"
+                     className={styles.tile}
+                     aria-label="Auto Appearance"
+                  >
                      <div className={styles.tile__text}>
                         <div className={styles.tile__text_icon}>
                            <CgDarkMode />
                         </div>
                         <div className={styles.tile__text_title}>Auto</div>
                      </div>
-                  </label>
-               </div>
+                  </Radio.Root>
+               </RadioGroup>
             </div>
          </div>
 
@@ -97,53 +96,47 @@ function Settings() {
                   </div>
                   <h4 className={styles.text}>Accent Color</h4>
 
-                  <div className={styles.color__container}>
-                     <label className={styles.color}>
-                        <input
-                           type="radio"
-                           name="accent"
-                           checked={accent === "purple"}
-                           onChange={() => changeAccent("purple")}
-                        />
+                  <RadioGroup
+                     value={accent}
+                     onValueChange={(val) => changeAccent(val)}
+                     className={styles.color__container}
+                  >
+                     <Radio.Root
+                        value="purple"
+                        className={styles.color}
+                        aria-label="Purple Accent"
+                     >
                         <span className={styles.color__purple}></span>
-                     </label>
-                     <label className={styles.color}>
-                        <input
-                           type="radio"
-                           name="accent"
-                           checked={accent === "green"}
-                           onChange={() => changeAccent("green")}
-                        />
+                     </Radio.Root>
+                     <Radio.Root
+                        value="green"
+                        className={styles.color}
+                        aria-label="Green Accent"
+                     >
                         <span className={styles.color__green}></span>
-                     </label>
-                     <label className={styles.color}>
-                        <input
-                           type="radio"
-                           name="accent"
-                           checked={accent === "blue"}
-                           onChange={() => changeAccent("blue")}
-                        />
+                     </Radio.Root>
+                     <Radio.Root
+                        value="blue"
+                        className={styles.color}
+                        aria-label="Blue Accent"
+                     >
                         <span className={styles.color__blue}></span>
-                     </label>
-                     <label className={styles.color}>
-                        <input
-                           type="radio"
-                           name="accent"
-                           checked={accent === "orange"}
-                           onChange={() => changeAccent("orange")}
-                        />
+                     </Radio.Root>
+                     <Radio.Root
+                        value="orange"
+                        className={styles.color}
+                        aria-label="Orange Accent"
+                     >
                         <span className={styles.color__yellow}></span>
-                     </label>
-                     <label className={styles.color}>
-                        <input
-                           type="radio"
-                           name="accent"
-                           checked={accent === "turquoise"}
-                           onChange={() => changeAccent("turquoise")}
-                        />
+                     </Radio.Root>
+                     <Radio.Root
+                        value="turquoise"
+                        className={styles.color}
+                        aria-label="Turquoise Accent"
+                     >
                         <span className={styles.color__turquoise}></span>
-                     </label>
-                  </div>
+                     </Radio.Root>
+                  </RadioGroup>
                </div>
             </div>
 
@@ -158,14 +151,11 @@ function Settings() {
                      <span className={styles.range__icon}>
                         <ImTextColor />
                      </span>
-                     <input
-                        type="range"
-                        min="10"
-                        max="32"
+                     <Slider
+                        min={10}
+                        max={32}
                         value={textSize}
-                        onChange={(e) => changeTextSize(Number(e.target.value))}
-                        className={styles.range__slider}
-                        id="myRange"
+                        onChange={changeTextSize}
                      />
                      <span className={styles.range__icon}>
                         <ImTextColor />

@@ -56,7 +56,7 @@ const Item = ({ item, value, separator, onChange }: Props) => {
 
    return (
       <>
-         <motion.label
+         <motion.div
             className={styles.item}
             key={item.key}
             layout
@@ -73,11 +73,17 @@ const Item = ({ item, value, separator, onChange }: Props) => {
                   <FaCaretDown />
                </div>
             </div>
-            <span className={styles.info}>
-               <FaInfo />
-               <Popover position="bottom">{item.description}</Popover>
-            </span>
-         </motion.label>
+            <Popover
+               position="bottom"
+               trigger={
+                  <span className={styles.info}>
+                     <FaInfo />
+                  </span>
+               }
+            >
+               {item.description}
+            </Popover>
+         </motion.div>
 
          <AnimatePresence mode="popLayout">
             {open && (
