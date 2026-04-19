@@ -51,65 +51,68 @@
 .tile {
    position: relative;
    cursor: pointer;
+   border: none;
+   background: none;
+   padding: 0;
+   outline: none;
 
-   &__input {
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      margin: 0;
+   &[data-checked] .tile__text svg {
+      color: var(--text-primary);
+   }
 
-      &:checked + .tile__text svg {
-         color: var(--text-primary);
-      }
+   &[data-checked] .tile__text_icon {
+      border-color: var(--color-primary);
+   }
 
-      &:checked + .tile__text .tile__text_title {
-         color: var(--text-primary);
-         font-weight: 800;
+   &[data-checked] .tile__text .tile__text_title {
+      color: var(--text-primary);
+      font-weight: 800;
+   }
+
+   &[data-focus-visible] .tile__text_icon {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+   }
+}
+
+.tile__text {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   border-radius: 2rem;
+   gap: 1rem;
+   cursor: pointer;
+   position: relative;
+
+   svg {
+      font-size: 2.8rem;
+      color: var(--text-secondary);
+      transition: transform 0.2s ease-in-out;
+
+      @media (max-width: 525px) {
+         font-size: 2rem;
       }
    }
 
-   &__text {
+   &_icon {
+      border: 2px solid var(--bg-content-hover);
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 2rem;
-      gap: 1rem;
-      cursor: pointer;
-      position: relative;
+      padding: 2rem;
+      border-radius: 50%;
+      background-color: var(--bg-content-hover);
+      box-shadow: inset 0 1.5px 0 0 var(--icon-shadow);
+      border: 1px solid var(--icon-border);
+      color: var(--text-secondary);
+      transition: all 0.2s ease-in-out;
+   }
 
-      svg {
-         font-size: 2.8rem;
-         color: var(--text-secondary);
-         transition: transform 0.2s ease-in-out;
-
-         @media (max-width: 525px) {
-            font-size: 2rem;
-         }
-      }
-
-      &_icon {
-         border: 2px solid var(--bg-content-hover);
-         display: flex;
-         padding: 2rem;
-         border-radius: 50%;
-         background-color: var(--bg-content-hover);
-         box-shadow: inset 0 1.5px 0 0 var(--icon-shadow);
-         border: 1px solid var(--icon-border);
-         color: var(--text-secondary);
-         transition: transform 0.2s ease-in-out;
-      }
-
-      &_title {
-         text-align: center;
-         font-size: 1.2rem;
-         font-weight: 600;
-         letter-spacing: 1px;
-         color: var(--text-secondary);
-      }
+   &_title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
    }
 }
 
@@ -131,11 +134,10 @@
    cursor: pointer;
    width: 2rem;
    height: 2rem;
-
-   /* Hide the browser's default radio button */
-   input {
-      display: none;
-   }
+   border: none;
+   background: none;
+   padding: 0;
+   outline: none;
 
    /* Create a custom radio button */
    span {
@@ -169,8 +171,13 @@
    }
 
    /* Show the indicator (dot/circle) when checked */
-   input:checked ~ span:after {
+   &[data-checked] span:after {
       transform: scale(1);
+   }
+
+   &[data-focus-visible] span {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
    }
 
    /* Style background colors */
@@ -205,43 +212,6 @@
    gap: 0.5rem;
 
    /* From Uiverse.io by satisshTechie */
-   &__slider {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 10rem;
-      height: 4px;
-      border-radius: 5px;
-      background: var(--text-primary);
-      outline: none;
-      opacity: 0.7;
-      -webkit-transition: 0.2s;
-      transition: opacity 0.2s;
-
-      &::-webkit-slider-thumb {
-         -webkit-appearance: none;
-         appearance: none;
-         width: 15px;
-         height: 15px;
-         border-radius: 50%;
-         background-color: var(--text-primary);
-         cursor: pointer;
-         transition: 0.3s ease-in-out;
-      }
-
-      &::-webkit-slider-thumb:hover {
-         box-shadow: 0px 0px 0px 8px rgba(255, 255, 255, 0.16);
-         transition: 0.3s ease-in-out;
-      }
-
-      &::-moz-range-thumb {
-         width: 15px;
-         height: 15px;
-         border-radius: 50%;
-         background-color: var(--text-primary);
-         cursor: pointer;
-      }
-   }
-
    &__icon {
       display: flex;
       font-size: 1.8rem;
